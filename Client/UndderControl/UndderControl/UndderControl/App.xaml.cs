@@ -2,6 +2,7 @@
 using Prism.Ioc;
 using UndderControl.ViewModels;
 using UndderControl.Views;
+using UndderControlLib.Dtos;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,11 +20,14 @@ namespace UndderControl
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
+        public static SurveyDto LatestSurvey { get; set; }
+        public static FarmDto SelectedFarm { get; set; }
+
         protected override async void OnInitialized()
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -31,6 +35,10 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<SdctMasterDetailPage, SdctMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<AssessmentPage, AssessmentPageViewModel>();
+            containerRegistry.RegisterForNavigation<MonitorPage, MonitorPageViewModel>();
+            containerRegistry.RegisterForNavigation<SurveyPage, SurveyPageViewModel>();
+            containerRegistry.RegisterForNavigation<RootPage, RootPageViewModel>();
         }
     }
 }

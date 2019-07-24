@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="UndderControl.Views.AssessmentPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Start Questions" Command="{Binding StartSurveyCommand}" IsEnabled="{Binding IsSurveyAvailable}" />
+            <Button Text="Summary of Results" Command="{Binding SummaryCommand}" />
+            <Button Text="Compare Results" Command="{Binding CompareCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

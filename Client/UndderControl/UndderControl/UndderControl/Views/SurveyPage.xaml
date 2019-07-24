@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="UndderControl.Views.SurveyPage">
+    <ContentPage.Content>
+        <FlexLayout>
+            <ContentView x:Name="SurveyStageView" IsVisible="{Binding IsStage}">
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="Stage View" />
+                    <Label x:Name="StageTitle"  Text="Loading stage..." />
+                    <Label x:Name="StageText"  Text="Loading stage..." />
+                    <Button Text="Start Questions"
+                            TextColor="Blue"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Margin="13"
+                            Command="{Binding StartStageCommand}"/>
+                </StackLayout>
+            </ContentView>
+            <ScrollView x:Name="SurveyQuestionView" IsVisible="{Binding IsStage, Converter={StaticResource not}}">
+                <StackLayout>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label x:Name="QuestionLabel"
+                        Text="Loading question..."
+                        Margin="13"
+                        TextColor="White"
+                        FontSize="34"
+                        HorizontalTextAlignment="Center"/>
+                        <Label x:Name="HelpTextLabel"
+                        Text="Loading question..."
+                        Margin="13"
+                        FontSize="21"
+                        TextColor="#2E987E" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End">
+                        <StackLayout x:Name="AnswerButtonStackLayout"
+                            Margin="21"
+                            Orientation="Horizontal" 
+                            HeightRequest="89">
+                            <Button Text="Yes"
+                            TextColor="#009096"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Margin="21"
+                            Command="{Binding AnswerYesCommand}"/>
+                            <Button Text="No"
+                            TextColor="#009096"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Margin="21"
+                            Command="{Binding AnswerNoCommand}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Label 
+                            Text="Start:"
+                            VerticalTextAlignment="Center"/>
+                            <Label
+                            x:Name="Increment"
+                            Text="{Binding QuestionIncrement}"
+                            VerticalTextAlignment="Center"/>
+                            <Label 
+                            Text="of"
+                            VerticalTextAlignment="Center"/>
+                            <Label 
+                            x:Name="StageQuestionCount"
+                            Text="{Binding StageQuestionCount}"
+                            VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </FlexLayout>
+    </ContentPage.Content>
+  
+</ContentPage>

@@ -1,6 +1,9 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 
@@ -13,6 +16,8 @@ namespace UndderControl.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            AppCenter.Start("android=f4a15771-9b69-4103-b448-a5a2a500bc24;", typeof(Analytics), typeof(Crashes));
 
             base.OnCreate(bundle);
 

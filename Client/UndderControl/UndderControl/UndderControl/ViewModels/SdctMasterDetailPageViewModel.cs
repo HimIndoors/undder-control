@@ -7,13 +7,14 @@ using System.Linq;
 
 namespace UndderControl.ViewModels
 {
-    public class SdctMasterDetailPageViewModel : BindableBase
+    public class SdctMasterDetailPageViewModel : ViewModelBase
     {
         INavigationService _navigationService;
         public DelegateCommand<string> OnNavigateCommand { get; set; }
-        public SdctMasterDetailPageViewModel(INavigationService navigationservice)
+        public SdctMasterDetailPageViewModel(INavigationService navigationService)
+            : base(navigationService)
         {
-            _navigationService = navigationservice;
+            _navigationService = navigationService;
             OnNavigateCommand = new DelegateCommand<string>(NavigateAsync);
         }
 

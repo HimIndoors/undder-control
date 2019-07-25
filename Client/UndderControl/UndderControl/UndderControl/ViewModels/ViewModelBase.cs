@@ -1,9 +1,13 @@
-﻿using Prism.Commands;
+﻿using Acr.UserDialogs;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using UndderControl.Services;
+using Xamarin.Forms;
 
 namespace UndderControl.ViewModels
 {
@@ -41,10 +45,37 @@ namespace UndderControl.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+        public IUserDialogs PageDialog = UserDialogs.Instance;
+        public IApiManager ApiManager;
+        IApiService<IFarmApi> farmApi = new ApiService<IFarmApi>(Config.ApiUrl);
+        IApiService<ISurveyApi> surveyApi = new ApiService<ISurveyApi>(Config.ApiUrl);
 
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
+            ApiManager = new ApiManager(farmApi, surveyApi);
+        }
+
+        public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)
+        {
+            try
+            {
+                if (IsBusy) return;
+                IsBusy = true;
+                if (ShowLoading) UserDialogs.Instance.ShowLoading(loadingMessage ?? "Loading");
+                await task;
+            }
+            catch (Exception e)
+            {
+                IsBusy = false;
+                UserDialogs.Instance.HideLoading();
+                DependencyService.Get<IMetricsManagerService>().TrackException("TaskRunSafeException", e);
+            }
+            finally
+            {
+                IsBusy = false;
+                if (ShowLoading) UserDialogs.Instance.HideLoading();
+            }
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)

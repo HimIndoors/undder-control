@@ -1,6 +1,8 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -17,12 +19,22 @@ namespace UndderControl.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            AppCenter.Start("android=f4a15771-9b69-4103-b448-a5a2a500bc24;", typeof(Analytics), typeof(Crashes));
+            AppCenter.Start(Config.AppCentreAndroid, typeof(Analytics), typeof(Crashes));
 
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.Essentials.Platform.Init(this, bundle);
+            UserDialogs.Init(() => this);
             LoadApplication(new App(new AndroidInitializer()));
+            
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 

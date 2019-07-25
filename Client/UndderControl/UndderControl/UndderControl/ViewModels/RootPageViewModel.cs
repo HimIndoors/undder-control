@@ -1,11 +1,15 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using UndderControl.Services;
 using UndderControlLib.Dtos;
+using Xamarin.Forms;
 
 namespace UndderControl.ViewModels
 {
@@ -37,8 +41,7 @@ namespace UndderControl.ViewModels
         {
             try
             {
-                var dbFarms = await App.FarmDatabase.GetAllFarms();
-                FarmList = dbFarms;
+                await RunSafe(GetFarms());
             }
             catch (Exception ex)
             {
@@ -46,6 +49,23 @@ namespace UndderControl.ViewModels
             }
 
             IsBusy = false;
+        }
+
+        async Task GetFarms()
+        {
+            var farmresponse = await ApiManager.FarmList();
+
+            if (farmresponse.IsSuccessStatusCode)
+            {
+                var response = await farmresponse.Content.ReadAsStringAsync();
+                var json = await Task.Run(() => JsonConvert.DeserializeObject<List<FarmDto>>(response));
+                _farmList = new ObservableCollection<FarmDto>(json);
+            }
+            else
+            {
+                await PageDialog.AlertAsync("Unable to retrieve farm data", "Error", "OK");
+            }
+
         }
 
         async void NavigateAsync(string page)

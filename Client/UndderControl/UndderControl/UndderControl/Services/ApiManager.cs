@@ -56,7 +56,7 @@ namespace UndderControl.Services
         {
             TData data = new TData();
 
-            // If no network try and pull data from cache then default to error
+            // If no network try and pull data from cache or default to error
             if (!IsConnected)
             {
                 if (!string.IsNullOrEmpty(barrel) && !Barrel.Current.IsExpired(barrel) && Barrel.Current.Exists(barrel))

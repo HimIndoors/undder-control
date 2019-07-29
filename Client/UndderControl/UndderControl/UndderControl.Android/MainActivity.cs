@@ -19,7 +19,7 @@ namespace UndderControl.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            AppCenter.Start(Config.AppCentreAndroid, typeof(Analytics), typeof(Crashes));
+            AppCenter.Start(Config.AppCenterAndroidKey, typeof(Analytics), typeof(Crashes));
 
             base.OnCreate(bundle);
 

@@ -27,7 +27,7 @@ namespace UndderControl
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/RootPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

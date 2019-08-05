@@ -7,9 +7,13 @@
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <StackLayout Padding="20">
-                <!-- TODO: // Update the Layout and add some real menu items  -->
-                <Button Text="ViewA" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarms" />
+            <ContentPage.Padding>
+                <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+            </ContentPage.Padding>
+            <StackLayout>
+                <Button Text="Home" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/Root" />
+                <Button Text="My Surveys" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarms" />
+                <Button Text="My Profile" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarms" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

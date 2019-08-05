@@ -5,7 +5,7 @@ using System.Text;
 namespace UndderControlLib.Dtos
 {
     /// <summary>
-    /// Model for the survey form to be displayed for each interviewee.
+    /// Client-side model for the survey form to be displayed for each interviewee.
     /// </summary>
     public class SurveyDto
     {
@@ -14,6 +14,7 @@ namespace UndderControlLib.Dtos
         public String Description { get; set; }
         public String IntroText { get; set; }
         public int Version { get; set; }
+        public string Language { get; set; }
         public DateTimeOffset LastUpdated { get; set; }
         public IList<SurveyQuestionDto> Questions { get; set; } = new List<SurveyQuestionDto>();
         public IList<SurveyStageDto> Stages { get; set; } = new List<SurveyStageDto>();
@@ -26,7 +27,7 @@ namespace UndderControlLib.Dtos
     {
         public int QuestionID { get; set; }
         public int QuestionStageID { get; set; }
-        public String QuestionNum { get; set; }
+        public int QuestionNum { get; set; }
         public String QuestionText { get; set; }
         public String QuestionHelpText { get; set; }
         public String QuestionStatement { get; set; }

@@ -39,6 +39,7 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<MonitorPage, MonitorPageViewModel>();
             containerRegistry.RegisterForNavigation<SurveyPage, SurveyPageViewModel>();
             containerRegistry.RegisterForNavigation<RootPage, RootPageViewModel>();
+            containerRegistry.RegisterForNavigation<ManageFarmsPage, ManageFarmsPageViewModel>();
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="UndderControl.Views.ManageFarmsPage">
+
+    <ContentPage.Content>
+        <StackLayout Margin="25" x:Name="ButtonStack">
+            <ListView x:Name="FarmList" ItemsSource="{Binding Farms}" HasUnevenRows="True" CachingStrategy="RecycleElement" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="8">
+
+                                <Label Text="{Binding Name}" FontAttributes="Bold" />
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Add Farm" Command="{Binding AddFarmCommand}" />
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

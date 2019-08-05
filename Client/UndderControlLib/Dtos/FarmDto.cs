@@ -5,8 +5,8 @@ using System.Text;
 namespace UndderControlLib.Dtos
 {
     /// <summary>
-    /// Basic farm details, only the ID, Name and HerdSize are required for the app to function.
-    /// The rest are QoL fields for the vet/rep
+    /// Client-side model farm details
+    /// Only the ID, Name and HerdSize are required for the app to function, the rest are QoL fields for the vet/rep
     /// </summary>
     public class FarmDto
     {
@@ -17,6 +17,5 @@ namespace UndderControlLib.Dtos
         public string PhoneNumber { get; set; }
         public int HerdSize { get; set; }
         public string Type { get; set; }
-        public Guid FarmIdentifier { get; set; }
     }
 }

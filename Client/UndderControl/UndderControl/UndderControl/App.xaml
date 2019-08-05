@@ -9,8 +9,8 @@
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="PrimaryDark">#1976D2</Color>
             <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightBackgroundColour">#FAFAFA</Color>
-            <Color x:Key="DarkBackgroundColour">#009994</Color>
+            <Color x:Key="LightBackgroundColour">#7CCCBD</Color>
+            <Color x:Key="DarkBackgroundColour">#00987E</Color>
             <Color x:Key="MediumGrayTextColour">#4d4d4d</Color>
             <Color x:Key="LightTextColour">#333333</Color>
             <Color x:Key="DarkTextColour">#007367</Color>
@@ -34,6 +34,11 @@
             <Style x:Key="FormEntry" TargetType="Entry">
                 <Setter Property="TextColor" Value="{StaticResource DarkTextColour}"/>
                 <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+            <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+                <Setter Property="BarTextColor" Value="White" />
+                <Setter Property="BarBackgroundColor" Value="{StaticResource DarkBackgroundColour}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource LightBackgroundColour}" />
             </Style>
         </ResourceDictionary>
 

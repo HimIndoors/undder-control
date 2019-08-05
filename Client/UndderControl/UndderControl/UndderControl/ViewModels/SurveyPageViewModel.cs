@@ -14,13 +14,17 @@ namespace UndderControl.ViewModels
 {
     public class SurveyPageViewModel : ViewModelBase
     {
+        INavigationService _navigationService;
+        IMetricsManagerService _metricsManagerService;
         SurveyResponseDto _response;
         int _questionIndex;
         int _stageIndex;
 
-        public SurveyPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public SurveyPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
+            : base(navigationService, metricsManagerService)
         {
+            _navigationService = navigationService;
+            _metricsManagerService = metricsManagerService;
             Title = "Undder Control";
             AnswerYesCommand = new DelegateCommand(AnswerYes, () => IsNotBusy);
             AnswerNoCommand = new DelegateCommand(AnswerNo, () => IsNotBusy);
@@ -107,7 +111,7 @@ namespace UndderControl.ViewModels
         {
             _response.EndTime = DateTimeOffset.Now;
 
-            DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyEnded");
+            _metricsManagerService.TrackEvent("SurveyEnded");
 
             try
             {
@@ -117,7 +121,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                DependencyService.Get<IMetricsManagerService>().TrackException("SurveyEndException", ex);
+                _metricsManagerService.TrackException("SurveyEndException", ex);
             }
             /*
             var _lastPage = App.NavigationPage.Navigation.NavigationStack.LastOrDefault();
@@ -148,7 +152,7 @@ namespace UndderControl.ViewModels
             else
             {
                 //We should never get here otherwise we have no questions!
-                DependencyService.Get<IMetricsManagerService>().TrackException("NoQuestionsFound", new Exception("No Questions found in LatestSurvey"));
+                _metricsManagerService.TrackException("NoQuestionsFound", new Exception("No Questions found in LatestSurvey"));
 
                 //TODO: Add ui + handler to reload Survey
             }
@@ -188,7 +192,7 @@ namespace UndderControl.ViewModels
                 {"CurrentQuestionID", CurrentQuestion.QuestionID.ToString()},
             };
 
-            DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyNextQuestion", properties);
+            _metricsManagerService.TrackEvent("SurveyNextQuestion", properties);
 
             // Save the response
             _response.QuestionResponses.Add(new SurveyQuestionResponseDto(CurrentQuestion.QuestionID, CurrentQuestion.QuestionStageID, value));
@@ -221,7 +225,7 @@ namespace UndderControl.ViewModels
                     else
                     {
                         //We should never get here otherwise we have no questions!
-                        DependencyService.Get<IMetricsManagerService>().TrackException("NoStagesFound", new Exception("No Stages found in LatestSurvey"));
+                        _metricsManagerService.TrackException("NoStagesFound", new Exception("No Stages found in LatestSurvey"));
 
                         //TODO: Add ui + handler to reload Survey
                     }

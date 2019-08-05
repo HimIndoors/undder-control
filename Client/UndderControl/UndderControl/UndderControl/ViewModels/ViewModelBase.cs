@@ -14,6 +14,7 @@ namespace UndderControl.ViewModels
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
+        protected IMetricsManagerService MetricsManagerService { get; private set; }
         private bool _isBusy;
         private string _title;
         /// <summary>
@@ -50,9 +51,10 @@ namespace UndderControl.ViewModels
         IApiService<IFarmApi> farmApi = new ApiService<IFarmApi>(Config.ApiUrl);
         IApiService<ISurveyApi> surveyApi = new ApiService<ISurveyApi>(Config.ApiUrl);
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, IMetricsManagerService metricsManagerService)
         {
             NavigationService = navigationService;
+            MetricsManagerService = metricsManagerService;
             ApiManager = new ApiManager(farmApi, surveyApi);
         }
 
@@ -69,7 +71,7 @@ namespace UndderControl.ViewModels
             {
                 IsBusy = false;
                 UserDialogs.Instance.HideLoading();
-                DependencyService.Get<IMetricsManagerService>().TrackException("TaskRunSafeException", e);
+                MetricsManagerService.TrackException("TaskRunSafeException", e);
             }
             finally
             {

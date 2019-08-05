@@ -15,6 +15,8 @@ namespace UndderControl.ViewModels
 {
     public class ManageFarmsPageViewModel : ViewModelBase
     {
+        INavigationService _navigationService;
+        IMetricsManagerService _metricsManagerService;
         private ObservableCollection<FarmDto> _farms;
         public ObservableCollection<FarmDto> Farms
         {
@@ -27,9 +29,11 @@ namespace UndderControl.ViewModels
 
         }
 
-        public ManageFarmsPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
+            : base(navigationService, metricsManagerService)
         {
+            _navigationService = navigationService;
+            _metricsManagerService = metricsManagerService;
             IsBusy = true;
             InitAsync();
         }

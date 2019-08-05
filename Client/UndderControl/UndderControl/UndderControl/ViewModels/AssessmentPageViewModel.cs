@@ -4,14 +4,19 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UndderControl.Services;
 
 namespace UndderControl.ViewModels
 {
     public class AssessmentPageViewModel : ViewModelBase
     {
-        public AssessmentPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        INavigationService _navigationService;
+        IMetricsManagerService _metricsManagerService;
+        public AssessmentPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
+            : base(navigationService, metricsManagerService)
         {
+            _navigationService = navigationService;
+            _metricsManagerService = metricsManagerService;
             Title = "Undder Control";
         }
     }

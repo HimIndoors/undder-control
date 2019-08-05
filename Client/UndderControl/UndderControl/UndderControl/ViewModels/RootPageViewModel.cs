@@ -16,6 +16,7 @@ namespace UndderControl.ViewModels
     public class RootPageViewModel : ViewModelBase
     {
         INavigationService _navigationService;
+        IMetricsManagerService _metricsManagerService;
         ObservableCollection<FarmDto> _farmList;
         public ObservableCollection<FarmDto> FarmList
         {
@@ -28,10 +29,11 @@ namespace UndderControl.ViewModels
         }
         public DelegateCommand<string> OnNavigateCommand { get; set; }
 
-        public RootPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public RootPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
+            : base(navigationService, metricsManagerService)
         {
             _navigationService = navigationService;
+            _metricsManagerService = metricsManagerService;
             OnNavigateCommand = new DelegateCommand<string>(NavigateAsync);
             IsBusy = true;
             InitAsync();
@@ -45,7 +47,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                DependencyService.Get<IMetricsManagerService>().TrackException("GetFarmsFailed", ex);
+                _metricsManagerService.TrackException("GetFarmsFailed", ex);
             }
 
             IsBusy = false;

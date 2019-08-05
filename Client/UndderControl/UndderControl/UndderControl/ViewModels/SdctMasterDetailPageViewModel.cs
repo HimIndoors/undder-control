@@ -4,17 +4,20 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UndderControl.Services;
 
 namespace UndderControl.ViewModels
 {
     public class SdctMasterDetailPageViewModel : ViewModelBase
     {
         INavigationService _navigationService;
+        IMetricsManagerService _metricsManagerService;
         public DelegateCommand<string> OnNavigateCommand { get; set; }
-        public SdctMasterDetailPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
+            : base(navigationService, metricsManagerService)
         {
             _navigationService = navigationService;
+            _metricsManagerService = metricsManagerService;
             OnNavigateCommand = new DelegateCommand<string>(NavigateAsync);
         }
 

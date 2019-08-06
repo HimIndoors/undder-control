@@ -13,12 +13,11 @@ namespace UndderControl.ViewModels
     {
         INavigationService _navigationService;
         IMetricsManagerService _metricsManagerService;
-        public MainPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            : base(navigationService, metricsManagerService)
+
+        public MainPageViewModel(INavigationService navigationService)
+            : base(navigationService)
         {
             _navigationService = navigationService;
-            _metricsManagerService = metricsManagerService;
-            Title = "Undder Control";
         }
     }
 }

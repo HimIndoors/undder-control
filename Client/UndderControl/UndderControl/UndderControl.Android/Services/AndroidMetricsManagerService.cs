@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UndderControl.Services;
 using Microsoft.AppCenter.Analytics;
+using UndderControl.Droid.Services;
 
-[assembly: Xamarin.Forms.Dependency(typeof(UndderControl.Droid.Services.AndroidMetricsManagerService))]
+[assembly: Xamarin.Forms.Dependency(typeof(AndroidMetricsManagerService))]
 namespace UndderControl.Droid.Services
 {
     class AndroidMetricsManagerService : IMetricsManagerService

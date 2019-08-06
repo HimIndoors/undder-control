@@ -21,7 +21,7 @@ namespace UndderControl.ViewModels
         int _stageIndex;
 
         public SurveyPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            : base(navigationService, metricsManagerService)
+            : base(navigationService)
         {
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;

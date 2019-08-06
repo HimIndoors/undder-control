@@ -14,7 +14,7 @@ namespace UndderControl.ViewModels
         IMetricsManagerService _metricsManagerService;
 
         public MonitorPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            : base(navigationService, metricsManagerService)
+            : base(navigationService)
         {
             Title = "Undder Control";
         }

@@ -14,7 +14,7 @@ namespace UndderControl.ViewModels
         IMetricsManagerService _metricsManagerService;
         public DelegateCommand<string> OnNavigateCommand { get; set; }
         public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            : base(navigationService, metricsManagerService)
+            : base(navigationService)
         {
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;

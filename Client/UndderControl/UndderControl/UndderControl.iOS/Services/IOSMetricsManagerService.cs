@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Foundation;
 using Microsoft.AppCenter.Analytics;
-using UIKit;
+using UndderControl.iOS.Services;
 using UndderControl.Services;
 
-[assembly: Xamarin.Forms.Dependency(typeof(UndderControl.iOS.Services.IOSMetricsManagerService))]
+[assembly: Xamarin.Forms.Dependency(typeof(IOSMetricsManagerService))]
 
 namespace UndderControl.iOS.Services
 {

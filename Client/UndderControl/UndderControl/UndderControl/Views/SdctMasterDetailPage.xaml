@@ -3,7 +3,8 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
-                  x:Class="UndderControl.Views.SdctMasterDetailPage">
+                  x:Class="UndderControl.Views.SdctMasterDetailPage"
+                  BackgroundColor="{StaticResource DarkBackgroundColour}">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">

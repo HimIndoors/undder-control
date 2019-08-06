@@ -26,8 +26,8 @@ namespace UndderControl
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            await NavigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/RootPage");
+            //await NavigationService.NavigateAsync("MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/RootPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -40,6 +40,8 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<SurveyPage, SurveyPageViewModel>();
             containerRegistry.RegisterForNavigation<RootPage, RootPageViewModel>();
             containerRegistry.RegisterForNavigation<ManageFarmsPage, ManageFarmsPageViewModel>();
+            containerRegistry.RegisterForNavigation<TermsPage, TermsPageViewModel>();
+            containerRegistry.RegisterForNavigation<SurveyResultsPage, SurveyResultsPageViewModel>();
         }
     }
 }

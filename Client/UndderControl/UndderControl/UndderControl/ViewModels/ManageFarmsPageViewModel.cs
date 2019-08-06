@@ -26,11 +26,10 @@ namespace UndderControl.ViewModels
                 _farms = value;
                 RaisePropertyChanged("Farms");
             }
-
         }
 
         public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            : base(navigationService, metricsManagerService)
+            : base(navigationService)
         {
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;
@@ -46,7 +45,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                DependencyService.Get<IMetricsManagerService>().TrackException("GetFarmsFailed", ex);
+                _metricsManagerService.TrackException("GetFarmsFailed", ex);
             }
 
             IsBusy = false;

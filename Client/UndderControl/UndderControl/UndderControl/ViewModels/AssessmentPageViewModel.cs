@@ -13,7 +13,7 @@ namespace UndderControl.ViewModels
         INavigationService _navigationService;
         IMetricsManagerService _metricsManagerService;
         public AssessmentPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            : base(navigationService, metricsManagerService)
+            : base(navigationService)
         {
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;

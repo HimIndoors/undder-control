@@ -29,11 +29,11 @@ namespace UndderControl.ViewModels
         }
         public DelegateCommand<string> OnNavigateCommand { get; set; }
 
-        public RootPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            : base(navigationService, metricsManagerService)
+        public RootPageViewModel(INavigationService navigationService)
+            : base(navigationService)
         {
             _navigationService = navigationService;
-            _metricsManagerService = metricsManagerService;
+            
             OnNavigateCommand = new DelegateCommand<string>(NavigateAsync);
             IsBusy = true;
             InitAsync();

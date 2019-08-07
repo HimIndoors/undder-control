@@ -3,8 +3,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
-                  x:Class="UndderControl.Views.SdctMasterDetailPage"
-                  BackgroundColor="{StaticResource DarkBackgroundColour}">
+                  x:Class="UndderControl.Views.SdctMasterDetailPage">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
@@ -12,9 +11,9 @@
                 <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
             </ContentPage.Padding>
             <StackLayout>
-                <Button Text="Home" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/Root" />
-                <Button Text="My Surveys" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarms" />
-                <Button Text="My Profile" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarms" />
+                <Button Text="Home" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/RootPage" />
+                <Button Text="Manage Farms" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
+                <Button Text="About Us" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

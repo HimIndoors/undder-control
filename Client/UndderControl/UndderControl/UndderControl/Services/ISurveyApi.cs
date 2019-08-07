@@ -11,6 +11,9 @@ namespace UndderControl.Services
     [Headers("Content-Type: application/json")]
     public interface ISurveyApi
     {
+        [Get("/survey?activeOnly=true")]
+        Task<HttpResponseMessage> GetLatestSurvey();
+
         [Post("/survey/")]
         Task<HttpResponseMessage> UploadSurvey([Body] SurveyResponseDto survey);
     }

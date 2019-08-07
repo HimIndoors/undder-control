@@ -4,5 +4,23 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.TermsPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="21"
+            Android="21"
+            WinPhone="21" />
+    </ContentPage.Padding>
+    <StackLayout>
+        <ScrollView VerticalOptions="StartAndExpand">
+            <StackLayout>
+                <Label Text="Terms and Conditions" FontSize="Subtitle" />
+                <Label x:Name="Terms" Text="{Binding TermData}" />
+            </StackLayout>
+        </ScrollView>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="End">
+            <Button Text="Accept"  Command="{Binding OnAcceptCommand}" HorizontalOptions="Fill" />
+            <Button Text="Decline" Command="{Binding OnDeclineCommand}" HorizontalOptions="Fill" />
+        </StackLayout>
+    </StackLayout>
   
 </ContentPage>

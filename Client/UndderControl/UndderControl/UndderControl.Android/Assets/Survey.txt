@@ -1,0 +1,47 @@
+﻿{
+    "SurveyID": 1,
+    "Name": "SDCT English",
+    "Description": "Selective Dry Cow Therapy",
+    "IntroText": "",
+    "Version": 1,
+    "Questions": [
+        {
+            "QuestionID": 1,
+            "QuestionStageID": 0,
+            "QuestionText": "Is the farm willing to implement SDCT",
+            "QuestionHelpText": ""
+        },
+        {
+            "QuestionID": 2,
+            "QuestionStageID": 0,
+            "QuestionText": "Is the BSCC in the farm lower than 250,000",
+            "QuestionHelpText": ""
+        },
+        {
+            "QuestionID": 3,
+            "QuestionStageID": 1,
+            "QuestionText": "Do you have a dryoff strategy",
+            "QuestionHelpText": "A set dry period length, reliable calving prediction, planning"
+        },
+        {
+            "QuestionID": 4,
+            "QuestionStageID": 1,
+            "QuestionText": "Is poor teat-end condition present in less that 15% of cows at dryoff",
+            "QuestionHelpText": ""
+        }
+    ],
+    "Stages": [
+        {
+            "StageID": 0,
+            "StageTitle": "Farm Suitability",
+            "StageText": "",
+            "ShowStageIntro": false
+        },
+        {
+            "StageID": 1,
+            "StageTitle": "Stage 1",
+            "StageText": "Dry-off preperation",
+            "ShowStageIntro": true
+        }
+    ]
+}

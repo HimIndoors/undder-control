@@ -6,7 +6,7 @@ namespace UndderControl.Views
     {
         public TermsPage()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
     }
 }

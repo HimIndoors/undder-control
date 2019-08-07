@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyPage">
     <ContentPage.Content>
         <FlexLayout>
-            <ContentView x:Name="SurveyStageView" IsVisible="{Binding IsStage}">
+            <ContentView x:Name="SurveyStageView" IsVisible="False">
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <Label Text="Stage View" />
                     <Label x:Name="StageTitle"  Text="Loading stage..." />
@@ -20,7 +18,7 @@
                             Command="{Binding StartStageCommand}"/>
                 </StackLayout>
             </ContentView>
-            <ScrollView x:Name="SurveyQuestionView" IsVisible="{Binding IsStage, Converter={StaticResource not}}">
+            <ScrollView x:Name="SurveyQuestionView" IsVisible="False">
                 <StackLayout>
                     <StackLayout VerticalOptions="CenterAndExpand">
                         <Label x:Name="QuestionLabel"

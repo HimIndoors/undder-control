@@ -10,6 +10,7 @@ namespace UndderControl.Services
     public interface IApiManager
     {
         Task<HttpResponseMessage> FarmList();
+        Task<HttpResponseMessage> GetLatestSurvey();
         Task<HttpResponseMessage> UploadSurvey(SurveyResponseDto survey);
     }
 }

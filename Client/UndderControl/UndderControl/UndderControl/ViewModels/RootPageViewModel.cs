@@ -5,6 +5,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using UndderControl.Services;
@@ -16,7 +17,6 @@ namespace UndderControl.ViewModels
     public class RootPageViewModel : ViewModelBase
     {
         INavigationService _navigationService;
-        IMetricsManagerService _metricsManagerService;
         ObservableCollection<FarmDto> _farmList;
         public ObservableCollection<FarmDto> FarmList
         {
@@ -27,6 +27,18 @@ namespace UndderControl.ViewModels
                 RaisePropertyChanged("FarmList");
             }
         }
+        private FarmDto _selectedFarm { get; set; }
+        public FarmDto SelectedFarm
+        {
+            get { return _selectedFarm; }
+            set
+            {
+                _selectedFarm = value;
+                //Update global farm
+                App.SelectedFarm = value;
+            }
+        }
+
         public DelegateCommand<string> OnNavigateCommand { get; set; }
 
         public RootPageViewModel(INavigationService navigationService)
@@ -47,7 +59,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                _metricsManagerService.TrackException("GetFarmsFailed", ex);
+                DependencyService.Get<IMetricsManagerService>().TrackException("GetFarmsFailed", ex);
             }
 
             IsBusy = false;
@@ -61,13 +73,12 @@ namespace UndderControl.ViewModels
             {
                 var response = await farmresponse.Content.ReadAsStringAsync();
                 var json = await Task.Run(() => JsonConvert.DeserializeObject<List<FarmDto>>(response));
-                _farmList = new ObservableCollection<FarmDto>(json);
+                FarmList = new ObservableCollection<FarmDto>(json);
             }
             else
             {
                 await PageDialog.AlertAsync("Unable to retrieve farm data", "Error", "OK");
             }
-
         }
 
         async void NavigateAsync(string page)

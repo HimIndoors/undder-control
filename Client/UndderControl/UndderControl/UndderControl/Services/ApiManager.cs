@@ -1,10 +1,12 @@
 ﻿using Acr.UserDialogs;
 using Fusillade;
 using MonkeyCache.SQLite;
+using Newtonsoft.Json;
 using Polly;
 using Refit;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UndderControlLib.Dtos;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace UndderControl.Services
 {
@@ -111,11 +114,42 @@ namespace UndderControl.Services
 
         public async Task<HttpResponseMessage> FarmList()
         {
-            var cts = new CancellationTokenSource();
-            var task = RemoteRequestAsync<HttpResponseMessage>(_farmApi.GetApi(Priority.UserInitiated).FarmList(), Config.MonkeyCacheFarms);
-            _runningTasks.Add(task.Id, cts);
+            if (Config.TestMode)
+            {
+                string fileContents = string.Empty;
+                try
+                {
+                    using (var stream = await FileSystem.OpenAppPackageFileAsync("Farms.txt"))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            fileContents = await reader.ReadToEndAsync();
+                        }
+                    }                    
+                }
+                catch (Exception ex)
+                {
+                    DependencyService.Get<IMetricsManagerService>().TrackException("Error retrieving farm details from embedded resource", ex);
+                }
 
-            return await task;
+                var response = new HttpResponseMessage
+                {
+                    Content = new StringContent(fileContents),
+                    StatusCode = HttpStatusCode.OK
+                };
+
+                return response;
+
+            }
+            else
+            {
+                var cts = new CancellationTokenSource();
+                var task = RemoteRequestAsync<HttpResponseMessage>(_farmApi.GetApi(Priority.UserInitiated).FarmList(), Config.MonkeyCacheFarms);
+                _runningTasks.Add(task.Id, cts);
+
+                return await task;
+            }
+            
         }
 
         public async Task<HttpResponseMessage> UploadSurvey(SurveyResponseDto survey)
@@ -125,6 +159,37 @@ namespace UndderControl.Services
             _runningTasks.Add(task.Id, cts);
 
             return await task;
+        }
+
+        public async Task<HttpResponseMessage> GetLatestSurvey()
+        {
+            if (Config.TestMode)
+            {
+                string fileContents;
+                using (var stream = await FileSystem.OpenAppPackageFileAsync("Survey.txt"))
+                {
+                    using (var reader = new StreamReader(stream))
+                    {
+                        fileContents = await reader.ReadToEndAsync();
+                    }
+                }
+
+                var response = new HttpResponseMessage
+                {
+                    Content = new StringContent(fileContents),
+                    StatusCode = HttpStatusCode.OK
+                };
+
+                return response;
+            }
+            else
+            {
+                var cts = new CancellationTokenSource();
+                var task = RemoteRequestAsync<HttpResponseMessage>(_surveyApi.GetApi(Priority.UserInitiated).GetLatestSurvey(), Config.MonkeyCacheSurvey);
+                _runningTasks.Add(task.Id, cts);
+
+                return await task;
+            }
         }
     }
 }

@@ -6,9 +6,9 @@
              x:Class="UndderControl.Views.AssessmentPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Start Questions" Command="{Binding StartSurveyCommand}" IsEnabled="{Binding IsSurveyAvailable}" />
-            <Button Text="Summary of Results" Command="{Binding SummaryCommand}" />
-            <Button Text="Compare Results" Command="{Binding CompareCommand}" />
+            <Button Text="Start Questions" Command="{Binding StartSurveyCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
+            <Button Text="Summary of Results" Command="{Binding ShowSummaryCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage"/>
+            <Button Text="Compare Results" Command="{Binding ShowCompareCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

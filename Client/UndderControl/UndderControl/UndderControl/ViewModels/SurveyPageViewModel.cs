@@ -15,16 +15,19 @@ namespace UndderControl.ViewModels
     public class SurveyPageViewModel : ViewModelBase
     {
         INavigationService _navigationService;
-        IMetricsManagerService _metricsManagerService;
         SurveyResponseDto _response;
         int _questionIndex;
         int _stageIndex;
 
-        public SurveyPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
+        public SurveyPageViewModel(INavigationService navigationService) : this(navigationService, SurveyResponseDtoExtensions.CreateNew())
+        {
+        }
+
+        public SurveyPageViewModel(INavigationService navigationService, SurveyResponseDto response)
             : base(navigationService)
         {
             _navigationService = navigationService;
-            _metricsManagerService = metricsManagerService;
+            _response = response;
             Title = "Undder Control";
             AnswerYesCommand = new DelegateCommand(AnswerYes, () => IsNotBusy);
             AnswerNoCommand = new DelegateCommand(AnswerNo, () => IsNotBusy);
@@ -47,8 +50,6 @@ namespace UndderControl.ViewModels
 
         private void Init()
         {
-            
-
             // Work out what question we are up to and set properties accordingly 
             if (_response.QuestionResponses.Count == 0)
             {
@@ -111,7 +112,7 @@ namespace UndderControl.ViewModels
         {
             _response.EndTime = DateTimeOffset.Now;
 
-            _metricsManagerService.TrackEvent("SurveyEnded");
+            DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyEnded");
 
             try
             {
@@ -121,12 +122,9 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                _metricsManagerService.TrackException("SurveyEndException", ex);
+                DependencyService.Get<IMetricsManagerService>().TrackException("SurveyEndException", ex);
             }
             /*
-            var _lastPage = App.NavigationPage.Navigation.NavigationStack.LastOrDefault();
-            App.NavigationPage.Navigation.RemovePage(_lastPage);
-
             await App.NavigationPage.PushAsync(new ResultsPage(_response));
             */
         }
@@ -152,9 +150,7 @@ namespace UndderControl.ViewModels
             else
             {
                 //We should never get here otherwise we have no questions!
-                _metricsManagerService.TrackException("NoQuestionsFound", new Exception("No Questions found in LatestSurvey"));
-
-                //TODO: Add ui + handler to reload Survey
+                DependencyService.Get<IMetricsManagerService>().TrackException("NoQuestionsFound", new Exception("No Questions found in LatestSurvey"));
             }
 
             return null;
@@ -192,7 +188,7 @@ namespace UndderControl.ViewModels
                 {"CurrentQuestionID", CurrentQuestion.QuestionID.ToString()},
             };
 
-            _metricsManagerService.TrackEvent("SurveyNextQuestion", properties);
+            DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyNextQuestion", properties);
 
             // Save the response
             _response.QuestionResponses.Add(new SurveyQuestionResponseDto(CurrentQuestion.QuestionID, CurrentQuestion.QuestionStageID, value));
@@ -225,9 +221,7 @@ namespace UndderControl.ViewModels
                     else
                     {
                         //We should never get here otherwise we have no questions!
-                        _metricsManagerService.TrackException("NoStagesFound", new Exception("No Stages found in LatestSurvey"));
-
-                        //TODO: Add ui + handler to reload Survey
+                        DependencyService.Get<IMetricsManagerService>().TrackException("NoStagesFound", new Exception("No Stages found in LatestSurvey"));
                     }
 
                 }

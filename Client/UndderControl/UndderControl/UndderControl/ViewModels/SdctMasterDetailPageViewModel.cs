@@ -11,13 +11,11 @@ namespace UndderControl.ViewModels
     public class SdctMasterDetailPageViewModel : ViewModelBase
     {
         INavigationService _navigationService;
-        IMetricsManagerService _metricsManagerService;
         public DelegateCommand<string> OnNavigateCommand { get; set; }
-        public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
+        public SdctMasterDetailPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
             _navigationService = navigationService;
-            _metricsManagerService = metricsManagerService;
             OnNavigateCommand = new DelegateCommand<string>(NavigateAsync);
         }
 

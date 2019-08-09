@@ -3,6 +3,7 @@ using Plugin.Settings.Abstractions;
 using Prism;
 using Prism.Ioc;
 using System.Threading.Tasks;
+using UndderControl.Services;
 using UndderControl.ViewModels;
 using UndderControl.Views;
 using UndderControlLib.Dtos;
@@ -65,6 +66,8 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<TermsPage, TermsPageViewModel>();
             containerRegistry.RegisterForNavigation<SurveyResultsPage, SurveyResultsPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<ResultsPage, ResultsPageViewModel>();
+            containerRegistry.RegisterForNavigation<FarmDetailPage, FarmDetailPageViewModel>();
         }
     }
 }

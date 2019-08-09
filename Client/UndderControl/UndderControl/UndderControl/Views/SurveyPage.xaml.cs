@@ -1,5 +1,7 @@
-﻿using Prism.Navigation;
+﻿using Prism.Events;
+using Prism.Navigation;
 using System;
+using UndderControl.Events;
 using UndderControl.Services;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
@@ -10,17 +12,12 @@ namespace UndderControl.Views
     {
         private readonly SurveyPageViewModel _viewModel;
 
-        public SurveyPage(INavigationService navigationService)
-            : this(new SurveyPageViewModel(navigationService))
-        {
-        }
-        private SurveyPage(SurveyPageViewModel viewModel)
+        public SurveyPage(IEventAggregator ea)
         {
             InitializeComponent();
-            _viewModel = viewModel;
-            _viewModel.QuestionChanged += (sender, e) => UpdateQuestion();
-            BindingContext = _viewModel;
+            _viewModel = BindingContext as SurveyPageViewModel;
             UpdateQuestion();
+            ea.GetEvent<QuestionChangedEvent>().Subscribe(UpdateQuestion);
         }
 
         private async void UpdateQuestion()

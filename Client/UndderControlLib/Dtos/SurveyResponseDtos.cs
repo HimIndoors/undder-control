@@ -49,15 +49,17 @@ namespace UndderControlLib.Dtos
     /// </summary>
     public class SurveyQuestionResponseDto
     {
-        public SurveyQuestionResponseDto(int questionID, int stageID, bool questionResponse)
+        public SurveyQuestionResponseDto(int questionID, int stageID, bool questionResponse, string questionStatement)
         {
             QuestionID = questionID;
             StageID = stageID;
             QuestionResponse = questionResponse;
+            Statement = questionStatement;
         }
 
         public int QuestionID { get; set; }
         public int StageID { get; set; }
         public bool QuestionResponse { get; set; }
+        public string Statement { get; set; }
     }
 }

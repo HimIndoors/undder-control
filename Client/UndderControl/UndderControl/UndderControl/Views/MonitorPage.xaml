@@ -4,11 +4,28 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.MonitorPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="21"
+            Android="21"
+            WinPhone="21" />
+    </ContentPage.Padding>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Monitor" />
-            <Label Text="Lots of text" />
-            <Button Text="Cow Status" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="PageTitle" FontSize="Subtitle" />
+                <Label x:Name="Title1" FontAttributes="Bold" />
+                <Label x:Name="Text1" />
+                <Label x:Name="Title2" FontAttributes="Bold" />
+                <Label x:Name="Text2" />
+                <Label x:Name="Title3" FontAttributes="Bold" />
+                <Label x:Name="Text3" />
+                <Label x:Name="Title4" FontAttributes="Bold" />
+                <Label x:Name="Text4" />
+                <Button x:Name="StatusButton" />
+                <Button x:Name="SummaryButton" />
+                <Button x:Name="CompareButton" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

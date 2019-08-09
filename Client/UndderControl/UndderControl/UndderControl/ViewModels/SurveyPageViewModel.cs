@@ -1,12 +1,15 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UndderControl.Events;
 using UndderControl.Extensions;
 using UndderControl.Services;
+using UndderControl.Views;
 using UndderControlLib.Dtos;
 using Xamarin.Forms;
 
@@ -14,38 +17,22 @@ namespace UndderControl.ViewModels
 {
     public class SurveyPageViewModel : ViewModelBase
     {
+        IEventAggregator _eventAggregator;
         INavigationService _navigationService;
-        SurveyResponseDto _response;
+        SurveyResponseDto _response = SurveyResponseDtoExtensions.CreateNew();
         int _questionIndex;
         int _stageIndex;
 
-        public SurveyPageViewModel(INavigationService navigationService) : this(navigationService, SurveyResponseDtoExtensions.CreateNew())
-        {
-        }
-
-        public SurveyPageViewModel(INavigationService navigationService, SurveyResponseDto response)
+        public SurveyPageViewModel(INavigationService navigationService, IEventAggregator ea)
             : base(navigationService)
         {
+            _eventAggregator = ea;
             _navigationService = navigationService;
-            _response = response;
             Title = "Undder Control";
             AnswerYesCommand = new DelegateCommand(AnswerYes, () => IsNotBusy);
             AnswerNoCommand = new DelegateCommand(AnswerNo, () => IsNotBusy);
             StartStageCommand = new DelegateCommand(StartStage, () => IsNotBusy);
             Init();
-        }
-
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            if (parameters != null && parameters["response"] != null)
-            {
-                _response = parameters["response"] as SurveyResponseDto;
-            }
-            else
-            {
-                _response = SurveyResponseDtoExtensions.CreateNew();
-            }
-            
         }
 
         private void Init()
@@ -61,8 +48,6 @@ namespace UndderControl.ViewModels
 
             return;
         }
-
-        public event EventHandler QuestionChanged;
 
         public DelegateCommand AnswerYesCommand { get; }
         public DelegateCommand AnswerNoCommand { get; }
@@ -124,9 +109,11 @@ namespace UndderControl.ViewModels
             {
                 DependencyService.Get<IMetricsManagerService>().TrackException("SurveyEndException", ex);
             }
-            /*
-            await App.NavigationPage.PushAsync(new ResultsPage(_response));
-            */
+            var navigationParams = new NavigationParameters
+            {
+                { "response", _response }
+            };
+            await _navigationService.NavigateAsync("SdctMasterDetailPage/ResultsPage", navigationParams);
         }
 
         /// <summary>
@@ -156,14 +143,14 @@ namespace UndderControl.ViewModels
             return null;
         }
 
-        private async void AnswerYes()
+        private void AnswerYes()
         {
-            await UpdateQuestion(true);
+            UpdateQuestion(true);
         }
 
-        private async void AnswerNo()
+        private void AnswerNo()
         {
-            await UpdateQuestion(false);
+            UpdateQuestion(false);
         }
 
         private void StartStage()
@@ -177,10 +164,11 @@ namespace UndderControl.ViewModels
             ShowStage = false;
 
             UpdateCommands();
-            QuestionChanged?.Invoke(this, new EventArgs());
+            _eventAggregator.GetEvent<QuestionChangedEvent>().Publish();
+          
         }
 
-        private async Task UpdateQuestion(bool value)
+        private void UpdateQuestion(bool value)
         {
             //Store answer in collection
             var properties = new Dictionary<string, string>
@@ -191,8 +179,7 @@ namespace UndderControl.ViewModels
             DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyNextQuestion", properties);
 
             // Save the response
-            _response.QuestionResponses.Add(new SurveyQuestionResponseDto(CurrentQuestion.QuestionID, CurrentQuestion.QuestionStageID, value));
-            await _response.SaveAsync();
+            _response.QuestionResponses.Add(new SurveyQuestionResponseDto(CurrentQuestion.QuestionID, CurrentQuestion.QuestionStageID, value, CurrentQuestion.QuestionStatement));
 
             //Select next question
             _questionIndex++;
@@ -223,17 +210,16 @@ namespace UndderControl.ViewModels
                         //We should never get here otherwise we have no questions!
                         DependencyService.Get<IMetricsManagerService>().TrackException("NoStagesFound", new Exception("No Stages found in LatestSurvey"));
                     }
-
                 }
                 else
                 {
                     //Same stage so continue with questions
                     ShowStage = false;
                 }
-            }
 
-            UpdateCommands();
-            QuestionChanged?.Invoke(this, new EventArgs());
+                UpdateCommands();
+                _eventAggregator.GetEvent<QuestionChangedEvent>().Publish();
+            }
         }
 
         public void UpdateCommands()

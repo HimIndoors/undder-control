@@ -14,12 +14,12 @@ namespace UndderControl.Services
         Task<HttpResponseMessage> FarmList();
 
         [Get("/farm/{id}")]
-        Task<FarmDto> GetFarmById(Guid id);
+        Task<HttpResponseMessage> GetFarmById(Guid id);
 
         [Post("/farm/")]
-        Task CreateFarm([Body] FarmDto farm);
+        Task<HttpResponseMessage> CreateFarm([Body] FarmDto farm);
 
-        [Put("/farm/{id}")]
-        Task UpdateFarm(Guid id, [Body] FarmDto farm);
+        [Put("/farm/")]
+        Task<HttpResponseMessage> UpdateFarm([Body] FarmDto farm);
     }
 }

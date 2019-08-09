@@ -5,7 +5,8 @@ using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 using UIKit;
-
+using UndderControl.iOS.Services;
+using UndderControl.Services;
 
 namespace UndderControl.iOS
 {
@@ -38,6 +39,8 @@ namespace UndderControl.iOS
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register any platform specific implementations
+            containerRegistry.Register<IMetricsManagerService, IOSMetricsManagerService>();
+            containerRegistry.Register<ICloseApplicationService, IOSCloseApplicationService>();
         }
     }
 }

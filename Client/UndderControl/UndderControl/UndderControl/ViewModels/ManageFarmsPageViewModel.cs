@@ -27,14 +27,33 @@ namespace UndderControl.ViewModels
                 RaisePropertyChanged("Farms");
             }
         }
+        private FarmDto _selectedItem;
+        public FarmDto SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                if (SetProperty(ref _selectedItem, value))
+                {
+                    GoToDetail();
+                }
+            }
+        }
+        public DelegateCommand AddFarmCommand { get; private set; }
 
         public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
             : base(navigationService)
         {
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;
-            IsBusy = true;
+            AddFarmCommand = new DelegateCommand(AddFarm);
             InitAsync();
+        }
+
+        private async void AddFarm()
+        {
+            _metricsManagerService.TrackEvent("Navigation: Add Farm");
+            await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/FarmDetailPage");
         }
 
         private async void InitAsync()
@@ -47,8 +66,6 @@ namespace UndderControl.ViewModels
             {
                 _metricsManagerService.TrackException("GetFarmsFailed", ex);
             }
-
-            IsBusy = false;
         }
 
         async Task GetFarms()
@@ -61,6 +78,16 @@ namespace UndderControl.ViewModels
                 var farms = await Task.Run(() => JsonConvert.DeserializeObject<List<FarmDto>>(response));
                 Farms = new ObservableCollection<FarmDto>(farms);
             }
+        }
+
+        async void GoToDetail()
+        {
+            _metricsManagerService.TrackEvent("Navigation: Edit Farm");
+            var navigationParams = new NavigationParameters
+            {
+                { "farm", _selectedItem }
+            };
+            await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/FarmDetailPage", navigationParams);
         }
     }
 }

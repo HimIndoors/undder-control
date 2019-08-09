@@ -6,8 +6,11 @@ using Android.Runtime;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Plugin.CurrentActivity;
 using Prism;
 using Prism.Ioc;
+using UndderControl.Droid.Services;
+using UndderControl.Services;
 
 namespace UndderControl.Droid
 {
@@ -20,14 +23,15 @@ namespace UndderControl.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             AppCenter.Start(Config.AppCenterAndroidKey, typeof(Analytics), typeof(Crashes));
+            CrossCurrentActivity.Current.Init(this, bundle);
+            UserDialogs.Init(() => this);
 
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.Essentials.Platform.Init(this, bundle);
-            UserDialogs.Init(() => this);
-            LoadApplication(new App(new AndroidInitializer()));
             
+            LoadApplication(new App(new AndroidInitializer())); 
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -43,6 +47,8 @@ namespace UndderControl.Droid
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register any platform specific implementations
+            containerRegistry.Register<IMetricsManagerService, AndroidMetricsManagerService>();
+            containerRegistry.Register<ICloseApplicationService, AndroidCloseApplicationService>();
         }
     }
 }

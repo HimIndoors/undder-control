@@ -63,6 +63,7 @@ namespace UndderControl.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::UndderControl.Droid.Resource.Styleable.ProgressWheel_ahText;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::UndderControl.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::UndderControl.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
+			global::Microcharts.Droid.Resource.String.library_name = global::UndderControl.Droid.Resource.String.library_name;
 			global::ModernHttpClient.Resource.String.library_name = global::UndderControl.Droid.Resource.String.library_name;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::UndderControl.Droid.Resource.Attribute.font;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::UndderControl.Droid.Resource.Attribute.fontProviderAuthority;

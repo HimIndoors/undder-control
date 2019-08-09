@@ -11,11 +11,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Margin="8">
-
-                                <Label Text="{Binding Name}" FontAttributes="Bold" />
-
-                            </StackLayout>
+                            <Label Text="{Binding Name}" FontSize="Medium" FontAttributes="Bold" />
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

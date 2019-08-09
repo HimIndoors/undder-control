@@ -31,7 +31,6 @@ namespace UndderControl.ViewModels
             StartSurveyCommand = new DelegateCommand(StartSurvey);
             ShowSummaryCommand = new DelegateCommand(ShowSummary);
             ShowCompareCommand = new DelegateCommand(ShowCompare);
-            IsBusy = true;
             InitAsync();
         }
 
@@ -56,8 +55,6 @@ namespace UndderControl.ViewModels
             {
                 DependencyService.Get<IMetricsManagerService>().TrackException("GetSurveyFailed", ex);
             }
-
-            IsBusy = false;
         }
 
         async Task GetSurvey()
@@ -106,6 +103,5 @@ namespace UndderControl.ViewModels
             DependencyService.Get<IMetricsManagerService>().TrackEvent("ShowCompare");
             await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/ComparePage");
         }
-
     }
 }

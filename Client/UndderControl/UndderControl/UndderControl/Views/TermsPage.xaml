@@ -12,14 +12,20 @@
     </ContentPage.Padding>
     <StackLayout>
         <ScrollView VerticalOptions="StartAndExpand">
+            <ScrollView.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
+                iOS="8"
+                Android="8"
+                WinPhone="8" />
+            </ScrollView.Padding>
             <StackLayout>
-                <Label Text="Terms and Conditions" FontSize="Subtitle" />
-                <Label x:Name="Terms" Text="{Binding TermData}" />
+                <Label x:Name="TermsTitle" FontSize="Subtitle" FontAttributes="Bold" />
+                <Label x:Name="Terms" />
             </StackLayout>
         </ScrollView>
-        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="End">
-            <Button Text="Accept"  Command="{Binding OnAcceptCommand}" HorizontalOptions="Fill" />
-            <Button Text="Decline" Command="{Binding OnDeclineCommand}" HorizontalOptions="Fill" />
+        <StackLayout VerticalOptions="End" Margin="0,21,0,0">
+            <Button Text="Accept"  Command="{Binding OnAcceptCommand}" />
+            <Button Text="Decline" Command="{Binding OnDeclineCommand}" />
         </StackLayout>
     </StackLayout>
   

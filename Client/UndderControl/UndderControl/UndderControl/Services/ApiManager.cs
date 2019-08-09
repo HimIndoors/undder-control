@@ -191,5 +191,25 @@ namespace UndderControl.Services
                 return await task;
             }
         }
+
+        public async Task<HttpResponseMessage> UploadFarm(FarmDto farm, bool isNew)
+        {
+            if (isNew)
+            {
+                var cts = new CancellationTokenSource();
+                var task = RemoteRequestAsync<HttpResponseMessage>(_farmApi.GetApi(Priority.UserInitiated).CreateFarm(farm), Config.MonkeyCacheFarms);
+                _runningTasks.Add(task.Id, cts);
+
+                return await task;
+            }
+            else
+            {
+                var cts = new CancellationTokenSource();
+                var task = RemoteRequestAsync<HttpResponseMessage>(_farmApi.GetApi(Priority.UserInitiated).UpdateFarm(farm), Config.MonkeyCacheFarms);
+                _runningTasks.Add(task.Id, cts);
+
+                return await task;
+            }
+        }
     }
 }

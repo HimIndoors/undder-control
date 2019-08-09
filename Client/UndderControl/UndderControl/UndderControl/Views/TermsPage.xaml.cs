@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using UndderControl.Text;
+using Xamarin.Forms;
 
 namespace UndderControl.Views
 {
@@ -6,7 +7,9 @@ namespace UndderControl.Views
     {
         public TermsPage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            Terms.Text = AppResource.Terms;
+            TermsTitle.Text = AppResource.TermsTitle;
         }
     }
 }

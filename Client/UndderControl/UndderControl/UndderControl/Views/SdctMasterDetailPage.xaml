@@ -8,12 +8,15 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
             <ContentPage.Padding>
-                <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+                <OnPlatform x:TypeArguments="Thickness"
+                    iOS="21"
+                    Android="21"
+                    WinPhone="21" />
             </ContentPage.Padding>
-            <StackLayout>
-                <Button Text="Home" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/RootPage" />
-                <Button Text="Manage Farms" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
-                <Button Text="About Us" TextColor="White" BackgroundColor="Gray" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
+            <StackLayout HorizontalOptions="StartAndExpand">
+                <Button Text="Home" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/RootPage" />
+                <Button Text="Manage Farms" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
+                <Button Text="About MSD" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

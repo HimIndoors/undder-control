@@ -36,6 +36,7 @@ namespace UndderControl.ViewModels
                 _selectedFarm = value;
                 //Update global farm
                 App.SelectedFarm = value;
+                OnNavigateCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -45,9 +46,8 @@ namespace UndderControl.ViewModels
             : base(navigationService)
         {
             _navigationService = navigationService;
-            
-            OnNavigateCommand = new DelegateCommand<string>(NavigateAsync);
-            IsBusy = true;
+
+            OnNavigateCommand = new DelegateCommand<string>(NavigateAsync, CanNavigate);
             InitAsync();
         }
 
@@ -61,8 +61,6 @@ namespace UndderControl.ViewModels
             {
                 DependencyService.Get<IMetricsManagerService>().TrackException("GetFarmsFailed", ex);
             }
-
-            IsBusy = false;
         }
 
         async Task GetFarms()
@@ -84,6 +82,11 @@ namespace UndderControl.ViewModels
         async void NavigateAsync(string page)
         {
             await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+        }
+
+        bool CanNavigate(string obj)
+        {
+            return App.SelectedFarm == null ? false : true;
         }
     }
 }

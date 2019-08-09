@@ -4,11 +4,26 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.AssessmentPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="21"
+            Android="21"
+            WinPhone="21" />
+    </ContentPage.Padding>
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Start Questions" Command="{Binding StartSurveyCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
-            <Button Text="Summary of Results" Command="{Binding ShowSummaryCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage"/>
-            <Button Text="Compare Results" Command="{Binding ShowCompareCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
+            <Label x:Name="PageTitle" FontSize="Subtitle" />
+            <Label x:Name="Title1" FontAttributes="Bold" />
+            <Label x:Name="Text1" />
+            <Label x:Name="Title2" FontAttributes="Bold" />
+            <Label x:Name="Text2" />
+            <Label x:Name="Title3" FontAttributes="Bold" />
+            <Label x:Name="Text3" />
+            <Label x:Name="Title4" FontAttributes="Bold" />
+            <Label x:Name="Text4" />
+            <Button x:Name="QuestionButton" Command="{Binding StartSurveyCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
+            <Button x:Name="SummaryButton" Command="{Binding ShowSummaryCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage"/>
+            <Button x:Name="CompareButton" Command="{Binding ShowCompareCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

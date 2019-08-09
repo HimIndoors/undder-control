@@ -4,8 +4,29 @@
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="UndderControl.App">
 	<Application.Resources>
-
-       
-
+        <ResourceDictionary>
+            <x:Int32 x:Key="SmallCornerRadius">4</x:Int32>
+            <x:Int32 x:Key="MediumCornerRadius">8</x:Int32>
+            <x:Int32 x:Key="LargeCornerRadius">16</x:Int32>
+            <Style TargetType="Page" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="#7CCCBD" />
+            </Style>
+            <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
+                <Setter Property="BarBackgroundColor" Value="#00987E" />
+                <Setter Property="BarTextColor" Value="#D1E8E3" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#ffffff" />
+                <Setter Property="TextColor" Value="#009096" />
+                <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
+            </Style>
+            <Style x:Key="FormLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="FormEntry" TargetType="Entry">
+                <Setter Property="TextColor" Value="#007367"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

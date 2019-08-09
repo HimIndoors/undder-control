@@ -12,5 +12,7 @@ namespace UndderControl.Services
         Task<HttpResponseMessage> FarmList();
         Task<HttpResponseMessage> GetLatestSurvey();
         Task<HttpResponseMessage> UploadSurvey(SurveyResponseDto survey);
+        Task<HttpResponseMessage> UploadFarm(FarmDto farm, bool isNew);
+
     }
 }

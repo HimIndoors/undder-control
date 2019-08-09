@@ -15,8 +15,8 @@
             </ContentPage.Padding>
             <StackLayout HorizontalOptions="StartAndExpand">
                 <Button Text="Home" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/RootPage" />
-                <Button Text="Manage Farms" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
-                <Button Text="About MSD" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
+                <Button Text="Manage Farms" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarmsPage" />
+                <Button Text="About MSD" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarmsPage" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

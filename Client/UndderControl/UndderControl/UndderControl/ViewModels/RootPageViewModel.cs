@@ -47,6 +47,7 @@ namespace UndderControl.ViewModels
         {
             _navigationService = navigationService;
 
+            if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;
             OnNavigateCommand = new DelegateCommand<string>(NavigateAsync, CanNavigate);
             InitAsync();
         }

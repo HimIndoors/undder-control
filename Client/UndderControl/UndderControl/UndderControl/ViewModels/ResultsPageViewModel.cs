@@ -23,7 +23,6 @@ namespace UndderControl.ViewModels
             : base(navigationService)
         {
             Init();
-            //Chart = new RadarChart() { Entries = _results };
         }
         private void Init()
         {

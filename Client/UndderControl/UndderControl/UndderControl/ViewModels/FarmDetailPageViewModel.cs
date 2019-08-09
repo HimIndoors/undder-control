@@ -10,9 +10,9 @@ using UndderControlLib.Dtos;
 
 namespace UndderControl.ViewModels
 {
-    public class FarmDetailPageViewModel : ViewModelBase
+    public class FarmDetailPageViewModel : ViewModelBase, IInitialize
     {
-        private FarmDto _currentFarm;
+        private FarmDto _currentFarm = new FarmDto();
         public FarmDto CurrentFarm
         {
             get { return _currentFarm; }
@@ -22,11 +22,13 @@ namespace UndderControl.ViewModels
             }
         }
         public DelegateCommand SaveFarmCommand { get; private set; }
-        private IMetricsManagerService _metricsManagerService;
+        IMetricsManagerService _metricsManagerService;
+        INavigationService _navigationService;
 
         public FarmDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
             :base(navigationService)
         {
+            _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;
             SaveFarmCommand = new DelegateCommand(DoSaveFarm);
         }
@@ -36,6 +38,7 @@ namespace UndderControl.ViewModels
             try
             {
                 await RunSafe(SaveFarm());
+                await _navigationService.GoBackAsync();
             }
             catch (Exception ex)
             {

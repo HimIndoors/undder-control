@@ -12,34 +12,38 @@
                 WinPhone="21" />
     </ContentPage.Padding>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Label Text="Name" Style="{StaticResource FormLabel}" />
-                <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
-                    <Entry x:Name="FarmName" Margin="0" Text="{Binding CurrentFarm.Name, Mode=TwoWay}" Style="{StaticResource FormEntry}" />
-                </Frame>
-                <Label Text="Address" Style="{StaticResource FormLabel}" />
-                <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
-                    <Entry x:Name="FarmAddress" Margin="0" Text="{Binding CurrentFarm.Address, Mode=TwoWay}" Style="{StaticResource FormEntry}" />
-                </Frame>
-                <Label Text="Contact Name" Style="{StaticResource FormLabel}" />
-                <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
-                    <Entry x:Name="FarmContact" Margin="0" Text="{Binding CurrentFarm.ContactName, Mode=TwoWay}" Style="{StaticResource FormEntry}" />
-                </Frame>
-                <Label Text="Phone Number" Style="{StaticResource FormLabel}" />
-                <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
-                    <Entry x:Name="FarmPhone" Margin="0" Text="{Binding CurrentFarm.PhoneNumber, Mode=TwoWay}" Style="{StaticResource FormEntry}" />
-                </Frame>
-                <Label Text="Herd Size" Style="{StaticResource FormLabel}" />
-                <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
-                    <Entry x:Name="FarmHerd" Margin="0" Text="{Binding CurrentFarm.HerdSize, Mode=TwoWay}" Style="{StaticResource FormEntry}" />
-                </Frame>
-                <Label Text="Type" Style="{StaticResource FormLabel}" />
-                <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
-                    <Entry x:Name="FarmType" Margin="0" Text="{Binding CurrentFarm.Type, Mode=TwoWay}" Style="{StaticResource FormEntry}" />
-                </Frame>
-                <Button Text="Save Farm" Style="{StaticResource DarkButton}" Command="{Binding SaveFarmCommand}"  />
+        <StackLayout>
+            <ScrollView VerticalOptions="StartAndExpand">
+                <StackLayout>
+                    <Label Text="Name" Style="{StaticResource FormLabel}" />
+                    <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
+                        <Entry x:Name="FarmName" Margin="0" Text="{Binding CurrentFarm.Name, Mode=TwoWay}" />
+                    </Frame>
+                    <Label Text="Address" Style="{StaticResource FormLabel}" />
+                    <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
+                        <Entry x:Name="FarmAddress" Margin="0" Text="{Binding CurrentFarm.Address, Mode=TwoWay}" />
+                    </Frame>
+                    <Label Text="Contact Name" Style="{StaticResource FormLabel}" />
+                    <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
+                        <Entry x:Name="FarmContact" Margin="0" Text="{Binding CurrentFarm.ContactName, Mode=TwoWay}" />
+                    </Frame>
+                    <Label Text="Phone Number" Style="{StaticResource FormLabel}" />
+                    <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
+                        <Entry x:Name="FarmPhone" Margin="0" Text="{Binding CurrentFarm.PhoneNumber, Mode=TwoWay}" />
+                    </Frame>
+                    <Label Text="Herd Size" Style="{StaticResource FormLabel}" />
+                    <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
+                        <Entry x:Name="FarmHerd" Margin="0" Text="{Binding CurrentFarm.HerdSize, Mode=TwoWay}" />
+                    </Frame>
+                    <Label Text="Type" Style="{StaticResource FormLabel}" />
+                    <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
+                        <Entry x:Name="FarmType" Margin="0" Text="{Binding CurrentFarm.Type, Mode=TwoWay}" />
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout VerticalOptions="End" Margin="0,21,0,0">
+                <Button Text="Save Farm" Style="{StaticResource DarkButton}" Command="{Binding SaveFarmCommand}" />
             </StackLayout>
-        </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

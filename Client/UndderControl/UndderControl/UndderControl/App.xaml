@@ -20,12 +20,19 @@
                 <Setter Property="TextColor" Value="#009096" />
                 <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
             </Style>
-            <Style x:Key="FormLabel" TargetType="Label">
+            <Style TargetType="Label" x:Key="FormLabel">
                 <Setter Property="TextColor" Value="White"/>
             </Style>
-            <Style x:Key="FormEntry" TargetType="Entry">
+            <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="#007367"/>
                 <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+            <Style x:Key="DarkButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#009994"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="BorderColor" Value="White"/>
+                <Setter Property="BorderWidth" Value="3"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

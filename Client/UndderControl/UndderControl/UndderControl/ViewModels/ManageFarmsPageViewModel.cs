@@ -39,21 +39,21 @@ namespace UndderControl.ViewModels
                 }
             }
         }
-        public DelegateCommand AddFarmCommand { get; private set; }
+        public DelegateCommand<string> AddFarmCommand { get; private set; }
 
         public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
             : base(navigationService)
         {
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;
-            AddFarmCommand = new DelegateCommand(AddFarm);
+            AddFarmCommand = new DelegateCommand<string>(AddFarm);
             InitAsync();
         }
 
-        private async void AddFarm()
+        private async void AddFarm(string page)
         {
             _metricsManagerService.TrackEvent("Navigation: Add Farm");
-            await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/FarmDetailPage");
+            await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
         }
 
         private async void InitAsync()
@@ -82,12 +82,13 @@ namespace UndderControl.ViewModels
 
         async void GoToDetail()
         {
+            var path = "NavigationPage/FarmDetailPage";
             _metricsManagerService.TrackEvent("Navigation: Edit Farm");
             var navigationParams = new NavigationParameters
             {
                 { "farm", _selectedItem }
             };
-            await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/FarmDetailPage", navigationParams);
+            await _navigationService.NavigateAsync(new Uri(path, UriKind.Relative), navigationParams);
         }
     }
 }

@@ -1,0 +1,20 @@
+﻿[
+    {
+        "ID": 1,
+        "Name": "Crabtree Farm",
+        "Address": "Station Road",
+        "ContactName": "Stan Willis",
+        "PhoneNumber": "999",
+        "HerdSize": 450,
+        "Type": "Dairy"
+    },
+    {
+        "ID": 2,
+        "Name": "Red Barn Farm",
+        "Address": "Gilling West",
+        "ContactName": "Rachel Standing",
+        "PhoneNumber": "999",
+        "HerdSize": 200,
+        "Type": "Mixed"
+    }
+]

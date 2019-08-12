@@ -32,6 +32,8 @@ namespace UndderControl
         protected override async void OnInitialized()
         {
             //TODO: Remove this for release
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTIwOTUxQDMxMzcyZTMyMmUzMFlvWjZiUENiOVVkTm1CSG04RXRGWEJ0cW4rR0Fuc2ZNK2pjM2p0REZCelk9");
             if (Config.TestMode) AppSettings.AddOrUpdateValue("UserId", "abcd123xyz");
             VersionTracking.Track();
             InitializeComponent();
@@ -66,8 +68,13 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<TermsPage, TermsPageViewModel>();
             containerRegistry.RegisterForNavigation<SurveyResultsPage, SurveyResultsPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
-            containerRegistry.RegisterForNavigation<ResultsPage, ResultsPageViewModel>();
             containerRegistry.RegisterForNavigation<FarmDetailPage, FarmDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<CowStatusPage, CowStatusPageViewModel>();
+            containerRegistry.RegisterForNavigation<CowStatusResultsPage, CowStatusResultsPageViewModel>();
+            containerRegistry.RegisterForNavigation<CowStatusComparisonPage, CowStatusComparisonPageViewModel>();
+            containerRegistry.RegisterForNavigation<SurveyComparisonPage, SurveyComparisonPageViewModel>();
+            containerRegistry.RegisterForNavigation<CowStatusInputPage, CowStatusInputPageViewModel>();
+            containerRegistry.RegisterForNavigation<CowStatusFinishPage, CowStatusFinishPageViewModel>();
         }
     }
 }

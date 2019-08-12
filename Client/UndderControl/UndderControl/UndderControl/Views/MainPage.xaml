@@ -2,10 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UndderControl.Views.MainPage"
+             xmlns:helpers="clr-namespace:UndderControl.Helpers"
              Title="{Binding Title}">
-
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:HtmlSourceConverter x:Key="htmlSource" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout x:Name="TestStack">
+        <Label Text="TESTING" />
+        <WebView HeightRequest="200" HorizontalOptions="Fill">
+            <WebView.Source>
+                <HtmlWebViewSource Html="{Binding Code, Converter={StaticResource htmlSource}}"/>
+            </WebView.Source>
+        </WebView>
+        <Label Text="TESTING" />
+        
     </StackLayout>
-
-</ContentPage>
+</ContentPage> 

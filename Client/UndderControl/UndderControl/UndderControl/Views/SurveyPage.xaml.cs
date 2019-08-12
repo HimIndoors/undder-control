@@ -3,6 +3,7 @@ using Prism.Navigation;
 using System;
 using UndderControl.Events;
 using UndderControl.Services;
+using UndderControl.Text;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
 
@@ -15,6 +16,9 @@ namespace UndderControl.Views
         public SurveyPage(IEventAggregator ea)
         {
             InitializeComponent();
+            StartQuestionsButton.Text = AppResource.SurveyStartQuestionsButton;
+            YesButton.Text = AppResource.SurveyYesButton;
+            NoButton.Text = AppResource.SurveyNoButton;
             _viewModel = BindingContext as SurveyPageViewModel;
             UpdateQuestion();
             ea.GetEvent<QuestionChangedEvent>().Subscribe(UpdateQuestion);
@@ -34,7 +38,7 @@ namespace UndderControl.Views
                     SurveyQuestionView.IsVisible = false;
 
                     StageTitle.Text = stage.StageTitle;
-                    StageTitle.Text = stage.StageText;
+                    StageText.Text = stage.StageText;
                 }
                 else
                 {

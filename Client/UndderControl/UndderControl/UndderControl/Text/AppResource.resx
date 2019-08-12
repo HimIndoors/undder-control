@@ -155,6 +155,57 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
   <data name="AssessTitle4" xml:space="preserve">
     <value>AM I ELIGIBLE FOR SDCT?</value>
   </data>
+  <data name="CowStatusButtonCalving" xml:space="preserve">
+    <value>CALVING</value>
+  </data>
+  <data name="CowStatusButtonDryOff" xml:space="preserve">
+    <value>DRY&#x1F;OFF</value>
+  </data>
+  <data name="CowStatusFinishText1" xml:space="preserve">
+    <value>THANK YOU FOR PROVIDING THE DATA FOR THE DRYOFF PERIOD.</value>
+  </data>
+  <data name="CowStatusFinishText2" xml:space="preserve">
+    <value>Results and comparisons will be available once the calving data has been completed.</value>
+  </data>
+  <data name="CowStatusInputButtonFinish" xml:space="preserve">
+    <value>FINISH</value>
+  </data>
+  <data name="CowStatusInputButtonNext" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="CowStatusInputCaption" xml:space="preserve">
+    <value>Please choose the relevant option</value>
+  </data>
+  <data name="CowStatusInputLabel" xml:space="preserve">
+    <value>COW I.D.</value>
+  </data>
+  <data name="CowStatusInputTextCalvingStatus" xml:space="preserve">
+    <value>STATUS AT CALVING</value>
+  </data>
+  <data name="CowStatusInputTextDryoffStatus" xml:space="preserve">
+    <value>STATUS AT DRY&#x1F;OFF</value>
+  </data>
+  <data name="CowStatusInputTitle" xml:space="preserve">
+    <value>INPUT DATA</value>
+  </data>
+  <data name="CowStatusPageTitle" xml:space="preserve">
+    <value>COW STATUS</value>
+  </data>
+  <data name="CowStatusText1" xml:space="preserve">
+    <value>Once SDCT has been implemented on farm it is important to monitor the herd to catch and fix any issues which may arise.</value>
+  </data>
+  <data name="CowStatusText2" xml:space="preserve">
+    <value>You will need to input the cow’s status at DRY&#x1F;OFF and CALVING.</value>
+  </data>
+  <data name="CowStatusText3" xml:space="preserve">
+    <value>Data will be analysed and results will be available after calving information has been input.</value>
+  </data>
+  <data name="CowStatusText4" xml:space="preserve">
+    <value>The definition of ‘infected’ is based on the internationally agreed SCC threshold of 200k cells/ml, or alternatively you may use your own threshold if desired.</value>
+  </data>
+  <data name="CowStatusText5" xml:space="preserve">
+    <value>The SCC measurements must be taken within 30 days of input.</value>
+  </data>
   <data name="MonitorCompareButton" xml:space="preserve">
     <value>COMPARE RESULTS</value>
   </data>
@@ -192,6 +243,24 @@ MAY ARISE...</value>
   </data>
   <data name="MonitorTitle4" xml:space="preserve">
     <value>THE BENEFITS OF MAINTAINING SDCT...</value>
+  </data>
+  <data name="SurveyNoButton" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="SurveyResultImprovementTitle" xml:space="preserve">
+    <value>AREAS FOR IMPROVEMENT</value>
+  </data>
+  <data name="SurveyResultSdctSuitable" xml:space="preserve">
+    <value>SWITCHING TO SDCT IS SUITABLE ON THIS FARM!</value>
+  </data>
+  <data name="SurveyResultSdctUnsuitable" xml:space="preserve">
+    <value>SWITCHING TO SDCT MAY POSE A RISK FOR UDDER HEALTH ON THIS FARM!</value>
+  </data>
+  <data name="SurveyStartQuestionsButton" xml:space="preserve">
+    <value>Start Questions</value>
+  </data>
+  <data name="SurveyYesButton" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="Terms" xml:space="preserve">
     <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum ornare libero a dictum. Nullam dictum lacinia lectus, a condimentum erat venenatis in. Vivamus gravida eu sem eu cursus. Fusce fermentum, felis eu malesuada elementum, neque ipsum sodales turpis, feugiat pulvinar orci lectus vitae ipsum. Aenean congue tristique nulla, at consectetur risus lobortis non. In eu leo ante. Donec a faucibus elit, vel consectetur nisi. Praesent consectetur leo non sagittis hendrerit.

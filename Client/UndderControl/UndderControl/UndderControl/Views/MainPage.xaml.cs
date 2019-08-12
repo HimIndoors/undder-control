@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Syncfusion.SfChart.XForms;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,7 @@ namespace UndderControl.Views
         public MainPage()
         {
             InitializeComponent();
+            
         }
     }
 }

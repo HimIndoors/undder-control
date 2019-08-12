@@ -57,11 +57,11 @@ namespace UndderControl.ViewModels
 
         async Task SaveFarm()
         {
-            var farmresponse = await ApiManager.UploadFarm(_currentFarm, false);
+            var response = await ApiManager.UploadFarm(_currentFarm, false);
 
-            if (!farmresponse.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             { 
-                await PageDialog.AlertAsync("Unable to save farm data", "Error", "OK");
+                await PageDialog.AlertAsync("Unable to save cow status data", "Error", "OK");
             }
         }
 

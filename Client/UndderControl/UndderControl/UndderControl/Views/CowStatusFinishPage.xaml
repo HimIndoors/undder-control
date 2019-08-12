@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="UndderControl.Views.CowStatusFinishPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="21"
+            Android="21"
+            WinPhone="21" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Label x:Name="Text1"
+                        Text="Loading question..."
+                        Margin="13"
+                        TextColor="White"
+                        FontSize="34"
+                        HorizontalTextAlignment="Center"/>
+                <Label x:Name="Text2"
+                        Text="Loading question..."
+                        Margin="13"
+                        FontSize="21" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

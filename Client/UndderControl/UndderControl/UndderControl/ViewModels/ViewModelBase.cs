@@ -49,11 +49,12 @@ namespace UndderControl.ViewModels
         public IApiManager ApiManager;
         IApiService<IFarmApi> farmApi = new ApiService<IFarmApi>(Config.ApiUrl);
         IApiService<ISurveyApi> surveyApi = new ApiService<ISurveyApi>(Config.ApiUrl);
+        IApiService<ICowStatusApi> cowStatusApi = new ApiService<ICowStatusApi>(Config.ApiUrl);
 
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
-            ApiManager = new ApiManager(farmApi, surveyApi);
+            ApiManager = new ApiManager(farmApi, surveyApi, cowStatusApi);
         }
 
         public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)

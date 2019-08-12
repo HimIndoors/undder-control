@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="UndderControl.Views.CowStatusInputPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="21"
+            Android="21"
+            WinPhone="21" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="FarmName" />
+                <Label x:Name="Date" />
+                <StackLayout Orientation="Vertical">
+                    <Label x:Name="IdLabel" />
+                    <Entry x:Name="IdEntry" />
+                </StackLayout>
+                <Label x:Name="StatusText" Text="{Binding InputModeText}"  />
+                <Switch x:Name="InfectionSwitch" />
+                <StackLayout Margin="0,13,0,0">
+                    <Button x:Name="ButtonNext" Command="{Binding OnNextCommand}" />
+                    <Button x:Name="ButtonFinish" Command="{Binding OnFinishCommand}" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

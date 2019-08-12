@@ -1,6 +1,5 @@
 ﻿using Prism.Commands;
 using Prism.Events;
-using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,6 @@ using System.Threading.Tasks;
 using UndderControl.Events;
 using UndderControl.Extensions;
 using UndderControl.Services;
-using UndderControl.Views;
 using UndderControlLib.Dtos;
 using Xamarin.Forms;
 
@@ -113,7 +111,7 @@ namespace UndderControl.ViewModels
             {
                 { "response", _response }
             };
-            await _navigationService.NavigateAsync("SdctMasterDetailPage/ResultsPage", navigationParams);
+            await _navigationService.NavigateAsync("SdctMasterDetailPage/SurveyResultsPage", navigationParams);
         }
 
         /// <summary>

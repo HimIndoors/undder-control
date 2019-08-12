@@ -33,7 +33,7 @@ namespace UndderControl.ViewModels
             get { return _selectedFarm; }
             set
             {
-                _selectedFarm = value;
+                _selectedFarm  = value;
                 //Update global farm
                 App.SelectedFarm = value;
                 OnNavigateCommand.RaiseCanExecuteChanged();

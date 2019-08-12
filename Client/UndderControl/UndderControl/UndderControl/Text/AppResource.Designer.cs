@@ -171,6 +171,159 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CALVING.
+        /// </summary>
+        public static string CowStatusButtonCalving {
+            get {
+                return ResourceManager.GetString("CowStatusButtonCalving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DRYOFF.
+        /// </summary>
+        public static string CowStatusButtonDryOff {
+            get {
+                return ResourceManager.GetString("CowStatusButtonDryOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to THANK YOU FOR PROVIDING THE DATA FOR THE DRYOFF PERIOD..
+        /// </summary>
+        public static string CowStatusFinishText1 {
+            get {
+                return ResourceManager.GetString("CowStatusFinishText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Results and comparisons will be available once the calving data has been completed..
+        /// </summary>
+        public static string CowStatusFinishText2 {
+            get {
+                return ResourceManager.GetString("CowStatusFinishText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FINISH.
+        /// </summary>
+        public static string CowStatusInputButtonFinish {
+            get {
+                return ResourceManager.GetString("CowStatusInputButtonFinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEXT.
+        /// </summary>
+        public static string CowStatusInputButtonNext {
+            get {
+                return ResourceManager.GetString("CowStatusInputButtonNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please choose the relevant option.
+        /// </summary>
+        public static string CowStatusInputCaption {
+            get {
+                return ResourceManager.GetString("CowStatusInputCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to COW I.D..
+        /// </summary>
+        public static string CowStatusInputLabel {
+            get {
+                return ResourceManager.GetString("CowStatusInputLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to STATUS AT CALVING.
+        /// </summary>
+        public static string CowStatusInputTextCalvingStatus {
+            get {
+                return ResourceManager.GetString("CowStatusInputTextCalvingStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to STATUS AT DRYOFF.
+        /// </summary>
+        public static string CowStatusInputTextDryoffStatus {
+            get {
+                return ResourceManager.GetString("CowStatusInputTextDryoffStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INPUT DATA.
+        /// </summary>
+        public static string CowStatusInputTitle {
+            get {
+                return ResourceManager.GetString("CowStatusInputTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to COW STATUS.
+        /// </summary>
+        public static string CowStatusPageTitle {
+            get {
+                return ResourceManager.GetString("CowStatusPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Once SDCT has been implemented on farm it is important to monitor the herd to catch and fix any issues which may arise..
+        /// </summary>
+        public static string CowStatusText1 {
+            get {
+                return ResourceManager.GetString("CowStatusText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You will need to input the cow’s status at DRYOFF and CALVING..
+        /// </summary>
+        public static string CowStatusText2 {
+            get {
+                return ResourceManager.GetString("CowStatusText2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data will be analysed and results will be available after calving information has been input..
+        /// </summary>
+        public static string CowStatusText3 {
+            get {
+                return ResourceManager.GetString("CowStatusText3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The definition of ‘infected’ is based on the internationally agreed SCC threshold of 200k cells/ml, or alternatively you may use your own threshold if desired..
+        /// </summary>
+        public static string CowStatusText4 {
+            get {
+                return ResourceManager.GetString("CowStatusText4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The SCC measurements must be taken within 30 days of input..
+        /// </summary>
+        public static string CowStatusText5 {
+            get {
+                return ResourceManager.GetString("CowStatusText5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to COMPARE RESULTS.
         /// </summary>
         public static string MonitorCompareButton {
@@ -277,6 +430,60 @@ namespace UndderControl.Text {
         public static string MonitorTitle4 {
             get {
                 return ResourceManager.GetString("MonitorTitle4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string SurveyNoButton {
+            get {
+                return ResourceManager.GetString("SurveyNoButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AREAS FOR IMPROVEMENT.
+        /// </summary>
+        public static string SurveyResultImprovementTitle {
+            get {
+                return ResourceManager.GetString("SurveyResultImprovementTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SWITCHING TO SDCT IS SUITABLE ON THIS FARM!.
+        /// </summary>
+        public static string SurveyResultSdctSuitable {
+            get {
+                return ResourceManager.GetString("SurveyResultSdctSuitable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SWITCHING TO SDCT MAY POSE A RISK FOR UDDER HEALTH ON THIS FARM!.
+        /// </summary>
+        public static string SurveyResultSdctUnsuitable {
+            get {
+                return ResourceManager.GetString("SurveyResultSdctUnsuitable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Questions.
+        /// </summary>
+        public static string SurveyStartQuestionsButton {
+            get {
+                return ResourceManager.GetString("SurveyStartQuestionsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string SurveyYesButton {
+            get {
+                return ResourceManager.GetString("SurveyYesButton", resourceCulture);
             }
         }
         

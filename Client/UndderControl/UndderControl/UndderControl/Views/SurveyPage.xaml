@@ -6,20 +6,24 @@
              x:Class="UndderControl.Views.SurveyPage">
     <ContentPage.Content>
         <FlexLayout>
-            <ContentView x:Name="SurveyStageView" IsVisible="False">
-                <StackLayout VerticalOptions="CenterAndExpand">
-                    <Label Text="Stage View" />
-                    <Label x:Name="StageTitle"  Text="Loading stage..." />
-                    <Label x:Name="StageText"  Text="Loading stage..." />
-                    <Button Text="Start Questions"
-                            TextColor="Blue"
-                            BackgroundColor="White"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            Margin="13"
-                            Command="{Binding StartStageCommand}"/>
+            <ScrollView x:Name="SurveyStageView" IsVisible="False">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label x:Name="StageTitle"
+                        Text="..." 
+                        Margin="13"
+                        TextColor="White"
+                        FontSize="34"
+                        HorizontalTextAlignment="Center" />
+                    <Label x:Name="StageText"
+                        Text="..."
+                        Margin="13"
+                        FontSize="21"
+                        HorizontalTextAlignment="Center"/>
+                    <Button x:Name="StartQuestionsButton" Text="Start Questions"
+                        Margin="13"
+                        Command="{Binding StartStageCommand}"/>
                 </StackLayout>
-            </ContentView>
+            </ScrollView>
             <ScrollView x:Name="SurveyQuestionView" IsVisible="False">
                 <StackLayout>
                     <StackLayout VerticalOptions="CenterAndExpand">
@@ -33,31 +37,32 @@
                         Text="Loading question..."
                         Margin="13"
                         FontSize="21"
-                        TextColor="#2E987E" />
+                        TextColor="#2E987E"
+                        HorizontalTextAlignment="Center" />
                     </StackLayout>
                     <StackLayout VerticalOptions="End">
                         <StackLayout x:Name="AnswerButtonStackLayout"
                             Margin="21"
                             Orientation="Horizontal" 
                             HeightRequest="89">
-                            <Button Text="Yes"
-                            TextColor="#009096"
-                            BackgroundColor="White"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            Margin="21"
-                            Command="{Binding AnswerYesCommand}"/>
-                            <Button Text="No"
-                            TextColor="#009096"
-                            BackgroundColor="White"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            Margin="21"
-                            Command="{Binding AnswerNoCommand}"/>
+                            <Button x:Name="YesButton" Text="..."
+                                TextColor="#009096"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Margin="21"
+                                Command="{Binding AnswerYesCommand}"/>
+                            <Button x:Name="NoButton" Text="..."
+                                TextColor="#009096"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Margin="21"
+                                Command="{Binding AnswerNoCommand}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             <Label 
-                            Text="Start:"
+                            Text="Pos:"
                             VerticalTextAlignment="Center"/>
                             <Label
                             x:Name="Increment"

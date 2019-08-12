@@ -25,15 +25,17 @@ namespace UndderControl.Services
         private Dictionary<string, Task<HttpResponseMessage>> _taskContainer = new Dictionary<string, Task<HttpResponseMessage>>();
         private IApiService<IFarmApi> _farmApi;
         private IApiService<ISurveyApi> _surveyApi;
+        private IApiService<ICowStatusApi> _cowStatusApi;
         private double _cacheExpiryDays = Config.MonkeyCacheExpiry;
         public bool IsConnected { get; set; }
 
-        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<ISurveyApi> surveyApi)
+        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi)
         {
             IsConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             _farmApi = farmApi;
             _surveyApi = surveyApi;
+            _cowStatusApi = cowStatusApi;
         }
 
         private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
@@ -210,6 +212,15 @@ namespace UndderControl.Services
 
                 return await task;
             }
+        }
+
+        public async Task<HttpResponseMessage> UploadCowStatus(CowStatusDto status)
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync<HttpResponseMessage>(_cowStatusApi.GetApi(Priority.UserInitiated).CreateCowStatus(status), null);
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
         }
     }
 }

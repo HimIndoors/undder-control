@@ -208,6 +208,9 @@
     <PackageReference Include="Microsoft.AppCenter.Crashes">
       <Version>2.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfChart">
+      <Version>17.2.0.40</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
     </PackageReference>
@@ -222,6 +225,12 @@
       <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
       <Name>UndderControl</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Farms.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Survey.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

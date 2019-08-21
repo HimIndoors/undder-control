@@ -3,31 +3,79 @@
     "Name": "SDCT English",
     "Description": "Selective Dry Cow Therapy",
     "IntroText": "",
-    "Version": 1,
+    "Version": 2,
     "Questions": [
         {
             "QuestionID": 1,
             "QuestionStageID": 0,
-            "QuestionText": "Is the farm willing to implement SDCT",
+            "QuestionText": "Is the farm willing to implement SDCT?",
             "QuestionHelpText": ""
         },
         {
             "QuestionID": 2,
             "QuestionStageID": 0,
-            "QuestionText": "Is the BSCC in the farm lower than 250,000",
+            "QuestionText": "Is the BSCC in the farm lower than 250,000?",
             "QuestionHelpText": ""
         },
         {
             "QuestionID": 3,
             "QuestionStageID": 1,
             "QuestionText": "Do you have a dryoff strategy",
-            "QuestionHelpText": "A set dry period length, reliable calving prediction, planning"
+            "QuestionHelpText": "A set dry period length, reliable calving prediction, planning?"
         },
         {
             "QuestionID": 4,
             "QuestionStageID": 1,
-            "QuestionText": "Is poor teat-end condition present in less that 15% of cows at dryoff",
+            "QuestionText": "Is poor teat-end condition present in less that 15% of cows at dryoff?",
             "QuestionHelpText": ""
+        },
+		{
+            "QuestionID": 5,
+            "QuestionStageID": 1,
+            "QuestionText": "Is milk production lower than 15kg/day for more than 90% of the cows?",
+            "QuestionHelpText": ""
+        },
+		{
+            "QuestionID": 6,
+            "QuestionStageID": 1,
+            "QuestionText": "Is milk leakage happening in less that 10% of the cows?",
+            "QuestionHelpText": ""
+        },
+		{
+            "QuestionID": 7,
+            "QuestionStageID": 1,
+            "QuestionText": "Are cows getting the appropriate energy, protein, dry-matter intake and minerals in the last weeks before dry-off?",
+            "QuestionHelpText": "If all four elements are appropriate, select yes. If fewer than four are appropriate, select no."
+        },
+		{
+            "QuestionID": 8,
+            "QuestionStageID": 2,
+            "QuestionText": "Does dry-off take place in a clean, comfortable environment and is the correct sequence of events followed?",
+            "QuestionHelpText": "If all three elements are being met, select yes. If fewer than three are being met, select no."
+        },
+        {
+            "QuestionID": 9,
+            "QuestionStageID": 2,
+            "QuestionText": "Are you following correct hygiene protocols, such as using rubber gloves, removing dirt from teats, disinfecting for at least 30 seconds twice and partially inserting the antibiotic or teat seal?",
+            "QuestionHelpText": "If all four criteria are being met, select yes. If fewer than four are being met, select no."
+        },
+		{
+            "QuestionID": 10,
+            "QuestionStageID": 2,
+            "QuestionText": "Are you using cow somatic cell counts or other reilable test to diagnose infection?",
+            "QuestionHelpText": ""
+        },
+		{
+            "QuestionID": 11,
+            "QuestionStageID": 2,
+            "QuestionText": "Is your antibiotic and/or teat seal tube selection based on well-supported data?",
+            "QuestionHelpText": ""
+        },
+		{
+            "QuestionID": 12,
+            "QuestionStageID": 2,
+            "QuestionText": "Are you mitigating potential stressors, such as commingling, ample space per cow, access to feed and water?",
+            "QuestionHelpText": "If all four criteria are being met, select yes. If fewer than four are being met, select no."
         }
     ],
     "Stages": [
@@ -41,6 +89,12 @@
             "StageID": 1,
             "StageTitle": "Stage 1",
             "StageText": "Dry-off preparation",
+            "ShowStageIntro": true
+        },
+		{
+            "StageID": 2,
+            "StageTitle": "Stage 2",
+            "StageText": "Dry-off",
             "ShowStageIntro": true
         }
     ]

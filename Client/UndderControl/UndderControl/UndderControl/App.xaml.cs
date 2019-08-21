@@ -75,6 +75,7 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<SurveyComparisonPage, SurveyComparisonPageViewModel>();
             containerRegistry.RegisterForNavigation<CowStatusInputPage, CowStatusInputPageViewModel>();
             containerRegistry.RegisterForNavigation<CowStatusFinishPage, CowStatusFinishPageViewModel>();
+            containerRegistry.RegisterForNavigation<AboutPage, AboutPageViewModel>();
         }
     }
 }

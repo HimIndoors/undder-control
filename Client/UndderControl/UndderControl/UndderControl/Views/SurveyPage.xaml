@@ -5,15 +5,15 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyPage">
     <ContentPage.Content>
-        <FlexLayout>
+        <FlexLayout JustifyContent="Center">
             <ScrollView x:Name="SurveyStageView" IsVisible="False">
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                     <Label x:Name="StageTitle"
                         Text="..." 
                         Margin="13"
                         TextColor="White"
                         FontSize="34"
-                        HorizontalTextAlignment="Center" />
+                        HorizontalTextAlignment="Center"/>
                     <Label x:Name="StageText"
                         Text="..."
                         Margin="13"

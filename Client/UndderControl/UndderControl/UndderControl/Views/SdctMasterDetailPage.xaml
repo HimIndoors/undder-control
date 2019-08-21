@@ -14,9 +14,9 @@
                     WinPhone="21" />
             </ContentPage.Padding>
             <StackLayout HorizontalOptions="StartAndExpand">
-                <Button Text="Home" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/RootPage" />
+                <Button Text="Home" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/RootPage" />
                 <Button Text="Manage Farms" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarmsPage" />
-                <Button Text="About MSD" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/ManageFarmsPage" />
+                <Button Text="About MSD" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="NavigationPage/AboutPage" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

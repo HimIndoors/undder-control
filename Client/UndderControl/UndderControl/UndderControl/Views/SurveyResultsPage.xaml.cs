@@ -68,7 +68,7 @@ namespace UndderControl.Views
                     "You should mitigate potential stressors, such as commingling, ample space per cow, access to feed and access to water."
                 });
             _statements.Add(
-                "FAR OFF",
+                "FAR OFF",
                 new List<string> {
                     "You must ensure cows’ udders and thighs are clean.",
                     "Tails must be clipped, udders shaven as needed and bedding refreshed and disinfected regularly.",
@@ -92,7 +92,7 @@ namespace UndderControl.Views
                 StatementStack.Children.Add(new Label() { Text = item.Key, FontAttributes=FontAttributes.Bold });
                 foreach (string statement in item.Value)
                 {
-                    StatementStack.Children.Add(new Label() { Text = item.Key });
+                    StatementStack.Children.Add(new Label() { Text = statement });
                 }
             }
         }

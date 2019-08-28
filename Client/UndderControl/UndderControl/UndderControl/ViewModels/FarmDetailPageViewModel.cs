@@ -30,7 +30,7 @@ namespace UndderControl.ViewModels
         {
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;
-            SaveFarmCommand = new DelegateCommand(DoSaveFarm);
+            SaveFarmCommand = new DelegateCommand(DoSaveFarm, CanSave);
         }
 
         private async void DoSaveFarm()
@@ -63,6 +63,12 @@ namespace UndderControl.ViewModels
             { 
                 await PageDialog.AlertAsync("Unable to save cow status data", "Error", "OK");
             }
+        }
+
+        private bool CanSave()
+        {
+            var savable = false;
+            return savable;
         }
 
     }

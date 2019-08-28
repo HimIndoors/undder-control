@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -16,8 +18,12 @@ namespace UndderControl.ViewModels
 {
     public class RootPageViewModel : ViewModelBase
     {
-        INavigationService _navigationService;
-        ObservableCollection<FarmDto> _farmList;
+        private readonly INavigationService _navigationService;
+        private readonly IMetricsManagerService _metricsService;
+        private ObservableCollection<FarmDto> _farmList;
+        private DelegateCommand<string> _navigateCommand;
+        private static ISettings AppSettings => CrossSettings.Current;
+
         public ObservableCollection<FarmDto> FarmList
         {
             get { return _farmList; }
@@ -40,15 +46,15 @@ namespace UndderControl.ViewModels
             }
         }
 
-        public DelegateCommand<string> OnNavigateCommand { get; set; }
+        public DelegateCommand<string> OnNavigateCommand =>
+            _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync, CanNavigate));
 
-        public RootPageViewModel(INavigationService navigationService)
+        public RootPageViewModel(INavigationService navigationService, IMetricsManagerService metricsSevice) 
             : base(navigationService)
         {
             _navigationService = navigationService;
-
+            _metricsService = metricsSevice;
             if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;
-            OnNavigateCommand = new DelegateCommand<string>(NavigateAsync, CanNavigate);
             InitAsync();
         }
 
@@ -60,13 +66,14 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                DependencyService.Get<IMetricsManagerService>().TrackException("GetFarmsFailed", ex);
+                _metricsService.TrackException("GetFarmsFailed", ex);
             }
         }
 
         async Task GetFarms()
         {
-            var farmresponse = await ApiManager.FarmList();
+            var userId = 1;
+            var farmresponse = await ApiManager.GetFarmsByUserId(userId);
 
             if (farmresponse.IsSuccessStatusCode)
             {
@@ -77,11 +84,12 @@ namespace UndderControl.ViewModels
             else
             {
                 await PageDialog.AlertAsync("Unable to retrieve farm data", "Error", "OK");
-            }
+            }  
         }
 
         async void NavigateAsync(string page)
         {
+            _metricsService.TrackEvent("Navigate: " + page);
             await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
         }
 

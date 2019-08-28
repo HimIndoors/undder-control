@@ -1,5 +1,4 @@
 ﻿using Fusillade;
-using ModernHttpClient;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ namespace UndderControl.Services
 {
     public class ApiService<T> : IApiService<T>
     {
-        Func<HttpMessageHandler, T> createClient;
+        private readonly Func<HttpMessageHandler, T> createClient;
         public ApiService(string apiBaseAddress)
         {
             createClient = messageHandler =>
@@ -27,21 +26,21 @@ namespace UndderControl.Services
         {
             get
             {
-                return new Lazy<T>(() => createClient(new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.Background))).Value;
+                return new Lazy<T>(() => createClient(new RateLimitedHttpMessageHandler(new HttpClientHandler(), Priority.Background))).Value;
             }
         }
         private T UserInitiated
         {
             get
             {
-                return new Lazy<T>(() => createClient(new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.UserInitiated))).Value;
+                return new Lazy<T>(() => createClient(new RateLimitedHttpMessageHandler(new HttpClientHandler(), Priority.UserInitiated))).Value;
             }
         }
         private T Speculative
         {
             get
             {
-                return new Lazy<T>(() => createClient(new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.Speculative))).Value;
+                return new Lazy<T>(() => createClient(new RateLimitedHttpMessageHandler(new HttpClientHandler(), Priority.Speculative))).Value;
             }
         }
         public T GetApi(Priority priority)

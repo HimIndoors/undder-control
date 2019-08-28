@@ -20,13 +20,12 @@ namespace UndderControl.Services
 {
     public class ApiManager : IApiManager
     {
-        private IUserDialogs _userDialogs = UserDialogs.Instance;
+        private readonly IUserDialogs _userDialogs = UserDialogs.Instance;
         private Dictionary<int, CancellationTokenSource> _runningTasks = new Dictionary<int, CancellationTokenSource>();
-        private Dictionary<string, Task<HttpResponseMessage>> _taskContainer = new Dictionary<string, Task<HttpResponseMessage>>();
-        private IApiService<IFarmApi> _farmApi;
-        private IApiService<ISurveyApi> _surveyApi;
-        private IApiService<ICowStatusApi> _cowStatusApi;
-        private double _cacheExpiryDays = Config.MonkeyCacheExpiry;
+        private readonly IApiService<IFarmApi> _farmApi;
+        private readonly IApiService<ISurveyApi> _surveyApi;
+        private readonly IApiService<ICowStatusApi> _cowStatusApi;
+        private readonly double _cacheExpiryDays = Config.MonkeyCacheExpiry;
         public bool IsConnected { get; set; }
 
         public ApiManager(IApiService<IFarmApi> farmApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi)
@@ -79,7 +78,7 @@ namespace UndderControl.Services
             }
 
             // Check for fresh cached copy of farms
-            if (!string.IsNullOrEmpty(barrel) && !Barrel.Current.IsExpired(barrel) && Barrel.Current.Exists(barrel))
+            if (!string.IsNullOrEmpty(barrel) && Barrel.Current.Exists(barrel) && !Barrel.Current.IsExpired(barrel))
             {
                 data.StatusCode = HttpStatusCode.NotModified;
                 data.Content = new StringContent(Barrel.Current.Get<string>(barrel));
@@ -91,7 +90,7 @@ namespace UndderControl.Services
                 .Or<ApiException>()
                 .Or<TaskCanceledException>()
                 .WaitAndRetryAsync(
-                    retryCount: 5,
+                    retryCount: 2,
                     sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
                 )
                 .ExecuteAsync(async () =>
@@ -116,48 +115,48 @@ namespace UndderControl.Services
 
         public async Task<HttpResponseMessage> FarmList()
         {
-            if (Config.TestMode)
-            {
-                string fileContents = string.Empty;
-                try
-                {
-                    using (var stream = await FileSystem.OpenAppPackageFileAsync("Farms.txt"))
-                    {
-                        using (var reader = new StreamReader(stream))
-                        {
-                            fileContents = await reader.ReadToEndAsync();
-                        }
-                    }                    
-                }
-                catch (Exception ex)
-                {
-                    DependencyService.Get<IMetricsManagerService>().TrackException("Error retrieving farm details from embedded resource", ex);
-                }
+            //if (Config.TestMode)
+            //{
+            //    string fileContents = string.Empty;
+            //    try
+            //    {
+            //        using (var stream = await FileSystem.OpenAppPackageFileAsync("Farms.txt"))
+            //        {
+            //            using (var reader = new StreamReader(stream))
+            //            {
+            //                fileContents = await reader.ReadToEndAsync();
+            //            }
+            //        }                    
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        DependencyService.Get<IMetricsManagerService>().TrackException("Error retrieving farm details from embedded resource", ex);
+            //    }
 
-                var response = new HttpResponseMessage
-                {
-                    Content = new StringContent(fileContents),
-                    StatusCode = HttpStatusCode.OK
-                };
+            //    var response = new HttpResponseMessage
+            //    {
+            //        Content = new StringContent(fileContents),
+            //        StatusCode = HttpStatusCode.OK
+            //    };
 
-                return response;
+            //    return response;
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 var cts = new CancellationTokenSource();
-                var task = RemoteRequestAsync<HttpResponseMessage>(_farmApi.GetApi(Priority.UserInitiated).FarmList(), Config.MonkeyCacheFarms);
+                var task = RemoteRequestAsync(_farmApi.GetApi(Priority.UserInitiated).FarmList(), "FarmList");
                 _runningTasks.Add(task.Id, cts);
 
                 return await task;
-            }
+            //}
             
         }
 
         public async Task<HttpResponseMessage> UploadSurvey(SurveyResponseDto survey)
         {
             var cts = new CancellationTokenSource();
-            var task = RemoteRequestAsync<HttpResponseMessage>(_surveyApi.GetApi(Priority.UserInitiated).UploadSurvey(survey), string.Empty);
+            var task = RemoteRequestAsync(_surveyApi.GetApi(Priority.UserInitiated).UploadSurvey(survey), string.Empty);
             _runningTasks.Add(task.Id, cts);
 
             return await task;
@@ -187,19 +186,19 @@ namespace UndderControl.Services
             else
             {
                 var cts = new CancellationTokenSource();
-                var task = RemoteRequestAsync<HttpResponseMessage>(_surveyApi.GetApi(Priority.UserInitiated).GetLatestSurvey(), Config.MonkeyCacheSurvey);
+                var task = RemoteRequestAsync(_surveyApi.GetApi(Priority.UserInitiated).GetLatestSurvey(), null);
                 _runningTasks.Add(task.Id, cts);
 
                 return await task;
-            }
         }
+    }
 
         public async Task<HttpResponseMessage> UploadFarm(FarmDto farm, bool isNew)
         {
             if (isNew)
             {
                 var cts = new CancellationTokenSource();
-                var task = RemoteRequestAsync<HttpResponseMessage>(_farmApi.GetApi(Priority.UserInitiated).CreateFarm(farm), Config.MonkeyCacheFarms);
+                var task = RemoteRequestAsync(_farmApi.GetApi(Priority.UserInitiated).CreateFarm(farm), null);
                 _runningTasks.Add(task.Id, cts);
 
                 return await task;
@@ -207,7 +206,7 @@ namespace UndderControl.Services
             else
             {
                 var cts = new CancellationTokenSource();
-                var task = RemoteRequestAsync<HttpResponseMessage>(_farmApi.GetApi(Priority.UserInitiated).UpdateFarm(farm), Config.MonkeyCacheFarms);
+                var task = RemoteRequestAsync(_farmApi.GetApi(Priority.UserInitiated).UpdateFarm(farm), null);
                 _runningTasks.Add(task.Id, cts);
 
                 return await task;
@@ -217,10 +216,50 @@ namespace UndderControl.Services
         public async Task<HttpResponseMessage> UploadCowStatus(CowStatusDto status)
         {
             var cts = new CancellationTokenSource();
-            var task = RemoteRequestAsync<HttpResponseMessage>(_cowStatusApi.GetApi(Priority.UserInitiated).CreateCowStatus(status), null);
+            var task = RemoteRequestAsync(_cowStatusApi.GetApi(Priority.UserInitiated).CreateCowStatus(status), null);
             _runningTasks.Add(task.Id, cts);
 
             return await task;
         }
+
+        public async Task<HttpResponseMessage> GetFarmsByUserId(int id)
+        {
+            if (Config.TestMode)
+            {
+                string fileContents = string.Empty;
+                try
+                {
+                    using (var stream = await FileSystem.OpenAppPackageFileAsync("Farms.txt"))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            fileContents = await reader.ReadToEndAsync();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DependencyService.Get<IMetricsManagerService>().TrackException("Error retrieving farm details from embedded resource", ex);
+                }
+
+                var response = new HttpResponseMessage
+                {
+                    Content = new StringContent(fileContents),
+                    StatusCode = HttpStatusCode.OK
+                };
+
+                return response;
+
+            }
+            else
+            {
+                var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync(_farmApi.GetApi(Priority.UserInitiated).GetFarmsByUserId(id), "GetFarmsByUserId");
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
+        }
+
+    }
     }
 }

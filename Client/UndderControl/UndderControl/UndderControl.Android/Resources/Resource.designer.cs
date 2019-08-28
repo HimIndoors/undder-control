@@ -64,7 +64,6 @@ namespace UndderControl.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::UndderControl.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::UndderControl.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
 			global::Microcharts.Droid.Resource.String.library_name = global::UndderControl.Droid.Resource.String.library_name;
-			global::ModernHttpClient.Resource.String.library_name = global::UndderControl.Droid.Resource.String.library_name;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.input_layout_drop_down_icon = global::UndderControl.Droid.Resource.Drawable.input_layout_drop_down_icon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglecollapseicon = global::UndderControl.Droid.Resource.Drawable.inputlayout_togglecollapseicon;
 			global::Syncfusion.XForms.Android.Core.Resource.Drawable.inputlayout_togglevisibleicon = global::UndderControl.Droid.Resource.Drawable.inputlayout_togglevisibleicon;

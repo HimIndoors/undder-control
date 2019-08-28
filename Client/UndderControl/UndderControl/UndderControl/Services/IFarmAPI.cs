@@ -14,7 +14,7 @@ namespace UndderControl.Services
         Task<HttpResponseMessage> FarmList();
 
         [Get("/farm/{id}")]
-        Task<HttpResponseMessage> GetFarmById(Guid id);
+        Task<HttpResponseMessage> GetFarmsByUserId(int id);
 
         [Post("/farm/")]
         Task<HttpResponseMessage> CreateFarm([Body] FarmDto farm);

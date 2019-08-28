@@ -17,20 +17,19 @@ namespace UndderControl.ViewModels
 {
     public class AssessmentPageViewModel : ViewModelBase
     {
-        INavigationService _navigationService;      
+        private readonly INavigationService _navigationService;
+        private readonly IMetricsManagerService _metricsService;
+        private DelegateCommand<string> _navigateCommand;
 
-        public DelegateCommand StartSurveyCommand { get; private set; }
-        public DelegateCommand ShowSummaryCommand { get; private set; }
-        public DelegateCommand ShowCompareCommand { get; private set; }
+        public DelegateCommand<string> OnNavigateCommand =>
+            _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync));
 
-        public AssessmentPageViewModel(INavigationService navigationService)
+        public AssessmentPageViewModel(INavigationService navigationService, IMetricsManagerService metricsService)
             : base(navigationService)
         {
             _navigationService = navigationService;
+            _metricsService = metricsService;
             Title = "Undder Control";
-            StartSurveyCommand = new DelegateCommand(StartSurvey);
-            ShowSummaryCommand = new DelegateCommand(ShowSummary);
-            ShowCompareCommand = new DelegateCommand(ShowCompare);
             InitAsync();
         }
 
@@ -86,22 +85,11 @@ namespace UndderControl.ViewModels
                 await PageDialog.AlertAsync("Unable to retrieve survey data", "Error", "OK");
             }
         }
-        private async void StartSurvey()
-        {
-            DependencyService.Get<IMetricsManagerService>().TrackEvent("StartSurvey");
-            await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/SurveyPage");
-        }
 
-        private async void ShowSummary()
+        private async void NavigateAsync(string page)
         {
-            DependencyService.Get<IMetricsManagerService>().TrackEvent("ShowSummary");
-            await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/ResultsPage");
-        }
-
-        private async void ShowCompare()
-        {
-            DependencyService.Get<IMetricsManagerService>().TrackEvent("ShowCompare");
-            await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/ComparePage");
+            _metricsService.TrackEvent("Navigate: " + page);
+            await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
         }
     }
 }

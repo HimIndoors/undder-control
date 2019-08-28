@@ -56,7 +56,7 @@ namespace UndderControlService.Controllers
         [SwaggerOperation("PostFarm")]
         [SwaggerResponse(HttpStatusCode.BadRequest, "The farm data wasn't acceptable (improper formatting, etc.).")]
         [SwaggerResponse(HttpStatusCode.NoContent, "Farm uploaded successfully.")]
-        public IHttpActionResult Post([FromBody]FarmDto farmDto)
+        public IHttpActionResult CreateFarm([FromBody]FarmDto farmDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -104,7 +104,7 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.BadRequest, "The farm data wasn't acceptable (improper formatting, etc.).")]
         [SwaggerResponse(HttpStatusCode.NoContent, "Farm updated.")]
         [SwaggerResponse(HttpStatusCode.NotFound, "No matching farm found.")]
-        public IHttpActionResult Put([FromBody]FarmDto farmDto)
+        public IHttpActionResult UpdateFarm([FromBody]FarmDto farmDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

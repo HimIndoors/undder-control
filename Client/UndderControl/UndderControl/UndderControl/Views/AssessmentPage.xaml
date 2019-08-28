@@ -23,9 +23,9 @@
                 <Label x:Name="Title4" FontAttributes="Bold" />
                 <Label x:Name="Text4" />
                 <StackLayout Margin="0,21,0,0">
-                    <Button x:Name="QuestionButton" Command="{Binding StartSurveyCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
-                    <Button x:Name="SummaryButton" Command="{Binding ShowSummaryCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage"/>
-                    <Button x:Name="CompareButton" Command="{Binding ShowCompareCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
+                    <Button x:Name="QuestionButton" Command="{Binding OnNavigateCommand}" CommandParameter="SurveyPage" />
+                    <Button x:Name="SummaryButton" Command="{Binding OnNavigateCommand}" CommandParameter="SurveyResultsPage"/>
+                    <Button x:Name="CompareButton" Command="{Binding OnNavigateCommand}" CommandParameter="SurveyResultsPage" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>

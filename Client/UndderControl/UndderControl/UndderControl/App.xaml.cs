@@ -1,4 +1,5 @@
-﻿using Plugin.Settings;
+﻿using MonkeyCache.SQLite;
+using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using Prism;
 using Prism.Ioc;
@@ -34,7 +35,9 @@ namespace UndderControl
             //TODO: Remove this for release
             //Register Syncfusion license
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTIwOTUxQDMxMzcyZTMyMmUzMFlvWjZiUENiOVVkTm1CSG04RXRGWEJ0cW4rR0Fuc2ZNK2pjM2p0REZCelk9");
-            if (Config.TestMode) AppSettings.AddOrUpdateValue("UserId", "abcd123xyz");
+            if (Config.TestMode) AppSettings.AddOrUpdateValue("UserId", "1");
+            //Initialize MonkeyCache barrel
+            Barrel.ApplicationId = "PMN_Undder_Control";
             VersionTracking.Track();
             InitializeComponent();
             await NavigateToPage();
@@ -51,7 +54,7 @@ namespace UndderControl
                 if (string.IsNullOrEmpty(AppSettings.GetValueOrDefault("UserId", null)))
                     await NavigationService.NavigateAsync("LoginPage");
                 else
-                    await NavigationService.NavigateAsync("NavigationPage/RootPage");
+                    await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
             }
         }
 

@@ -70,7 +70,7 @@ namespace UndderControl.ViewModels
 
         async Task GetFarms()
         {
-            var serviceResponse = await ApiManager.FarmList();
+            var serviceResponse = await ApiManager.GetFarmsByUserId(1);
 
             if (serviceResponse.IsSuccessStatusCode)
             {
@@ -82,7 +82,7 @@ namespace UndderControl.ViewModels
 
         async void GoToDetail()
         {
-            var path = "NavigationPage/FarmDetailPage";
+            var path = "FarmDetailPage";
             _metricsManagerService.TrackEvent("Navigation: Edit Farm");
             var navigationParams = new NavigationParameters
             {

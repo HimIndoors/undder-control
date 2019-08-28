@@ -21,7 +21,7 @@ namespace UndderControl.ViewModels
 
         async void NavigateAsync(string page)
         {
-            await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+            await _navigationService.NavigateAsync(page);
         }
     }
 }

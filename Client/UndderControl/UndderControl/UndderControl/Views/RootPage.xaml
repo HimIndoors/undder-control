@@ -13,8 +13,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Picker x:Name="FarmPicker" ItemsSource="{Binding FarmList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedFarm}" Title="Select a farm" />
-            <Button Text="Assessment" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/AssessmentPage"/>
-            <Button Text="Monitor" Command="{Binding OnNavigateCommand}" CommandParameter="SdctMasterDetailPage/MonitorPage" />
+            <Button Text="Assessment" Command="{Binding OnNavigateCommand}" CommandParameter="AssessmentPage"/>
+            <Button Text="Monitor" Command="{Binding OnNavigateCommand}" CommandParameter="MonitorPage" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -50,7 +50,7 @@ namespace UndderControl.ViewModels
         private async void AcceptTerms()
         {
             AppSettings.AddOrUpdateValue("Terms_" + VersionTracking.CurrentVersion, "User Accepted");
-            await _navigationService.NavigateAsync("SdctMasterDetailPage/NavigationPage/RootPage");
+            await _navigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using FluentValidation.Results;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using UndderControl.Services;
+using UndderControl.Validation;
 using UndderControlLib.Dtos;
 
 namespace UndderControl.ViewModels
@@ -21,30 +20,63 @@ namespace UndderControl.ViewModels
                 SetProperty(ref _currentFarm, value);
             }
         }
-        public DelegateCommand SaveFarmCommand { get; private set; }
-        IMetricsManagerService _metricsManagerService;
-        INavigationService _navigationService;
+        private string _validationErrorMessage;
+        public string ValidationErrorMessage
+        {
+            get { return _validationErrorMessage; }
+            set
+            {
+                SetProperty(ref _validationErrorMessage, value);
+                RaisePropertyChanged("ValidationErrorMessage");
+            }
+        }
+        private bool _showValidationErrors = false;
+        public bool ShowValidationErrors
+        {
+            get { return _showValidationErrors; }
+            set
+            {
+                SetProperty(ref _showValidationErrors, value);
+                RaisePropertyChanged("ShowValidationErrors");
+            }
+        }
+        private DelegateCommand _saveFarmCommand;
+        public DelegateCommand SaveFarmCommand => _saveFarmCommand ?? (_saveFarmCommand = new DelegateCommand(DoSaveFarm));
+
+        private readonly IMetricsManagerService _metricsManagerService;
+        private readonly INavigationService _navigationService;
 
         public FarmDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
             :base(navigationService)
         {
+            Title = "FARM DETAIL";
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;
-            SaveFarmCommand = new DelegateCommand(DoSaveFarm, CanSave);
         }
 
         private async void DoSaveFarm()
         {
-            try
+            FarmValidator validator = new FarmValidator();
+            ValidationResult result = validator.Validate(_currentFarm);
+            if (result.IsValid)
             {
-                await RunSafe(SaveFarm());
-                await _navigationService.GoBackAsync();
+                try
+                {
+                    await RunSafe(SaveFarm());
+                    await _navigationService.GoBackAsync();
+                }
+                catch (Exception ex)
+                {
+                    await PageDialog.AlertAsync("Unable to save farm data", "Error", "OK");
+                    _metricsManagerService.TrackException("Error saving farm details", ex);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                await PageDialog.AlertAsync("Unable to save farm data", "Error", "OK");
-                _metricsManagerService.TrackException("Error saving farm details", ex);
+                ValidationErrorMessage = result.Errors[0].ErrorMessage;
+                ShowValidationErrors = true;
             }
+            
         }
 
         public void Initialize(INavigationParameters parameters)
@@ -64,12 +96,5 @@ namespace UndderControl.ViewModels
                 await PageDialog.AlertAsync("Unable to save cow status data", "Error", "OK");
             }
         }
-
-        private bool CanSave()
-        {
-            var savable = false;
-            return savable;
-        }
-
     }
 }

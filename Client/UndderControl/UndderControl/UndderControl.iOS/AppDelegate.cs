@@ -30,6 +30,7 @@ namespace UndderControl.iOS
 
             AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
+            Plugin.InputKit.Platforms.iOS.Config.Init();
 
             return base.FinishedLaunching(app, options);
         }

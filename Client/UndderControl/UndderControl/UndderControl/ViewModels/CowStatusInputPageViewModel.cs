@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using UndderControl.Text;
@@ -12,11 +13,13 @@ namespace UndderControl.ViewModels
 {
     public class CowStatusInputPageViewModel : ViewModelBase, IInitialize
     {
-        INavigationService _navigationService;
-        public DelegateCommand OnNextCommand { get; private set; }
-        public DelegateCommand OnFinishCommand { get; private set; }
+        private readonly INavigationService _navigationService;
+        private DelegateCommand _onNextCommand;
+        private DelegateCommand _onFinishCommand;
+        public DelegateCommand OnNextCommand => _onNextCommand ?? (_onNextCommand = new DelegateCommand(NextInput));
+        public DelegateCommand OnFinishCommand => _onFinishCommand ?? (_onFinishCommand = new DelegateCommand(FinishInput));
 
-        string _inputMode;
+        private string _inputMode;
         public string InputMode
         {
             get { return _inputMode; }
@@ -32,7 +35,7 @@ namespace UndderControl.ViewModels
                 }
             }
         }
-        string _inputModeText;
+        private string _inputModeText;
         public string InputModeText
         {
             get { return _inputModeText; }
@@ -47,6 +50,26 @@ namespace UndderControl.ViewModels
                 SetProperty(ref _cowStatus, value);
             }
         }
+        private InfectedType _infectedValue;
+        public InfectedType InfectedValue
+        {
+            get { return _infectedValue; }
+            set
+            {
+                SetProperty(ref _infectedValue, value);
+                RaisePropertyChanged();
+            }
+        }
+        private ObservableCollection<InfectedType> _valueList;
+        public ObservableCollection<InfectedType> ValueList
+        {
+            get { return _valueList; }
+            set
+            {
+                _valueList = value;
+                RaisePropertyChanged("ValueList");
+            }
+        }
 
         public CowStatusInputPageViewModel(INavigationService navigationService)
             : base(navigationService)
@@ -54,8 +77,12 @@ namespace UndderControl.ViewModels
             _navigationService = navigationService;
             Title = AppResource.CowStatusPageTitle;
             IsBusy = true;
-            OnFinishCommand = new DelegateCommand(FinishInput);
-            OnNextCommand = new DelegateCommand(NextInput);
+
+            ValueList = new ObservableCollection<InfectedType>
+            {
+                new InfectedType { Id=1, Name="Infected" },
+                new InfectedType { Id=2, Name="Not infected" }
+            };
         }
 
         private async void NextInput()
@@ -74,7 +101,7 @@ namespace UndderControl.ViewModels
             */
             if (InputMode.Equals("dryoff"))
             {
-                await _navigationService.NavigateAsync(new Uri("NavigationPage/CowStatusFinishPage", UriKind.Relative));
+                await _navigationService.NavigateAsync(new Uri("SdctMasterDetailPage/CowStatusFinishPage", UriKind.Absolute));
             }
             else
             {
@@ -84,7 +111,7 @@ namespace UndderControl.ViewModels
 
         private async Task UploadCowStatus(CowStatusDto status)
         {
-            var response = await ApiManager.UploadCowStatus(status);
+            var response = await ApiManager.CreateCowStatus(status);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -100,5 +127,13 @@ namespace UndderControl.ViewModels
             }
             IsBusy = false;
         }
+    }
+
+    public class InfectedType
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        //Override string and return what you want to be displayed
+        public override string ToString() => Name;
     }
 }

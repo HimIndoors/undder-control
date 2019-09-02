@@ -22,8 +22,8 @@
                 <Label x:Name="InputTitle" />
                 <Label x:Name="InputCaption" />
                 <StackLayout Margin="0,13,0,0">
-                    <Button x:Name="ButtonDryOff" Command="{Binding OnDryOffCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/CowStatusInputPage" />
-                    <Button x:Name="ButtonCalving" Command="{Binding OnCalvingCommand}" CommandParameter="SdctMasterDetailPage/NavigationPage/CowStatusInputPage" />
+                    <Button x:Name="ButtonDryOff" Command="{Binding OnNavigateCommand}" CommandParameter="dryoff" />
+                    <Button x:Name="ButtonCalving" Command="{Binding OnNavigateCommand}" CommandParameter="calving" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>

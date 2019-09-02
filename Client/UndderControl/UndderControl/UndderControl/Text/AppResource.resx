@@ -206,6 +206,30 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
   <data name="CowStatusText5" xml:space="preserve">
     <value>The SCC measurements must be taken within 30 days of input.</value>
   </data>
+  <data name="CsCure" xml:space="preserve">
+    <value>CURE</value>
+  </data>
+  <data name="CsFailureToCure" xml:space="preserve">
+    <value>FAILURE TO CURE</value>
+  </data>
+  <data name="CsInfectedAfterCalving" xml:space="preserve">
+    <value>INFECTED AFTER CALVING</value>
+  </data>
+  <data name="CsInfectedAtDryoff" xml:space="preserve">
+    <value>INFECTED AT DRY&#x1F;OFF</value>
+  </data>
+  <data name="CsNewInfection" xml:space="preserve">
+    <value>NEW INFECTION</value>
+  </data>
+  <data name="CsNotInfectedAfterCalving" xml:space="preserve">
+    <value>NOT INFECTED AFTER CALVING</value>
+  </data>
+  <data name="CsNotInfectedAtDryoff" xml:space="preserve">
+    <value>NOT INFECTED AT DRY&#x1F;OFF</value>
+  </data>
+  <data name="CsPreventionOfNewInfection" xml:space="preserve">
+    <value>PREVENTION OF NEW INFECTION</value>
+  </data>
   <data name="MonitorCompareButton" xml:space="preserve">
     <value>COMPARE RESULTS</value>
   </data>
@@ -244,8 +268,20 @@ MAY ARISE...</value>
   <data name="MonitorTitle4" xml:space="preserve">
     <value>THE BENEFITS OF MAINTAINING SDCT...</value>
   </data>
+  <data name="NoResultsCompareCaption" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="NoResultsComparePageTitle" xml:space="preserve">
+    <value>RESULTS COMPARISON</value>
+  </data>
+  <data name="NoResultsCompareText" xml:space="preserve">
+    <value>SORRY, WE DONT HAVE ENOUGH DATA TO COMPARE AT THIS TIME</value>
+  </data>
   <data name="SurveyNoButton" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="SurveyResultCompareButton" xml:space="preserve">
+    <value>COMPARE PREVIOUS RESULTS</value>
   </data>
   <data name="SurveyResultImprovementTitle" xml:space="preserve">
     <value>AREAS FOR IMPROVEMENT</value>

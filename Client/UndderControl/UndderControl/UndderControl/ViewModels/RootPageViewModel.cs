@@ -52,6 +52,7 @@ namespace UndderControl.ViewModels
         public RootPageViewModel(INavigationService navigationService, IMetricsManagerService metricsSevice) 
             : base(navigationService)
         {
+            Title = "Undder Control";
             _navigationService = navigationService;
             _metricsService = metricsSevice;
             if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;

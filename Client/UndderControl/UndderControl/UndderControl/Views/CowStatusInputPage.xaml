@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="UndderControl.Views.CowStatusInputPage">
+             x:Class="UndderControl.Views.CowStatusInputPage"
+             Title="{Binding Title}">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
             iOS="21"
@@ -15,12 +17,14 @@
             <StackLayout>
                 <Label x:Name="FarmName" />
                 <Label x:Name="Date" />
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
                     <Label x:Name="IdLabel" />
-                    <Entry x:Name="IdEntry" />
+                    <Entry x:Name="IdEntry" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
                 <Label x:Name="StatusText" Text="{Binding InputModeText}"  />
-                <Switch x:Name="InfectionSwitch" />
+                <input:SelectionView SelectionType="RadioButton" ColumnNumber="1" ItemsSource="{Binding ValueList}" SelectedItem="{Binding InfectedValue}" />
+
+
                 <StackLayout Margin="0,13,0,0">
                     <Button x:Name="ButtonNext" Command="{Binding OnNextCommand}" />
                     <Button x:Name="ButtonFinish" Command="{Binding OnFinishCommand}" />

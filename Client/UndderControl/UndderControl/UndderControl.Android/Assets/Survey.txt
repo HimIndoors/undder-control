@@ -3,7 +3,7 @@
     "Name": "SDCT English",
     "Description": "Selective Dry Cow Therapy",
     "IntroText": "",
-    "Version": 2,
+    "Version": 3,
     "Questions": [
         {
             "QuestionID": 1,
@@ -21,61 +21,71 @@
             "QuestionID": 3,
             "QuestionStageID": 1,
             "QuestionText": "Do you have a dryoff strategy",
-            "QuestionHelpText": "A set dry period length, reliable calving prediction, planning?"
+            "QuestionHelpText": "A set dry period length, reliable calving prediction, planning?",
+			"QuestionStatement": "You should work with your vet/MSD Animal Health Respresentative to create a dry-off stategy."
         },
         {
             "QuestionID": 4,
             "QuestionStageID": 1,
             "QuestionText": "Is poor teat-end condition present in less that 15% of cows at dryoff?",
-            "QuestionHelpText": ""
+            "QuestionHelpText": "",
+			"QuestionStatement": "Poor teat-end condition should be present in less than 15% of cows at dry off."
         },
 		{
             "QuestionID": 5,
             "QuestionStageID": 1,
             "QuestionText": "Is milk production lower than 15kg/day for more than 90% of the cows?",
-            "QuestionHelpText": ""
+            "QuestionHelpText": "",
+			"QuestionStatement": "Milk production should be lower than 15 kg/day for more than 90% of the cows."
         },
 		{
             "QuestionID": 6,
             "QuestionStageID": 1,
             "QuestionText": "Is milk leakage happening in less that 10% of the cows?",
-            "QuestionHelpText": ""
+            "QuestionHelpText": "",
+			"QuestionStatement": "Milk leakage should be happening in less than 10% of the cows."
         },
 		{
             "QuestionID": 7,
             "QuestionStageID": 1,
             "QuestionText": "Are cows getting the appropriate energy, protein, dry-matter intake and minerals in the last weeks before dry-off?",
-            "QuestionHelpText": "If all four elements are appropriate, select yes. If fewer than four are appropriate, select no."
+            "QuestionHelpText": "If all four elements are appropriate, select yes. If fewer than four are appropriate, select no.",
+			"QuestionStatement": "The cows should be getting the appropriate energy, protein, dry matter intake and minerals in the last weeks before dry off."
         },
 		{
             "QuestionID": 8,
             "QuestionStageID": 2,
             "QuestionText": "Does dry-off take place in a clean, comfortable environment and is the correct sequence of events followed?",
-            "QuestionHelpText": "If all three elements are being met, select yes. If fewer than three are being met, select no."
+            "QuestionHelpText": "If all three elements are being met, select yes. If fewer than three are being met, select no.",
+			"QuestionStatement": "Dry off should take place in a clean, comfortable environment and with the correct sequence of events being followed."
         },
         {
             "QuestionID": 9,
             "QuestionStageID": 2,
             "QuestionText": "Are you following correct hygiene protocols, such as using rubber gloves, removing dirt from teats, disinfecting for at least 30 seconds twice and partially inserting the antibiotic or teat seal?",
-            "QuestionHelpText": "If all four criteria are being met, select yes. If fewer than four are being met, select no."
+            "QuestionHelpText": "If all four criteria are being met, select yes. If fewer than four are being met, select no.",
+			"QuestionStatement": "You should be following correct hygiene protocols, such as using clean rubber gloves, removing dirt from teats, disinfecting for at least 30 seconds twice and partially inserting the antibiotic or teat seal."
         },
 		{
             "QuestionID": 10,
             "QuestionStageID": 2,
             "QuestionText": "Are you using cow somatic cell counts or other reilable test to diagnose infection?",
-            "QuestionHelpText": ""
+            "QuestionHelpText": "",
+			"QuestionStatement": "You should be using cow somatic cell counts or another reliable test to diagnose infection."
         },
 		{
             "QuestionID": 11,
             "QuestionStageID": 2,
             "QuestionText": "Is your antibiotic and/or teat seal tube selection based on well-supported data?",
-            "QuestionHelpText": ""
+            "QuestionHelpText": "",
+			"QuestionStatement": "Your antibiotic and/or teat seal tube selection should be based on well-supported data."
         },
 		{
             "QuestionID": 12,
             "QuestionStageID": 2,
             "QuestionText": "Are you mitigating potential stressors, such as commingling, ample space per cow, access to feed and water?",
-            "QuestionHelpText": "If all four criteria are being met, select yes. If fewer than four are being met, select no."
+            "QuestionHelpText": "If all four criteria are being met, select yes. If fewer than four are being met, select no.",
+			"QuestionStatement": "You should mitigate potential stressors, such as commingling, ample space per cow, access to feed and access to water."
         }
     ],
     "Stages": [

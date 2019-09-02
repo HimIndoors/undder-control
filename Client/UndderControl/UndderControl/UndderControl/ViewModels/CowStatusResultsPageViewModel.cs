@@ -1,20 +1,29 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
+using Prism.Navigation;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using UndderControl.Collections;
+using UndderControl.Events;
+using UndderControl.Helpers;
+using UndderControl.Services;
+using UndderControl.Text;
+using UndderControlLib.Dtos;
 using Xamarin.Forms;
 
 namespace UndderControl.ViewModels
 {
-    public class CowStatusResultsPageViewModel : BindableBase
+    public class CowStatusResultsPageViewModel : ViewModelBase
     {
-        ObservableCollection<ResultData> _results;
-        public ObservableCollection<ResultData> NewInfectionRate { get; set; }
-        public ObservableCollection<ResultData> InfectionRate { get; set; }
-        public ObservableCollection<ResultData> Results
+        private List<CowStatusDto> _cowStatusList;
+        private ObservableDictionary<string, int> _results;
+        public ObservableDictionary<string, int> Results
         {
             get { return _results; }
             set
@@ -23,46 +32,164 @@ namespace UndderControl.ViewModels
                 RaisePropertyChanged("Results");
             }
         }
-        string _code;
-        public string Code
+
+        private readonly IMetricsManagerService _metricsService;
+        private readonly IEventAggregator _eventAggregator;
+
+        #region Graph Data
+        private ObservableCollection<ChartDataModel> _niRateHealthy;
+        public ObservableCollection<ChartDataModel> NiRateHealthy
         {
-            get { return _code; }
-            private set
+            get { return _niRateHealthy; }
+            set
             {
-                SetProperty(ref _code, value);
-                RaisePropertyChanged(nameof(Code));
+                SetProperty(ref _niRateHealthy, value);
+                RaisePropertyChanged("NiRateHealthy");
             }
         }
-
-        public CowStatusResultsPageViewModel()
+        private ObservableCollection<ChartDataModel> _niRateNewInfection;
+        public ObservableCollection<ChartDataModel> NiRateNewInfection
         {
-            ObservableCollection<ResultData> temp = new ObservableCollection<ResultData>
+            get { return _niRateNewInfection; }
+            set
             {
-                new ResultData() { Name = "NOT INFECTED AT DRYOFF", Value = 3 },
-                new ResultData() { Name = "INFECTED AT DRYOFF", Value = 4 },
-                new ResultData() { Name = "NOT INFECTED AFTER CALVING", Value = 5 },
-                new ResultData() { Name = "NEW INFECTION", Value = 2 },
-                new ResultData() { Name = "FAILURE TO CURE", Value = 1 },
-                new ResultData() { Name = "CURE", Value = 3 },
-            };
-            Results = temp;
+                SetProperty(ref _niRateNewInfection, value);
+                RaisePropertyChanged("NiRateNewInfection");
+            }
+        }
+        private ObservableCollection<ChartDataModel> _cureRateHealthy;
+        public ObservableCollection<ChartDataModel> CureRateHealthy
+        {
+            get { return _cureRateHealthy; }
+            set
+            {
+                SetProperty(ref _cureRateHealthy, value);
+                RaisePropertyChanged("CureRateHealthy");
+            }
+        }
+        private ObservableCollection<ChartDataModel> _cureRateInfected;
+        public ObservableCollection<ChartDataModel> CureRateInfected
+        {
+            get { return _cureRateInfected; }
+            set
+            {
+                SetProperty(ref _cureRateInfected, value);
+                RaisePropertyChanged("CureRateInfected");
+            }
+        }
+        #endregion Graph Data
 
-            NewInfectionRate = new ObservableCollection<ResultData>
-            {
-                new ResultData() { Name = "Current Rate", Value = 24 }
-            };
-            InfectionRate = new ObservableCollection<ResultData>
-            {
-                new ResultData() { Name = "Current Rate", Value = 76 }
-            };
-
-            Code = "<html><body><h1>Xamarin.Forms</h1><p>Welcome to WebView.</p></body></html>";
+        public CowStatusResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService, IEventAggregator ea)
+            : base(navigationService)
+        {
+            _metricsService = metricsManagerService;
+            _eventAggregator = ea;
+            InitAsync();
         }
 
-        public class ResultData
+        private async void InitAsync()
         {
-            public string Name { get; set; }
-            public int Value { get; set; }
+            try
+            {
+                await RunSafe(GetCowStatus());
+                BuildCowData();
+            }
+            catch (Exception ex)
+            {
+                _metricsService.TrackException("GetFarmsFailed", ex);
+            }
+
+
+        }
+
+        private void BuildCowData()
+        {
+            //Build results dict with zero values
+            var temp = new ObservableDictionary<string, int>
+            {
+                { AppResource.CsNotInfectedAtDryoff, 0 },
+                { AppResource.CsInfectedAtDryoff, 0 },
+                { AppResource.CsNotInfectedAfterCalving, 0 },
+                { AppResource.CsInfectedAfterCalving, 0 },
+                { AppResource.CsNewInfection, 0 },
+                { AppResource.CsPreventionOfNewInfection, 0 },
+                { AppResource.CsFailureToCure, 0 },
+                { AppResource.CsCure, 0 },
+            };
+
+            foreach (CowStatusDto cs in _cowStatusList)
+            {
+                if (cs.InfectedAtDryOff && cs.InfectedAtCalving)
+                {
+                    temp[AppResource.CsInfectedAtDryoff]++;
+                    temp[AppResource.CsInfectedAfterCalving]++;
+                    temp[AppResource.CsFailureToCure]++;
+                }
+                else if(cs.InfectedAtDryOff && !cs.InfectedAtCalving)
+                {
+                    temp[AppResource.CsInfectedAtDryoff]++;
+                    temp[AppResource.CsNotInfectedAfterCalving]++;
+                    temp[AppResource.CsCure]++;
+                }
+                else if (!cs.InfectedAtDryOff && cs.InfectedAtCalving)
+                {
+                    temp[AppResource.CsNotInfectedAtDryoff]++;
+                    temp[AppResource.CsInfectedAfterCalving]++;
+                    temp[AppResource.CsNewInfection]++;
+                }
+                else if (!cs.InfectedAtDryOff && !cs.InfectedAtCalving)
+                {
+                    temp[AppResource.CsNotInfectedAtDryoff]++;
+                    temp[AppResource.CsNotInfectedAfterCalving]++;
+                    temp[AppResource.CsPreventionOfNewInfection]++;
+                }
+            }
+            Results = temp;
+            _eventAggregator.GetEvent<CowStatusResultsEvent>().Publish();
+
+            //Set up graph data
+            NiRateHealthy = new ObservableCollection<ChartDataModel>
+            {
+                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsPreventionOfNewInfection]) / Results[AppResource.CsNotInfectedAtDryoff]))
+            };
+            NiRateNewInfection = new ObservableCollection<ChartDataModel>
+            {
+                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsNewInfection]) / Results[AppResource.CsNotInfectedAtDryoff])),
+            };
+            CureRateHealthy = new ObservableCollection<ChartDataModel>
+            {
+                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsCure]) / Results[AppResource.CsInfectedAtDryoff])),
+            };
+            CureRateInfected = new ObservableCollection<ChartDataModel>
+            {
+                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsFailureToCure]) / Results[AppResource.CsInfectedAtDryoff])),
+            };
+        }
+
+        private async Task GetCowStatus()
+        {
+            try
+            {
+                //var apiresponse = await ApiManager.GetStatusByFarmId(App.SelectedFarm.ID);
+                var apiresponse = await ApiManager.GetStatusByFarmId(1);
+                if (apiresponse.IsSuccessStatusCode)
+                {
+                    var response = await apiresponse.Content.ReadAsStringAsync();
+                    var json = await Task.Run(() => JsonConvert.DeserializeObject<List<CowStatusDto>>(response));
+                    _cowStatusList = json;
+                }
+                else
+                {
+                    await PageDialog.AlertAsync("Unable to retrieve cow status data", "Error", "OK");
+                }
+            }
+            catch(Exception ex)
+            {
+                _metricsService.TrackException("Error getting cowstatus data", ex);
+                await PageDialog.AlertAsync("Unable to retrieve cow status data", "Error", "OK");
+            }
+
+            
         }
     }
 }

@@ -1,33 +1,46 @@
 ﻿using Microcharts;
-using Prism.AppModel;
+using Newtonsoft.Json;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Navigation;
 using SkiaSharp;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using UndderControl.Collections;
+using UndderControl.Events;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
-using Xamarin.Forms;
 using Entry = Microcharts.Entry;
 
 namespace UndderControl.ViewModels
 {
     public class SurveyResultsPageViewModel : ViewModelBase, IInitialize
     {
-        SurveyResponseDto _response;
-        List<Entry> _results;
+        private IMetricsManagerService _metricsService;
+        private readonly INavigationService _navigationService;
+        private SurveyResponseDto _response;
+        private readonly IEventAggregator _eventAggregator;
+        private DelegateCommand _compareCommand;
+        private List<SurveyResponseDto> _responses;
+        public IList<Entry> Results;
+        public IDictionary<string, List<string>> Statements;
         public RadarChart Chart;
+        public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
 
-        public SurveyResultsPageViewModel(INavigationService navigationService)
+        public SurveyResultsPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, IMetricsManagerService metricsManagerService)
             : base(navigationService)
         {
+            _navigationService = navigationService;
+            _metricsService = metricsManagerService;
+            _eventAggregator = eventAggregator;
             Init();
         }
         private void Init()
         {
-            Chart = new RadarChart() { Entries = _results };
-            //Add Chart to view, currently using dummp data in view
+            PageDialog.ShowLoading("Loading");
         }
         private string ReturnHexValue(int score)
         {
@@ -59,7 +72,8 @@ namespace UndderControl.ViewModels
         public void Initialize(INavigationParameters parameters)
         {
             _response = parameters["response"] as SurveyResponseDto;
-            _results = new List<Entry>();
+            Results = new ObservableCollection<Entry>();
+            Statements = new ObservableDictionary<string, List<string>>();
             if (_response != null)
             {
 
@@ -70,16 +84,71 @@ namespace UndderControl.ViewModels
                     //Hardcoded skip of stage 0, this could be a parameter in the stage model instead? 
                     if (stage.StageID > 0)
                     {
+                        //Add Stage to spidergraph
                         var score = answers.Where(a => a.StageID == stage.StageID && a.QuestionResponse == true).Count();
-                        _results.Add(
+                        Results.Add(
                             new Entry(score)
                             {
-                                Label = stage.StageTitle,
+                                Label = stage.StageText,
                                 ValueLabel = score.ToString(),
                                 Color = SKColor.Parse(ReturnHexValue(score)),
                             });
+
+                        //Add any statements from questions answered 'No'
+                        if (answers.Where(a => a.StageID == stage.StageID && a.QuestionResponse==false).Count() > 0)
+                        {
+                            var statements = new List<string>();
+                            foreach (var answer in answers.Where(a => a.StageID == stage.StageID && a.QuestionResponse == false))
+                            {
+                                statements.Add(answer.Statement);
+                            }
+                            Statements.Add(stage.StageText, statements);
+                        }
                     }
                 }
+            }
+            _eventAggregator.GetEvent<SurveyResultsEvent>().Publish();
+            PageDialog.HideLoading();
+        }
+
+        async void NavigateAsync()
+        {
+            try
+            {
+                await RunSafe(GetResponses());
+            }
+            catch (Exception ex)
+            {
+                _metricsService.TrackException("GetSurveyResponsesFailed", ex);
+            }
+
+            if (_responses != null && _responses.Count > 1)
+            {
+                var navigationParams = new NavigationParameters
+                {
+                    { "responses", _responses }
+                };
+                await _navigationService.NavigateAsync("SurveyComparisonPage", navigationParams);
+            }
+            else
+            {
+                await _navigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/NoResultComparisonPage");
+            }
+        }
+
+        async Task GetResponses()
+        {
+            var response = await ApiManager.GetResponseByFarmId(App.SelectedFarm.ID);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                var json = await Task.Run(() => JsonConvert.DeserializeObject<List<SurveyResponseDto>>(responseString));
+                _responses = json;
+            }
+            else
+            {
+                await PageDialog.AlertAsync("Unable to retrieve survey response data", "Error", "OK");
             }
         }
     }

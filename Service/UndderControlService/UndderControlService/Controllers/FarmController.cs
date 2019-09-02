@@ -26,24 +26,25 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, "The farms are being returned.", typeof(IEnumerable<FarmDto>))]
         public IHttpActionResult Get()
         {
-            var farms = AutoMapper.Mapper.Map<List<FarmDto>>(db.Farms.ToList());
+            var farms = Mapper.Map<List<FarmDto>>(db.Farms.ToList());
             return Ok(farms);
         }
 
         // GET api/<controller>/5
         /// <summary>
-        /// Get all farms by User ID
+        /// Get farm by ID.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>IEnumerable<FarmDto></returns>
-        [SwaggerOperation("GetFarmsByUserID")]
-        [ResponseType(typeof(IEnumerable<FarmDto>))]
-        [SwaggerResponse(HttpStatusCode.NotFound, "A User with the specified ID was not found.")]
-        [SwaggerResponse(HttpStatusCode.OK, "The specified farms are being returned.", typeof(IEnumerable<FarmDto>))]
-        public IHttpActionResult GetFarmsByUserId(int id)
+        /// <returns>FarmDto</returns>
+        [SwaggerOperation("GetFarmByID")]
+        [ResponseType(typeof(FarmDto))]
+        [SwaggerResponse(HttpStatusCode.NotFound, "No farm found for this ID.")]
+        [SwaggerResponse(HttpStatusCode.OK, "The specified farm is being returned.", typeof(FarmDto))]
+        public IHttpActionResult GetFarmByID(int id)
         {
-            var farms = AutoMapper.Mapper.Map<List<FarmDto>>(db.Farms.Where(f => f.User_ID == id).ToList());
-            return Ok(farms);
+            var thisYear = DateTime.Now.Year;
+            var result = Mapper.Map<FarmDto>(db.Farms.Where(f => f.ID == id));
+            return Ok(result);
         }
 
         // POST api/<controller>

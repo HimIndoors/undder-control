@@ -27,5 +27,9 @@ namespace UndderControlService.Data.Entities
         public double? Lon { get; set; }
         public float Accuracy { get; set; }
         public virtual IList<SurveyQuestionResponse> QuestionResponses { get; set; } = new List<SurveyQuestionResponse>();
+        [ForeignKey("User_ID")]
+        public virtual Farm Farm { get; set; }
+        [Required]
+        public int Farm_ID { get; set; }
     }
 }

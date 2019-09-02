@@ -47,14 +47,15 @@ namespace UndderControl.ViewModels
         }
         public IUserDialogs PageDialog = UserDialogs.Instance;
         public IApiManager ApiManager;
-        IApiService<IFarmApi> farmApi = new ApiService<IFarmApi>(Config.ApiUrl);
-        IApiService<ISurveyApi> surveyApi = new ApiService<ISurveyApi>(Config.ApiUrl);
-        IApiService<ICowStatusApi> cowStatusApi = new ApiService<ICowStatusApi>(Config.ApiUrl);
+        readonly IApiService<IFarmApi> farmApi = new ApiService<IFarmApi>(Config.ApiUrl);
+        readonly IApiService<ISurveyApi> surveyApi = new ApiService<ISurveyApi>(Config.ApiUrl);
+        readonly IApiService<ICowStatusApi> cowStatusApi = new ApiService<ICowStatusApi>(Config.ApiUrl);
+        readonly IApiService<ISurveyResponseApi> surveyResponseApi = new ApiService<ISurveyResponseApi>(Config.ApiUrl);
 
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
-            ApiManager = new ApiManager(farmApi, surveyApi, cowStatusApi);
+            ApiManager = new ApiManager(farmApi, surveyApi, cowStatusApi, surveyResponseApi);
         }
 
         public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)

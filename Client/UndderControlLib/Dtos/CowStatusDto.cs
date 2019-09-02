@@ -7,8 +7,11 @@ namespace UndderControlLib.Dtos
     public class CowStatusDto
     {
         public int ID { get; set; }
-        public string CowId { get; set; }
-        public bool Infected { get; set; }
         public int Farm_ID { get; set; }
+        public bool InfectedAtDryOff { get; set; }
+        public bool InfectedAtCalving { get; set; }
+        public string CowIdentifier { get; set; }
+        public DateTime? DateAddedDryOff { get; set; }
+        public DateTime? DateAddedCalving { get; set; }
     }
 }

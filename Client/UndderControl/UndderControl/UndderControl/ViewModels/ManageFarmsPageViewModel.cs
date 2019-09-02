@@ -44,6 +44,7 @@ namespace UndderControl.ViewModels
         public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
             : base(navigationService)
         {
+            Title = "FARMS";
             _navigationService = navigationService;
             _metricsManagerService = metricsManagerService;
             AddFarmCommand = new DelegateCommand<string>(AddFarm);

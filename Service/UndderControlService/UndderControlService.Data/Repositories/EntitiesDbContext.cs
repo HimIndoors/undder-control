@@ -23,9 +23,7 @@ namespace UndderControlService.Data.Repositories
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         public virtual DbSet<Farm> Farms { get; set; }
-        public virtual DbSet<Cow> Cows { get; set; }
-        public virtual DbSet<CowProcess> CowProcesses { get; set; }
-        public virtual DbSet<CowStatus> CowStatuses { get; set; }
+        public virtual DbSet<CowStatus> CowStatus { get; set; }
         public virtual DbSet<Survey> Surveys { get; set; }
         public virtual DbSet<SurveyQuestion> SurveyQuestions { get; set; }
         public virtual DbSet<SurveyQuestionResponse> SurveyQuestionResponses { get; set; }
@@ -43,10 +41,4 @@ namespace UndderControlService.Data.Repositories
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
-
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
 }

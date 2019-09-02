@@ -82,6 +82,40 @@ namespace UndderControlService.Data.Seed
             };
             questions.ForEach(q => context.SurveyQuestions.Add(q));
             context.SaveChanges();
+
+            DateTime now = DateTime.Now;
+            var cows = new List<CowStatus>
+            {
+                new CowStatus{ CowIdentifier="001", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="002", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="003", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="004", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="005", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="006", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="007", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="008", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="009", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="010", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+
+                new CowStatus{ CowIdentifier="101", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="102", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="103", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="104", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="105", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="106", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="107", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="108", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="109", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus { CowIdentifier="110", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now }
+            };
+            cows.ForEach(c => context.CowStatus.Add(c));
+            context.SaveChanges();
+        }
+
+        private bool GenerateBoolValue()
+        {
+            Random rng = new Random();
+            return rng.NextDouble() >= 0.5;
         }
     }
 }

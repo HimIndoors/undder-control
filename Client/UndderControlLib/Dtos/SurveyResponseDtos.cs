@@ -26,6 +26,11 @@ namespace UndderControlLib.Dtos
         /// </summary>
         public String UserID { get; set; }
 
+        /// <summary>
+        /// Identifier of the selected farm.
+        /// </summary>
+        public String FarmID { get; set; }
+
         public DateTimeOffset StartTime { get; set; }
         public DateTimeOffset? EndTime { get; set; }
 

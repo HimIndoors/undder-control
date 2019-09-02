@@ -11,10 +11,15 @@ namespace UndderControl.Services
     {
         Task<HttpResponseMessage> FarmList();
         Task<HttpResponseMessage> GetFarmsByUserId(int id);
+        Task<HttpResponseMessage> UploadFarm(FarmDto farm, bool isNew);
+
         Task<HttpResponseMessage> GetLatestSurvey();
         Task<HttpResponseMessage> UploadSurvey(SurveyResponseDto survey);
-        Task<HttpResponseMessage> UploadFarm(FarmDto farm, bool isNew);
-        Task<HttpResponseMessage> UploadCowStatus(CowStatusDto status);
+
+        Task<HttpResponseMessage> GetResponseByFarmId(int id);
+
+        Task<HttpResponseMessage> CreateCowStatus(CowStatusDto farm);
+        Task<HttpResponseMessage> GetStatusByFarmId(int id);
 
     }
 }

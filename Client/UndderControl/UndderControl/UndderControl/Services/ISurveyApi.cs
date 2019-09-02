@@ -13,8 +13,5 @@ namespace UndderControl.Services
     {
         [Get("/survey?activeOnly=true")]
         Task<HttpResponseMessage> GetLatestSurvey();
-
-        [Post("/survey/")]
-        Task<HttpResponseMessage> UploadSurvey([Body] SurveyResponseDto survey);
     }
 }

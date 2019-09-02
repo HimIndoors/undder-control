@@ -20,6 +20,7 @@
             <Label x:Name="FarmSuitability" TextColor="White" FontSize="Medium" />
             <Label x:Name="ImprovementTitle" />
             <StackLayout x:Name="StatementStack" />
+            <Button x:Name="CompareButton" Command="{Binding CompareCommand}" />
         </StackLayout>
     </ScrollView>
 

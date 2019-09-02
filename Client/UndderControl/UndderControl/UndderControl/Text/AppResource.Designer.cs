@@ -324,6 +324,78 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CURE.
+        /// </summary>
+        public static string CsCure {
+            get {
+                return ResourceManager.GetString("CsCure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FAILURE TO CURE.
+        /// </summary>
+        public static string CsFailureToCure {
+            get {
+                return ResourceManager.GetString("CsFailureToCure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INFECTED AFTER CALVING.
+        /// </summary>
+        public static string CsInfectedAfterCalving {
+            get {
+                return ResourceManager.GetString("CsInfectedAfterCalving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INFECTED AT DRYOFF.
+        /// </summary>
+        public static string CsInfectedAtDryoff {
+            get {
+                return ResourceManager.GetString("CsInfectedAtDryoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NEW INFECTION.
+        /// </summary>
+        public static string CsNewInfection {
+            get {
+                return ResourceManager.GetString("CsNewInfection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOT INFECTED AFTER CALVING.
+        /// </summary>
+        public static string CsNotInfectedAfterCalving {
+            get {
+                return ResourceManager.GetString("CsNotInfectedAfterCalving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOT INFECTED AT DRYOFF.
+        /// </summary>
+        public static string CsNotInfectedAtDryoff {
+            get {
+                return ResourceManager.GetString("CsNotInfectedAtDryoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PREVENTION OF NEW INFECTION.
+        /// </summary>
+        public static string CsPreventionOfNewInfection {
+            get {
+                return ResourceManager.GetString("CsPreventionOfNewInfection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to COMPARE RESULTS.
         /// </summary>
         public static string MonitorCompareButton {
@@ -434,11 +506,47 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ....
+        /// </summary>
+        public static string NoResultsCompareCaption {
+            get {
+                return ResourceManager.GetString("NoResultsCompareCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RESULTS COMPARISON.
+        /// </summary>
+        public static string NoResultsComparePageTitle {
+            get {
+                return ResourceManager.GetString("NoResultsComparePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SORRY, WE DONT HAVE ENOUGH DATA TO COMPARE AT THIS TIME.
+        /// </summary>
+        public static string NoResultsCompareText {
+            get {
+                return ResourceManager.GetString("NoResultsCompareText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string SurveyNoButton {
             get {
                 return ResourceManager.GetString("SurveyNoButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to COMPARE PREVIOUS RESULTS.
+        /// </summary>
+        public static string SurveyResultCompareButton {
+            get {
+                return ResourceManager.GetString("SurveyResultCompareButton", resourceCulture);
             }
         }
         

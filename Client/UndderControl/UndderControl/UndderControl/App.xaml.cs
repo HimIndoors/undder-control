@@ -47,7 +47,8 @@ namespace UndderControl
         {
             if (VersionTracking.IsFirstLaunchEver || VersionTracking.IsFirstLaunchForCurrentVersion|| Config.TestMode)
             {
-                await NavigationService.NavigateAsync("TermsPage");
+                //await NavigationService.NavigateAsync("TermsPage");
+                await NavigationService.NavigateAsync("CowStatusResultsPage");
             }
             else
             {
@@ -79,6 +80,7 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<CowStatusInputPage, CowStatusInputPageViewModel>();
             containerRegistry.RegisterForNavigation<CowStatusFinishPage, CowStatusFinishPageViewModel>();
             containerRegistry.RegisterForNavigation<AboutPage, AboutPageViewModel>();
+            containerRegistry.RegisterForNavigation<NoResultsComparison, NoResultsComparisonViewModel>();
         }
     }
 }

@@ -170,8 +170,7 @@ namespace UndderControl.ViewModels
         {
             try
             {
-                //var apiresponse = await ApiManager.GetStatusByFarmId(App.SelectedFarm.ID);
-                var apiresponse = await ApiManager.GetStatusByFarmId(1);
+                var apiresponse = await ApiManager.GetStatusByFarmId(App.SelectedFarm.ID);
                 if (apiresponse.IsSuccessStatusCode)
                 {
                     var response = await apiresponse.Content.ReadAsStringAsync();

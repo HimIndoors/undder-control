@@ -38,13 +38,22 @@ namespace UndderControlService.Controllers
         /// <returns>UserDto</returns>
         [SwaggerOperation("GetUserByID")]
         [ResponseType(typeof(UserDto))]
-        [SwaggerResponse(HttpStatusCode.NotFound, "No user found for this token.")]
         [SwaggerResponse(HttpStatusCode.OK, "The specified user is being returned.", typeof(UserDto))]
         public IHttpActionResult GetUserByID(string token)
         {
-            var thisYear = DateTime.Now.Year;
-            var result = Mapper.Map<UserDto>(db.Users.Where(u => u.Token == token));
-            return Ok(result);
+            //Check for existing user and if not available create new and return.
+            UserDto user = Mapper.Map<UserDto>(db.Users.Where(u => u.Token == token)); 
+            if (user == null)
+            {
+                User u = new User
+                {
+                    Token = token
+                };
+                db.Users.Add(u);
+                db.SaveChanges();
+                user = Mapper.Map<UserDto>(u);
+            }
+            return Ok(user);
         }
 
         // POST api/<controller>

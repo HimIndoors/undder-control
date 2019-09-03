@@ -26,10 +26,11 @@ namespace UndderControl.Services
         private readonly IApiService<ISurveyApi> _surveyApi;
         private readonly IApiService<ICowStatusApi> _cowStatusApi;
         private readonly IApiService<ISurveyResponseApi> _surveyResponseApi;
+        private readonly IApiService<IUserApi> _userApi;
         private readonly double _cacheExpiryDays = Config.MonkeyCacheExpiry;
         public bool IsConnected { get; set; }
 
-        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi, IApiService<ISurveyResponseApi> surveyResponseApi)
+        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi, IApiService<ISurveyResponseApi> surveyResponseApi, IApiService<IUserApi> userApi)
         {
             IsConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
@@ -37,6 +38,7 @@ namespace UndderControl.Services
             _surveyApi = surveyApi;
             _cowStatusApi = cowStatusApi;
             _surveyResponseApi = surveyResponseApi;
+            _userApi = userApi;
         }
 
         private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
@@ -124,7 +126,7 @@ namespace UndderControl.Services
                 return await task;            
         }
 
-        public async Task<HttpResponseMessage> UploadSurvey(SurveyResponseDto survey)
+        public async Task<HttpResponseMessage> UploadResponse(SurveyResponseDto survey)
         {
             var cts = new CancellationTokenSource();
             var task = RemoteRequestAsync(_surveyResponseApi.GetApi(Priority.UserInitiated).UploadSurvey(survey), string.Empty);
@@ -278,6 +280,33 @@ namespace UndderControl.Services
 
                 return await task;
             }
+        }
+
+        public async Task<HttpResponseMessage> GetUserByToken(string token)
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync(_userApi.GetApi(Priority.UserInitiated).GetUserByToken(token), "GetUserById" + token);
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
+        }
+
+        public async Task<HttpResponseMessage> CreateUser(UserDto user)
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync(_userApi.GetApi(Priority.UserInitiated).CreateUser(user), null);
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
+        }
+
+        public async Task<HttpResponseMessage> UpdateUser(UserDto user)
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync(_userApi.GetApi(Priority.UserInitiated).UpdateUser(user), null);
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
         }
     }
 }

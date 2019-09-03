@@ -10,28 +10,40 @@ namespace UndderControl.Helpers
     /// </summary>
     public static class UserSettings
     {
-        private static ISettings AppSettings
-        {
-            get
-            {
-                return CrossSettings.Current;
-            }
-        }
+        private static ISettings AppSettings => CrossSettings.Current;
 
         #region Setting Constants
-        private const string SettingsKey = "settings_key";
-        private static readonly string SettingsDefault = string.Empty;
+        private const string UserTokenKey = "usertoken";
+        private const string UserIdKey = "userid";
         #endregion
 
-        public static string GeneralSettings
+        /// <summary>
+        /// The cached user ID received from login.
+        /// </summary>
+        public static int UserId
         {
             get
             {
-                return AppSettings.GetValueOrDefault(SettingsKey, SettingsDefault);
+                return AppSettings.GetValueOrDefault(UserIdKey, default(int));
             }
             set
             {
-                AppSettings.AddOrUpdateValue(SettingsKey, value);
+                AppSettings.AddOrUpdateValue(UserIdKey, value);
+            }
+        }
+
+        /// <summary>
+        /// The cached user token received from login.
+        /// </summary>
+        public static string UserToken
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserTokenKey, default(string));
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(UserTokenKey, value);
             }
         }
 

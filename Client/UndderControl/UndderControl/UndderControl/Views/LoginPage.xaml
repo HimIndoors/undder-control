@@ -4,7 +4,6 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.LoginPage">
-    
-    <WebView x:Name="LoginView" Source="https://lfwmobilehybrid.merck-animal-health.com/LoginCheck.asp?lfwmobileapp=lfwmodetest" HeightRequest="400" WidthRequest="400" />
-  
+    <StackLayout x:Name="LoginStack" />
+
 </ContentPage>

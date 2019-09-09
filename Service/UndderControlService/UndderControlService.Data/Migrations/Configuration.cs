@@ -6,6 +6,7 @@ namespace UndderControlService.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using UndderControlService.Data.Entities;
+    using UndderControlService.Data.Helper;
 
     internal sealed class Configuration : DbMigrationsConfiguration<UndderControlService.Data.Repositories.EntitiesDbContext>
     {
@@ -16,9 +17,17 @@ namespace UndderControlService.Data.Migrations
 
         protected override void Seed(UndderControlService.Data.Repositories.EntitiesDbContext context)
         {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
+            DateTime now = DateTime.Now;
+            DateTime lastYear = now.AddYears(-1);
+            BoolHelper helper = new BoolHelper();
+
             //Add test user
-            var user = new User() { Name = "Vicky the Vet", Token = "MERCK_USER_TOKEN" };
-            context.Users.Add(user);
+            var user = new User() { Name = "Vicky the Vet", Token = "PMN_TEST_TOKEN" };
+            context.Users.AddOrUpdate(user);
             context.SaveChanges();
 
             //Add test farms
@@ -28,11 +37,13 @@ namespace UndderControlService.Data.Migrations
                 new Farm{Name="Old MacDonalds",Address="123 Nursery Row", ContactName="Farmer Harry", HerdSize=2000,PhoneNumber="1234567890", User=user}
             };
 
-            farms.ForEach(s => context.Farms.Add(s));
+            farms.ForEach(s => context.Farms.AddOrUpdate(s));
             context.SaveChanges();
 
             //Add Survey
-            var survey = new Survey { Description = "Farm Assessment Questionnaire", IntroText = null, LastUpdated = DateTime.Now, Name = "SDCT", Version = 1 };
+            var survey = new Survey { Description = "Farm Assessment Questionnaire", IntroText = null, LastUpdated = DateTime.Now, Name = "SDCT", Version = 1, Active = true, Language = "EN" };
+            context.Surveys.AddOrUpdate(survey);
+            context.SaveChanges();
 
             //Create stages
             var stages = new List<SurveyStage>
@@ -44,7 +55,7 @@ namespace UndderControlService.Data.Migrations
                 new SurveyStage{ StageText="Close up", StageTitle="Stage 4", ShowStageIntro=true, Survey = survey},
                 new SurveyStage{ StageText="Calving", StageTitle="Stage 5", ShowStageIntro=true, Survey = survey}
             };
-            stages.ForEach(s => context.SurveyStages.Add(s));
+            stages.ForEach(s => context.SurveyStages.AddOrUpdate(s));
             context.SaveChanges();
 
             //Add Questions
@@ -84,35 +95,71 @@ namespace UndderControlService.Data.Migrations
                 new SurveyQuestion{ QuestionNum=5, QuestionText="Is the milking machine for the first milkings after calving functioning properly and thoroughly cleaned and disinfected before and after milkings?", QuestionHelpText="If the two are correct, select yes. If fewer than two are correct, select no.", QuestionStatement="The milking machine for the first milkings after calving should be functioning properly and be thoroughly cleaned and disinfected before and after milkings.", Stage=stages[5], Survey=survey}
 
             };
-            questions.ForEach(q => context.SurveyQuestions.Add(q));
+            questions.ForEach(q => context.SurveyQuestions.AddOrUpdate(q));
             context.SaveChanges();
 
-            DateTime now = DateTime.Now;
             var cows = new List<CowStatus>
             {
-                new CowStatus{ CowIdentifier="001", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="002", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="003", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="004", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="005", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="006", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="007", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="008", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="009", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="010", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="001", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="002", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="003", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="004", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="005", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="006", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="007", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="008", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="009", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="010", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="101", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="102", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="103", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="104", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="105", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="106", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="107", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="108", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus{ CowIdentifier="109", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
+                new CowStatus { CowIdentifier="110", Farm = farms[0], InfectedAtDryOff = helper.GetRandomBoolean(), InfectedAtCalving = helper.GetRandomBoolean(), DateAddedDryOff = lastYear.AddDays(-60), DateAddedCalving = lastYear },
 
-                new CowStatus{ CowIdentifier="101", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="102", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="103", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="104", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="105", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="106", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="107", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="108", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus{ CowIdentifier="109", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now, DateAddedCalving = now },
-                new CowStatus { CowIdentifier="110", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now, DateAddedCalving = now }
+                new CowStatus{ CowIdentifier="001", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="002", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="003", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="004", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="005", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="006", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="007", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="008", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="009", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="010", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="101", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="102", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="103", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="104", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="105", Farm = farms[0], InfectedAtDryOff = true, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="106", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="107", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="108", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus{ CowIdentifier="109", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = true, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now },
+                new CowStatus { CowIdentifier="110", Farm = farms[0], InfectedAtDryOff = false, InfectedAtCalving = false, DateAddedDryOff = now.AddDays(-60), DateAddedCalving = now }
             };
-            cows.ForEach(c => context.CowStatus.Add(c));
+            cows.ForEach(c => context.CowStatus.AddOrUpdate(c));
+            context.SaveChanges();
+
+            var answersThisYear = new List<SurveyQuestionResponse>();
+            var answersLastYear = new List<SurveyQuestionResponse>();
+
+            foreach (SurveyQuestion question in questions)
+            {
+                answersThisYear.Add(new SurveyQuestionResponse { QuestionID = question.ID, StageID = question.Stage_ID, QuestionResponse = helper.GetRandomBoolean(), QuestionStatement = question.QuestionStatement });
+                answersLastYear.Add(new SurveyQuestionResponse { QuestionID = question.ID, StageID = question.Stage_ID, QuestionResponse = helper.GetRandomBoolean(), QuestionStatement = question.QuestionStatement });
+            }
+
+            var surveyResponses = new List<SurveyResponse> {
+                new SurveyResponse { Survey = survey, Farm = farms[0], User = user, SubmittedDate = now, SurveyVersion = survey.Version, QuestionResponses = answersThisYear, ResponseIdentifier = Guid.NewGuid() },
+                new SurveyResponse { Survey = survey, Farm = farms[0], User = user, SubmittedDate = lastYear, SurveyVersion = survey.Version, QuestionResponses = answersLastYear, ResponseIdentifier = Guid.NewGuid() }
+            };
+
+            surveyResponses.ForEach(s => context.SurveyResponses.AddOrUpdate(s));
             context.SaveChanges();
         }
     }

@@ -93,7 +93,7 @@ namespace UndderControl.ViewModels
 
         private async void EndSurvey()
         {
-            _response.EndTime = DateTimeOffset.Now;
+            _response.SubmittedDate = DateTime.Now;
 
             DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyEnded");
 
@@ -177,7 +177,14 @@ namespace UndderControl.ViewModels
             DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyNextQuestion", properties);
 
             // Save the response
-            _response.QuestionResponses.Add(new SurveyQuestionResponseDto(CurrentQuestion.QuestionID, CurrentQuestion.QuestionStageID, value, CurrentQuestion.QuestionStatement));
+            _response.QuestionResponses.Add(
+                    new SurveyQuestionResponseDto
+                    {
+                        QuestionID = CurrentQuestion.QuestionID,
+                        StageID = CurrentQuestion.QuestionStageID,
+                        QuestionResponse = value,
+                        QuestionStatement = CurrentQuestion.QuestionStatement
+                    });
 
             //Select next question
             _questionIndex++;

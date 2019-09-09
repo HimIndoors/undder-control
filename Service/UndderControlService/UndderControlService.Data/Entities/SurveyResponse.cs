@@ -15,21 +15,19 @@ namespace UndderControlService.Data.Entities
         public virtual Survey Survey { get; set; }
         [Required]
         public int Survey_ID { get; set; }
-        public int Survey_Version { get; set; }
+        public int SurveyVersion { get; set; }
+        public DateTime SubmittedDate { get; set; }
+        public virtual IList<SurveyQuestionResponse> QuestionResponses { get; set; } = new List<SurveyQuestionResponse>();
+
+        [ForeignKey("Farm_ID")]
+        public virtual Farm Farm { get; set; }
+        [Required]
+        public int Farm_ID { get; set; }
+
         [ForeignKey("User_ID")]
         public virtual User User { get; set; }
         [Required]
         public int User_ID { get; set; }
-        public DateTimeOffset StartTime { get; set; }
-        public DateTimeOffset? EndTime { get; set; }
         public Guid ResponseIdentifier { get; set; }
-        public double? Lat { get; set; }
-        public double? Lon { get; set; }
-        public float Accuracy { get; set; }
-        public virtual IList<SurveyQuestionResponse> QuestionResponses { get; set; } = new List<SurveyQuestionResponse>();
-        [ForeignKey("User_ID")]
-        public virtual Farm Farm { get; set; }
-        [Required]
-        public int Farm_ID { get; set; }
     }
 }

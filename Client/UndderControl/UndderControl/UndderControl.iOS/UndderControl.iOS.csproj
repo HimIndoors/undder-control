@@ -236,5 +236,8 @@
   <ItemGroup>
     <BundleResource Include="Resources\Survey.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Cows.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

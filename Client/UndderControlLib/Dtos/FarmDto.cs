@@ -6,7 +6,7 @@ namespace UndderControlLib.Dtos
 {
     /// <summary>
     /// Client-side model farm details
-    /// Only the ID, Name and HerdSize are required for the app to function, the rest are QoL fields for the vet/rep
+    /// Only the ID and Name are required for the app to function, the rest are QoL fields for the vet/rep
     /// </summary>
     public class FarmDto
     {

@@ -8,29 +8,20 @@ namespace UndderControlService.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.CowProcess",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.Cow",
+                "dbo.CowStatus",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
                         Farm_ID = c.Int(nullable: false),
-                        Process_ID = c.Int(nullable: false),
-                        Infected = c.Boolean(nullable: false),
+                        InfectedAtDryOff = c.Boolean(nullable: false),
+                        InfectedAtCalving = c.Boolean(nullable: false),
                         CowIdentifier = c.String(),
+                        DateAddedDryOff = c.DateTime(),
+                        DateAddedCalving = c.DateTime(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Farm", t => t.Farm_ID)
-                .ForeignKey("dbo.CowProcess", t => t.Process_ID)
-                .Index(t => t.Farm_ID)
-                .Index(t => t.Process_ID);
+                .Index(t => t.Farm_ID);
             
             CreateTable(
                 "dbo.Farm",
@@ -65,9 +56,10 @@ namespace UndderControlService.Data.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         SurveyResponse_ID = c.Int(nullable: false),
-                        Question_ID = c.Int(nullable: false),
-                        Stage_ID = c.Int(nullable: false),
+                        QuestionID = c.Int(nullable: false),
+                        StageID = c.Int(nullable: false),
                         QuestionResponse = c.Boolean(nullable: false),
+                        QuestionStatement = c.String(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.SurveyResponse", t => t.SurveyResponse_ID)
@@ -79,19 +71,17 @@ namespace UndderControlService.Data.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         Survey_ID = c.Int(nullable: false),
-                        Survey_Version = c.Int(nullable: false),
+                        SurveyVersion = c.Int(nullable: false),
+                        SubmittedDate = c.DateTime(nullable: false),
+                        Farm_ID = c.Int(nullable: false),
                         User_ID = c.Int(nullable: false),
-                        StartTime = c.DateTimeOffset(nullable: false, precision: 7),
-                        EndTime = c.DateTimeOffset(precision: 7),
-                        ResponseIdentifier = c.Guid(nullable: false),
-                        Lat = c.Double(),
-                        Lon = c.Double(),
-                        Accuracy = c.Single(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Farm", t => t.Farm_ID)
                 .ForeignKey("dbo.Survey", t => t.Survey_ID)
                 .ForeignKey("dbo.User", t => t.User_ID)
                 .Index(t => t.Survey_ID)
+                .Index(t => t.Farm_ID)
                 .Index(t => t.User_ID);
             
             CreateTable(
@@ -151,18 +141,18 @@ namespace UndderControlService.Data.Migrations
             DropForeignKey("dbo.SurveyQuestion", "Stage_ID", "dbo.SurveyStage");
             DropForeignKey("dbo.SurveyStage", "Survey_ID", "dbo.Survey");
             DropForeignKey("dbo.SurveyQuestionResponse", "SurveyResponse_ID", "dbo.SurveyResponse");
-            DropForeignKey("dbo.Cow", "Process_ID", "dbo.CowProcess");
-            DropForeignKey("dbo.Cow", "Farm_ID", "dbo.Farm");
+            DropForeignKey("dbo.SurveyResponse", "Farm_ID", "dbo.Farm");
+            DropForeignKey("dbo.CowStatus", "Farm_ID", "dbo.Farm");
             DropForeignKey("dbo.Farm", "User_ID", "dbo.User");
             DropIndex("dbo.SurveyStage", new[] { "Survey_ID" });
             DropIndex("dbo.SurveyQuestion", new[] { "Stage_ID" });
             DropIndex("dbo.SurveyQuestion", new[] { "Survey_ID" });
             DropIndex("dbo.SurveyResponse", new[] { "User_ID" });
+            DropIndex("dbo.SurveyResponse", new[] { "Farm_ID" });
             DropIndex("dbo.SurveyResponse", new[] { "Survey_ID" });
             DropIndex("dbo.SurveyQuestionResponse", new[] { "SurveyResponse_ID" });
             DropIndex("dbo.Farm", new[] { "User_ID" });
-            DropIndex("dbo.Cow", new[] { "Process_ID" });
-            DropIndex("dbo.Cow", new[] { "Farm_ID" });
+            DropIndex("dbo.CowStatus", new[] { "Farm_ID" });
             DropTable("dbo.SurveyStage");
             DropTable("dbo.SurveyQuestion");
             DropTable("dbo.Survey");
@@ -170,8 +160,7 @@ namespace UndderControlService.Data.Migrations
             DropTable("dbo.SurveyQuestionResponse");
             DropTable("dbo.User");
             DropTable("dbo.Farm");
-            DropTable("dbo.Cow");
-            DropTable("dbo.CowProcess");
+            DropTable("dbo.CowStatus");
         }
     }
 }

@@ -31,22 +31,17 @@ namespace UndderControlLib.Dtos
         /// </summary>
         public String FarmID { get; set; }
 
-        public DateTimeOffset StartTime { get; set; }
-        public DateTimeOffset? EndTime { get; set; }
-
         /// <summary>
-        /// Unique GUID generated client-side for each response.
-        /// Will ensure responses aren't uploaded multiple times due to bad connection, etc.
+        /// Date the survey response was submitted.
         /// </summary>
-        public Guid ResponseIdentifier { get; set; }
-
-        /// <summary>
-        /// GPS coordinates where survey response is completed, if available.
-        /// </summary>
-        public GPSLocationDto GPSLocation { get; set; } = new GPSLocationDto();
+        public DateTimeOffset SubmittedDate { get; set; }
 
         // While most questions only allow one answer, this will allow multiple-choice responses.
+        /// <summary>
+        /// Collection of answers.
+        /// </summary>
         public IList<SurveyQuestionResponseDto> QuestionResponses { get; set; } = new List<SurveyQuestionResponseDto>();
+        public Guid ResponseIdentifier { get; set; }
     }
 
     /// <summary>
@@ -54,17 +49,9 @@ namespace UndderControlLib.Dtos
     /// </summary>
     public class SurveyQuestionResponseDto
     {
-        public SurveyQuestionResponseDto(int questionID, int stageID, bool questionResponse, string questionStatement)
-        {
-            QuestionID = questionID;
-            StageID = stageID;
-            QuestionResponse = questionResponse;
-            Statement = questionStatement;
-        }
-
         public int QuestionID { get; set; }
         public int StageID { get; set; }
         public bool QuestionResponse { get; set; }
-        public string Statement { get; set; }
+        public string QuestionStatement { get; set; }
     }
 }

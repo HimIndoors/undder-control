@@ -34,3 +34,8 @@ using Android.App;
 [assembly: UsesPermission(Android.Manifest.Permission.WriteExternalStorage)]
 //Required for Xamarin Essentials - connectivity
 [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
+#if DEBUG
+[assembly: Application(Debuggable = true)]
+#else
+[assembly: Application(Debuggable=false)]
+#endif

@@ -9,7 +9,7 @@ namespace UndderControlLib.Dtos
     /// </summary>
     public class SurveyDto
     {
-        public int SurveyID { get; set; }
+        public int ID { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }
         public String IntroText { get; set; }
@@ -25,8 +25,8 @@ namespace UndderControlLib.Dtos
     /// </summary>
     public class SurveyQuestionDto
     {
-        public int QuestionID { get; set; }
-        public int QuestionStageID { get; set; }
+        public int ID { get; set; }
+        public int Stage_ID { get; set; }
         public int QuestionNum { get; set; }
         public String QuestionText { get; set; }
         public String QuestionHelpText { get; set; }
@@ -38,7 +38,7 @@ namespace UndderControlLib.Dtos
     /// </summary>
     public class SurveyStageDto
     {
-        public int StageID { get; set; }
+        public int ID { get; set; }
         public string StageText { get; set; }
         public bool ShowStageIntro { get; set; }
         public string StageTitle { get; set; }

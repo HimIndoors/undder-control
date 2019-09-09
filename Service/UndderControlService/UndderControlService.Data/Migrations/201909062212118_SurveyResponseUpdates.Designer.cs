@@ -7,13 +7,13 @@ namespace UndderControlService.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialModel : IMigrationMetadata
+    public sealed partial class SurveyResponseUpdates : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SurveyResponseUpdates));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908291543437_InitialModel"; }
+            get { return "201909062212118_SurveyResponseUpdates"; }
         }
         
         string IMigrationMetadata.Source

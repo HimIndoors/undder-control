@@ -65,8 +65,7 @@ namespace UndderControl.Extensions
             {
                 ResponseIdentifier = Guid.NewGuid(),
                 SurveyID = App.LatestSurvey.SurveyID,
-                Survey_Version = App.LatestSurvey.Version,
-                StartTime = DateTimeOffset.Now,
+                Survey_Version = App.LatestSurvey.Version
             };
         }
 

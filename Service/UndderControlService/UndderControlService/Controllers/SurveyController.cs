@@ -16,23 +16,30 @@ namespace UndderControlService.Controllers
 {
     public class SurveyController : BaseController
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         // GET api/<controller>
         /// <summary>
-        /// Get a list of surveys. Only one survey should be marked as Active, use this method to retrieve latest survey
+        /// Get the latest active survey
         /// </summary>
-        /// <param name="activeOnly"></param>
-        /// <returns></returns>
-        [SwaggerOperation("GetAllSurveys")]
+        /// <returns>SurveyDto</returns>
+        [SwaggerOperation("GetLatestSurvey")]
         [ResponseType(typeof(IEnumerable<SurveyDto>))]
-        [SwaggerResponse(HttpStatusCode.OK, "The surveys are being returned.", typeof(IEnumerable<SurveyDto>))]
+        [SwaggerResponse(HttpStatusCode.OK, "The latest survey is being returned.", typeof(IEnumerable<SurveyDto>))]
         [AllowAnonymous]
-        public IHttpActionResult Get(bool activeOnly = true)
+        public IHttpActionResult Get()
         {
-            var survey = AutoMapper.Mapper.Map<List<SurveyDto>>(db.Surveys.Where(s => !activeOnly || s.Active));
-            if (survey == null)
-                return NotFound();
+            var value = db.Surveys.DefaultIfEmpty(null).Where(s => s.Active).OrderByDescending(s => s.Version).FirstOrDefault();
 
-            return Ok(survey);
+            if (value != null)
+            {
+                var survey = Mapper.Map<SurveyDto>(value);
+                Logger.Info("Returning survey: {@value1}", survey);
+                return Ok(survey);
+            }
+
+            Logger.Info("No survey found");
+            return NotFound();
         }
 
         // GET api/<controller>/5
@@ -40,7 +47,7 @@ namespace UndderControlService.Controllers
         /// Get the specified survey.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>SurveyDto</returns>
         /// [SwaggerOperation("GetSurveyByID")]
         [ResponseType(typeof(SurveyDto))]
         [SwaggerResponse(HttpStatusCode.NotFound, "A Survey with the specified ID was not found.")]
@@ -48,11 +55,17 @@ namespace UndderControlService.Controllers
         [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
-            var survey = Mapper.Map<List<SurveyDto>>(db.Surveys.Where(s => s.ID == id).SingleOrDefault());
-            if (survey == null)
-                return NotFound();
 
-            return Ok(survey);
+            var value = db.Surveys.DefaultIfEmpty(null).Where(s => s.ID == id).SingleOrDefault();
+            if (value != null)
+            {
+                var survey = Mapper.Map<SurveyDto>(value);
+                Logger.Info("Returning survey: {@value1}", survey);
+                return Ok(survey);
+            }
+            
+            Logger.Info("No survey found with ID: {id}", id);
+            return NotFound(); 
         }
 
         // POST api/<controller>
@@ -64,17 +77,22 @@ namespace UndderControlService.Controllers
         [SwaggerOperation("PostSurvey")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.NoContent, "The survey was imported.")]
-        public IHttpActionResult Post([FromBody]SurveyDto surveyDto)
+        public IHttpActionResult Post([FromBody]SurveyDto value)
         {
             if (!ModelState.IsValid)
+            {
+                Logger.Info("Modelstate invalid: {@value1}", value);
                 return BadRequest(ModelState);
+            }
+                
                 
             try
             {
-                Survey importSurvey = Mapper.Map<Survey>(surveyDto);
+                Survey survey = Mapper.Map<Survey>(value);
 
-                db.Surveys.Add(importSurvey);
+                db.Surveys.Add(survey);
                 db.SaveChanges();
+                Logger.Info("Survey {id} created successfully", survey.ID);
 
                 return Ok();
             }
@@ -92,10 +110,12 @@ namespace UndderControlService.Controllers
                     }
                 }
 
+                Logger.Error(eve, eve.Message);
                 return InternalServerError(new InvalidOperationException(eve.Message + "\r\n" + String.Join("\r\n", errors.ToArray()), eve));
             }
             catch (Exception ex)
             {
+                Logger.Error(ex, ex.Message);
                 return InternalServerError(ex);
             }
         }

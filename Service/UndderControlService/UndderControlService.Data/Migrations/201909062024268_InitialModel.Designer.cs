@@ -7,13 +7,13 @@ namespace UndderControlService.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RequiredFieldsUpdate : IMigrationMetadata
+    public sealed partial class InitialModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RequiredFieldsUpdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908301000065_RequiredFieldsUpdate"; }
+            get { return "201909062024268_InitialModel"; }
         }
         
         string IMigrationMetadata.Source

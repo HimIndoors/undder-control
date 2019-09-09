@@ -60,36 +60,29 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Helper\CascadeDeleteAttribute.cs" />
     <Compile Include="Helper\CascadeDeleteAttributeConvention.cs" />
-    <Compile Include="Migrations\201908291543437_InitialModel.cs" />
-    <Compile Include="Migrations\201908291543437_InitialModel.Designer.cs">
-      <DependentUpon>201908291543437_InitialModel.cs</DependentUpon>
+    <Compile Include="Helper\BoolHelper.cs" />
+    <Compile Include="Migrations\201909062024268_InitialModel.cs" />
+    <Compile Include="Migrations\201909062024268_InitialModel.Designer.cs">
+      <DependentUpon>201909062024268_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908301000065_RequiredFieldsUpdate.cs" />
-    <Compile Include="Migrations\201908301000065_RequiredFieldsUpdate.Designer.cs">
-      <DependentUpon>201908301000065_RequiredFieldsUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908301609471_CowStatusAlteration.cs" />
-    <Compile Include="Migrations\201908301609471_CowStatusAlteration.Designer.cs">
-      <DependentUpon>201908301609471_CowStatusAlteration.cs</DependentUpon>
+    <Compile Include="Migrations\201909062212118_SurveyResponseUpdates.cs" />
+    <Compile Include="Migrations\201909062212118_SurveyResponseUpdates.Designer.cs">
+      <DependentUpon>201909062212118_SurveyResponseUpdates.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntitiesDbContext.cs" />
-    <Compile Include="Seed\EntitiesDbInitialiser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908291543437_InitialModel.resx">
-      <DependentUpon>201908291543437_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909062024268_InitialModel.resx">
+      <DependentUpon>201909062024268_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908301000065_RequiredFieldsUpdate.resx">
-      <DependentUpon>201908301000065_RequiredFieldsUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908301609471_CowStatusAlteration.resx">
-      <DependentUpon>201908301609471_CowStatusAlteration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909062212118_SurveyResponseUpdates.resx">
+      <DependentUpon>201909062212118_SurveyResponseUpdates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

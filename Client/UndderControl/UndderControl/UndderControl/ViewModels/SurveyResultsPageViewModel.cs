@@ -100,7 +100,7 @@ namespace UndderControl.ViewModels
                             var statements = new List<string>();
                             foreach (var answer in answers.Where(a => a.StageID == stage.StageID && a.QuestionResponse == false))
                             {
-                                statements.Add(answer.Statement);
+                                statements.Add(answer.QuestionStatement);
                             }
                             Statements.Add(stage.StageText, statements);
                         }

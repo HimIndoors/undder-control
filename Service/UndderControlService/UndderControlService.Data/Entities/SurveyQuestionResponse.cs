@@ -10,7 +10,6 @@ namespace UndderControlService.Data.Entities
 {
     public class SurveyQuestionResponse
     {
-        [Key]
         public int ID { get; set; }
 
         [ForeignKey("SurveyResponse_ID")]
@@ -19,11 +18,11 @@ namespace UndderControlService.Data.Entities
         public int SurveyResponse_ID { get; set; }
 
         [Required]
-        public int Question_ID { get; set; }
-
+        public int QuestionID { get; set; }
         [Required]
-        public int Stage_ID { get; set; }
+        public int StageID { get; set; }
 
         public bool QuestionResponse { get; set; }
+        public string QuestionStatement { get; set; }
     }
 }

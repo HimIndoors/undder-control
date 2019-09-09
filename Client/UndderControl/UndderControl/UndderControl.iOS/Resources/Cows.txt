@@ -1,0 +1,182 @@
+[
+    {
+        "ID": 1,
+        "Farm_Id": 1,
+        "CowIdentifier": 201,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 2,
+        "Farm_Id": 1,
+        "CowIdentifier": 202,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 3,
+        "Farm_Id": 1,
+        "CowIdentifier": 203,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 4,
+        "Farm_Id": 1,
+        "CowIdentifier": 204,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 5,
+        "Farm_Id": 1,
+        "CowIdentifier": 205,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 6,
+        "Farm_Id": 1,
+        "CowIdentifier": 206,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 7,
+        "Farm_Id": 1,
+        "CowIdentifier": 207,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 8,
+        "Farm_Id": 1,
+        "CowIdentifier": 208,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 9,
+        "Farm_Id": 1,
+        "CowIdentifier": 209,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 10,
+        "Farm_Id": 1,
+        "CowIdentifier": 210,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": true,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+    {
+        "ID": 11,
+        "Farm_Id": 1,
+        "CowIdentifier": 101,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 12,
+        "Farm_Id": 1,
+        "CowIdentifier": 102,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 1,
+        "Farm_Id": 1,
+        "CowIdentifier": 103,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 13,
+        "Farm_Id": 1,
+        "CowIdentifier": 104,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 14,
+        "Farm_Id": 1,
+        "CowIdentifier": 105,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 15,
+        "Farm_Id": 1,
+        "CowIdentifier": 106,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 16,
+        "Farm_Id": 1,
+        "CowIdentifier": 107,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 17,
+        "Farm_Id": 1,
+        "CowIdentifier": 108,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 18,
+        "Farm_Id": 1,
+        "CowIdentifier": 109,
+        "InfectedAtDryOff": true,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    },
+	{
+        "ID": 19,
+        "Farm_Id": 1,
+        "CowIdentifier": 110,
+        "InfectedAtDryOff": false,
+		"InfectedAtCalving": false,
+		"DateAddedDryOff": null,
+		"DateAddedCalving": null
+    }
+]

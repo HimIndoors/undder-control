@@ -14,7 +14,6 @@ namespace UndderControl.Events
     public class QuestionChangedEvent : PubSubEvent
     {
     }
-
     public class HtmlChangedEvent : PubSubEvent
     {
     }

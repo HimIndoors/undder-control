@@ -28,9 +28,10 @@ namespace UndderControl.Services
         private readonly IApiService<ISurveyResponseApi> _surveyResponseApi;
         private readonly IApiService<IUserApi> _userApi;
         private readonly double _cacheExpiryDays = Config.MonkeyCacheExpiry;
+        private readonly IMetricsManagerService _metricsManager;
         public bool IsConnected { get; set; }
 
-        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi, IApiService<ISurveyResponseApi> surveyResponseApi, IApiService<IUserApi> userApi)
+        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi, IApiService<ISurveyResponseApi> surveyResponseApi, IApiService<IUserApi> userApi, IMetricsManagerService metricsManager)
         {
             IsConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
@@ -39,6 +40,7 @@ namespace UndderControl.Services
             _cowStatusApi = cowStatusApi;
             _surveyResponseApi = surveyResponseApi;
             _userApi = userApi;
+            _metricsManager = metricsManager;
         }
 
         private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
@@ -48,13 +50,18 @@ namespace UndderControl.Services
             if (e.NetworkAccess != NetworkAccess.Internet)
             {
                 //Cancel all running tasks
-                //TODO: Need a queue system here to add these failed tasks
-                foreach(var item in _runningTasks)
+                try
                 {
-                    item.Value.Cancel();
-                    _runningTasks.Remove(item.Key);
+                    foreach (var item in _runningTasks)
+                    {
+                        item.Value.Cancel();
+                        _runningTasks.Remove(item.Key);
+                    }
                 }
-
+                catch(Exception ex)
+                {
+                    _metricsManager.TrackException(ex.Message, ex);
+                }
             }
         }
 

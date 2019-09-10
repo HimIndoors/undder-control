@@ -10,18 +10,18 @@ namespace UndderControl.ViewModels
 {
     public class SdctMasterDetailPageViewModel : ViewModelBase
     {
-        INavigationService _navigationService;
-        public DelegateCommand<string> OnNavigateCommand { get; set; }
-        public SdctMasterDetailPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        private DelegateCommand<string> _navigateCommand;
+        public DelegateCommand<string> OnNavigateCommand =>
+            _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync));
+        public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+            : base(navigationService, metricsManager)
         {
-            _navigationService = navigationService;
-            OnNavigateCommand = new DelegateCommand<string>(NavigateAsync);
+            Title = "";
         }
 
         async void NavigateAsync(string page)
         {
-            await _navigationService.NavigateAsync(page);
+            await NavigationService.NavigateAsync(page);
         }
     }
 }

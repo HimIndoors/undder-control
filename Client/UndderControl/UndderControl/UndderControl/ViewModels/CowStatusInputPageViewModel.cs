@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using UndderControl.Services;
 using UndderControl.Text;
 using UndderControlLib.Dtos;
 
@@ -13,7 +14,6 @@ namespace UndderControl.ViewModels
 {
     public class CowStatusInputPageViewModel : ViewModelBase, IInitialize
     {
-        private readonly INavigationService _navigationService;
         private DelegateCommand _onNextCommand;
         private DelegateCommand _onFinishCommand;
         public DelegateCommand OnNextCommand => _onNextCommand ?? (_onNextCommand = new DelegateCommand(NextInput));
@@ -71,10 +71,9 @@ namespace UndderControl.ViewModels
             }
         }
 
-        public CowStatusInputPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public CowStatusInputPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+            : base(navigationService, metricsManager)
         {
-            _navigationService = navigationService;
             Title = AppResource.CowStatusPageTitle;
             IsBusy = true;
 
@@ -101,11 +100,11 @@ namespace UndderControl.ViewModels
             */
             if (InputMode.Equals("dryoff"))
             {
-                await _navigationService.NavigateAsync(new Uri("SdctMasterDetailPage/CowStatusFinishPage", UriKind.Absolute));
+                await NavigationService.NavigateAsync(new Uri("SdctMasterDetailPage/CowStatusFinishPage", UriKind.Absolute));
             }
             else
             {
-                await _navigationService.NavigateAsync(new Uri("NavigationPage/CowStatusResultsPage", UriKind.Relative));
+                await NavigationService.NavigateAsync(new Uri("NavigationPage/CowStatusResultsPage", UriKind.Relative));
             }
         }
 

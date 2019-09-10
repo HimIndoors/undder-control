@@ -13,7 +13,6 @@ namespace UndderControl.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        INavigationService _navigationService;
         string _code;
         public string Code
         {
@@ -25,10 +24,9 @@ namespace UndderControl.ViewModels
             }
         }
 
-        public MainPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public MainPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+            : base(navigationService, metricsManager)
         {
-            _navigationService = navigationService;
             Code = "<html><body><h1>Hello</h1></body></html>";
         }
     }

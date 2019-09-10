@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
-using Prism.Commands;
 using Prism.Events;
-using Prism.Mvvm;
 using Prism.Navigation;
-using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using UndderControl.Collections;
 using UndderControl.Events;
@@ -15,7 +11,6 @@ using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControl.Text;
 using UndderControlLib.Dtos;
-using Xamarin.Forms;
 
 namespace UndderControl.ViewModels
 {
@@ -32,8 +27,6 @@ namespace UndderControl.ViewModels
                 RaisePropertyChanged("Results");
             }
         }
-
-        private readonly IMetricsManagerService _metricsService;
         private readonly IEventAggregator _eventAggregator;
 
         #region Graph Data
@@ -79,10 +72,10 @@ namespace UndderControl.ViewModels
         }
         #endregion Graph Data
 
-        public CowStatusResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService, IEventAggregator ea)
-            : base(navigationService)
+        public CowStatusResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator ea)
+            : base(navigationService, metricsManager)
         {
-            _metricsService = metricsManagerService;
+            Title = "";
             _eventAggregator = ea;
             InitAsync();
         }
@@ -96,7 +89,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                _metricsService.TrackException("GetFarmsFailed", ex);
+                MetricsManager.TrackException("GetFarmsFailed", ex);
             }
 
 
@@ -184,7 +177,7 @@ namespace UndderControl.ViewModels
             }
             catch(Exception ex)
             {
-                _metricsService.TrackException("Error getting cowstatus data", ex);
+                MetricsManager.TrackException("Error getting cowstatus data", ex);
                 await PageDialog.AlertAsync("Unable to retrieve cow status data", "Error", "OK");
             }
 

@@ -64,7 +64,7 @@ namespace UndderControl.Extensions
             return new SurveyResponseDto
             {
                 ResponseIdentifier = Guid.NewGuid(),
-                SurveyID = App.LatestSurvey.SurveyID,
+                SurveyID = App.LatestSurvey.ID,
                 Survey_Version = App.LatestSurvey.Version
             };
         }

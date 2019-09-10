@@ -22,7 +22,6 @@ namespace UndderControl.ViewModels
     public class LoginPageViewModel : ViewModelBase
     {
         private readonly IEventAggregator _eventAggregator;
-        private readonly IMetricsManagerService _metricsService;
         private string _html;
         public string Html
         {
@@ -37,10 +36,10 @@ namespace UndderControl.ViewModels
         private UserDto User { get; set; }
 
         public LoginPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, IMetricsManagerService metricsManager)
-            :base(navigationService)
+            :base(navigationService, metricsManager)
         {
+            Title = "";
             _eventAggregator = eventAggregator;
-            _metricsService = metricsManager;
             _eventAggregator.GetEvent<HtmlChangedEvent>().Subscribe(CheckLogin);
         }
 
@@ -73,7 +72,7 @@ namespace UndderControl.ViewModels
 
         private async void LocalLoginAsync(string userToken)
         {
-            _metricsService.TrackEvent("UserLogin");
+            MetricsManager.TrackEvent("UserLogin");
             await RunSafe(GetUser(userToken));
             UserSettings.UserId = User.ID;
             UserSettings.UserToken = User.Token;
@@ -97,7 +96,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                _metricsService.TrackException("Error getting cowstatus data", ex);
+                MetricsManager.TrackException("Error getting cowstatus data", ex);
                 await PageDialog.AlertAsync("Unable to retrieve cow status data", "Error", "OK");
             }
 

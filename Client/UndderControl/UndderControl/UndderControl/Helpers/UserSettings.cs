@@ -15,6 +15,7 @@ namespace UndderControl.Helpers
         #region Setting Constants
         private const string UserTokenKey = "usertoken";
         private const string UserIdKey = "userid";
+        private const string TermsVersionKey = "termsversion";
         #endregion
 
         /// <summary>
@@ -44,6 +45,21 @@ namespace UndderControl.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue(UserTokenKey, value);
+            }
+        }
+
+        /// <summary>
+        /// The cached terms version the user last accepted.
+        /// </summary>
+        public static string TermsVersion
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(TermsVersionKey, default(string));
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(TermsVersionKey, value);
             }
         }
 

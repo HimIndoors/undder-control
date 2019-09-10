@@ -18,12 +18,7 @@ namespace UndderControl.ViewModels
 {
     public class RootPageViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
-        private readonly IMetricsManagerService _metricsService;
         private ObservableCollection<FarmDto> _farmList;
-        private DelegateCommand<string> _navigateCommand;
-        private static ISettings AppSettings => CrossSettings.Current;
-
         public ObservableCollection<FarmDto> FarmList
         {
             get { return _farmList; }
@@ -40,21 +35,19 @@ namespace UndderControl.ViewModels
             set
             {
                 _selectedFarm  = value;
-                //Update global farm
-                App.SelectedFarm = value;
+                App.SelectedFarm = value; //Update global farm
                 OnNavigateCommand.RaiseCanExecuteChanged();
             }
         }
 
+        private DelegateCommand<string> _navigateCommand;
         public DelegateCommand<string> OnNavigateCommand =>
             _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync, CanNavigate));
 
         public RootPageViewModel(INavigationService navigationService, IMetricsManagerService metricsSevice) 
-            : base(navigationService)
+            : base(navigationService, metricsSevice)
         {
             Title = "Undder Control";
-            _navigationService = navigationService;
-            _metricsService = metricsSevice;
             if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;
             InitAsync();
         }
@@ -67,7 +60,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                _metricsService.TrackException("GetFarmsFailed", ex);
+                MetricsManager.TrackException("GetFarmsFailed", ex);
             }
         }
 
@@ -90,8 +83,8 @@ namespace UndderControl.ViewModels
 
         async void NavigateAsync(string page)
         {
-            _metricsService.TrackEvent("Navigate: " + page);
-            await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+            MetricsManager.TrackEvent("Navigate: " + page);
+            await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
         }
 
         bool CanNavigate(string obj)

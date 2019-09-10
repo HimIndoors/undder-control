@@ -1,15 +1,11 @@
 ﻿using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using UndderControl.Extensions;
 using UndderControl.Helpers;
 using UndderControl.Services;
-using UndderControl.Views;
 using UndderControlLib.Dtos;
 using Xamarin.Forms;
 
@@ -17,18 +13,14 @@ namespace UndderControl.ViewModels
 {
     public class AssessmentPageViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
-        private readonly IMetricsManagerService _metricsService;
         private DelegateCommand<string> _navigateCommand;
 
         public DelegateCommand<string> OnNavigateCommand =>
             _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync));
 
         public AssessmentPageViewModel(INavigationService navigationService, IMetricsManagerService metricsService)
-            : base(navigationService)
+            : base(navigationService, metricsService)
         {
-            _navigationService = navigationService;
-            _metricsService = metricsService;
             Title = "Undder Control";
             InitAsync();
         }
@@ -52,7 +44,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                DependencyService.Get<IMetricsManagerService>().TrackException("GetSurveyFailed", ex);
+                MetricsManager.TrackException("GetSurveyFailed", ex);
             }
         }
 
@@ -88,8 +80,8 @@ namespace UndderControl.ViewModels
 
         private async void NavigateAsync(string page)
         {
-            _metricsService.TrackEvent("Navigate: " + page);
-            await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+            MetricsManager.TrackEvent("Navigate: " + page);
+            await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
         }
     }
 }

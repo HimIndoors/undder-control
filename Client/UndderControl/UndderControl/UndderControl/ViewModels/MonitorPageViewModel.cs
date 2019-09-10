@@ -10,20 +10,20 @@ namespace UndderControl.ViewModels
 {
     public class MonitorPageViewModel : ViewModelBase
     {
-        INavigationService _navigationService;
-        public DelegateCommand<string> OnNavigateCommand { get; private set; }
+        private DelegateCommand<string> _onNavigateCommand;
+        public DelegateCommand<string> OnNavigateCommand
+            => _onNavigateCommand ?? (_onNavigateCommand = new DelegateCommand<string>(NavigateAsync));
         public DelegateCommand OnStatusCommand { get; private set; }
 
-        public MonitorPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public MonitorPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+            : base(navigationService, metricsManager)
         {
-            _navigationService = navigationService;
-            OnNavigateCommand = new DelegateCommand<string>(OnNavigate);
+            Title = "";
         }
 
-        private async void OnNavigate(string page)
+        private async void NavigateAsync(string page)
         {
-            await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+            await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
         }
     }
 }

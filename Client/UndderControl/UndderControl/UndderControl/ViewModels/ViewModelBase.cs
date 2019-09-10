@@ -14,6 +14,7 @@ namespace UndderControl.ViewModels
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
+        protected IMetricsManagerService MetricsManager { get; private set; }
         private bool _isBusy;
         private string _title;
         /// <summary>
@@ -53,10 +54,11 @@ namespace UndderControl.ViewModels
         readonly IApiService<ISurveyResponseApi> surveyResponseApi = new ApiService<ISurveyResponseApi>(Config.ApiUrl);
         readonly IApiService<IUserApi> userApi = new ApiService<IUserApi>(Config.ApiUrl);
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, IMetricsManagerService metricsManager)
         {
+            MetricsManager = metricsManager;
             NavigationService = navigationService;
-            ApiManager = new ApiManager(farmApi, surveyApi, cowStatusApi, surveyResponseApi, userApi);
+            ApiManager = new ApiManager(farmApi, surveyApi, cowStatusApi, surveyResponseApi, userApi, MetricsManager);
         }
 
         public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)

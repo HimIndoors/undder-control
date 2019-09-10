@@ -15,17 +15,23 @@ namespace UndderControl.ViewModels
 {
     public class SurveyPageViewModel : ViewModelBase
     {
-        IEventAggregator _eventAggregator;
-        INavigationService _navigationService;
-        SurveyResponseDto _response = SurveyResponseDtoExtensions.CreateNew();
-        int _questionIndex;
-        int _stageIndex;
+        private readonly IEventAggregator _eventAggregator;
+        private SurveyResponseDto _response = SurveyResponseDtoExtensions.CreateNew();
+        private int _questionIndex;
+        private int _stageIndex;
+        public DelegateCommand AnswerYesCommand { get; }
+        public DelegateCommand AnswerNoCommand { get; }
+        public DelegateCommand StartStageCommand { get; }
+        public SurveyQuestionDto CurrentQuestion => Question(_questionIndex);
+        public SurveyStageDto CurrentStage => Stage(_stageIndex);
+        public int StageQuestionCount => QuestionCount();
+        public bool ShowStage { get; private set; }
+        public int QuestionIncrement { get; private set; }
 
-        public SurveyPageViewModel(INavigationService navigationService, IEventAggregator ea)
-            : base(navigationService)
+        public SurveyPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator ea)
+            : base(navigationService, metricsManager)
         {
             _eventAggregator = ea;
-            _navigationService = navigationService;
             Title = "Undder Control";
             AnswerYesCommand = new DelegateCommand(AnswerYes, () => IsNotBusy);
             AnswerNoCommand = new DelegateCommand(AnswerNo, () => IsNotBusy);
@@ -47,15 +53,7 @@ namespace UndderControl.ViewModels
             return;
         }
 
-        public DelegateCommand AnswerYesCommand { get; }
-        public DelegateCommand AnswerNoCommand { get; }
-        public DelegateCommand StartStageCommand { get; }
-        public SurveyQuestionDto CurrentQuestion => Question(_questionIndex);
-        public SurveyStageDto CurrentStage => Stage(_stageIndex);
-        public int StageQuestionCount => QuestionCount();
-        public bool ShowStage { get; private set; }
-
-        public int QuestionIncrement { get; private set; }
+        
 
         private SurveyQuestionDto Question(int index)
         {
@@ -85,7 +83,7 @@ namespace UndderControl.ViewModels
             var questions = App.LatestSurvey?.Questions;
             if (questions != null)
             {
-                return questions.Where(q => q.QuestionStageID == stage.StageID).Count();
+                return questions.Where(q => q.Stage_ID == stage.ID).Count();
             }
 
             return 0;
@@ -111,7 +109,7 @@ namespace UndderControl.ViewModels
             {
                 { "response", _response }
             };
-            await _navigationService.NavigateAsync("SdctMasterDetailPage/SurveyResultsPage", navigationParams);
+            await NavigationService.NavigateAsync("SdctMasterDetailPage/SurveyResultsPage", navigationParams);
         }
 
         /// <summary>
@@ -126,7 +124,7 @@ namespace UndderControl.ViewModels
             {
                 for (var i = 0; i < questions.Count; ++i)
                 {
-                    if (questions[i].QuestionID == questionId)
+                    if (questions[i].ID == questionId)
                     {
                         return i;
                     }
@@ -135,7 +133,7 @@ namespace UndderControl.ViewModels
             else
             {
                 //We should never get here otherwise we have no questions!
-                DependencyService.Get<IMetricsManagerService>().TrackException("NoQuestionsFound", new Exception("No Questions found in LatestSurvey"));
+                MetricsManager.TrackException("NoQuestionsFound", new Exception("No Questions found in LatestSurvey"));
             }
 
             return null;
@@ -171,7 +169,7 @@ namespace UndderControl.ViewModels
             //Store answer in collection
             var properties = new Dictionary<string, string>
             {
-                {"CurrentQuestionID", CurrentQuestion.QuestionID.ToString()},
+                {"CurrentQuestionID", CurrentQuestion.ID.ToString()},
             };
 
             DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyNextQuestion", properties);
@@ -180,8 +178,8 @@ namespace UndderControl.ViewModels
             _response.QuestionResponses.Add(
                     new SurveyQuestionResponseDto
                     {
-                        QuestionID = CurrentQuestion.QuestionID,
-                        StageID = CurrentQuestion.QuestionStageID,
+                        QuestionID = CurrentQuestion.ID,
+                        StageID = CurrentQuestion.Stage_ID,
                         QuestionResponse = value,
                         QuestionStatement = CurrentQuestion.QuestionStatement
                     });
@@ -198,7 +196,7 @@ namespace UndderControl.ViewModels
             {
                 //Select View based on stage
                 var lastAnswerIndex = QuestionIndex(_response.QuestionResponses.OrderBy(q => q.QuestionID).Last().QuestionID);
-                if (lastAnswerIndex != null && CurrentQuestion.QuestionStageID > Question(lastAnswerIndex.Value).QuestionStageID)
+                if (lastAnswerIndex != null && CurrentQuestion.Stage_ID > Question(lastAnswerIndex.Value).Stage_ID)
                 {
                     //New stage so work out if we need to show the stage view
                     _stageIndex++;
@@ -208,12 +206,12 @@ namespace UndderControl.ViewModels
                     var stages = App.LatestSurvey?.Stages;
                     if (stages != null)
                     {
-                        ShowStage = stages.Where(q => q.StageID == CurrentQuestion.QuestionStageID).First().ShowStageIntro;
+                        ShowStage = stages.Where(q => q.ID == CurrentQuestion.Stage_ID).First().ShowStageIntro;
                     }
                     else
                     {
                         //We should never get here otherwise we have no questions!
-                        DependencyService.Get<IMetricsManagerService>().TrackException("NoStagesFound", new Exception("No Stages found in LatestSurvey"));
+                        MetricsManager.TrackException("NoStagesFound", new Exception("No Stages found in LatestSurvey"));
                     }
                 }
                 else

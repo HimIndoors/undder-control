@@ -19,8 +19,6 @@ namespace UndderControl.ViewModels
 {
     public class SurveyResultsPageViewModel : ViewModelBase, IInitialize
     {
-        private IMetricsManagerService _metricsService;
-        private readonly INavigationService _navigationService;
         private SurveyResponseDto _response;
         private readonly IEventAggregator _eventAggregator;
         private DelegateCommand _compareCommand;
@@ -30,11 +28,9 @@ namespace UndderControl.ViewModels
         public RadarChart Chart;
         public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
 
-        public SurveyResultsPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, IMetricsManagerService metricsManagerService)
-            : base(navigationService)
+        public SurveyResultsPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, IMetricsManagerService metricsManager)
+            : base(navigationService, metricsManager)
         {
-            _navigationService = navigationService;
-            _metricsService = metricsManagerService;
             _eventAggregator = eventAggregator;
             Init();
         }
@@ -82,10 +78,10 @@ namespace UndderControl.ViewModels
                 foreach (var stage in App.LatestSurvey.Stages)
                 {
                     //Hardcoded skip of stage 0, this could be a parameter in the stage model instead? 
-                    if (stage.StageID > 0)
+                    if (stage.ID > 0)
                     {
                         //Add Stage to spidergraph
-                        var score = answers.Where(a => a.StageID == stage.StageID && a.QuestionResponse == true).Count();
+                        var score = answers.Where(a => a.StageID == stage.ID && a.QuestionResponse == true).Count();
                         Results.Add(
                             new Entry(score)
                             {
@@ -95,10 +91,10 @@ namespace UndderControl.ViewModels
                             });
 
                         //Add any statements from questions answered 'No'
-                        if (answers.Where(a => a.StageID == stage.StageID && a.QuestionResponse==false).Count() > 0)
+                        if (answers.Where(a => a.StageID == stage.ID && a.QuestionResponse==false).Count() > 0)
                         {
                             var statements = new List<string>();
-                            foreach (var answer in answers.Where(a => a.StageID == stage.StageID && a.QuestionResponse == false))
+                            foreach (var answer in answers.Where(a => a.StageID == stage.ID && a.QuestionResponse == false))
                             {
                                 statements.Add(answer.QuestionStatement);
                             }
@@ -119,7 +115,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                _metricsService.TrackException("GetSurveyResponsesFailed", ex);
+                MetricsManager.TrackException("GetSurveyResponsesFailed", ex);
             }
 
             if (_responses != null && _responses.Count > 1)
@@ -128,11 +124,11 @@ namespace UndderControl.ViewModels
                 {
                     { "responses", _responses }
                 };
-                await _navigationService.NavigateAsync("SurveyComparisonPage", navigationParams);
+                await NavigationService.NavigateAsync("SurveyComparisonPage", navigationParams);
             }
             else
             {
-                await _navigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/NoResultComparisonPage");
+                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/NoResultComparisonPage");
             }
         }
 

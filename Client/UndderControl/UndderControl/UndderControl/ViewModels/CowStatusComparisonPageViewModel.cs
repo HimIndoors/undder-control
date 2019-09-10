@@ -4,13 +4,14 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UndderControl.Services;
 
 namespace UndderControl.ViewModels
 {
     public class CowStatusComparisonPageViewModel : ViewModelBase
     {
-        public CowStatusComparisonPageViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public CowStatusComparisonPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+            : base(navigationService, metricsManager)
         {
             Title = "";
         }

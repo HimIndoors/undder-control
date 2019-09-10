@@ -43,15 +43,11 @@ namespace UndderControl.ViewModels
         private DelegateCommand _saveFarmCommand;
         public DelegateCommand SaveFarmCommand => _saveFarmCommand ?? (_saveFarmCommand = new DelegateCommand(DoSaveFarm));
 
-        private readonly IMetricsManagerService _metricsManagerService;
-        private readonly INavigationService _navigationService;
 
-        public FarmDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            :base(navigationService)
+        public FarmDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+            :base(navigationService, metricsManager)
         {
             Title = "FARM DETAIL";
-            _navigationService = navigationService;
-            _metricsManagerService = metricsManagerService;
         }
 
         private async void DoSaveFarm()
@@ -63,12 +59,12 @@ namespace UndderControl.ViewModels
                 try
                 {
                     await RunSafe(SaveFarm());
-                    await _navigationService.GoBackAsync();
+                    await NavigationService.GoBackAsync();
                 }
                 catch (Exception ex)
                 {
                     await PageDialog.AlertAsync("Unable to save farm data", "Error", "OK");
-                    _metricsManagerService.TrackException("Error saving farm details", ex);
+                    MetricsManager.TrackException("Error saving farm details", ex);
                 }
             }
             else

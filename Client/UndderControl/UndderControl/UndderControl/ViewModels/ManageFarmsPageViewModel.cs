@@ -15,8 +15,6 @@ namespace UndderControl.ViewModels
 {
     public class ManageFarmsPageViewModel : ViewModelBase
     {
-        INavigationService _navigationService;
-        IMetricsManagerService _metricsManagerService;
         private ObservableCollection<FarmDto> _farms;
         public ObservableCollection<FarmDto> Farms
         {
@@ -39,22 +37,21 @@ namespace UndderControl.ViewModels
                 }
             }
         }
-        public DelegateCommand<string> AddFarmCommand { get; private set; }
+        private DelegateCommand<string> _onAddFarmCommand;
+        public DelegateCommand<string> AddFarmCommand
+            => _onAddFarmCommand ?? (_onAddFarmCommand = new DelegateCommand<string>(AddFarm));
 
-        public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManagerService)
-            : base(navigationService)
+        public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+            : base(navigationService, metricsManager)
         {
             Title = "FARMS";
-            _navigationService = navigationService;
-            _metricsManagerService = metricsManagerService;
-            AddFarmCommand = new DelegateCommand<string>(AddFarm);
             InitAsync();
         }
 
         private async void AddFarm(string page)
         {
-            _metricsManagerService.TrackEvent("Navigation: Add Farm");
-            await _navigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+            MetricsManager.TrackEvent("Navigation: Add Farm");
+            await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
         }
 
         private async void InitAsync()
@@ -65,7 +62,7 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                _metricsManagerService.TrackException("GetFarmsFailed", ex);
+                MetricsManager.TrackException("GetFarmsFailed", ex);
             }
         }
 
@@ -84,12 +81,12 @@ namespace UndderControl.ViewModels
         async void GoToDetail()
         {
             var path = "FarmDetailPage";
-            _metricsManagerService.TrackEvent("Navigation: Edit Farm");
+            MetricsManager.TrackEvent("Navigation: Edit Farm");
             var navigationParams = new NavigationParameters
             {
                 { "farm", _selectedItem }
             };
-            await _navigationService.NavigateAsync(new Uri(path, UriKind.Relative), navigationParams);
+            await NavigationService.NavigateAsync(new Uri(path, UriKind.Relative), navigationParams);
         }
     }
 }

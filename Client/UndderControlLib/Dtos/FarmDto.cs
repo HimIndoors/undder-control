@@ -16,6 +16,6 @@ namespace UndderControlLib.Dtos
         public string ContactName { get; set; }
         public string PhoneNumber { get; set; }
         public int HerdSize { get; set; }
-        public string Type { get; set; }
+        public int FarmType_ID { get; set; }
     }
 }

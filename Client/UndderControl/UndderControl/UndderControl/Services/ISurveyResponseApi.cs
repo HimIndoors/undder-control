@@ -11,10 +11,10 @@ namespace UndderControl.Services
     [Headers("Content-Type: application/json")]
     public interface ISurveyResponseApi
     {
-        [Get("/farm/{id}")]
+        [Get("/surveyresponse/{id}")]
         Task<HttpResponseMessage> GetResponseByFarmId(int id);
 
-        [Post("/survey/")]
+        [Post("/surveyresponse/")]
         Task<HttpResponseMessage> UploadSurvey([Body] SurveyResponseDto survey);
     }
 }

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:segmentCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.CowStatusInputPage"
              Title="{Binding Title}">
@@ -15,15 +16,32 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label x:Name="FarmName" />
-                <Label x:Name="Date" />
-                <StackLayout Orientation="Horizontal">
-                    <Label x:Name="IdLabel" />
-                    <Entry x:Name="IdEntry" HorizontalOptions="EndAndExpand" />
+                <Label x:Name="FarmName" Style="{StaticResource StatusData}"/>
+                <Label x:Name="Date" Style="{StaticResource StatusData}"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label x:Name="IdLabel" Style="{StaticResource StatusData}" />
+                    <Entry x:Name="IdEntry" HorizontalOptions="StartAndExpand" />
                 </StackLayout>
-                <Label x:Name="StatusText" Text="{Binding InputModeText}"  />
-                <input:SelectionView SelectionType="RadioButton" ColumnNumber="1" ItemsSource="{Binding ValueList}" SelectedItem="{Binding InfectedValue}" />
-
+                <Label x:Name="StatusText" Text="{Binding InputModeText}"  Style="{StaticResource StatusData}" />
+                <buttons:SfSegmentedControl
+                    x:Name="InfectionSegment"
+                    SelectionTextColor = "White"
+                    HeightRequest="100"
+                    VisibleSegmentsCount="2"
+                    Color="white" 
+                    BorderColor="#009994"
+                    SelectedIndex="1"
+                    FontColor="#929292"
+                    FontSize="18">
+                    <segmentCollection:List x:TypeArguments="x:String">
+                        <x:String>Infected</x:String>
+                        <x:String>Not infected</x:String>
+                    </segmentCollection:List>
+                </buttons:SfSegmentedControl>
+                <buttons:SfRadioGroup x:Name="radioGroup">
+                    <buttons:SfRadioButton x:Name="male" Text="Infected" IsChecked="True" FontAttributes="Bold" FontSize="34" />
+                    <buttons:SfRadioButton x:Name="female" Text="Not infected" FontAttributes="Bold" FontSize="34"/>
+                </buttons:SfRadioGroup>
 
                 <StackLayout Margin="0,13,0,0">
                     <Button x:Name="ButtonNext" Command="{Binding OnNextCommand}" />

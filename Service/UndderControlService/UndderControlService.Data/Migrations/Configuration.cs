@@ -30,18 +30,31 @@ namespace UndderControlService.Data.Migrations
             context.Users.AddOrUpdate(user);
             context.SaveChanges();
 
+            var farmTypes = new List<Entities.FarmType>
+            {
+                new Entities.FarmType{ Name="Beef", Active = true},
+                new Entities.FarmType{ Name="Dairy", Active = true},
+                new Entities.FarmType{ Name="Finishing", Active = true},
+                new Entities.FarmType{ Name="Organic Beef", Active = true},
+                new Entities.FarmType{ Name="Organic Dairy", Active = true},
+                new Entities.FarmType{ Name="Sucker", Active = true}
+            };
+            farmTypes.ForEach(x => context.FarmTypes.AddOrUpdate(x));
+            context.SaveChanges();
+            
+
             //Add test farms
             var farms = new List<Farm>
             {
-                new Farm{Name="Buttercup Farm",Address="9 Laneside", ContactName="Farmer Bob", HerdSize=200, PhoneNumber="99999999", User=user},
-                new Farm{Name="Old MacDonalds",Address="123 Nursery Row", ContactName="Farmer Harry", HerdSize=2000,PhoneNumber="1234567890", User=user}
+                new Farm{Name="Buttercup Farm",Address="9 Laneside", ContactName="Farmer Bob", HerdSize=200, PhoneNumber="99999999", User=user, Type = farmTypes[1]},
+                new Farm{Name="Old MacDonalds",Address="123 Nursery Row", ContactName="Farmer Harry", HerdSize=2000,PhoneNumber="1234567890", User=user, Type = farmTypes[4]}
             };
 
             farms.ForEach(s => context.Farms.AddOrUpdate(s));
             context.SaveChanges();
 
             //Add Survey
-            var survey = new Survey { Description = "Farm Assessment Questionnaire", IntroText = null, LastUpdated = DateTime.Now, Name = "SDCT", Version = 1, Active = true, Language = "EN" };
+            var survey = new Survey { Description = "Farm Assessment Questionnaire", IntroText = null, LastUpdated = DateTime.Now, Name = "SDCT", Version = 10, Active = true, Language = "EN" };
             context.Surveys.AddOrUpdate(survey);
             context.SaveChanges();
 

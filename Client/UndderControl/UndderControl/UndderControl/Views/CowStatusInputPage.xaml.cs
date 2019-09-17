@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.XForms.Buttons;
+using System;
 using UndderControl.Text;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
@@ -17,8 +18,12 @@ namespace UndderControl.Views
             IdLabel.Text = AppResource.CowStatusInputLabel;
             ButtonNext.Text = AppResource.CowStatusInputButtonNext;
             ButtonFinish.Text = AppResource.CowStatusInputButtonFinish;
-
             #endregion TextSetup
+
+            SelectionIndicatorSettings selectionIndicator = new SelectionIndicatorSettings();
+            selectionIndicator.Position = SelectionIndicatorPosition.Fill;
+            selectionIndicator.Color = Color.FromHex("#009994");
+            InfectionSegment.SelectionIndicatorSettings = selectionIndicator;
         }
     }
 }

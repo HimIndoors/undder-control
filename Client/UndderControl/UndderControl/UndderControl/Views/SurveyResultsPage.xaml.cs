@@ -1,42 +1,37 @@
-﻿using Microcharts;
-using Prism.Events;
-using SkiaSharp;
-using System.Collections.Generic;
-using UndderControl.Events;
-using UndderControl.Text;
+﻿using UndderControl.Text;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
-using Entry = Microcharts.Entry;
 
 namespace UndderControl.Views
 {
     public partial class SurveyResultsPage : ContentPage
     {
         private readonly SurveyResultsPageViewModel _vm;
-        public SurveyResultsPage(IEventAggregator ea)
+        public SurveyResultsPage()
         {
             InitializeComponent();
 
-            FarmSuitability.Text = AppResource.SurveyResultSdctUnsuitable;
             ImprovementTitle.Text = AppResource.SurveyResultImprovementTitle;
             CompareButton.Text = AppResource.SurveyResultCompareButton;
 
             _vm = BindingContext as SurveyResultsPageViewModel;
-            ea.GetEvent<SurveyResultsEvent>().Subscribe(UpdateView);            
+            UpdateView();
         }
 
         private void UpdateView()
         {
-            ResultChart.Chart = new RadarChart() { Entries = _vm.Results };
-
             if (_vm.Statements != null)
             {
                 foreach (var item in _vm.Statements)
                 {
-                    StatementStack.Children.Add(new Label() { Text = item.Key, FontAttributes = FontAttributes.Bold });
+                    var itemLabel = new Label() { Text = item.Key.ToUpper() }; //Enforcing uppercase for subtitles
+                    itemLabel.SetDynamicResource(StyleProperty, "TextSubtitle");
+                    StatementStack.Children.Add(itemLabel);
                     foreach (string statement in item.Value)
                     {
-                        StatementStack.Children.Add(new Label() { Text = statement });
+                        var label = new Label() { Text = statement };
+                        label.SetDynamicResource(StyleProperty, "Text");
+                        StatementStack.Children.Add(label);
                     }
                 }
             }

@@ -2,6 +2,7 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             xmlns:local="clr-namespace:UndderControl.Custom"
              x:Class="UndderControl.App">
 	<Application.Resources>
         <ResourceDictionary>
@@ -12,12 +13,14 @@
                 <Setter Property="BackgroundColor" Value="#7CCCBD" />
             </Style>
             <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
-                <Setter Property="BarBackgroundColor" Value="#00987E" />
+                <Setter Property="BarBackgroundColor" Value="#2B8E81" />
                 <Setter Property="BarTextColor" Value="#D1E8E3" />
             </Style>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#ffffff" />
                 <Setter Property="TextColor" Value="#009096" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
             </Style>
             <Style TargetType="Label" x:Key="FormLabel">
@@ -30,10 +33,67 @@
             <Style x:Key="DarkButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#009994"/>
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}"/>
                 <Setter Property="BorderColor" Value="White"/>
                 <Setter Property="BorderWidth" Value="3"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
+            <Style x:Key="StatusData" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Label" x:Key="Text">
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+            <Style TargetType="Label" x:Key="TextSubtitle">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Label" x:Key="ResultSubtitle">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <ControlTemplate x:Key="MenuPageTemplate">
+
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="110"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Begin Header -->
+                    <StackLayout
+            Orientation="Vertical"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Spacing="0"
+            BackgroundColor="#2B2B2B"
+            HeightRequest="100"
+            Grid.Column="0" Grid.Row="0">
+                        <StackLayout.Padding>
+                            <OnPlatform x:TypeArguments="Thickness"
+                            iOS="10, 10, 10, 10"
+                            Android="10, 10, 10, 10"
+                            WinPhone="10, 10, 10, 10" />
+                        </StackLayout.Padding>
+                        <!-- My header content to make my app the prettiest. -->
+                        <Image Source="{local:ImageResource UndderControl.Assets.burger.png}" WidthRequest="30" HeightRequest="30">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnMenuButtonPressed" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <!-- End Header -->
+
+                    <!-- Begin Content -->
+                    <ScrollView Grid.Column="0" Grid.Row="1">
+                        <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                    </ScrollView>
+                    <!-- End Content -->
+                </Grid>
+            </ControlTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

@@ -2,7 +2,179 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.CowStatusComparisonPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="21"
+            Android="21"
+            WinPhone="21" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout>
+                    <Label x:Name="FarmName" FontSize="Medium" FontAttributes="Bold"/>
+                    <Label x:Name="ResultDate" Text="{Binding ResultYear}" FontSize="Medium" FontAttributes="Bold"/>
+                </StackLayout>
+                <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
+                    <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="#009994" TextColor="White" Margin="0"/>
+                </ContentView>
+                <StackLayout HeightRequest="400">
+                    <StackLayout.Resources>
+                        <ResourceDictionary>
+                            <DataTemplate x:Key="toolTipTemplate1">
+                                <StackLayout BackgroundColor="#404041">
+                                    <StackLayout.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness" WinPhone="3,3,3,3" />
+                                    </StackLayout.Padding>
+                                    <Label Text="Healthy" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" Grid.Row="0" />
+                                    <BoxView Color="White" HeightRequest="0.75" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                                    <StackLayout Orientation="Horizontal"  VerticalOptions="FillAndExpand" BackgroundColor="#404041" Spacing="0" Padding="3" Margin="0">
+                                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="#CCCCCC" FontAttributes="Bold" FontFamily="Helvetica" FontSize="12" />
+                                        <Label Text="{Binding Value,StringFormat=' :  {0}'}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                            <DataTemplate x:Key="toolTipTemplate2">
+                                <StackLayout BackgroundColor="#404041">
+                                    <StackLayout.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness" WinPhone="3,3,3,3" />
+                                    </StackLayout.Padding>
+                                    <Label Text="New Infection" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" Grid.Row="0" />
+                                    <BoxView Grid.Row="1" Color="White" HeightRequest="0.75" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" BackgroundColor="#404041" Spacing="0" Padding="3" Margin="0">
+                                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="#CCCCCC" FontAttributes="Bold" FontFamily="Helvetica" FontSize="12" />
+                                        <Label Text="{Binding Value,StringFormat=' :  {0}'}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </ResourceDictionary>
+                    </StackLayout.Resources>
+                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="NIRate">
+                        <chart:SfChart.Title>
+                            <chart:ChartTitle Text=" "  />
+                        </chart:SfChart.Title>
+                        <chart:SfChart.ChartBehaviors>
+                            <chart:ChartTooltipBehavior BackgroundColor="#404041" />
+                        </chart:SfChart.ChartBehaviors>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis ShowMajorGridLines="false" LabelPlacement="BetweenTicks" EdgeLabelsDrawingMode="Shift">
+                                <chart:CategoryAxis.MajorTickStyle>
+                                    <chart:ChartAxisTickStyle TickSize="8">
+                                    </chart:ChartAxisTickStyle>
+                                </chart:CategoryAxis.MajorTickStyle>
+                            </chart:CategoryAxis>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
+                                <chart:NumericalAxis.Title>
+                                    <chart:ChartAxisTitle Text="Infection Rate (%)" />
+                                </chart:NumericalAxis.Title>
+                                <chart:NumericalAxis.LabelStyle>
+                                    <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle1"/>
+                                </chart:NumericalAxis.LabelStyle>
+                                <chart:NumericalAxis.AxisLineStyle>
+                                    <chart:ChartLineStyle StrokeWidth="0" />
+                                </chart:NumericalAxis.AxisLineStyle>
+                                <chart:NumericalAxis.MajorTickStyle>
+                                    <chart:ChartAxisTickStyle TickSize="0" />
+                                </chart:NumericalAxis.MajorTickStyle>
+                            </chart:NumericalAxis>
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14" />
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.Series>
+                            <chart:StackingColumn100Series x:Name="series1" ItemsSource="{Binding NiRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="Healthy" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
+                            </chart:StackingColumn100Series>
+                            <chart:StackingColumn100Series x:Name="series2" ItemsSource="{Binding NiRateNewInfection}" XBindingPath="Name" YBindingPath="Value" Label="New infection" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
+                            </chart:StackingColumn100Series>
+                        </chart:SfChart.Series>
+                        <chart:SfChart.ChartAnnotations>
+                            <chart:LineAnnotation X1="10" Y1="0" X2="10" Y2="1" Text="Threshold" StrokeColor="Red"/>
+                        </chart:SfChart.ChartAnnotations>
+                    </chart:SfChart>
+                </StackLayout>
+                <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
+                    <Label Text="CURE RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="#009994" Margin="0"/>
+                </ContentView>
+                <StackLayout HeightRequest="400">
+                    <StackLayout.Resources>
+                        <ResourceDictionary>
+                            <DataTemplate x:Key="toolTipTemplate1">
+                                <StackLayout BackgroundColor="#404041">
+                                    <StackLayout.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness" WinPhone="3,3,3,3" />
+                                    </StackLayout.Padding>
+                                    <Label Text="Cure rate" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" Grid.Row="0" />
+                                    <BoxView Color="White" HeightRequest="0.75" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                                    <StackLayout Orientation="Horizontal"  VerticalOptions="FillAndExpand" BackgroundColor="#404041" Spacing="0" Padding="3" Margin="0">
+                                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="#CCCCCC" FontAttributes="Bold" FontFamily="Helvetica" FontSize="12" />
+                                        <Label Text="{Binding Value,StringFormat=' :  {0}'}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                            <DataTemplate x:Key="toolTipTemplate2">
+                                <StackLayout BackgroundColor="#404041">
+                                    <StackLayout.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness" WinPhone="3,3,3,3" />
+                                    </StackLayout.Padding>
+                                    <Label Text="Failure to cure" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" Grid.Row="0" />
+                                    <BoxView Grid.Row="1" Color="White" HeightRequest="0.75" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" BackgroundColor="#404041" Spacing="0" Padding="3" Margin="0">
+                                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="#CCCCCC" FontAttributes="Bold" FontFamily="Helvetica" FontSize="12" />
+                                        <Label Text="{Binding Value,StringFormat=' :  {0}'}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </ResourceDictionary>
+                    </StackLayout.Resources>
+                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="CureRate">
+                        <chart:SfChart.Title>
+                            <chart:ChartTitle Text=" "/>
+                        </chart:SfChart.Title>
+                        <chart:SfChart.ChartBehaviors>
+                            <chart:ChartTooltipBehavior BackgroundColor="#404041" />
+                        </chart:SfChart.ChartBehaviors>
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis ShowMajorGridLines="false" LabelPlacement="BetweenTicks" EdgeLabelsDrawingMode="Shift">
+                                <chart:CategoryAxis.MajorTickStyle>
+                                    <chart:ChartAxisTickStyle TickSize="8">
+                                    </chart:ChartAxisTickStyle>
+                                </chart:CategoryAxis.MajorTickStyle>
+                            </chart:CategoryAxis>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
+                                <chart:NumericalAxis.Title>
+                                    <chart:ChartAxisTitle Text="Infection Rate (%)" />
+                                </chart:NumericalAxis.Title>
+                                <chart:NumericalAxis.LabelStyle>
+                                    <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle2"/>
+                                </chart:NumericalAxis.LabelStyle>
+                                <chart:NumericalAxis.AxisLineStyle>
+                                    <chart:ChartLineStyle StrokeWidth="0" />
+                                </chart:NumericalAxis.AxisLineStyle>
+                                <chart:NumericalAxis.MajorTickStyle>
+                                    <chart:ChartAxisTickStyle TickSize="0" />
+                                </chart:NumericalAxis.MajorTickStyle>
+                            </chart:NumericalAxis>
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:SfChart.Legend>
+                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14" />
+                        </chart:SfChart.Legend>
+                        <chart:SfChart.Series>
+                            <chart:StackingColumn100Series x:Name="series3" ItemsSource="{Binding CureRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="Cure rare" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
+                            </chart:StackingColumn100Series>
+                            <chart:StackingColumn100Series x:Name="series4" ItemsSource="{Binding CureRateInfected}" XBindingPath="Name" YBindingPath="Value" Label="Failure to cure" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
+                            </chart:StackingColumn100Series>
+                        </chart:SfChart.Series>
+                    </chart:SfChart>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
   
 </ContentPage>

@@ -70,15 +70,6 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WHAT IS SELECTIVE DRY COW TREATMENT?.
-        /// </summary>
-        public static string AssessPageTitle {
-            get {
-                return ResourceManager.GetString("AssessPageTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to START QUESTIONS.
         /// </summary>
         public static string AssessQuestionButton {
@@ -180,7 +171,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DRYOFF.
+        ///   Looks up a localized string similar to DRYOFF.
         /// </summary>
         public static string CowStatusButtonDryOff {
             get {
@@ -252,7 +243,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to STATUS AT DRYOFF.
+        ///   Looks up a localized string similar to STATUS AT DRYOFF.
         /// </summary>
         public static string CowStatusInputTextDryoffStatus {
             get {
@@ -405,15 +396,6 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IS SELECTIVE DRY COW TREATMENT WORKING?.
-        /// </summary>
-        public static string MonitorPageTitle {
-            get {
-                return ResourceManager.GetString("MonitorPageTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to COW STATUS INPUT.
         /// </summary>
         public static string MonitorStatusButton {
@@ -468,8 +450,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IT IS IMPORTANT TO CONTINUE MONITORING
-        ///THE FARM ONCE SDCT IS IMPLEMENTED....
+        ///   Looks up a localized string similar to IT IS IMPORTANT TO CONTINUE MONITORING THE FARM ONCE SDCT IS IMPLEMENTED....
         /// </summary>
         public static string MonitorTitle1 {
             get {
@@ -487,8 +468,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HOW TO DEAL WITH ANY PROBLEMS WHICH
-        ///MAY ARISE....
+        ///   Looks up a localized string similar to HOW TO DEAL WITH ANY PROBLEMS WHICH MAY ARISE....
         /// </summary>
         public static string MonitorTitle3 {
             get {
@@ -529,6 +509,69 @@ namespace UndderControl.Text {
         public static string NoResultsCompareText {
             get {
                 return ResourceManager.GetString("NoResultsCompareText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ASSESSMENT.
+        /// </summary>
+        public static string RootAssessment1 {
+            get {
+                return ResourceManager.GetString("RootAssessment1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DRY COW TREATMENT.
+        /// </summary>
+        public static string RootAssessment2 {
+            get {
+                return ResourceManager.GetString("RootAssessment2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECTIVE.
+        /// </summary>
+        public static string RootAssessment3 {
+            get {
+                return ResourceManager.GetString("RootAssessment3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MONITOR.
+        /// </summary>
+        public static string RootMonitor1 {
+            get {
+                return ResourceManager.GetString("RootMonitor1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUCCESS OF SELECTIVE.
+        /// </summary>
+        public static string RootMonitor2 {
+            get {
+                return ResourceManager.GetString("RootMonitor2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DRY COW TREATMENT.
+        /// </summary>
+        public static string RootMonitor3 {
+            get {
+                return ResourceManager.GetString("RootMonitor3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUMMARY OF RESULTS.
+        /// </summary>
+        public static string SummaryResultTitle {
+            get {
+                return ResourceManager.GetString("SummaryResultTitle", resourceCulture);
             }
         }
         
@@ -596,9 +639,15 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum ornare libero a dictum. Nullam dictum lacinia lectus, a condimentum erat venenatis in. Vivamus gravida eu sem eu cursus. Fusce fermentum, felis eu malesuada elementum, neque ipsum sodales turpis, feugiat pulvinar orci lectus vitae ipsum. Aenean congue tristique nulla, at consectetur risus lobortis non. In eu leo ante. Donec a faucibus elit, vel consectetur nisi. Praesent consectetur leo non sagittis hendrerit.
-        ///
-        ///Sed sit amet leo eu jus [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to This tool is being provided strictly as a convenience to its
+        ///users. Any and all liability arising directly or indirectly
+        ///from the use of this tool is hereby disclaimed. The tool is
+        ///provided without any warranty expressed or implied,
+        ///including any implied warranties of merchantability,
+        ///fitness for a particular purpose or non-infringement.
+        ///Any and all indirect, special, incidental, consequential or
+        ///punitive damage arising from any use of this tool or data
+        ///generated with the tool is specifically discla [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Terms {
             get {
@@ -612,6 +661,15 @@ namespace UndderControl.Text {
         public static string TermsTitle {
             get {
                 return ResourceManager.GetString("TermsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.merck.com/about/how-we-operate/privacy/internet-privacy-policy.html.
+        /// </summary>
+        public static string TermsUrl {
+            get {
+                return ResourceManager.GetString("TermsUrl", resourceCulture);
             }
         }
     }

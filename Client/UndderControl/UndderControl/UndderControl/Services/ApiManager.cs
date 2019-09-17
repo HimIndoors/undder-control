@@ -23,21 +23,25 @@ namespace UndderControl.Services
         private readonly IUserDialogs _userDialogs = UserDialogs.Instance;
         private Dictionary<int, CancellationTokenSource> _runningTasks = new Dictionary<int, CancellationTokenSource>();
         private readonly IApiService<IFarmApi> _farmApi;
+        private readonly IApiService<IFarmUserApi> _farmUserApi;
         private readonly IApiService<ISurveyApi> _surveyApi;
         private readonly IApiService<ICowStatusApi> _cowStatusApi;
+        private readonly IApiService<ICowStatusFarmApi> _cowStatusFarmApi;
         private readonly IApiService<ISurveyResponseApi> _surveyResponseApi;
         private readonly IApiService<IUserApi> _userApi;
         private readonly double _cacheExpiryDays = Config.MonkeyCacheExpiry;
         private readonly IMetricsManagerService _metricsManager;
         public bool IsConnected { get; set; }
 
-        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi, IApiService<ISurveyResponseApi> surveyResponseApi, IApiService<IUserApi> userApi, IMetricsManagerService metricsManager)
+        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<IFarmUserApi> farmUserApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi, IApiService<ICowStatusFarmApi> cowStatusFarmApi, IApiService<ISurveyResponseApi> surveyResponseApi, IApiService<IUserApi> userApi, IMetricsManagerService metricsManager)
         {
             IsConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             _farmApi = farmApi;
+            _farmUserApi = farmUserApi;
             _surveyApi = surveyApi;
             _cowStatusApi = cowStatusApi;
+            _cowStatusFarmApi = cowStatusFarmApi;
             _surveyResponseApi = surveyResponseApi;
             _userApi = userApi;
             _metricsManager = metricsManager;
@@ -88,7 +92,7 @@ namespace UndderControl.Services
                 return data;
             }
 
-            // Check for fresh cached copy of farms
+            // Check for fresh cached copy
             if (!string.IsNullOrEmpty(barrel) && Barrel.Current.Exists(barrel) && !Barrel.Current.IsExpired(barrel))
             {
                 data.StatusCode = HttpStatusCode.NotModified;
@@ -114,8 +118,7 @@ namespace UndderControl.Services
                     return result;
 
                 });
-
-            // If we make it this far and we have a monkey cache barrel id update our local cache and reset expiry
+            // If we make it this far and we have a monkeycache barrel id update our local cache and reset expiry
             if (data.IsSuccessStatusCode && !string.IsNullOrEmpty(barrel))
             {
                 Barrel.Current.Add(barrel, data.Content.ToString(), TimeSpan.FromDays(_cacheExpiryDays));
@@ -233,21 +236,38 @@ namespace UndderControl.Services
             }
             else
             {
-                var cts = new CancellationTokenSource();
-                var task = RemoteRequestAsync(_farmApi.GetApi(Priority.UserInitiated).GetFarmsByUserId(id), "GetFarmsByUserId"+id);
-                _runningTasks.Add(task.Id, cts);
+                try
+                {
+                    var cts = new CancellationTokenSource();
+                    var task = RemoteRequestAsync(_farmUserApi.GetApi(Priority.UserInitiated).GetFarmsByUserId(id), "GetFarmsByUserId" + id);
+                    _runningTasks.Add(task.Id, cts);
 
-                return await task;
+                    return await task;
+                }
+                catch (Exception ex)
+                {
+                    _metricsManager.TrackException(ex.Message, ex);
+                    return null;
+                }
+                
             }
         }
 
         public async Task<HttpResponseMessage> GetResponseByFarmId(int id)
         {
-            var cts = new CancellationTokenSource();
-            var task = RemoteRequestAsync(_surveyResponseApi.GetApi(Priority.UserInitiated).GetResponseByFarmId(id), string.Empty);
-            _runningTasks.Add(task.Id, cts);
+            try
+            {
+                var cts = new CancellationTokenSource();
+                var task = RemoteRequestAsync(_surveyResponseApi.GetApi(Priority.UserInitiated).GetResponseByFarmId(id), "GetResponseByFarmId"+id);
+                _runningTasks.Add(task.Id, cts);
 
-            return await task;
+                return await task;
+            }
+            catch (Exception ex)
+            {
+                _metricsManager.TrackException(ex.Message, ex);
+                return null;
+            }
         }
 
         public async Task<HttpResponseMessage> GetStatusByFarmId(int id)
@@ -311,6 +331,41 @@ namespace UndderControl.Services
         {
             var cts = new CancellationTokenSource();
             var task = RemoteRequestAsync(_userApi.GetApi(Priority.UserInitiated).UpdateUser(user), null);
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
+        }
+
+        public async Task<HttpResponseMessage> GetCowsStatusByFarmID(int id)
+        {
+            try
+            {
+                var cts = new CancellationTokenSource();
+                var task = RemoteRequestAsync(_cowStatusFarmApi.GetApi(Priority.UserInitiated).GetCowsStatusByFarmID(id), null);
+                _runningTasks.Add(task.Id, cts);
+
+                return await task;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
+
+        public async Task<HttpResponseMessage> GetCowsStatusByFarmIDandYear(int id, int year)
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync(_cowStatusFarmApi.GetApi(Priority.UserInitiated).GetCowsStatusByFarmIDandYear(id, year), null);
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
+        }
+
+        public async Task<HttpResponseMessage> GetFarmById(int id)
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync(_farmApi.GetApi(Priority.UserInitiated).GetFarmById(id), null);
             _runningTasks.Add(task.Id, cts);
 
             return await task;

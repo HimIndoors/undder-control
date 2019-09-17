@@ -86,18 +86,14 @@ namespace UndderControl.ViewModels
 
         private async void NextInput()
         {
-            /*
             await RunSafe(UploadCowStatus(CowStatus));
-            */
+            //Refresh page
             CowStatus = new CowStatusDto();
-
         }
 
         private async void FinishInput()
         {
-            /*
             await RunSafe(UploadCowStatus(CowStatus));
-            */
             if (InputMode.Equals("dryoff"))
             {
                 await NavigationService.NavigateAsync(new Uri("SdctMasterDetailPage/CowStatusFinishPage", UriKind.Absolute));

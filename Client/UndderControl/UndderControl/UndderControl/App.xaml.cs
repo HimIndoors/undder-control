@@ -1,6 +1,9 @@
 ﻿using MonkeyCache.SQLite;
 using Prism;
 using Prism.Ioc;
+using Prism.Navigation.Xaml;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UndderControl.Helpers;
 using UndderControl.ViewModels;
@@ -23,17 +26,27 @@ namespace UndderControl
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
+
+        #region Global Data
         public static SurveyDto LatestSurvey { get; set; }
         public static FarmDto SelectedFarm { get; set; }
+        public static List<CowStatusDto> LatestCowStatusData { get; set; }
+        public static List<CowStatusDto> PreviousCowStatusData { get; set; }
+        public static SurveyResponseDto LatestSurveyResponse { get; set; }
+        public static SurveyResponseDto PreviousSurveyResponse { get; set; }
+        #endregion Global Data
 
         protected override async void OnInitialized()
         {
-            //TODO: Remove this for release
             //Register Syncfusion license
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTIwOTUxQDMxMzcyZTMyMmUzMFlvWjZiUENiOVVkTm1CSG04RXRGWEJ0cW4rR0Fuc2ZNK2pjM2p0REZCelk9");
             if (Config.TestMode) UserSettings.UserId = 1;
             //Initialize MonkeyCache barrel
             Barrel.ApplicationId = "PMN_Undder_Control";
+
+            //TODO: Important - remove this line for live
+            Barrel.Current.EmptyAll();
+
             VersionTracking.Track();
             InitializeComponent();
             await NavigateToPage();
@@ -50,8 +63,14 @@ namespace UndderControl
                     await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
         }
 
+        public void OnMenuButtonPressed(object sender, EventArgs e)
+        {
+            (Current.MainPage as MasterDetailPage).IsPresented = true;
+        }
+
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterForNavigation<CustomNavigationPage>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<SdctMasterDetailPage, SdctMasterDetailPageViewModel>();

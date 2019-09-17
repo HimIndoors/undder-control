@@ -1,42 +1,95 @@
-﻿using Microcharts;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Events;
 using Prism.Navigation;
-using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using UndderControl.Collections;
-using UndderControl.Events;
+using UndderControl.Custom;
+using UndderControl.Helpers;
 using UndderControl.Services;
+using UndderControl.Text;
 using UndderControlLib.Dtos;
-using Entry = Microcharts.Entry;
 
 namespace UndderControl.ViewModels
 {
-    public class SurveyResultsPageViewModel : ViewModelBase, IInitialize
+    public class SurveyResultsPageViewModel : ViewModelBase
     {
-        private SurveyResponseDto _response;
-        private readonly IEventAggregator _eventAggregator;
+        private readonly SurveyResponseDto _response;
         private DelegateCommand _compareCommand;
         private List<SurveyResponseDto> _responses;
-        public IList<Entry> Results;
         public IDictionary<string, List<string>> Statements;
-        public RadarChart Chart;
+        public ObservableCollection<ChartDataModel> RadarData { get; set; }
         public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
+        private string _suitabilityStatement;
+        public string SuitabilityStatement { get; set; }
+        public string RadarColour { get; set; }
 
-        public SurveyResultsPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, IMetricsManagerService metricsManager)
+        public SurveyResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
-            _eventAggregator = eventAggregator;
-            Init();
+            _response = App.LatestSurveyResponse;
+            BuildResultData();
         }
-        private void Init()
+        private void BuildResultData()
         {
             PageDialog.ShowLoading("Loading");
+
+            if (_response != null)
+            {
+                var chartData = new List<ChartDataModel>();
+                var answers = _response.QuestionResponses;
+                var statements = new Dictionary<string, List<string>>();
+                var isSuitable = true;
+                var lowestScore = 5;
+
+                foreach (var stage in App.LatestSurvey.Stages)
+                {
+                    //Hardcoded skip of stage 1, this could be a parameter in the stage model instead? 
+                    if (stage.ID > 1)
+                    {
+                        try
+                        {
+                            //Add Stage to spidergraph
+                            var score = answers.Where(a => a.StageID == stage.ID && a.QuestionResponse == true).Count();
+                            chartData.Add(new ChartDataModel(stage.StageText, score));
+
+                            if (score <= 2)
+                                isSuitable = false;
+
+                            if (score < lowestScore)
+                                lowestScore = score;
+
+                            //Add any statements from questions answered 'No'
+                            if (answers.Where(a => a.StageID == stage.ID && a.QuestionResponse == false).Count() > 0)
+                            {
+                                var stageStatements = new List<string>();
+                                foreach (var answer in answers.Where(a => a.StageID == stage.ID && a.QuestionResponse == false))
+                                {
+                                    stageStatements.Add(answer.QuestionStatement);
+                                }
+                                statements.Add(stage.StageText, stageStatements);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MetricsManager.TrackException("Failed to build summary data", ex);
+                        }
+                    }
+                }
+
+                RadarData = new ObservableCollection<ChartDataModel>(chartData);
+                Statements = new ObservableDictionary<string, List<string>>(statements);
+                if (isSuitable)
+                    SuitabilityStatement = AppResource.SurveyResultSdctSuitable;
+                else
+                    SuitabilityStatement = AppResource.SurveyResultSdctUnsuitable;
+
+                RadarColour = ReturnHexValue(lowestScore);
+            }
+
+            PageDialog.HideLoading();
         }
         private string ReturnHexValue(int score)
         {
@@ -63,48 +116,6 @@ namespace UndderControl.ViewModels
                     break;
             }
             return hexValue;
-        }
-
-        public void Initialize(INavigationParameters parameters)
-        {
-            _response = parameters["response"] as SurveyResponseDto;
-            Results = new ObservableCollection<Entry>();
-            Statements = new ObservableDictionary<string, List<string>>();
-            if (_response != null)
-            {
-
-                var answers = _response.QuestionResponses;
-
-                foreach (var stage in App.LatestSurvey.Stages)
-                {
-                    //Hardcoded skip of stage 0, this could be a parameter in the stage model instead? 
-                    if (stage.ID > 0)
-                    {
-                        //Add Stage to spidergraph
-                        var score = answers.Where(a => a.StageID == stage.ID && a.QuestionResponse == true).Count();
-                        Results.Add(
-                            new Entry(score)
-                            {
-                                Label = stage.StageText,
-                                ValueLabel = score.ToString(),
-                                Color = SKColor.Parse(ReturnHexValue(score)),
-                            });
-
-                        //Add any statements from questions answered 'No'
-                        if (answers.Where(a => a.StageID == stage.ID && a.QuestionResponse==false).Count() > 0)
-                        {
-                            var statements = new List<string>();
-                            foreach (var answer in answers.Where(a => a.StageID == stage.ID && a.QuestionResponse == false))
-                            {
-                                statements.Add(answer.QuestionStatement);
-                            }
-                            Statements.Add(stage.StageText, statements);
-                        }
-                    }
-                }
-            }
-            _eventAggregator.GetEvent<SurveyResultsEvent>().Publish();
-            PageDialog.HideLoading();
         }
 
         async void NavigateAsync()

@@ -21,12 +21,13 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout>
-                    <Label x:Name="FarmName" Text="Dummy Data" FontSize="Medium"  />
-                    <Label x:Name="ResultDate" Text="08/08/2019" />
+                    <Label x:Name="FarmName" Style="{StaticResource StatusData}"/>
+                    <Label x:Name="ResultDate" Text="{Binding ResultYear}" Style="{StaticResource StatusData}"/>
                 </StackLayout>
                 <StackLayout x:Name="WebViewLayout" VerticalOptions="CenterAndExpand" />
-
-                <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="#009994" Margin="0"/>
+                <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
+                    <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="#009994" TextColor="White" Margin="0"/>
+                </ContentView>
                 <StackLayout HeightRequest="400">
                     <StackLayout.Resources>
                         <ResourceDictionary>
@@ -60,7 +61,7 @@
                     </StackLayout.Resources>
                     <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="NIRate">
                         <chart:SfChart.Title>
-                            <chart:ChartTitle Text=" "/>
+                            <chart:ChartTitle Text=" "  />
                         </chart:SfChart.Title>
                         <chart:SfChart.ChartBehaviors>
                             <chart:ChartTooltipBehavior BackgroundColor="#404041" />
@@ -103,8 +104,9 @@
                         </chart:SfChart.ChartAnnotations>
                     </chart:SfChart>
                 </StackLayout>
-
-                <Label Text="CURE RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="#009994" Margin="0"/>
+                <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
+                    <Label Text="CURE RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="#009994" Margin="0"/>
+                </ContentView>
                 <StackLayout HeightRequest="400">
                     <StackLayout.Resources>
                         <ResourceDictionary>

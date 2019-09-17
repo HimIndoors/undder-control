@@ -1,9 +1,11 @@
-﻿using Foundation;
+﻿using FFImageLoading.Forms.Platform;
+using Foundation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
 using UndderControl.iOS.Services;
 using UndderControl.Services;
@@ -30,7 +32,11 @@ namespace UndderControl.iOS
 
             AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
             Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
-            Plugin.InputKit.Platforms.iOS.Config.Init();
+            Syncfusion.XForms.iOS.Buttons.SfSegmentedControlRenderer.Init();
+            SfTextInputLayoutRenderer.Init();
+
+            CachedImageRenderer.Init();
+            CachedImageRenderer.InitImageSourceHandler();
 
             return base.FinishedLaunching(app, options);
         }

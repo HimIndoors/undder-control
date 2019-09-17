@@ -8,7 +8,6 @@ namespace UndderControl.Views
         public MonitorPage()
         {
             InitializeComponent();
-            PageTitle.Text = AppResource.MonitorPageTitle;
             Title1.Text = AppResource.MonitorTitle1;
             Text1.Text = AppResource.MonitorText1;
             Title2.Text = AppResource.MonitorTitle2;

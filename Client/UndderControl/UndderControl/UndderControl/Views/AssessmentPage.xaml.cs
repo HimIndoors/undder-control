@@ -8,7 +8,6 @@ namespace UndderControl.Views
         public AssessmentPage()
         {
             InitializeComponent();
-            PageTitle.Text = AppResource.AssessPageTitle;
             Title1.Text = AppResource.AssessTitle1;
             Text1.Text = AppResource.AssessText1;
             Title2.Text = AppResource.AssessTitle1;

@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Prism.AppModel;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -11,7 +12,7 @@ using Xamarin.Forms;
 
 namespace UndderControl.ViewModels
 {
-    public class ViewModelBase : BindableBase, INavigationAware, IDestructible
+    public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IApplicationLifecycleAware
     {
         protected INavigationService NavigationService { get; private set; }
         protected IMetricsManagerService MetricsManager { get; private set; }
@@ -49,8 +50,10 @@ namespace UndderControl.ViewModels
         public IUserDialogs PageDialog = UserDialogs.Instance;
         public IApiManager ApiManager;
         readonly IApiService<IFarmApi> farmApi = new ApiService<IFarmApi>(Config.ApiUrl);
+        readonly IApiService<IFarmUserApi> farmUserApi = new ApiService<IFarmUserApi>(Config.ApiUrl);
         readonly IApiService<ISurveyApi> surveyApi = new ApiService<ISurveyApi>(Config.ApiUrl);
         readonly IApiService<ICowStatusApi> cowStatusApi = new ApiService<ICowStatusApi>(Config.ApiUrl);
+        readonly IApiService<ICowStatusFarmApi> cowStatusFarmApi = new ApiService<ICowStatusFarmApi>(Config.ApiUrl);
         readonly IApiService<ISurveyResponseApi> surveyResponseApi = new ApiService<ISurveyResponseApi>(Config.ApiUrl);
         readonly IApiService<IUserApi> userApi = new ApiService<IUserApi>(Config.ApiUrl);
 
@@ -58,7 +61,7 @@ namespace UndderControl.ViewModels
         {
             MetricsManager = metricsManager;
             NavigationService = navigationService;
-            ApiManager = new ApiManager(farmApi, surveyApi, cowStatusApi, surveyResponseApi, userApi, MetricsManager);
+            ApiManager = new ApiManager(farmApi, farmUserApi, surveyApi, cowStatusApi, cowStatusFarmApi, surveyResponseApi, userApi, MetricsManager);
         }
 
         public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)
@@ -96,6 +99,16 @@ namespace UndderControl.ViewModels
         public virtual void Destroy()
         {
 
+        }
+
+        public virtual void OnResume()
+        {
+
+        }
+
+        public virtual void OnSleep()
+        {
+            
         }
     }
 }

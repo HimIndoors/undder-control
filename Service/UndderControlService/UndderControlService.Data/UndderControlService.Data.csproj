@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Entities\CowStatus.cs" />
     <Compile Include="Entities\Farm.cs" />
+    <Compile Include="Entities\FarmType.cs" />
     <Compile Include="Entities\Survey.cs" />
     <Compile Include="Entities\SurveyQuestion.cs" />
     <Compile Include="Entities\SurveyQuestionResponse.cs" />
@@ -69,6 +70,10 @@
     <Compile Include="Migrations\201909062212118_SurveyResponseUpdates.Designer.cs">
       <DependentUpon>201909062212118_SurveyResponseUpdates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909171006217_FarmType.cs" />
+    <Compile Include="Migrations\201909171006217_FarmType.Designer.cs">
+      <DependentUpon>201909171006217_FarmType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntitiesDbContext.cs" />
@@ -83,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909062212118_SurveyResponseUpdates.resx">
       <DependentUpon>201909062212118_SurveyResponseUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909171006217_FarmType.resx">
+      <DependentUpon>201909171006217_FarmType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

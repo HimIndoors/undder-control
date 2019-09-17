@@ -120,9 +120,6 @@
   <data name="AssessCompareButton" xml:space="preserve">
     <value>COMPARE RESULTS</value>
   </data>
-  <data name="AssessPageTitle" xml:space="preserve">
-    <value>WHAT IS SELECTIVE DRY COW TREATMENT?</value>
-  </data>
   <data name="AssessQuestionButton" xml:space="preserve">
     <value>START QUESTIONS</value>
   </data>
@@ -159,7 +156,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>CALVING</value>
   </data>
   <data name="CowStatusButtonDryOff" xml:space="preserve">
-    <value>DRY&#x1F;OFF</value>
+    <value>DRYOFF</value>
   </data>
   <data name="CowStatusFinishText1" xml:space="preserve">
     <value>THANK YOU FOR PROVIDING THE DATA FOR THE DRYOFF PERIOD.</value>
@@ -183,7 +180,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>STATUS AT CALVING</value>
   </data>
   <data name="CowStatusInputTextDryoffStatus" xml:space="preserve">
-    <value>STATUS AT DRY&#x1F;OFF</value>
+    <value>STATUS AT DRYOFF</value>
   </data>
   <data name="CowStatusInputTitle" xml:space="preserve">
     <value>INPUT DATA</value>
@@ -233,9 +230,6 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
   <data name="MonitorCompareButton" xml:space="preserve">
     <value>COMPARE RESULTS</value>
   </data>
-  <data name="MonitorPageTitle" xml:space="preserve">
-    <value>IS SELECTIVE DRY COW TREATMENT WORKING?</value>
-  </data>
   <data name="MonitorStatusButton" xml:space="preserve">
     <value>COW STATUS INPUT</value>
   </data>
@@ -255,15 +249,13 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>SDCT provides both short term and long term benefits; reducing antibiotic use in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain SDCT.</value>
   </data>
   <data name="MonitorTitle1" xml:space="preserve">
-    <value>IT IS IMPORTANT TO CONTINUE MONITORING
-THE FARM ONCE SDCT IS IMPLEMENTED...</value>
+    <value>IT IS IMPORTANT TO CONTINUE MONITORING THE FARM ONCE SDCT IS IMPLEMENTED...</value>
   </data>
   <data name="MonitorTitle2" xml:space="preserve">
     <value>WHAT YOU NEED TO MONITOR...</value>
   </data>
   <data name="MonitorTitle3" xml:space="preserve">
-    <value>HOW TO DEAL WITH ANY PROBLEMS WHICH
-MAY ARISE...</value>
+    <value>HOW TO DEAL WITH ANY PROBLEMS WHICH MAY ARISE...</value>
   </data>
   <data name="MonitorTitle4" xml:space="preserve">
     <value>THE BENEFITS OF MAINTAINING SDCT...</value>
@@ -276,6 +268,27 @@ MAY ARISE...</value>
   </data>
   <data name="NoResultsCompareText" xml:space="preserve">
     <value>SORRY, WE DONT HAVE ENOUGH DATA TO COMPARE AT THIS TIME</value>
+  </data>
+  <data name="RootAssessment1" xml:space="preserve">
+    <value>ASSESSMENT</value>
+  </data>
+  <data name="RootAssessment2" xml:space="preserve">
+    <value>DRY COW TREATMENT</value>
+  </data>
+  <data name="RootAssessment3" xml:space="preserve">
+    <value>SELECTIVE</value>
+  </data>
+  <data name="RootMonitor1" xml:space="preserve">
+    <value>MONITOR</value>
+  </data>
+  <data name="RootMonitor2" xml:space="preserve">
+    <value>SUCCESS OF SELECTIVE</value>
+  </data>
+  <data name="RootMonitor3" xml:space="preserve">
+    <value>DRY COW TREATMENT</value>
+  </data>
+  <data name="SummaryResultTitle" xml:space="preserve">
+    <value>SUMMARY OF RESULTS</value>
   </data>
   <data name="SurveyNoButton" xml:space="preserve">
     <value>No</value>
@@ -299,13 +312,21 @@ MAY ARISE...</value>
     <value>Yes</value>
   </data>
   <data name="Terms" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum ornare libero a dictum. Nullam dictum lacinia lectus, a condimentum erat venenatis in. Vivamus gravida eu sem eu cursus. Fusce fermentum, felis eu malesuada elementum, neque ipsum sodales turpis, feugiat pulvinar orci lectus vitae ipsum. Aenean congue tristique nulla, at consectetur risus lobortis non. In eu leo ante. Donec a faucibus elit, vel consectetur nisi. Praesent consectetur leo non sagittis hendrerit.
-
-Sed sit amet leo eu justo congue dictum. Maecenas ac sagittis ante. Aliquam erat volutpat. Ut feugiat, enim quis ultricies facilisis, felis libero ultrices ipsum, nec condimentum est erat tincidunt est. Fusce hendrerit metus id ex rhoncus, ut sollicitudin mauris egestas. Maecenas quis condimentum augue. Morbi venenatis consectetur mauris nec varius. Morbi dignissim mauris at purus gravida, in vestibulum dui porta. Quisque urna dui, ultrices et magna in, luctus lacinia lorem. In volutpat odio vel urna semper accumsan. Pellentesque et tortor nec metus iaculis fringilla. Vivamus semper sed eros non mattis. Phasellus ac sapien molestie, placerat metus in, semper ipsum. Nam aliquam scelerisque erat eget eleifend. Mauris pellentesque est a interdum mattis.
-
-Sed id pharetra ligula, at sagittis eros. Vivamus volutpat dictum massa quis dapibus. Vivamus ac molestie dolor. Quisque urna lectus, suscipit sed bibendum vitae, tristique viverra nunc. Nulla nec libero cursus sem sodales blandit non in nisl. Curabitur dui dui, mattis sed condimentum non, efficitur vel tortor. Fusce fringilla mauris dolor. Praesent id interdum odio. Pellentesque dolor metus, dignissim a odio et, vehicula ultricies augue.</value>
+    <value>This tool is being provided strictly as a convenience to its
+users. Any and all liability arising directly or indirectly
+from the use of this tool is hereby disclaimed. The tool is
+provided without any warranty expressed or implied,
+including any implied warranties of merchantability,
+fitness for a particular purpose or non-infringement.
+Any and all indirect, special, incidental, consequential or
+punitive damage arising from any use of this tool or data
+generated with the tool is specifically disclaimed and
+excluded.</value>
   </data>
   <data name="TermsTitle" xml:space="preserve">
     <value>Terms and Conditions</value>
+  </data>
+  <data name="TermsUrl" xml:space="preserve">
+    <value>http://www.merck.com/about/how-we-operate/privacy/internet-privacy-policy.html</value>
   </data>
 </root>

@@ -103,13 +103,13 @@ namespace UndderControl.ViewModels
             }
             catch (Exception ex)
             {
-                DependencyService.Get<IMetricsManagerService>().TrackException("SurveyEndException", ex);
+                MetricsManager.TrackException("SurveyEndException", ex);
             }
             var navigationParams = new NavigationParameters
             {
                 { "response", _response }
             };
-            await NavigationService.NavigateAsync("SdctMasterDetailPage/SurveyResultsPage", navigationParams);
+            await NavigationService.NavigateAsync("SurveyResultsPage", navigationParams);
         }
 
         /// <summary>

@@ -21,11 +21,23 @@
             <StackLayout>
                 <Label x:Name="TermsTitle" FontSize="Subtitle" FontAttributes="Bold" />
                 <Label x:Name="Terms" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="To find out more about our privacy terms " />
+                            <Span Text="click here" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnBrowseCommand}" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text="." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </StackLayout>
         </ScrollView>
         <StackLayout VerticalOptions="End" Margin="0,21,0,0">
             <Button Text="Accept"  Command="{Binding OnAcceptCommand}" />
-            <Button Text="Decline" Command="{Binding OnDeclineCommand}" />
         </StackLayout>
     </StackLayout>
   

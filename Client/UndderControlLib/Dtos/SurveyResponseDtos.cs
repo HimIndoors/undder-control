@@ -11,6 +11,11 @@ namespace UndderControlLib.Dtos
     public class SurveyResponseDto
     {
         /// <summary>
+        /// Database ID of this SurveyResponse.
+        /// Obtained from the server via the SurveyResponseModel.
+        /// </summary>
+        public int ID { get; set; }
+        /// <summary>
         /// Database ID of Survey this response is for.
         /// Obtained from the server via the SurveyModel.
         /// </summary>
@@ -24,12 +29,12 @@ namespace UndderControlLib.Dtos
         /// <summary>
         /// Identifier of the Interviewer conducting this survey.
         /// </summary>
-        public String UserID { get; set; }
+        public int User_ID { get; set; }
 
         /// <summary>
         /// Identifier of the selected farm.
         /// </summary>
-        public String FarmID { get; set; }
+        public int Farm_ID { get; set; }
 
         /// <summary>
         /// Date the survey response was submitted.

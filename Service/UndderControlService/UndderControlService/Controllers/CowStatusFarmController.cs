@@ -29,11 +29,11 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, "The specified cow status are being returned.", typeof(IEnumerable<CowStatusDto>))]
         public IHttpActionResult Get(int id)
         {
-            var thisYear = DateTime.Now.Year;
-            var latestCowStatus = db.CowStatus.DefaultIfEmpty(null).Where(c => c.Farm_ID == id && c.DateAddedCalving.HasValue && c.DateAddedCalving.Value.Year == thisYear).OrderByDescending(c => c.DateAddedCalving.Value).FirstOrDefault();
+            var latestCowStatus = db.CowStatus.DefaultIfEmpty(null).Where(c => c.Farm_ID == id && c.DateAddedCalving.HasValue).OrderByDescending(c => c.DateAddedCalving.Value).FirstOrDefault();
 
             if (latestCowStatus != null)
             {
+                var thisYear = latestCowStatus.DateAddedCalving.Value.Year;
                 var thresholdDate = latestCowStatus.DateAddedCalving.Value.AddDays(_calvingThresholdDays);
                 var value = db.CowStatus.DefaultIfEmpty(null).Where(
                     c => c.Farm_ID == id
@@ -50,7 +50,6 @@ namespace UndderControlService.Controllers
 
                 Logger.Info("CowStatus data for {id} not found", id);
                 return NotFound();
-                
             }
 
             Logger.Info("Latest CowStatus data not found");

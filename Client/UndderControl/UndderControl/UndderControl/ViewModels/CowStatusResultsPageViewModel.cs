@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using UndderControl.Collections;
+using UndderControl.Custom;
 using UndderControl.Events;
 using UndderControl.Helpers;
 using UndderControl.Services;
@@ -27,7 +27,17 @@ namespace UndderControl.ViewModels
                 RaisePropertyChanged("Results");
             }
         }
-        private readonly IEventAggregator _eventAggregator;
+
+        private int _resultYear;
+        public int ResultYear
+        {
+            get { return _resultYear; }
+            set {
+                _resultYear = value;
+                RaisePropertyChanged("ResultYear");
+            }
+        }
+
 
         #region Graph Data
         private ObservableCollection<ChartDataModel> _niRateHealthy;
@@ -72,19 +82,19 @@ namespace UndderControl.ViewModels
         }
         #endregion Graph Data
 
-        public CowStatusResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator ea)
+        public CowStatusResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
-            Title = "";
-            _eventAggregator = ea;
-            InitAsync();
+            Title = AppResource.SummaryResultTitle;
+            Init();
         }
 
-        private async void InitAsync()
+        private void Init()
         {
             try
             {
-                await RunSafe(GetCowStatus());
+                _cowStatusList = App.LatestCowStatusData;
+                //await RunSafe(GetCowStatus());
                 BuildCowData();
             }
             catch (Exception ex)
@@ -138,7 +148,6 @@ namespace UndderControl.ViewModels
                 }
             }
             Results = temp;
-            _eventAggregator.GetEvent<CowStatusResultsEvent>().Publish();
 
             //Set up graph data
             NiRateHealthy = new ObservableCollection<ChartDataModel>
@@ -157,6 +166,9 @@ namespace UndderControl.ViewModels
             {
                 new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsFailureToCure]) / Results[AppResource.CsInfectedAtDryoff])),
             };
+
+            //Set result date
+            ResultYear = _cowStatusList[0].DateAddedCalving.Value.Year;
         }
 
         private async Task GetCowStatus()

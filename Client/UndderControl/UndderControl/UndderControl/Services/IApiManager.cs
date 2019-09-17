@@ -11,9 +11,13 @@ namespace UndderControl.Services
     {
         #region Farm methods
         Task<HttpResponseMessage> FarmList();
-        Task<HttpResponseMessage> GetFarmsByUserId(int id);
+        Task<HttpResponseMessage> GetFarmById(int id);
         Task<HttpResponseMessage> UploadFarm(FarmDto farm, bool isNew);
         #endregion Farm methods
+
+        #region Farm By User methods
+        Task<HttpResponseMessage> GetFarmsByUserId(int id);
+        #endregion Farm By User methods
 
         #region Survey methods
         Task<HttpResponseMessage> GetLatestSurvey();
@@ -28,6 +32,11 @@ namespace UndderControl.Services
         Task<HttpResponseMessage> CreateCowStatus(CowStatusDto farm);
         Task<HttpResponseMessage> GetStatusByFarmId(int id);
         #endregion CowStatusResponse methods
+
+        #region CowStatus By Farm methods
+        Task<HttpResponseMessage> GetCowsStatusByFarmID(int id);
+        Task<HttpResponseMessage> GetCowsStatusByFarmIDandYear(int id, int year);
+        #endregion CowStatus By Farm methods
 
         #region User methods
         Task<HttpResponseMessage> GetUserByToken(string token);

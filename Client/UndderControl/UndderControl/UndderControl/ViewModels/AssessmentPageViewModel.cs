@@ -2,6 +2,8 @@
 using Prism.Commands;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using UndderControl.Extensions;
 using UndderControl.Helpers;
@@ -17,6 +19,14 @@ namespace UndderControl.ViewModels
 
         public DelegateCommand<string> OnNavigateCommand =>
             _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync));
+
+        private DelegateCommand<string> _onSummaryCommand;
+        public DelegateCommand<string> OnSummaryCommand
+            => _onSummaryCommand ?? (_onSummaryCommand = new DelegateCommand<string>(NavigateAsync, CanSummaryNavigate));
+
+        private DelegateCommand<string> _onCompareCommand;
+        public DelegateCommand<string> OnCompareCommand
+            => _onCompareCommand ?? (_onCompareCommand = new DelegateCommand<string>(NavigateAsync, CanCompareNavigate));
 
         public AssessmentPageViewModel(INavigationService navigationService, IMetricsManagerService metricsService)
             : base(navigationService, metricsService)
@@ -39,24 +49,27 @@ namespace UndderControl.ViewModels
             try
             {
                 // Check if an updated survey is available from the service
-                await RunSafe(GetSurvey());
+                // Pull existing responses from the database
+                await RunSafe(GetData());
                 
             }
             catch (Exception ex)
             {
-                MetricsManager.TrackException("GetSurveyFailed", ex);
+                MetricsManager.TrackException("GetAssessmentDataFailed", ex);
             }
         }
 
-        async Task GetSurvey()
-        {
-            var response = await ApiManager.GetLatestSurvey();
 
-            if (response.IsSuccessStatusCode)
+
+        async Task GetData()
+        {
+            var surveyResponse = await ApiManager.GetLatestSurvey();
+
+            if (surveyResponse.IsSuccessStatusCode)
             {
                 try
                 {
-                    var content = await response.Content.ReadAsStringAsync();
+                    var content = await surveyResponse.Content.ReadAsStringAsync();
                     var survey = await Task.Run(() => JsonConvert.DeserializeObject<SurveyDto>(content));
                     if (survey != null && (App.LatestSurvey == null || App.LatestSurvey.Version < survey.Version))
                     {
@@ -68,13 +81,39 @@ namespace UndderControl.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    DependencyService.Get<IMetricsManagerService>().TrackException("Error reading survey json", ex);
+                    MetricsManager.TrackException("Error reading survey json", ex);
                 }
-                
+
             }
             else
             {
                 await PageDialog.AlertAsync("Unable to retrieve survey data", "Error", "OK");
+            }
+
+            var serviceResponse = await ApiManager.GetResponseByFarmId(App.SelectedFarm.ID);
+
+            if (serviceResponse.IsSuccessStatusCode || serviceResponse.StatusCode == HttpStatusCode.NotModified)
+            {
+                try
+                {
+                    var response = await serviceResponse.Content.ReadAsStringAsync();
+                    var responseData = await Task.Run(() => JsonConvert.DeserializeObject<List<SurveyResponseDto>>(response));
+                    if (responseData != null && responseData.Count == 1)
+                    {
+                        App.LatestSurveyResponse = responseData[0];
+                        OnSummaryCommand.RaiseCanExecuteChanged();
+                    }
+                    else if (responseData != null && responseData.Count == 2)
+                    {
+                        App.LatestSurveyResponse = responseData[0];
+                        App.PreviousSurveyResponse = responseData[1];
+                        OnSummaryCommand.RaiseCanExecuteChanged();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MetricsManager.TrackException("Error reading survey json", ex);
+                }
             }
         }
 
@@ -82,6 +121,15 @@ namespace UndderControl.ViewModels
         {
             MetricsManager.TrackEvent("Navigate: " + page);
             await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+        }
+
+        private bool CanSummaryNavigate(string arg)
+        {
+            return App.LatestSurveyResponse == null ? false : true;
+        }
+        private bool CanCompareNavigate(string arg)
+        {
+            return (App.LatestSurveyResponse == null ? false : true) && (App.PreviousSurveyResponse == null ? false : true);
         }
     }
 }

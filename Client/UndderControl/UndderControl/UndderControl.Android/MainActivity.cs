@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using FFImageLoading.Forms.Platform;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -25,13 +26,15 @@ namespace UndderControl.Droid
             AppCenter.Start(Config.AppCenterAndroidKey, typeof(Analytics), typeof(Crashes));
             CrossCurrentActivity.Current.Init(this, bundle);
             UserDialogs.Init(() => this);
-            
+
             base.OnCreate(bundle);
 
-            Plugin.InputKit.Platforms.Droid.Config.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.Essentials.Platform.Init(this, bundle);
-            
+
+            CachedImageRenderer.Init(enableFastRenderer: true);
+            CachedImageRenderer.InitImageViewHandler();
+
             LoadApplication(new App(new AndroidInitializer())); 
         }
 

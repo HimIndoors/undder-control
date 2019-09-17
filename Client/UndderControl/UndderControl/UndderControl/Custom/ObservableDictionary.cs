@@ -31,7 +31,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace UndderControl.Collections
+namespace UndderControl.Custom
 {
 
     ///<summary>

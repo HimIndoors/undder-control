@@ -4,7 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyResultsPage"
-             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
             iOS="21"
@@ -16,9 +16,29 @@
             <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0" Padding="1">
                 <Label Text="08/08/2019" HorizontalTextAlignment="Center" />
             </Frame>
-            <microcharts:ChartView x:Name="ResultChart" HeightRequest="400" BackgroundColor="Transparent" />
-            <Label x:Name="FarmSuitability" TextColor="White" FontSize="Medium" />
-            <Label x:Name="ImprovementTitle" />
+            <StackLayout HeightRequest="400">
+                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <chart:SfChart.Margin>
+                        <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
+                    </chart:SfChart.Margin>
+                    <chart:SfChart.PrimaryAxis>
+                        <chart:CategoryAxis>
+                        </chart:CategoryAxis>
+                    </chart:SfChart.PrimaryAxis>
+                    <chart:SfChart.SecondaryAxis>
+                        <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1">
+                            <chart:NumericalAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelSyle"/>
+                            </chart:NumericalAxis.LabelStyle>
+                        </chart:NumericalAxis>
+                    </chart:SfChart.SecondaryAxis>
+                    <chart:SfChart.Series>
+                        <chart:RadarSeries x:Name="series1" ItemsSource="{Binding RadarData}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="{Binding RadarColour}" />
+                    </chart:SfChart.Series>
+                </chart:SfChart>
+            </StackLayout>
+            <Label x:Name="FarmSuitability" Text="{Binding SuitabilityStatement}" Style="{StaticResource ResultSubtitle}"/>
+            <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
             <StackLayout x:Name="StatementStack" />
             <Button x:Name="CompareButton" Command="{Binding CompareCommand}" />
         </StackLayout>

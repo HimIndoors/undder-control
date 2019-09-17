@@ -23,6 +23,7 @@ namespace UndderControlService.Data.Repositories
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         public virtual DbSet<Farm> Farms { get; set; }
+        public virtual DbSet<FarmType> FarmTypes { get; set; }
         public virtual DbSet<CowStatus> CowStatus { get; set; }
         public virtual DbSet<Survey> Surveys { get; set; }
         public virtual DbSet<SurveyQuestion> SurveyQuestions { get; set; }

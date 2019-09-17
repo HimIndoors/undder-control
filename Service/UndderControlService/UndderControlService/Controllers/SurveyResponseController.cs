@@ -30,16 +30,24 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, "The specified farms are being returned.", typeof(IEnumerable<SurveyResponseDto>))]
         public IHttpActionResult Get(int id)
         {
-            var value = db.SurveyResponses.DefaultIfEmpty(null).Where(s => s.User_ID == id).OrderByDescending(s => s.SubmittedDate).Take(2).ToList();
-            if (value != null && value.Count > 0)
+            try
             {
-                var result = Mapper.Map<List<SurveyResponseDto>>(value);
-                Logger.Info("Returning Survey Responses for Farm: {id}", id);
-                return Ok(result);
-            }
+                var value = db.SurveyResponses.DefaultIfEmpty(null).Where(s => s.User_ID == id).OrderByDescending(s => s.SubmittedDate).Take(2).ToList();
+                if (value != null && value.Count > 0)
+                {
+                    var result = Mapper.Map<List<SurveyResponseDto>>(value);
+                    Logger.Info("Returning Survey Responses for Farm: {id}", id);
+                    return Ok(result);
+                }
 
-            Logger.Info("No Survey Responses found for Farm: {id}", id);
-            return NotFound();
+                Logger.Info("No Survey Responses found for Farm: {id}", id);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
         // POST api/<controller>

@@ -26,16 +26,24 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, "The specified farms are being returned.", typeof(IEnumerable<FarmDto>))]
         public IHttpActionResult Get(int id)
         {
-            var value = db.Farms.DefaultIfEmpty(null).Where(f => f.User_ID == id).ToList();
-            if(value != null)
+            try
             {
-                var farms = AutoMapper.Mapper.Map<List<FarmDto>>(value);
-                Logger.Info("Returning {count} farms for user {id}", value.Count, id);
-                return Ok(farms);
-            }
+                var value = db.Farms.DefaultIfEmpty(null).Where(f => f.User_ID == id).ToList();
+                if (value != null)
+                {
+                    var farms = AutoMapper.Mapper.Map<List<FarmDto>>(value);
+                    Logger.Info("Returning {count} farms for user {id}", value.Count, id);
+                    return Ok(farms);
+                }
 
-            Logger.Info("No farms found for this user {id}", id);
-            return NotFound();
+                Logger.Info("No farms found for this user {id}", id);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
     }
 }

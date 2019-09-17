@@ -29,31 +29,39 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, "The specified cow status are being returned.", typeof(IEnumerable<CowStatusDto>))]
         public IHttpActionResult Get(int id)
         {
-            var latestCowStatus = db.CowStatus.DefaultIfEmpty(null).Where(c => c.Farm_ID == id && c.DateAddedCalving.HasValue).OrderByDescending(c => c.DateAddedCalving.Value).FirstOrDefault();
-
-            if (latestCowStatus != null)
+            try
             {
-                var thisYear = latestCowStatus.DateAddedCalving.Value.Year;
-                var thresholdDate = latestCowStatus.DateAddedCalving.Value.AddDays(_calvingThresholdDays);
-                var value = db.CowStatus.DefaultIfEmpty(null).Where(
-                    c => c.Farm_ID == id
-                    && c.DateAddedCalving.HasValue && c.DateAddedCalving.Value.Year == thisYear
-                    && c.DateAddedDryOff.HasValue && (c.DateAddedDryOff.Value >= thresholdDate)
-                ).ToList();
 
-                if (value!=null)
+                var latestCowStatus = db.CowStatus.DefaultIfEmpty(null).Where(c => c.Farm_ID == id && c.DateAddedCalving.HasValue).OrderByDescending(c => c.DateAddedCalving.Value).FirstOrDefault();
+                if (latestCowStatus != null)
                 {
-                    var result = AutoMapper.Mapper.Map<List<CowStatusDto>>(value);
-                    Logger.Info("Returning {number} of CowStatus", value.Count);
-                    return Ok(result);
+                    var thisYear = latestCowStatus.DateAddedCalving.Value.Year;
+                    var thresholdDate = latestCowStatus.DateAddedCalving.Value.AddDays(_calvingThresholdDays);
+                    var value = db.CowStatus.DefaultIfEmpty(null).Where(
+                        c => c.Farm_ID == id
+                        && c.DateAddedCalving.HasValue && c.DateAddedCalving.Value.Year == thisYear
+                        && c.DateAddedDryOff.HasValue && (c.DateAddedDryOff.Value >= thresholdDate)
+                    ).ToList();
+
+                    if (value != null)
+                    {
+                        var result = AutoMapper.Mapper.Map<List<CowStatusDto>>(value);
+                        Logger.Info("Returning {number} of CowStatus", value.Count);
+                        return Ok(result);
+                    }
+
+                    Logger.Info("CowStatus data for {id} not found", id);
+                    return NotFound();
                 }
 
-                Logger.Info("CowStatus data for {id} not found", id);
+                Logger.Info("Latest CowStatus data not found");
                 return NotFound();
             }
-
-            Logger.Info("Latest CowStatus data not found");
-            return NotFound();            
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
         // GET api/<controller>/5/2019
@@ -72,31 +80,38 @@ namespace UndderControlService.Controllers
         [Route("api/cowstatusfarm/{id}/{year}")]
         public IHttpActionResult Get(int id, int year)
         {
-            var latestCowStatus = db.CowStatus.DefaultIfEmpty(null).Where(c => c.Farm_ID == id && c.DateAddedCalving.HasValue && c.DateAddedCalving.Value.Year == year).OrderByDescending(c => c.DateAddedCalving.Value).First();
-
-            if (latestCowStatus != null)
+            try
             {
-                var thresholdDate = latestCowStatus.DateAddedCalving.Value.AddDays(_calvingThresholdDays);
-                var value = db.CowStatus.DefaultIfEmpty(null).Where(
-                    c => c.Farm_ID == id
-                    && c.DateAddedCalving.HasValue && c.DateAddedCalving.Value.Year == year
-                    && c.DateAddedDryOff.HasValue && (c.DateAddedDryOff.Value > thresholdDate)
-                ).ToList();
-
-                if (value != null)
+                var latestCowStatus = db.CowStatus.DefaultIfEmpty(null).Where(c => c.Farm_ID == id && c.DateAddedCalving.HasValue && c.DateAddedCalving.Value.Year == year).OrderByDescending(c => c.DateAddedCalving.Value).First();
+                if (latestCowStatus != null)
                 {
-                    var result = AutoMapper.Mapper.Map<List<CowStatusDto>>(value);
-                    Logger.Info("Returning {number} of CowStatus", value.Count);
-                    return Ok(result);
+                    var thresholdDate = latestCowStatus.DateAddedCalving.Value.AddDays(_calvingThresholdDays);
+                    var value = db.CowStatus.DefaultIfEmpty(null).Where(
+                        c => c.Farm_ID == id
+                        && c.DateAddedCalving.HasValue && c.DateAddedCalving.Value.Year == year
+                        && c.DateAddedDryOff.HasValue && (c.DateAddedDryOff.Value > thresholdDate)
+                    ).ToList();
+
+                    if (value != null)
+                    {
+                        var result = AutoMapper.Mapper.Map<List<CowStatusDto>>(value);
+                        Logger.Info("Returning {number} of CowStatus", value.Count);
+                        return Ok(result);
+                    }
+
+                    Logger.Info("CowStatus data for {id} not found", id);
+                    return NotFound();
+
                 }
 
-                Logger.Info("CowStatus data for {id} not found", id);
+                Logger.Info("Latest CowStatus data not found");
                 return NotFound();
-
             }
-
-            Logger.Info("Latest CowStatus data not found");
-            return NotFound();
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
     }
 }

@@ -133,18 +133,26 @@ namespace UndderControlService.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = db.Users.Find(value.ID);
-            if (user != null)
+            try
             {
-                db.Users.Add(user);
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                Logger.Info("User updated: {@value1}", user);
-                return StatusCode(HttpStatusCode.NoContent);
-            }
+                var user = db.Users.Find(value.ID);
+                if (user != null)
+                {
+                    db.Users.Add(user);
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+                    Logger.Info("User updated: {@value1}", user);
+                    return StatusCode(HttpStatusCode.NoContent);
+                }
 
-            Logger.Info("User data for {id} not found", value.ID);
-            return NotFound();
+                Logger.Info("User data for {id} not found", value.ID);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
         // DELETE api/<controller>/5
@@ -159,17 +167,25 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, "No matching user found.")]
         public IHttpActionResult Delete(int id)
         {
-            var user = db.Users.Find(id);
-            if (user != null)
+            try
             {
-                db.Users.Remove(user);
-                db.SaveChanges();
-                Logger.Info("User deleted: {id}", id);
-                return StatusCode(HttpStatusCode.NoContent);
-            }
+                var user = db.Users.Find(id);
+                if (user != null)
+                {
+                    db.Users.Remove(user);
+                    db.SaveChanges();
+                    Logger.Info("User deleted: {id}", id);
+                    return StatusCode(HttpStatusCode.NoContent);
+                }
 
-            Logger.Info("User data for {id} not found", id);
-            return NotFound();
+                Logger.Info("User data for {id} not found", id);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
     }
 }

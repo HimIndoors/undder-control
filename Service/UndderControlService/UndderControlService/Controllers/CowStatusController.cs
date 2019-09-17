@@ -28,17 +28,24 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, "The specified cow status are being returned.", typeof(CowStatusDto))]
         public IHttpActionResult Get(int id)
         {
-            var value = db.CowStatus.DefaultIfEmpty(null).Where(x => x.ID == id).FirstOrDefault();
-
-            if (value != null)
+            try
             {
-                var result = Mapper.Map<CowStatusDto>(value);
-                Logger.Info("Returning CowStatus {@value1}", value);
-                return Ok(result);
-            }
+                var value = db.CowStatus.DefaultIfEmpty(null).Where(x => x.ID == id).FirstOrDefault();
+                if (value != null)
+                {
+                    var result = Mapper.Map<CowStatusDto>(value);
+                    Logger.Info("Returning CowStatus {@value1}", value);
+                    return Ok(result);
+                }
 
-            Logger.Info("CowStatus not found: {id}", id);
-            return NotFound();
+                Logger.Info("CowStatus not found: {id}", id);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
         // POST api/<controller>

@@ -29,17 +29,24 @@ namespace UndderControlService.Controllers
         [AllowAnonymous]
         public IHttpActionResult Get()
         {
-            var value = db.Surveys.DefaultIfEmpty(null).Where(s => s.Active).OrderByDescending(s => s.Version).FirstOrDefault();
-
-            if (value != null)
+            try
             {
-                var survey = Mapper.Map<SurveyDto>(value);
-                Logger.Info("Returning survey: {@value1}", survey);
-                return Ok(survey);
-            }
+                var value = db.Surveys.DefaultIfEmpty(null).Where(s => s.Active).OrderByDescending(s => s.Version).FirstOrDefault();
+                if (value != null)
+                {
+                    var survey = Mapper.Map<SurveyDto>(value);
+                    Logger.Info("Returning survey: {@value1}", survey);
+                    return Ok(survey);
+                }
 
-            Logger.Info("No survey found");
-            return NotFound();
+                Logger.Info("No survey found");
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
         // GET api/<controller>/5
@@ -55,17 +62,24 @@ namespace UndderControlService.Controllers
         [AllowAnonymous]
         public IHttpActionResult Get(int id)
         {
-
-            var value = db.Surveys.DefaultIfEmpty(null).Where(s => s.ID == id).SingleOrDefault();
-            if (value != null)
+            try
             {
-                var survey = Mapper.Map<SurveyDto>(value);
-                Logger.Info("Returning survey: {@value1}", survey);
-                return Ok(survey);
+                var value = db.Surveys.DefaultIfEmpty(null).Where(s => s.ID == id).SingleOrDefault();
+                if (value != null)
+                {
+                    var survey = Mapper.Map<SurveyDto>(value);
+                    Logger.Info("Returning survey: {@value1}", survey);
+                    return Ok(survey);
+                }
+
+                Logger.Info("No survey found with ID: {id}", id);
+                return NotFound();
             }
-            
-            Logger.Info("No survey found with ID: {id}", id);
-            return NotFound(); 
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
         // POST api/<controller>
@@ -83,8 +97,7 @@ namespace UndderControlService.Controllers
             {
                 Logger.Info("Modelstate invalid: {@value1}", value);
                 return BadRequest(ModelState);
-            }
-                
+            }  
                 
             try
             {

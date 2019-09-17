@@ -28,9 +28,17 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, "The farms are being returned.", typeof(IEnumerable<FarmDto>))]
         public IHttpActionResult Get()
         {
-            var farms = Mapper.Map<List<FarmDto>>(db.Farms.ToList());
-            Logger.Info("Returning {number} of farms", farms.Count);
-            return Ok(farms);
+            try
+            {
+                var farms = Mapper.Map<List<FarmDto>>(db.Farms.ToList());
+                Logger.Info("Returning {number} of farms", farms.Count);
+                return Ok(farms);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
         // GET api/<controller>/5
@@ -45,17 +53,25 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.OK, "The specified farm is being returned.", typeof(FarmDto))]
         public IHttpActionResult Get(int id)
         {
-            var value = db.Farms.DefaultIfEmpty(null).Where(f => f.ID == id).FirstOrDefault();
-
-            if (value != null)
+            try
             {
-                var result = Mapper.Map<FarmDto>(value);
-                Logger.Info("Returning Farm {@value1}", value);
-                return Ok(result);
+                var value = db.Farms.DefaultIfEmpty(null).Where(f => f.ID == id).FirstOrDefault();
+                if (value != null)
+                {
+                    var result = Mapper.Map<FarmDto>(value);
+                    Logger.Info("Returning Farm {@value1}", value);
+                    return Ok(result);
+                }
+
+                Logger.Info("Farm data for {id} not found", id);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
             }
 
-            Logger.Info("Farm data for {id} not found", id);
-            return NotFound();
         }
 
         // POST api/<controller>
@@ -128,20 +144,27 @@ namespace UndderControlService.Controllers
                 Logger.Info("Farm modelstate invalid {@value1}", value);
                 return BadRequest(ModelState);
             }
-                
- 
-            var farm = db.Farms.Find(value.ID);
-            if (farm != null)
-            {
-                db.Farms.Add(farm);
-                db.Entry(farm).State = EntityState.Modified;
-                db.SaveChanges();
-                Logger.Info("Farm Updated: {@value1}", farm);
-                return StatusCode(HttpStatusCode.NoContent);
-            }
 
-            Logger.Info("Farm data for {id} not found", value.ID);
-            return NotFound();
+            try
+            {
+                var farm = db.Farms.Find(value.ID);
+                if (farm != null)
+                {
+                    db.Farms.Add(farm);
+                    db.Entry(farm).State = EntityState.Modified;
+                    db.SaveChanges();
+                    Logger.Info("Farm Updated: {@value1}", farm);
+                    return StatusCode(HttpStatusCode.NoContent);
+                }
+
+                Logger.Info("Farm data for {id} not found", value.ID);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
         // DELETE api/<controller>/5
@@ -156,17 +179,26 @@ namespace UndderControlService.Controllers
         [SwaggerResponse(HttpStatusCode.NotFound, "No matching farm found.")]
         public IHttpActionResult Delete(int id)
         {
-            var farm = db.Farms.Find(id);
-            if (farm != null)
+            try
             {
-                db.Farms.Remove(farm);
-                db.SaveChanges();
-                Logger.Info("Farm deleted: {id}", id);
-                return StatusCode(HttpStatusCode.NoContent);
-            }
 
-            Logger.Info("Farm data for {id} not found", id);
-            return NotFound();
+                var farm = db.Farms.Find(id);
+                if (farm != null)
+                {
+                    db.Farms.Remove(farm);
+                    db.SaveChanges();
+                    Logger.Info("Farm deleted: {id}", id);
+                    return StatusCode(HttpStatusCode.NoContent);
+                }
+
+                Logger.Info("Farm data for {id} not found", id);
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                return InternalServerError(ex);
+            }
         }
     }
 }

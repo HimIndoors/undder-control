@@ -12,7 +12,7 @@ namespace UndderControlService.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            return View();
+            return Redirect("/swagger");
         }
     }
 }

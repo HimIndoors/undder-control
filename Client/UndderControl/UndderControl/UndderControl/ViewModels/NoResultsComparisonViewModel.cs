@@ -14,7 +14,7 @@ namespace UndderControl.ViewModels
         public NoResultsComparisonViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
-            Title = AppResource.NoResultsComparePageTitle;
+            Title = AppTextResource.NoResultsComparePageTitle;
         }
     }
 }

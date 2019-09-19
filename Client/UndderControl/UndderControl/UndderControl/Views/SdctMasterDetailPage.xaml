@@ -2,21 +2,36 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+                  xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="UndderControl.Views.SdctMasterDetailPage">
-
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <ContentPage.Padding>
-                <OnPlatform x:TypeArguments="Thickness"
-                    iOS="21"
-                    Android="21"
-                    WinPhone="21" />
-            </ContentPage.Padding>
             <StackLayout HorizontalOptions="StartAndExpand">
-                <Button Text="Home" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/RootPage" />
-                <Button Text="Manage Farms" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/ManageFarmsPage" />
-                <Button Text="About MSD" TextColor="White" BackgroundColor="Transparent" Command="{Binding OnNavigateCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/AboutPage" />
+                <syncfusion:SfListView x:Name="listView" ItemsSource="{Binding MenuItems}" SelectionMode="Single"
+                 SelectionGesture="Tap" SelectionBackgroundColor="#E4E4E4" HeaderSize="120">
+                    <syncfusion:SfListView.Behaviors>
+                        <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding OnItemTapped}" EventArgsParameterPath="ItemData"/>
+                    </syncfusion:SfListView.Behaviors>
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="21,5">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                    <syncfusion:SfListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="#2B8E81" Margin="0,0,0,21">
+                                <Label LineBreakMode="NoWrap"
+                                    Margin="0" Text="UnDDER CONTROL" FontAttributes="Bold"
+                                    FontSize="18" TextColor="White" HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>      
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:SfListView.HeaderTemplate>
+                </syncfusion:SfListView>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

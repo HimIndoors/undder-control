@@ -13,7 +13,7 @@ namespace UndderControl.ViewModels
         public CowStatusPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             :base (navigationService, metricsManager)
         {
-            Title = AppResource.CowStatusPageTitle;
+            Title = AppTextResource.CowStatusPageTitle;
         }
 
         private async void NavigateAsync(string mode)

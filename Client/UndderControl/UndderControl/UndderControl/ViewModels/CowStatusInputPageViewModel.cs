@@ -27,11 +27,11 @@ namespace UndderControl.ViewModels
                 SetProperty(ref _inputMode, value);
                 if(_inputMode.Equals("dryoff"))
                 {
-                    InputModeText = AppResource.CowStatusInputTextDryoffStatus;
+                    InputModeText = AppTextResource.CowStatusInputTextDryoffStatus;
                 }
                 else
                 {
-                    InputModeText = AppResource.CowStatusInputTextCalvingStatus;
+                    InputModeText = AppTextResource.CowStatusInputTextCalvingStatus;
                 }
             }
         }
@@ -74,7 +74,7 @@ namespace UndderControl.ViewModels
         public CowStatusInputPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
-            Title = AppResource.CowStatusPageTitle;
+            Title = AppTextResource.CowStatusPageTitle;
             IsBusy = true;
 
             ValueList = new ObservableCollection<InfectedType>

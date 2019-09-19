@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using UndderControl.Helpers;
 using UndderControl.Services;
@@ -37,10 +38,12 @@ namespace UndderControl.ViewModels
             set
             {
                 _selectedFarm  = value;
-                App.SelectedFarm = value; //Update global farm
+                if (App.SelectedFarm == null)
+                    App.SelectedFarm = value; //Update global farm
                 FrameEnabled = true;
                 FrameTextColour = "#009096";
                 OnNavigateCommand.RaiseCanExecuteChanged();
+                RaisePropertyChanged("SelectedFarm");
             }
         }
         private string _frameTextColour;
@@ -59,7 +62,6 @@ namespace UndderControl.ViewModels
             set {
                 _frameEnabled = value;
                 RaisePropertyChanged("FrameEnabled");
-                
             }
         }
         private string _frameAssessmentColour;
@@ -126,7 +128,7 @@ namespace UndderControl.ViewModels
             var userId = UserSettings.UserId;
             var farmresponse = await ApiManager.GetFarmsByUserId(userId);
 
-            if (farmresponse.IsSuccessStatusCode)
+            if (farmresponse.IsSuccessStatusCode || farmresponse.StatusCode == HttpStatusCode.NotModified)
             {
                 var response = await farmresponse.Content.ReadAsStringAsync();
                 var json = await Task.Run(() => JsonConvert.DeserializeObject<List<FarmDto>>(response));
@@ -137,7 +139,7 @@ namespace UndderControl.ViewModels
             else
             {
                 await PageDialog.AlertAsync("Unable to retrieve farm data", "Error", "OK");
-            }  
+            }
         }
 
         async void NavigateAsync(string page)

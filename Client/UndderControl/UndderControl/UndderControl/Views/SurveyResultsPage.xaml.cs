@@ -11,8 +11,8 @@ namespace UndderControl.Views
         {
             InitializeComponent();
 
-            ImprovementTitle.Text = AppResource.SurveyResultImprovementTitle;
-            CompareButton.Text = AppResource.SurveyResultCompareButton;
+            ImprovementTitle.Text = AppTextResource.SurveyResultImprovementTitle;
+            CompareButton.Text = AppTextResource.SurveyResultCompareButton;
 
             _vm = BindingContext as SurveyResultsPageViewModel;
             UpdateView();

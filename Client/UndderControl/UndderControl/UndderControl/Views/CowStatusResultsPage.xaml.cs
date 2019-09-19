@@ -25,10 +25,10 @@ namespace UndderControl.Views
             var browser = new ExtendedWebView();
             var htmlSource = new HtmlWebViewSource();
             //Setup percentage values
-            var newInfectionRate = (int)Math.Round((double)(100 * _vm.Results[AppResource.CsNewInfection]) / _vm.Results[AppResource.CsNotInfectedAtDryoff]);
-            var preventionRate = (int)Math.Round((double)(100 * _vm.Results[AppResource.CsPreventionOfNewInfection]) / _vm.Results[AppResource.CsNotInfectedAtDryoff]);
-            var failureToCureRate = (int)Math.Round((double)(100 * _vm.Results[AppResource.CsFailureToCure]) / _vm.Results[AppResource.CsInfectedAtDryoff]);
-            var cureRate = (int)Math.Round((double)(100 * _vm.Results[AppResource.CsCure]) / _vm.Results[AppResource.CsInfectedAtDryoff]);
+            var newInfectionRate = (int)Math.Round((double)(100 * _vm.Results[AppTextResource.CsNewInfection]) / _vm.Results[AppTextResource.CsNotInfectedAtDryoff]);
+            var preventionRate = (int)Math.Round((double)(100 * _vm.Results[AppTextResource.CsPreventionOfNewInfection]) / _vm.Results[AppTextResource.CsNotInfectedAtDryoff]);
+            var failureToCureRate = (int)Math.Round((double)(100 * _vm.Results[AppTextResource.CsFailureToCure]) / _vm.Results[AppTextResource.CsInfectedAtDryoff]);
+            var cureRate = (int)Math.Round((double)(100 * _vm.Results[AppTextResource.CsCure]) / _vm.Results[AppTextResource.CsInfectedAtDryoff]);
 
             StringBuilder sb = new StringBuilder(
                 @"<html><head>
@@ -45,14 +45,14 @@ namespace UndderControl.Views
                 </head>
                 <body>
                 <table>");
-            sb.AppendLine("<tr><td>" + AppResource.CsNotInfectedAtDryoff + "</td><td class='value'>" + _vm.Results[AppResource.CsNotInfectedAtDryoff] + "</td></tr>");
-            sb.AppendLine("<tr><td>" + AppResource.CsInfectedAtDryoff + "</td><td class='value'>" + _vm.Results[AppResource.CsInfectedAtDryoff] + "</td></tr>");
-            sb.AppendLine("<tr><td>" + AppResource.CsNotInfectedAfterCalving + "</td><td class='value'>" + _vm.Results[AppResource.CsNotInfectedAfterCalving] + "</td></tr>");
-            sb.AppendLine("<tr><td>" + AppResource.CsInfectedAfterCalving + "</td><td class='value'>" + _vm.Results[AppResource.CsInfectedAfterCalving] + "</td></tr>");
-            sb.AppendLine("<tr><td>" + AppResource.CsNewInfection + "</td><td class='value'>" + _vm.Results[AppResource.CsNewInfection] + "</td></tr>");
-            sb.AppendLine("<tr><td>" + AppResource.CsPreventionOfNewInfection + "</td><td class='value'>" + _vm.Results[AppResource.CsPreventionOfNewInfection] + "</td></tr>");
-            sb.AppendLine("<tr><td>" + AppResource.CsFailureToCure + "</td><td class='value'>" + _vm.Results[AppResource.CsFailureToCure] + "</td></tr>");
-            sb.AppendLine("<tr><td>" + AppResource.CsCure + "</td><td class='value'>" + _vm.Results[AppResource.CsCure] + "</td></tr>");
+            sb.AppendLine("<tr><td>" + AppTextResource.CsNotInfectedAtDryoff + "</td><td class='value'>" + _vm.Results[AppTextResource.CsNotInfectedAtDryoff] + "</td></tr>");
+            sb.AppendLine("<tr><td>" + AppTextResource.CsInfectedAtDryoff + "</td><td class='value'>" + _vm.Results[AppTextResource.CsInfectedAtDryoff] + "</td></tr>");
+            sb.AppendLine("<tr><td>" + AppTextResource.CsNotInfectedAfterCalving + "</td><td class='value'>" + _vm.Results[AppTextResource.CsNotInfectedAfterCalving] + "</td></tr>");
+            sb.AppendLine("<tr><td>" + AppTextResource.CsInfectedAfterCalving + "</td><td class='value'>" + _vm.Results[AppTextResource.CsInfectedAfterCalving] + "</td></tr>");
+            sb.AppendLine("<tr><td>" + AppTextResource.CsNewInfection + "</td><td class='value'>" + _vm.Results[AppTextResource.CsNewInfection] + "</td></tr>");
+            sb.AppendLine("<tr><td>" + AppTextResource.CsPreventionOfNewInfection + "</td><td class='value'>" + _vm.Results[AppTextResource.CsPreventionOfNewInfection] + "</td></tr>");
+            sb.AppendLine("<tr><td>" + AppTextResource.CsFailureToCure + "</td><td class='value'>" + _vm.Results[AppTextResource.CsFailureToCure] + "</td></tr>");
+            sb.AppendLine("<tr><td>" + AppTextResource.CsCure + "</td><td class='value'>" + _vm.Results[AppTextResource.CsCure] + "</td></tr>");
             sb.AppendLine("<tr class='section'><td>NEW INFECTION RATE (%)</td><td class='value'>" + newInfectionRate + "</td></tr>");
             sb.AppendLine("<tr><td>PREVENTION RATE (%)</td><td class='value'>" + preventionRate + "</td></tr>");
             sb.AppendLine("<tr><td>FAILURE TO CURE RATE (%)</td><td class='value'>" + failureToCureRate + "</td></tr>");

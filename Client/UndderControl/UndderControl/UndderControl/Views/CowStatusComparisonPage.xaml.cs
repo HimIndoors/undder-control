@@ -7,6 +7,7 @@ namespace UndderControl.Views
         public CowStatusComparisonPage()
         {
             InitializeComponent();
+            FarmName.Text = App.SelectedFarm.Name;
         }
     }
 }

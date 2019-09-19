@@ -5,6 +5,9 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfChart.XForms.iOS.Renderers;
+using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
 using UndderControl.iOS.Services;
@@ -31,8 +34,9 @@ namespace UndderControl.iOS
             LoadApplication(new App(new iOSInitializer()));
 
             AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
-            Syncfusion.SfChart.XForms.iOS.Renderers.SfChartRenderer.Init();
-            Syncfusion.XForms.iOS.Buttons.SfSegmentedControlRenderer.Init();
+            SfChartRenderer.Init();
+            SfSegmentedControlRenderer.Init();
+            SfListViewRenderer.Init();
             SfTextInputLayoutRenderer.Init();
 
             CachedImageRenderer.Init();

@@ -8,8 +8,8 @@ namespace UndderControl.Views
         public TermsPage()
         {
             InitializeComponent();
-            Terms.Text = AppResource.Terms;
-            TermsTitle.Text = AppResource.TermsTitle;
+            Terms.Text = AppTextResource.Terms;
+            TermsTitle.Text = AppTextResource.TermsTitle;
         }
     }
 }

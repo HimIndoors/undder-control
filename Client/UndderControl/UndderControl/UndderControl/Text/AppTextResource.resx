@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AreasWhichHaveImproved" xml:space="preserve">
+    <value>AREAS WHICH HAVE IMPROVED</value>
+  </data>
+  <data name="AreasWhichHaveImprovedButStillNeedImprovement" xml:space="preserve">
+    <value>AREAS WHICH HAVE IMPROVED BUT STILL NEED IMPROVEMENT</value>
+  </data>
+  <data name="AreasWhichNeedImprovement" xml:space="preserve">
+    <value>AREAS WHICH NEED IMPROVEMENT</value>
+  </data>
+  <data name="AreasWhichRemainedStableButStillNeedImprovement" xml:space="preserve">
+    <value>AREAS WHICH REMAINED STABLE BUT STILL NEED IMPROVEMENT</value>
+  </data>
   <data name="AssessCompareButton" xml:space="preserve">
     <value>COMPARE RESULTS</value>
   </data>
@@ -227,6 +239,12 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
   <data name="CsPreventionOfNewInfection" xml:space="preserve">
     <value>PREVENTION OF NEW INFECTION</value>
   </data>
+  <data name="ImprovementNevagive" xml:space="preserve">
+    <value>THERE IS NO IMPROVEMENT!</value>
+  </data>
+  <data name="ImprovementPositive" xml:space="preserve">
+    <value>THERE IS AN IMPROVEMENT!</value>
+  </data>
   <data name="MonitorCompareButton" xml:space="preserve">
     <value>COMPARE RESULTS</value>
   </data>
@@ -328,5 +346,8 @@ excluded.</value>
   </data>
   <data name="TermsUrl" xml:space="preserve">
     <value>http://www.merck.com/about/how-we-operate/privacy/internet-privacy-policy.html</value>
+  </data>
+  <data name="TitleResultComparison" xml:space="preserve">
+    <value>RESULTS COMPARISONS</value>
   </data>
 </root>

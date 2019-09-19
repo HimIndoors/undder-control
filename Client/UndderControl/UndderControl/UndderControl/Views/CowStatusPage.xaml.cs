@@ -9,15 +9,15 @@ namespace UndderControl.Views
         {
             InitializeComponent();
             #region TextSetup
-            Text1.Text = AppResource.CowStatusText1;
-            Text2.Text = AppResource.CowStatusText2;
-            Text3.Text = AppResource.CowStatusText3;
-            Text4.Text = AppResource.CowStatusText4;
-            Text5.Text = AppResource.CowStatusText5;
-            InputTitle.Text = AppResource.CowStatusInputTitle;
-            InputCaption.Text = AppResource.CowStatusInputCaption;
-            ButtonDryOff.Text = AppResource.CowStatusButtonDryOff;
-            ButtonCalving.Text = AppResource.CowStatusButtonCalving;
+            Text1.Text = AppTextResource.CowStatusText1;
+            Text2.Text = AppTextResource.CowStatusText2;
+            Text3.Text = AppTextResource.CowStatusText3;
+            Text4.Text = AppTextResource.CowStatusText4;
+            Text5.Text = AppTextResource.CowStatusText5;
+            InputTitle.Text = AppTextResource.CowStatusInputTitle;
+            InputCaption.Text = AppTextResource.CowStatusInputCaption;
+            ButtonDryOff.Text = AppTextResource.CowStatusButtonDryOff;
+            ButtonCalving.Text = AppTextResource.CowStatusButtonCalving;
             #endregion TextSetup
         }
     }

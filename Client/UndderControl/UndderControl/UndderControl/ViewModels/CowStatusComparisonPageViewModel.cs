@@ -88,23 +88,23 @@ namespace UndderControl.ViewModels
 
             NiRateHealthy = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel(latestYear, (int)Math.Round((double)(100 * latestResults[AppResource.CsPreventionOfNewInfection]) / latestResults[AppResource.CsNotInfectedAtDryoff])),
-                new ChartDataModel(previousYear, (int)Math.Round((double)(100 * previousResults[AppResource.CsPreventionOfNewInfection]) / previousResults[AppResource.CsNotInfectedAtDryoff]))
+                new ChartDataModel(latestYear, (int)Math.Round((double)(100 * latestResults[AppTextResource.CsPreventionOfNewInfection]) / latestResults[AppTextResource.CsNotInfectedAtDryoff])),
+                new ChartDataModel(previousYear, (int)Math.Round((double)(100 * previousResults[AppTextResource.CsPreventionOfNewInfection]) / previousResults[AppTextResource.CsNotInfectedAtDryoff]))
             };
             NiRateNewInfection = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel(latestYear, (int)Math.Round((double)(100 * latestResults[AppResource.CsNewInfection]) / latestResults[AppResource.CsNotInfectedAtDryoff])),
-                new ChartDataModel(previousYear, (int)Math.Round((double)(100 * previousResults[AppResource.CsNewInfection]) / previousResults[AppResource.CsNotInfectedAtDryoff]))
+                new ChartDataModel(latestYear, (int)Math.Round((double)(100 * latestResults[AppTextResource.CsNewInfection]) / latestResults[AppTextResource.CsNotInfectedAtDryoff])),
+                new ChartDataModel(previousYear, (int)Math.Round((double)(100 * previousResults[AppTextResource.CsNewInfection]) / previousResults[AppTextResource.CsNotInfectedAtDryoff]))
             };
             CureRateHealthy = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel(latestYear, (int)Math.Round((double)(100 * latestResults[AppResource.CsCure]) / latestResults[AppResource.CsInfectedAtDryoff])),
-                new ChartDataModel(previousYear, (int)Math.Round((double)(100 * previousResults[AppResource.CsCure]) / previousResults[AppResource.CsInfectedAtDryoff]))
+                new ChartDataModel(latestYear, (int)Math.Round((double)(100 * latestResults[AppTextResource.CsCure]) / latestResults[AppTextResource.CsInfectedAtDryoff])),
+                new ChartDataModel(previousYear, (int)Math.Round((double)(100 * previousResults[AppTextResource.CsCure]) / previousResults[AppTextResource.CsInfectedAtDryoff]))
             };
             CureRateInfected = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel(latestYear, (int)Math.Round((double)(100 * latestResults[AppResource.CsFailureToCure]) / latestResults[AppResource.CsInfectedAtDryoff])),
-                new ChartDataModel(previousYear, (int)Math.Round((double)(100 * previousResults[AppResource.CsFailureToCure]) / previousResults[AppResource.CsInfectedAtDryoff])),
+                new ChartDataModel(latestYear, (int)Math.Round((double)(100 * latestResults[AppTextResource.CsFailureToCure]) / latestResults[AppTextResource.CsInfectedAtDryoff])),
+                new ChartDataModel(previousYear, (int)Math.Round((double)(100 * previousResults[AppTextResource.CsFailureToCure]) / previousResults[AppTextResource.CsInfectedAtDryoff])),
             };
 
             ResultYear = previousYear + " / " + latestYear;
@@ -115,41 +115,41 @@ namespace UndderControl.ViewModels
             //Build results dict with zero values
             var resultSet = new ObservableDictionary<string, int>
             {
-                { AppResource.CsNotInfectedAtDryoff, 0 },
-                { AppResource.CsInfectedAtDryoff, 0 },
-                { AppResource.CsNotInfectedAfterCalving, 0 },
-                { AppResource.CsInfectedAfterCalving, 0 },
-                { AppResource.CsNewInfection, 0 },
-                { AppResource.CsPreventionOfNewInfection, 0 },
-                { AppResource.CsFailureToCure, 0 },
-                { AppResource.CsCure, 0 },
+                { AppTextResource.CsNotInfectedAtDryoff, 0 },
+                { AppTextResource.CsInfectedAtDryoff, 0 },
+                { AppTextResource.CsNotInfectedAfterCalving, 0 },
+                { AppTextResource.CsInfectedAfterCalving, 0 },
+                { AppTextResource.CsNewInfection, 0 },
+                { AppTextResource.CsPreventionOfNewInfection, 0 },
+                { AppTextResource.CsFailureToCure, 0 },
+                { AppTextResource.CsCure, 0 },
             };
 
             foreach (CowStatusDto cs in statusList)
             {
                 if (cs.InfectedAtDryOff && cs.InfectedAtCalving)
                 {
-                    resultSet[AppResource.CsInfectedAtDryoff]++;
-                    resultSet[AppResource.CsInfectedAfterCalving]++;
-                    resultSet[AppResource.CsFailureToCure]++;
+                    resultSet[AppTextResource.CsInfectedAtDryoff]++;
+                    resultSet[AppTextResource.CsInfectedAfterCalving]++;
+                    resultSet[AppTextResource.CsFailureToCure]++;
                 }
                 else if (cs.InfectedAtDryOff && !cs.InfectedAtCalving)
                 {
-                    resultSet[AppResource.CsInfectedAtDryoff]++;
-                    resultSet[AppResource.CsNotInfectedAfterCalving]++;
-                    resultSet[AppResource.CsCure]++;
+                    resultSet[AppTextResource.CsInfectedAtDryoff]++;
+                    resultSet[AppTextResource.CsNotInfectedAfterCalving]++;
+                    resultSet[AppTextResource.CsCure]++;
                 }
                 else if (!cs.InfectedAtDryOff && cs.InfectedAtCalving)
                 {
-                    resultSet[AppResource.CsNotInfectedAtDryoff]++;
-                    resultSet[AppResource.CsInfectedAfterCalving]++;
-                    resultSet[AppResource.CsNewInfection]++;
+                    resultSet[AppTextResource.CsNotInfectedAtDryoff]++;
+                    resultSet[AppTextResource.CsInfectedAfterCalving]++;
+                    resultSet[AppTextResource.CsNewInfection]++;
                 }
                 else if (!cs.InfectedAtDryOff && !cs.InfectedAtCalving)
                 {
-                    resultSet[AppResource.CsNotInfectedAtDryoff]++;
-                    resultSet[AppResource.CsNotInfectedAfterCalving]++;
-                    resultSet[AppResource.CsPreventionOfNewInfection]++;
+                    resultSet[AppTextResource.CsNotInfectedAtDryoff]++;
+                    resultSet[AppTextResource.CsNotInfectedAfterCalving]++;
+                    resultSet[AppTextResource.CsPreventionOfNewInfection]++;
                 }
             }
 

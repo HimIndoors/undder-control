@@ -85,7 +85,7 @@ namespace UndderControl.ViewModels
         public CowStatusResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
-            Title = AppResource.SummaryResultTitle;
+            Title = AppTextResource.SummaryResultTitle;
             Init();
         }
 
@@ -94,7 +94,6 @@ namespace UndderControl.ViewModels
             try
             {
                 _cowStatusList = App.LatestCowStatusData;
-                //await RunSafe(GetCowStatus());
                 BuildCowData();
             }
             catch (Exception ex)
@@ -110,41 +109,41 @@ namespace UndderControl.ViewModels
             //Build results dict with zero values
             var temp = new ObservableDictionary<string, int>
             {
-                { AppResource.CsNotInfectedAtDryoff, 0 },
-                { AppResource.CsInfectedAtDryoff, 0 },
-                { AppResource.CsNotInfectedAfterCalving, 0 },
-                { AppResource.CsInfectedAfterCalving, 0 },
-                { AppResource.CsNewInfection, 0 },
-                { AppResource.CsPreventionOfNewInfection, 0 },
-                { AppResource.CsFailureToCure, 0 },
-                { AppResource.CsCure, 0 },
+                { AppTextResource.CsNotInfectedAtDryoff, 0 },
+                { AppTextResource.CsInfectedAtDryoff, 0 },
+                { AppTextResource.CsNotInfectedAfterCalving, 0 },
+                { AppTextResource.CsInfectedAfterCalving, 0 },
+                { AppTextResource.CsNewInfection, 0 },
+                { AppTextResource.CsPreventionOfNewInfection, 0 },
+                { AppTextResource.CsFailureToCure, 0 },
+                { AppTextResource.CsCure, 0 },
             };
 
             foreach (CowStatusDto cs in _cowStatusList)
             {
                 if (cs.InfectedAtDryOff && cs.InfectedAtCalving)
                 {
-                    temp[AppResource.CsInfectedAtDryoff]++;
-                    temp[AppResource.CsInfectedAfterCalving]++;
-                    temp[AppResource.CsFailureToCure]++;
+                    temp[AppTextResource.CsInfectedAtDryoff]++;
+                    temp[AppTextResource.CsInfectedAfterCalving]++;
+                    temp[AppTextResource.CsFailureToCure]++;
                 }
                 else if(cs.InfectedAtDryOff && !cs.InfectedAtCalving)
                 {
-                    temp[AppResource.CsInfectedAtDryoff]++;
-                    temp[AppResource.CsNotInfectedAfterCalving]++;
-                    temp[AppResource.CsCure]++;
+                    temp[AppTextResource.CsInfectedAtDryoff]++;
+                    temp[AppTextResource.CsNotInfectedAfterCalving]++;
+                    temp[AppTextResource.CsCure]++;
                 }
                 else if (!cs.InfectedAtDryOff && cs.InfectedAtCalving)
                 {
-                    temp[AppResource.CsNotInfectedAtDryoff]++;
-                    temp[AppResource.CsInfectedAfterCalving]++;
-                    temp[AppResource.CsNewInfection]++;
+                    temp[AppTextResource.CsNotInfectedAtDryoff]++;
+                    temp[AppTextResource.CsInfectedAfterCalving]++;
+                    temp[AppTextResource.CsNewInfection]++;
                 }
                 else if (!cs.InfectedAtDryOff && !cs.InfectedAtCalving)
                 {
-                    temp[AppResource.CsNotInfectedAtDryoff]++;
-                    temp[AppResource.CsNotInfectedAfterCalving]++;
-                    temp[AppResource.CsPreventionOfNewInfection]++;
+                    temp[AppTextResource.CsNotInfectedAtDryoff]++;
+                    temp[AppTextResource.CsNotInfectedAfterCalving]++;
+                    temp[AppTextResource.CsPreventionOfNewInfection]++;
                 }
             }
             Results = temp;
@@ -152,19 +151,19 @@ namespace UndderControl.ViewModels
             //Set up graph data
             NiRateHealthy = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsPreventionOfNewInfection]) / Results[AppResource.CsNotInfectedAtDryoff]))
+                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppTextResource.CsPreventionOfNewInfection]) / Results[AppTextResource.CsNotInfectedAtDryoff]))
             };
             NiRateNewInfection = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsNewInfection]) / Results[AppResource.CsNotInfectedAtDryoff])),
+                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppTextResource.CsNewInfection]) / Results[AppTextResource.CsNotInfectedAtDryoff])),
             };
             CureRateHealthy = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsCure]) / Results[AppResource.CsInfectedAtDryoff])),
+                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppTextResource.CsCure]) / Results[AppTextResource.CsInfectedAtDryoff])),
             };
             CureRateInfected = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppResource.CsFailureToCure]) / Results[AppResource.CsInfectedAtDryoff])),
+                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppTextResource.CsFailureToCure]) / Results[AppTextResource.CsInfectedAtDryoff])),
             };
 
             //Set result date

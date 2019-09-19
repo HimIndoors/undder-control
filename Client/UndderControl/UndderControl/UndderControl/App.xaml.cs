@@ -1,4 +1,5 @@
 ﻿using MonkeyCache.SQLite;
+using Newtonsoft.Json;
 using Prism;
 using Prism.Ioc;
 using Prism.Navigation.Xaml;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UndderControl.Helpers;
+using UndderControl.Services;
 using UndderControl.ViewModels;
 using UndderControl.Views;
 using UndderControlLib.Dtos;
@@ -42,13 +44,15 @@ namespace UndderControl
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTIwOTUxQDMxMzcyZTMyMmUzMFlvWjZiUENiOVVkTm1CSG04RXRGWEJ0cW4rR0Fuc2ZNK2pjM2p0REZCelk9");
             if (Config.TestMode) UserSettings.UserId = 1;
             //Initialize MonkeyCache barrel
-            Barrel.ApplicationId = "PMN_Undder_Control";
+            Barrel.ApplicationId = "MSC_Undder_Control";
 
             //TODO: Important - remove this line for live
-            Barrel.Current.EmptyAll();
+            //Barrel.Current.EmptyAll();
 
             VersionTracking.Track();
             InitializeComponent();
+
+
             await NavigateToPage();
         }
 
@@ -61,6 +65,11 @@ namespace UndderControl
                     await NavigationService.NavigateAsync("TermsPage");
                 else
                     await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
+        }
+
+        private async void GetSurvey()
+        {
+            
         }
 
         public void OnMenuButtonPressed(object sender, EventArgs e)

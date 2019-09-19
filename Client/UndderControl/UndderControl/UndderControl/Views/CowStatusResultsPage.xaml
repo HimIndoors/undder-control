@@ -5,7 +5,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:helpers="clr-namespace:UndderControl.Helpers"
-             x:Class="UndderControl.Views.CowStatusResultsPage">
+             x:Class="UndderControl.Views.CowStatusResultsPage"
+             Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <helpers:HtmlSourceConverter x:Key="htmlSource" />
@@ -26,7 +27,7 @@
                 </StackLayout>
                 <StackLayout x:Name="WebViewLayout" VerticalOptions="CenterAndExpand" />
                 <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
-                    <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="#009994" TextColor="White" Margin="0"/>
+                    <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource ResultSubtitle}" Margin="0"/>
                 </ContentView>
                 <StackLayout HeightRequest="400">
                     <StackLayout.Resources>
@@ -100,12 +101,16 @@
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>
-                            <chart:LineAnnotation X1="10" Y1="0" X2="10" Y2="1" Text="Threshold" StrokeColor="Red"/>
+                            <chart:HorizontalLineAnnotation Y1="10" ShowAxisLabel="true" StrokeColor="Red" Text="Threshold" FillColor="Red">
+                                <chart:HorizontalLineAnnotation.AxisLabelStyle>
+                                    <chart:ChartLabelStyle BackgroundColor="White" TextColor="Red"/>
+                                </chart:HorizontalLineAnnotation.AxisLabelStyle>
+                            </chart:HorizontalLineAnnotation>
                         </chart:SfChart.ChartAnnotations>
                     </chart:SfChart>
                 </StackLayout>
                 <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
-                    <Label Text="CURE RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="#009994" Margin="0"/>
+                    <Label Text="CURE RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource ResultSubtitle}" BackgroundColor="#009994" Margin="0"/>
                 </ContentView>
                 <StackLayout HeightRequest="400">
                     <StackLayout.Resources>
@@ -178,6 +183,13 @@
                             <chart:StackingColumn100Series x:Name="series4" ItemsSource="{Binding CureRateInfected}" XBindingPath="Name" YBindingPath="Value" Label="Failure to cure" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
+                        <chart:SfChart.ChartAnnotations>
+                            <chart:HorizontalLineAnnotation Y1="85" ShowAxisLabel="true" StrokeColor="Red" Text="Threshold" FillColor="Red">
+                                <chart:HorizontalLineAnnotation.AxisLabelStyle>
+                                    <chart:ChartLabelStyle BackgroundColor="White" TextColor="Red"/>
+                                </chart:HorizontalLineAnnotation.AxisLabelStyle>
+                            </chart:HorizontalLineAnnotation>
+                        </chart:SfChart.ChartAnnotations>
                     </chart:SfChart>
                 </StackLayout>
             </StackLayout>

@@ -16,9 +16,9 @@ namespace UndderControl.Views
         public SurveyPage(IEventAggregator ea)
         {
             InitializeComponent();
-            StartQuestionsButton.Text = AppResource.SurveyStartQuestionsButton;
-            YesButton.Text = AppResource.SurveyYesButton;
-            NoButton.Text = AppResource.SurveyNoButton;
+            StartQuestionsButton.Text = AppTextResource.SurveyStartQuestionsButton;
+            YesButton.Text = AppTextResource.SurveyYesButton;
+            NoButton.Text = AppTextResource.SurveyNoButton;
             _viewModel = BindingContext as SurveyPageViewModel;
             UpdateQuestion();
             ea.GetEvent<QuestionChangedEvent>().Subscribe(UpdateQuestion);
@@ -29,7 +29,7 @@ namespace UndderControl.Views
             try
             {
                 var stage = _viewModel.CurrentStage;
-                Title = stage.StageTitle;
+                Title = stage.StageTitle.ToUpper(); //Force uppercase
 
                 if (_viewModel.ShowStage)
                 {

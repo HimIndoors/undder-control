@@ -8,8 +8,8 @@ namespace UndderControl.Views
         public NoResultsComparison()
         {
             InitializeComponent();
-            PageText.Text = AppResource.NoResultsCompareText;
-            PageCaption.Text = AppResource.NoResultsCompareCaption;
+            PageText.Text = AppTextResource.NoResultsCompareText;
+            PageCaption.Text = AppTextResource.NoResultsCompareCaption;
         }
     }
 }

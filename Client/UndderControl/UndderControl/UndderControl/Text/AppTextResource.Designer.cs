@@ -22,14 +22,14 @@ namespace UndderControl.Text {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AppResource {
+    public class AppTextResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AppResource() {
+        internal AppTextResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace UndderControl.Text {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UndderControl.Text.AppResource", typeof(AppResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UndderControl.Text.AppTextResource", typeof(AppTextResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,42 @@ namespace UndderControl.Text {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AREAS WHICH HAVE IMPROVED.
+        /// </summary>
+        public static string AreasWhichHaveImproved {
+            get {
+                return ResourceManager.GetString("AreasWhichHaveImproved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AREAS WHICH HAVE IMPROVED BUT STILL NEED IMPROVEMENT.
+        /// </summary>
+        public static string AreasWhichHaveImprovedButStillNeedImprovement {
+            get {
+                return ResourceManager.GetString("AreasWhichHaveImprovedButStillNeedImprovement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AREAS WHICH NEED IMPROVEMENT.
+        /// </summary>
+        public static string AreasWhichNeedImprovement {
+            get {
+                return ResourceManager.GetString("AreasWhichNeedImprovement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AREAS WHICH REMAINED STABLE BUT STILL NEED IMPROVEMENT.
+        /// </summary>
+        public static string AreasWhichRemainedStableButStillNeedImprovement {
+            get {
+                return ResourceManager.GetString("AreasWhichRemainedStableButStillNeedImprovement", resourceCulture);
             }
         }
         
@@ -387,6 +423,24 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to THERE IS NO IMPROVEMENT!.
+        /// </summary>
+        public static string ImprovementNevagive {
+            get {
+                return ResourceManager.GetString("ImprovementNevagive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to THERE IS AN IMPROVEMENT!.
+        /// </summary>
+        public static string ImprovementPositive {
+            get {
+                return ResourceManager.GetString("ImprovementPositive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to COMPARE RESULTS.
         /// </summary>
         public static string MonitorCompareButton {
@@ -670,6 +724,15 @@ namespace UndderControl.Text {
         public static string TermsUrl {
             get {
                 return ResourceManager.GetString("TermsUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RESULTS COMPARISONS.
+        /// </summary>
+        public static string TitleResultComparison {
+            get {
+                return ResourceManager.GetString("TitleResultComparison", resourceCulture);
             }
         }
     }

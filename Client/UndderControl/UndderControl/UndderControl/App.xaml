@@ -45,10 +45,12 @@
             </Style>
             <Style TargetType="Label" x:Key="Text">
                 <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
             </Style>
             <Style TargetType="Label" x:Key="TextSubtitle">
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Margin" Value="0,0,0,5"/> 
             </Style>
             <Style TargetType="Label" x:Key="ResultSubtitle">
                 <Setter Property="FontSize" Value="16"/>

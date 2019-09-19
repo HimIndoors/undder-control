@@ -8,17 +8,17 @@ namespace UndderControl.Views
         public AssessmentPage()
         {
             InitializeComponent();
-            Title1.Text = AppResource.AssessTitle1;
-            Text1.Text = AppResource.AssessText1;
-            Title2.Text = AppResource.AssessTitle1;
-            Text2.Text = AppResource.AssessText1;
-            Title3.Text = AppResource.AssessTitle1;
-            Text3.Text = AppResource.AssessText1;
-            Title4.Text = AppResource.AssessTitle1;
-            Text4.Text = AppResource.AssessText1;
-            QuestionButton.Text = AppResource.AssessQuestionButton;
-            SummaryButton.Text = AppResource.AssessSummaryButton;
-            CompareButton.Text = AppResource.AssessCompareButton;
+            Title1.Text = AppTextResource.AssessTitle1;
+            Text1.Text = AppTextResource.AssessText1;
+            Title2.Text = AppTextResource.AssessTitle1;
+            Text2.Text = AppTextResource.AssessText1;
+            Title3.Text = AppTextResource.AssessTitle1;
+            Text3.Text = AppTextResource.AssessText1;
+            Title4.Text = AppTextResource.AssessTitle1;
+            Text4.Text = AppTextResource.AssessText1;
+            QuestionButton.Text = AppTextResource.AssessQuestionButton;
+            SummaryButton.Text = AppTextResource.AssessSummaryButton;
+            CompareButton.Text = AppTextResource.AssessCompareButton;
         }
     }
 }

@@ -27,7 +27,7 @@
                     <StackLayout Margin="0,21,0,0">
                         <Button x:Name="QuestionButton" Command="{Binding OnNavigateCommand}" CommandParameter="SurveyPage" Padding="0,13"/>
                         <Button x:Name="SummaryButton" Command="{Binding OnSummaryCommand}" CommandParameter="SurveyResultsPage" Padding="0,13" Margin="0,10,0,0"/>
-                        <Button x:Name="CompareButton" Command="{Binding OnCompareCommand}" CommandParameter="SurveyResultsPage" Padding="0,13" Margin="0,10,0,0"/>
+                        <Button x:Name="CompareButton" Command="{Binding OnCompareCommand}" CommandParameter="SurveyComparisonPage" Padding="0,13" Margin="0,10,0,0"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

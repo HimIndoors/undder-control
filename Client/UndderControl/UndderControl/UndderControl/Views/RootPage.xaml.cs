@@ -14,12 +14,12 @@ namespace UndderControl.Views
             //SetValue(NavigationPage.HasNavigationBarProperty, false);
             _vm = BindingContext as RootPageViewModel;
 
-            RootAssessment1.Text = AppResource.RootAssessment1;
-            RootAssessment2.Text = AppResource.RootAssessment2;
-            RootAssessment3.Text = AppResource.RootAssessment3;
-            RootMonitor1.Text = AppResource.RootMonitor1;
-            RootMonitor2.Text = AppResource.RootMonitor2;
-            RootMonitor3.Text = AppResource.RootMonitor3;
+            RootAssessment1.Text = AppTextResource.RootAssessment1;
+            RootAssessment2.Text = AppTextResource.RootAssessment2;
+            RootAssessment3.Text = AppTextResource.RootAssessment3;
+            RootMonitor1.Text = AppTextResource.RootMonitor1;
+            RootMonitor2.Text = AppTextResource.RootMonitor2;
+            RootMonitor3.Text = AppTextResource.RootMonitor3;
         }
 
         private void TapGestureRecognizer_Tapped_Assessment(object sender, System.EventArgs e)

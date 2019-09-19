@@ -59,12 +59,9 @@ namespace UndderControl.ViewModels
             }
         }
 
-
-
         async Task GetData()
         {
             var surveyResponse = await ApiManager.GetLatestSurvey();
-
             if (surveyResponse.IsSuccessStatusCode)
             {
                 try
@@ -75,8 +72,6 @@ namespace UndderControl.ViewModels
                     {
                         var fileHelper = new FileHelper();
                         App.LatestSurvey = survey;
-                        // Save the survey to the local filesystem
-                        await fileHelper.SaveAsync(Config.SurveyFileName, survey);
                     }
                 }
                 catch (Exception ex)
@@ -91,7 +86,6 @@ namespace UndderControl.ViewModels
             }
 
             var serviceResponse = await ApiManager.GetResponseByFarmId(App.SelectedFarm.ID);
-
             if (serviceResponse.IsSuccessStatusCode || serviceResponse.StatusCode == HttpStatusCode.NotModified)
             {
                 try
@@ -108,6 +102,7 @@ namespace UndderControl.ViewModels
                         App.LatestSurveyResponse = responseData[0];
                         App.PreviousSurveyResponse = responseData[1];
                         OnSummaryCommand.RaiseCanExecuteChanged();
+                        OnCompareCommand.RaiseCanExecuteChanged();
                     }
                 }
                 catch (Exception ex)

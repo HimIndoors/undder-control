@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
 using Xamarin.Forms;
@@ -68,9 +70,9 @@ namespace UndderControl.ViewModels
 
         async Task GetFarms()
         {
-            var serviceResponse = await ApiManager.GetFarmsByUserId(1);
+            var serviceResponse = await ApiManager.GetFarmsByUserId(UserSettings.UserId);
 
-            if (serviceResponse.IsSuccessStatusCode)
+            if (serviceResponse.IsSuccessStatusCode || serviceResponse.StatusCode == HttpStatusCode.NotModified)
             {
                 var response = await serviceResponse.Content.ReadAsStringAsync();
                 var farms = await Task.Run(() => JsonConvert.DeserializeObject<List<FarmDto>>(response));

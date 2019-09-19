@@ -82,9 +82,9 @@ namespace UndderControl.ViewModels
                 RadarData = new ObservableCollection<ChartDataModel>(chartData);
                 Statements = new ObservableDictionary<string, List<string>>(statements);
                 if (isSuitable)
-                    SuitabilityStatement = AppResource.SurveyResultSdctSuitable;
+                    SuitabilityStatement = AppTextResource.SurveyResultSdctSuitable;
                 else
-                    SuitabilityStatement = AppResource.SurveyResultSdctUnsuitable;
+                    SuitabilityStatement = AppTextResource.SurveyResultSdctUnsuitable;
 
                 RadarColour = ReturnHexValue(lowestScore);
             }

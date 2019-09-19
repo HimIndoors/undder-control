@@ -28,7 +28,7 @@ namespace UndderControl.ViewModels
 
         private async void OpenBrowser()
         {
-            await Browser.OpenAsync(AppResource.TermsUrl, BrowserLaunchMode.SystemPreferred);
+            await Browser.OpenAsync(AppTextResource.TermsUrl, BrowserLaunchMode.SystemPreferred);
         }
 
         private async void AcceptTerms()

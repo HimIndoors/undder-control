@@ -10,8 +10,8 @@ namespace UndderControl.Views
             InitializeComponent();
 
             #region TextSetup
-            Text1.Text = AppResource.CowStatusFinishText1;
-            Text2.Text = AppResource.CowStatusFinishText2;
+            Text1.Text = AppTextResource.CowStatusFinishText1;
+            Text2.Text = AppTextResource.CowStatusFinishText2;
             #endregion TextSetup
         }
     }

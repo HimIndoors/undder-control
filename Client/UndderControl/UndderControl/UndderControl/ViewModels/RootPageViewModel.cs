@@ -94,7 +94,7 @@ namespace UndderControl.ViewModels
             : base(navigationService, metricsSevice)
         {
             _dialogService = dialogueService;
-            Title = "Undder Control";
+            Title = "UnDDER CONTROL";
             if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;
             InitAsync();
         }

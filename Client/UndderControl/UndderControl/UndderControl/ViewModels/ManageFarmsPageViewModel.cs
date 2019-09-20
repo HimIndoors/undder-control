@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -8,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using UndderControl.Events;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
@@ -39,13 +41,16 @@ namespace UndderControl.ViewModels
                 }
             }
         }
+
         private DelegateCommand<string> _onAddFarmCommand;
         public DelegateCommand<string> AddFarmCommand
             => _onAddFarmCommand ?? (_onAddFarmCommand = new DelegateCommand<string>(AddFarm));
+        IEventAggregator _EventAggregator;
 
-        public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+        public ManageFarmsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator eventAggregator)
             : base(navigationService, metricsManager)
         {
+            _EventAggregator = eventAggregator;
             Title = "FARMS";
             InitAsync();
         }
@@ -89,6 +94,12 @@ namespace UndderControl.ViewModels
                 { "farm", _selectedItem }
             };
             await NavigationService.NavigateAsync(new Uri(path, UriKind.Relative), navigationParams);
+        }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            _EventAggregator.GetEvent<FarmNavigationEvent>().Publish();
         }
     }
 }

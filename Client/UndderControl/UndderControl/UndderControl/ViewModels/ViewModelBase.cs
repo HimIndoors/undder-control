@@ -51,6 +51,7 @@ namespace UndderControl.ViewModels
         public IApiManager ApiManager;
         readonly IApiService<IFarmApi> farmApi = new ApiService<IFarmApi>(Config.ApiUrl);
         readonly IApiService<IFarmUserApi> farmUserApi = new ApiService<IFarmUserApi>(Config.ApiUrl);
+        readonly IApiService<IFarmTypeApi> farmTypeApi = new ApiService<IFarmTypeApi>(Config.ApiUrl);
         readonly IApiService<ISurveyApi> surveyApi = new ApiService<ISurveyApi>(Config.ApiUrl);
         readonly IApiService<ICowStatusApi> cowStatusApi = new ApiService<ICowStatusApi>(Config.ApiUrl);
         readonly IApiService<ICowStatusFarmApi> cowStatusFarmApi = new ApiService<ICowStatusFarmApi>(Config.ApiUrl);
@@ -61,7 +62,7 @@ namespace UndderControl.ViewModels
         {
             MetricsManager = metricsManager;
             NavigationService = navigationService;
-            ApiManager = new ApiManager(farmApi, farmUserApi, surveyApi, cowStatusApi, cowStatusFarmApi, surveyResponseApi, userApi, MetricsManager);
+            ApiManager = new ApiManager(farmApi, farmUserApi, farmTypeApi, surveyApi, cowStatusApi, cowStatusFarmApi, surveyResponseApi, userApi, MetricsManager);
         }
 
         public async Task RunSafe(Task task, bool ShowLoading = true, string loadingMessage = null)
@@ -70,19 +71,19 @@ namespace UndderControl.ViewModels
             {
                 if (IsBusy) return;
                 IsBusy = true;
-                if (ShowLoading) UserDialogs.Instance.ShowLoading(loadingMessage ?? "Loading");
+                if (ShowLoading) PageDialog.ShowLoading(loadingMessage ?? "Loading");
                 await task;
             }
             catch (Exception e)
             {
                 IsBusy = false;
-                UserDialogs.Instance.HideLoading();
+                PageDialog.HideLoading();
                 DependencyService.Get<IMetricsManagerService>().TrackException("TaskRunSafeException", e);
             }
             finally
             {
                 IsBusy = false;
-                if (ShowLoading) UserDialogs.Instance.HideLoading();
+                if (ShowLoading) PageDialog.HideLoading();
             }
         }
 

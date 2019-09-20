@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace UndderControl.Droid
 {
-    [Activity(Label = "UndderControl", Icon = "@mipmap/ic_launcher", Theme = "@style/Splash", MainLauncher = true)]
+    [Activity(Label = "UndderControl", Icon = "@mipmap/ic_launcher", Theme = "@style/SplashTheme", MainLauncher = true)]
     public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

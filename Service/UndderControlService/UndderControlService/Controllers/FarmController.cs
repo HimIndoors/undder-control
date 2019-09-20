@@ -150,10 +150,11 @@ namespace UndderControlService.Controllers
                 var farm = db.Farms.Find(value.ID);
                 if (farm != null)
                 {
-                    db.Farms.Add(farm);
-                    db.Entry(farm).State = EntityState.Modified;
+                    Farm updatedFarm = Mapper.Map<Farm>(value);
+                    db.Entry(farm).CurrentValues.SetValues(updatedFarm);
                     db.SaveChanges();
-                    Logger.Info("Farm Updated: {@value1}", farm);
+
+                    Logger.Info("Farm Updated: {@value1}", updatedFarm);
                     return StatusCode(HttpStatusCode.NoContent);
                 }
 

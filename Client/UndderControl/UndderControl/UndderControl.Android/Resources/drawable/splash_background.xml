@@ -7,7 +7,7 @@
 
     <!-- logo -->
     <item
-        android:drawable="@drawable/ic_splash"
+        android:drawable="@drawable/splash"
         android:gravity="fill_horizontal|fill_vertical"/>
         
 </layer-list>

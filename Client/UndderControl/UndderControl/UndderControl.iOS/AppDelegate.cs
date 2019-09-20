@@ -8,6 +8,7 @@ using Prism.Ioc;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.XForms.iOS.ComboBox;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
 using UndderControl.iOS.Services;
@@ -30,6 +31,8 @@ namespace UndderControl.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            new SfComboBoxRenderer();
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
 

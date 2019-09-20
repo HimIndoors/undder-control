@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:b="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.FarmDetailPage"
              Title="{Binding Title}">
@@ -18,33 +20,39 @@
             <ScrollView VerticalOptions="StartAndExpand">
                 <StackLayout>
                     <Label Text="Name" Style="{StaticResource FormLabel}" />
-                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" FocusedColor="#00987E" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmName" Margin="0" Text="{Binding CurrentFarm.Name, Mode=TwoWay}" />
+                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
+                        <Entry x:Name="FarmName" Margin="0" Text="{Binding CurrentFarm.Name, Mode=TwoWay}" TextColor="Black" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Address" Style="{StaticResource FormLabel}" />
-                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" FocusedColor="#00987E" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmAddress" Margin="0" Text="{Binding CurrentFarm.Address, Mode=TwoWay}" />
+                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
+                        <Entry x:Name="FarmAddress" Margin="0" Text="{Binding CurrentFarm.Address, Mode=TwoWay}" TextColor="Black" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Contact Name" Style="{StaticResource FormLabel}" />
-                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" FocusedColor="#00987E" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmContact" Margin="0" Text="{Binding CurrentFarm.ContactName, Mode=TwoWay}" />
+                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
+                        <Entry x:Name="FarmContact" Margin="0" Text="{Binding CurrentFarm.ContactName, Mode=TwoWay}" TextColor="Black" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Phone Number" Style="{StaticResource FormLabel}" />
-                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" FocusedColor="#00987E" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmPhone" Margin="0" Text="{Binding CurrentFarm.PhoneNumber, Mode=TwoWay}" />
+                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
+                        <Entry x:Name="FarmPhone" Margin="0" Text="{Binding CurrentFarm.PhoneNumber, Mode=TwoWay}" TextColor="Black" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Herd Size" Style="{StaticResource FormLabel}" />
-                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" FocusedColor="#00987E" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmHerd" Margin="0" Text="{Binding CurrentFarm.HerdSize, Mode=TwoWay}" />
+                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
+                        <Entry x:Name="FarmHerd" Margin="0" Text="{Binding CurrentFarm.HerdSize, Mode=TwoWay}" TextColor="Black" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Type" Style="{StaticResource FormLabel}" />
-                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" FocusedColor="#00987E" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmType" Margin="0" Text="{Binding CurrentFarm.Type, Mode=TwoWay}" />
+                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
+                        <combobox:SfComboBox x:Name="comboBox" DataSource="{Binding FarmTypes}" DisplayMemberPath="Name" IsEditableMode="false" MultiSelectMode="None" SelectedItem="{Binding SelectedType}" SelectionChanged="ComboBox_SelectionChanged" Margin="0">
+                            <combobox:SfComboBox.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double" Android="52" iOS="21" />
+                            </combobox:SfComboBox.HeightRequest>
+                        </combobox:SfComboBox>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
             </ScrollView>
             <StackLayout VerticalOptions="End" Margin="0,21,0,0">
-                <Label x:Name="ValidationMessage" Text="{Binding ValidationErrorMessage}" IsVisible="{Binding ShowValidationErrors}" HorizontalTextAlignment="Center" BackgroundColor="Maroon" TextColor="White" HorizontalOptions="FillAndExpand" MinimumHeightRequest="30" VerticalTextAlignment="Center" />
+                <Frame IsVisible="{Binding ShowValidationErrors}" BackgroundColor="DarkRed" BorderColor="White" HorizontalOptions="FillAndExpand">
+                    <Label x:Name="ValidationMessage" Text="{Binding ValidationErrorMessage}" HorizontalTextAlignment="Center" BackgroundColor="Maroon" TextColor="White" VerticalTextAlignment="Center" />
+                </Frame>
                 <Button Text="Save Farm" Style="{StaticResource DarkButton}" Command="{Binding SaveFarmCommand}" />
             </StackLayout>
         </StackLayout>

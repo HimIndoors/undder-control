@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Views;
 using FFImageLoading.Forms.Platform;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
@@ -15,7 +16,7 @@ using UndderControl.Services;
 
 namespace UndderControl.Droid
 {
-    [Activity(Label = "UndderControl", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait )]
+    [Activity(Label = "UndderControl", Icon = "@mipmap/ic_launcher", Theme = "@style/SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -26,6 +27,9 @@ namespace UndderControl.Droid
             AppCenter.Start(Config.AppCenterAndroidKey, typeof(Analytics), typeof(Crashes));
             CrossCurrentActivity.Current.Init(this, bundle);
             UserDialogs.Init(() => this);
+
+            base.Window.RequestFeature(WindowFeatures.ActionBar);
+            base.SetTheme(Resource.Style.MainTheme);
 
             base.OnCreate(bundle);
 

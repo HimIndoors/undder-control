@@ -24,6 +24,7 @@ namespace UndderControl.Services
         private Dictionary<int, CancellationTokenSource> _runningTasks = new Dictionary<int, CancellationTokenSource>();
         private readonly IApiService<IFarmApi> _farmApi;
         private readonly IApiService<IFarmUserApi> _farmUserApi;
+        private readonly IApiService<IFarmTypeApi> _farmTypeApi;
         private readonly IApiService<ISurveyApi> _surveyApi;
         private readonly IApiService<ICowStatusApi> _cowStatusApi;
         private readonly IApiService<ICowStatusFarmApi> _cowStatusFarmApi;
@@ -33,12 +34,13 @@ namespace UndderControl.Services
         private readonly IMetricsManagerService _metricsManager;
         public bool IsConnected { get; set; }
 
-        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<IFarmUserApi> farmUserApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi, IApiService<ICowStatusFarmApi> cowStatusFarmApi, IApiService<ISurveyResponseApi> surveyResponseApi, IApiService<IUserApi> userApi, IMetricsManagerService metricsManager)
+        public ApiManager(IApiService<IFarmApi> farmApi, IApiService<IFarmUserApi> farmUserApi, IApiService<IFarmTypeApi> farmTypeApi, IApiService<ISurveyApi> surveyApi, IApiService<ICowStatusApi> cowStatusApi, IApiService<ICowStatusFarmApi> cowStatusFarmApi, IApiService<ISurveyResponseApi> surveyResponseApi, IApiService<IUserApi> userApi, IMetricsManagerService metricsManager)
         {
             IsConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             _farmApi = farmApi;
             _farmUserApi = farmUserApi;
+            _farmTypeApi = farmTypeApi;
             _surveyApi = surveyApi;
             _cowStatusApi = cowStatusApi;
             _cowStatusFarmApi = cowStatusFarmApi;
@@ -223,7 +225,7 @@ namespace UndderControl.Services
                 }
                 catch (Exception ex)
                 {
-                    DependencyService.Get<IMetricsManagerService>().TrackException("Error retrieving farm details from embedded resource", ex);
+                    _metricsManager.TrackException("Error retrieving farm details from embedded resource", ex);
                 }
 
                 var response = new HttpResponseMessage
@@ -233,7 +235,6 @@ namespace UndderControl.Services
                 };
 
                 return response;
-
             }
             else
             {
@@ -288,7 +289,7 @@ namespace UndderControl.Services
                 }
                 catch (Exception ex)
                 {
-                    DependencyService.Get<IMetricsManagerService>().TrackException("Error retrieving farm details from embedded resource", ex);
+                    _metricsManager.TrackException("Error retrieving farm details from embedded resource", ex);
                 }
 
                 var response = new HttpResponseMessage
@@ -367,6 +368,15 @@ namespace UndderControl.Services
         {
             var cts = new CancellationTokenSource();
             var task = RemoteRequestAsync(_farmApi.GetApi(Priority.UserInitiated).GetFarmById(id), null);
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
+        }
+
+        public async Task<HttpResponseMessage> GetFarmTypes()
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync(_farmTypeApi.GetApi(Priority.UserInitiated).GetFarmTypes(), "GetFarmTypes");
             _runningTasks.Add(task.Id, cts);
 
             return await task;

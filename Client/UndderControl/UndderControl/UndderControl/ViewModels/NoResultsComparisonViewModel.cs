@@ -9,9 +9,9 @@ using UndderControl.Text;
 
 namespace UndderControl.ViewModels
 {
-    public class NoResultsComparisonViewModel : ViewModelBase
+    public class NoResultsComparisonPageViewModel : ViewModelBase
     {
-        public NoResultsComparisonViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+        public NoResultsComparisonPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
             Title = AppTextResource.NoResultsComparePageTitle;

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Acr.UserDialogs;
+using Newtonsoft.Json;
 using Prism.Events;
 using Prism.Navigation;
 using System;
@@ -93,15 +94,18 @@ namespace UndderControl.ViewModels
         {
             try
             {
+                UserDialogs.Instance.ShowLoading();
                 _cowStatusList = App.LatestCowStatusData;
-                BuildCowData();
+                BuildCowData();              
             }
             catch (Exception ex)
             {
-                MetricsManager.TrackException("GetFarmsFailed", ex);
+                MetricsManager.TrackException("Build CowStatus data failed", ex);
             }
-
-
+            finally
+            {
+                UserDialogs.Instance.HideLoading();
+            }
         }
 
         private void BuildCowData()
@@ -168,31 +172,6 @@ namespace UndderControl.ViewModels
 
             //Set result date
             ResultYear = _cowStatusList[0].DateAddedCalving.Value.Year;
-        }
-
-        private async Task GetCowStatus()
-        {
-            try
-            {
-                var apiresponse = await ApiManager.GetStatusByFarmId(App.SelectedFarm.ID);
-                if (apiresponse.IsSuccessStatusCode)
-                {
-                    var response = await apiresponse.Content.ReadAsStringAsync();
-                    var json = await Task.Run(() => JsonConvert.DeserializeObject<List<CowStatusDto>>(response));
-                    _cowStatusList = json;
-                }
-                else
-                {
-                    await PageDialog.AlertAsync("Unable to retrieve cow status data", "Error", "OK");
-                }
-            }
-            catch(Exception ex)
-            {
-                MetricsManager.TrackException("Error getting cowstatus data", ex);
-                await PageDialog.AlertAsync("Unable to retrieve cow status data", "Error", "OK");
-            }
-
-            
         }
     }
 }

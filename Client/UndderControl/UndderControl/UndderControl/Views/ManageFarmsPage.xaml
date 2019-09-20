@@ -5,21 +5,22 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.ManageFarmsPage"
              Title="{Binding Title}">
-
     <ContentPage.Content>
         <StackLayout Margin="25" x:Name="ButtonStack">
-            <ListView x:Name="FarmList" ItemsSource="{Binding Farms}" HasUnevenRows="True" CachingStrategy="RecycleElement" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorVisibility="None">
+            <ListView x:Name="FarmList" ItemsSource="{Binding Farms}" CachingStrategy="RecycleElement" HasUnevenRows="True" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Label Text="{Binding Name}" FontSize="Medium" FontAttributes="Bold" />
+                        <ViewCell Tapped="ViewCell_Tapped">
+                            <Grid Padding="13,5">
+                                <Frame VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="8" BackgroundColor="#009994" BorderColor="White" >
+                                    <Label Text="{Binding Name}" Style="{StaticResource FarmName}" />
+                                </Frame>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="Add Farm" Command="{Binding AddFarmCommand}" CommandParameter="FarmDetailPage" />
         </StackLayout>
-
     </ContentPage.Content>
-
 </ContentPage>

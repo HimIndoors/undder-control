@@ -32,7 +32,7 @@ namespace UndderControl.ViewModels
             : base(navigationService, metricsManager)
         {
             _eventAggregator = ea;
-            Title = "Undder Control";
+            Title = "UnDDER CONTROL";
             AnswerYesCommand = new DelegateCommand(AnswerYes, () => IsNotBusy);
             AnswerNoCommand = new DelegateCommand(AnswerNo, () => IsNotBusy);
             StartStageCommand = new DelegateCommand(StartStage, () => IsNotBusy);
@@ -98,7 +98,7 @@ namespace UndderControl.ViewModels
             try
             {
                 // Upload and delete the survey upon completion
-                // await UploadAndDeleteAsync();
+                 await UploadAndDeleteAsync();
 
             }
             catch (Exception ex)
@@ -172,7 +172,7 @@ namespace UndderControl.ViewModels
                 {"CurrentQuestionID", CurrentQuestion.ID.ToString()},
             };
 
-            DependencyService.Get<IMetricsManagerService>().TrackEvent("SurveyNextQuestion", properties);
+            MetricsManager.TrackEvent("SurveyNextQuestion", properties);
 
             // Save the response
             _response.QuestionResponses.Add(
@@ -237,12 +237,22 @@ namespace UndderControl.ViewModels
 
             try
             {
-                await _response.UploadAsync();
+                await _response.SaveAsync();
+                await UploadResponse();
                 await _response.DeleteAsync();
             }
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        async Task UploadResponse()
+        {
+            var serviceResponse = await ApiManager.UploadResponse(_response);
+            if (!serviceResponse.IsSuccessStatusCode)
+            {
+                PageDialog.Alert("Unable to upload the assessment currently!", "Error", "OK");
             }
         }
     }

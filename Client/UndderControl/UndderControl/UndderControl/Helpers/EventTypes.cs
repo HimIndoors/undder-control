@@ -17,4 +17,5 @@ namespace UndderControl.Events
     public class HtmlChangedEvent : PubSubEvent
     {
     }
+    public class FarmNavigationEvent : PubSubEvent
 }

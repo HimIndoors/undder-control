@@ -19,6 +19,10 @@ namespace UndderControl.Services
         Task<HttpResponseMessage> GetFarmsByUserId(int id);
         #endregion Farm By User methods
 
+        #region FarmType methods
+        Task<HttpResponseMessage> GetFarmTypes();
+        #endregion FarmType methods
+
         #region Survey methods
         Task<HttpResponseMessage> GetLatestSurvey();
         #endregion Survey methods

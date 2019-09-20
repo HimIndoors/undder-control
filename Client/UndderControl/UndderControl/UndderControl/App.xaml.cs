@@ -47,7 +47,7 @@ namespace UndderControl
             Barrel.ApplicationId = "MSC_Undder_Control";
 
             //TODO: Important - remove this line for live
-            //Barrel.Current.EmptyAll();
+            Barrel.Current.EmptyAll();
 
             VersionTracking.Track();
             InitializeComponent();
@@ -67,11 +67,6 @@ namespace UndderControl
                     await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
         }
 
-        private async void GetSurvey()
-        {
-            
-        }
-
         public void OnMenuButtonPressed(object sender, EventArgs e)
         {
             (Current.MainPage as MasterDetailPage).IsPresented = true;
@@ -81,7 +76,6 @@ namespace UndderControl
         {
             containerRegistry.RegisterForNavigation<CustomNavigationPage>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<SdctMasterDetailPage, SdctMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<AssessmentPage, AssessmentPageViewModel>();
             containerRegistry.RegisterForNavigation<MonitorPage, MonitorPageViewModel>();
@@ -99,7 +93,7 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<CowStatusInputPage, CowStatusInputPageViewModel>();
             containerRegistry.RegisterForNavigation<CowStatusFinishPage, CowStatusFinishPageViewModel>();
             containerRegistry.RegisterForNavigation<AboutPage, AboutPageViewModel>();
-            containerRegistry.RegisterForNavigation<NoResultsComparison, NoResultsComparisonViewModel>();
+            containerRegistry.RegisterForNavigation<NoResultsComparisonPage, NoResultsComparisonPageViewModel>();
         }
     }
 }

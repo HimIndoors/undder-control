@@ -540,7 +540,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ....
+        ///   Looks up a localized string similar to A comparison will be available once you have input more data..
         /// </summary>
         public static string NoResultsCompareCaption {
             get {

@@ -83,7 +83,11 @@ namespace UndderControl.ViewModels
 
         private async void NavigateAsync(string page)
         {
-            await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+            if (page.Equals("CowStatusComparisonPage") && App.PreviousCowStatusData == null)
+
+                await NavigationService.NavigateAsync(new Uri("NoResultsComparisonPage", UriKind.Relative));
+            else
+                await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
         }
 
         bool CanSummaryNavigate(string obj)
@@ -93,7 +97,7 @@ namespace UndderControl.ViewModels
 
         bool CanCompareNavigate(string obj)
         {
-            return (App.LatestCowStatusData == null ? false : true) && (App.PreviousCowStatusData == null ? false : true);
+            return App.LatestCowStatusData == null ? false : true;
         }
     }
 }

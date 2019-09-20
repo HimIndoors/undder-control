@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using UndderControl.Helpers;
 using UndderControl.Services;
+using UndderControl.ViewModels;
 using UndderControlLib.Dtos;
 using Xamarin.Forms;
 
@@ -12,27 +13,6 @@ namespace UndderControl.Extensions
     /// </summary>
     static class SurveyResponseDtoExtensions
     {
-        /// <summary>
-        /// Uploads the survey asynchronously.
-        /// </summary>
-        /// <param name="response">The survey response.</param>
-        /// <returns>A task to await the completion of the upload.</returns>
-        public static async Task UploadAsync(this SurveyResponseDto response)
-        {
-            try
-            {
-                DependencyService.Get<IMetricsManagerService>().TrackEvent("UploadSurveyResponse");
-                //await SurveyDataService.SubmitSurveyResponseAsync(response);
-                //response.Uploaded = DateTime.Now;
-                await response.SaveAsync();
-            }
-            catch (Exception ex)
-            {
-                DependencyService.Get<IMetricsManagerService>().TrackException("UploadSurveyResponseFailed", ex);
-                throw;
-            }
-        }
-
         /// <summary>
         /// Saves the survey to local storage asynchronously.
         /// </summary>

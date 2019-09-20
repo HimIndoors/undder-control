@@ -31,7 +31,7 @@ namespace UndderControl.ViewModels
         public AssessmentPageViewModel(INavigationService navigationService, IMetricsManagerService metricsService)
             : base(navigationService, metricsService)
         {
-            Title = "Undder Control";
+            Title = "UnDDER CONTROL";
             InitAsync();
         }
 

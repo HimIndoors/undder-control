@@ -57,6 +57,12 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>
+            <Style TargetType="Label" x:Key="FarmName">
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
             <ControlTemplate x:Key="MenuPageTemplate">
 
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">

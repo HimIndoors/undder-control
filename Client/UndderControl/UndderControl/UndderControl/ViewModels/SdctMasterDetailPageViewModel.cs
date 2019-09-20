@@ -12,10 +12,6 @@ namespace UndderControl.ViewModels
 {
     public class SdctMasterDetailPageViewModel : ViewModelBase
     {
-        private DelegateCommand<string> _navigateCommand;
-        public DelegateCommand<string> OnNavigateCommand =>
-            _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync));
-
         private ObservableCollection<MenuItemModel> menuItems;
         public ObservableCollection<MenuItemModel> MenuItems
         {
@@ -31,19 +27,17 @@ namespace UndderControl.ViewModels
         public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
-            Title = "UNDDER CONTROL";
+            Title = "UnDDER CONTROL";
             OnItemTapped = new DelegateCommand<MenuItemModel>(MenuNavigate);
+
             MenuItems = new ObservableCollection<MenuItemModel>
             {
                 new MenuItemModel{ Name="Home", Icon="home.png",Page="/SdctMasterDetailPage/NavigationPage/RootPage"},
-                new MenuItemModel{ Name="Manage Farms", Icon="farm.png",Page="ManageFarmsPage"},
-                new MenuItemModel{ Name="About", Icon="about.png",Page="AboutPage"},
+                new MenuItemModel{ Name="Manage Farms", Icon="farm.png",Page="NavigationPage/ManageFarmsPage"},
+                new MenuItemModel{ Name="Assess Farm", Icon="farm.png",Page="NavigationPage/AssessmentPage"},
+                new MenuItemModel{ Name="Monitor Farm", Icon="farm.png",Page="NavigationPage/MonitorPage"},
+                new MenuItemModel{ Name="About", Icon="about.png",Page="NavigationPage/AboutPage"}
             };
-        }
-
-        async void NavigateAsync(string page)
-        {
-            await NavigationService.NavigateAsync(page);
         }
 
         async void MenuNavigate(MenuItemModel item)

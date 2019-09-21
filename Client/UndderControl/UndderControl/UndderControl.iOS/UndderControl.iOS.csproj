@@ -92,7 +92,6 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Custom\ExtendedUIWebViewDelegate.cs" />
     <Compile Include="Custom\ExtendedWebViewRenderer.cs" />
     <Compile Include="Helpers\IOSFileHelper.cs" />
     <Compile Include="Main.cs" />

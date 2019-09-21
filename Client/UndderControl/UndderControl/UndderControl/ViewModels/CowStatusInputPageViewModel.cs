@@ -1,13 +1,22 @@
-﻿using Prism.Commands;
+﻿using FluentValidation.Results;
+using MonkeyCache.SQLite;
+using Newtonsoft.Json;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Syncfusion.XForms.Buttons;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using UndderControl.Events;
 using UndderControl.Services;
 using UndderControl.Text;
+using UndderControl.Validation;
 using UndderControlLib.Dtos;
 
 namespace UndderControl.ViewModels
@@ -23,9 +32,10 @@ namespace UndderControl.ViewModels
         public string InputMode
         {
             get { return _inputMode; }
-            set {
+            set
+            {
                 SetProperty(ref _inputMode, value);
-                if(_inputMode.Equals("dryoff"))
+                if (_inputMode.Equals("dryoff"))
                 {
                     InputModeText = AppTextResource.CowStatusInputTextDryoffStatus;
                 }
@@ -41,94 +51,180 @@ namespace UndderControl.ViewModels
             get { return _inputModeText; }
             set { SetProperty(ref _inputModeText, value); }
         }
-        private CowStatusDto _cowStatus = new CowStatusDto();
-        public CowStatusDto CowStatus
+
+        private string _validationErrorMessage;
+        public string ValidationErrorMessage
         {
-            get { return _cowStatus; }
-            private set
-            {
-                SetProperty(ref _cowStatus, value);
-            }
-        }
-        private InfectedType _infectedValue;
-        public InfectedType InfectedValue
-        {
-            get { return _infectedValue; }
+            get { return _validationErrorMessage; }
             set
             {
-                SetProperty(ref _infectedValue, value);
-                RaisePropertyChanged();
+                SetProperty(ref _validationErrorMessage, value);
+                RaisePropertyChanged("ValidationErrorMessage");
             }
         }
-        private ObservableCollection<InfectedType> _valueList;
-        public ObservableCollection<InfectedType> ValueList
+        private bool _showValidationErrors = false;
+        public bool ShowValidationErrors
         {
-            get { return _valueList; }
+            get { return _showValidationErrors; }
             set
             {
-                _valueList = value;
-                RaisePropertyChanged("ValueList");
+                SetProperty(ref _showValidationErrors, value);
+                RaisePropertyChanged("ShowValidationErrors");
             }
         }
 
-        public CowStatusInputPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+        public string TestCowId { get; set; }
+        public bool CowInfected { get; set; }
+
+        readonly IEventAggregator _EventAggregator;
+
+        public CowStatusInputPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator eventAggregator)
             : base(navigationService, metricsManager)
         {
             Title = AppTextResource.CowStatusPageTitle;
             IsBusy = true;
-
-            ValueList = new ObservableCollection<InfectedType>
-            {
-                new InfectedType { Id=1, Name="Infected" },
-                new InfectedType { Id=2, Name="Not infected" }
-            };
+            CowInfected = false; //Default value
+            _EventAggregator = eventAggregator;
         }
 
         private async void NextInput()
         {
-            await RunSafe(UploadCowStatus(CowStatus));
-            //Refresh page
-            CowStatus = new CowStatusDto();
+            CowStatusDto cs = InitCowStatus();
+            CowStatusValidator validator = new CowStatusValidator();
+            ValidationResult result = validator.Validate(cs);
+            if (result.IsValid)
+            {
+                await RunSafe(UploadCowStatus(cs));
+                _EventAggregator.GetEvent<CowStatusRefreshEvent>().Publish();
+            }
+            else
+            {
+                ValidationErrorMessage = result.Errors[0].ErrorMessage;
+                ShowValidationErrors = true;
+            }
+
         }
 
         private async void FinishInput()
         {
-            await RunSafe(UploadCowStatus(CowStatus));
-            if (InputMode.Equals("dryoff"))
+            CowStatusDto cs = InitCowStatus();
+            CowStatusValidator validator = new CowStatusValidator();
+            ValidationResult result = validator.Validate(cs);
+            if (result.IsValid)
             {
-                await NavigationService.NavigateAsync(new Uri("SdctMasterDetailPage/CowStatusFinishPage", UriKind.Absolute));
+                await RunSafe(UploadCowStatus(cs));
+                if (InputMode.Equals("dryoff"))
+                    await NavigationService.NavigateAsync("CowStatusFinishPage");
+                else
+                {
+                    PopulateCowStatusData();
+                    await NavigationService.NavigateAsync("CowStatusResultsPage");
+                }
+
             }
             else
             {
-                await NavigationService.NavigateAsync(new Uri("NavigationPage/CowStatusResultsPage", UriKind.Relative));
+                ValidationErrorMessage = result.Errors[0].ErrorMessage;
+                ShowValidationErrors = true;
             }
         }
 
         private async Task UploadCowStatus(CowStatusDto status)
         {
-            var response = await ApiManager.CreateCowStatus(status);
+            HttpResponseMessage response;
+            if (InputMode.Equals("dryoff"))
+            {
+                response = await ApiManager.CreateCowStatus(status);
+            }
+            else
+            {
+                response = await ApiManager.UpdateCowStatus(status);
+            }
+
 
             if (!response.IsSuccessStatusCode)
             {
                 await PageDialog.AlertAsync("Unable to save cow status data", "Error", "OK");
             }
+            else
+            {
+                PageDialog.Toast("Cow status saved");
+            }
         }
 
         public void Initialize(INavigationParameters parameters)
         {
-            if(parameters.ContainsKey("mode"))
+            if (parameters.ContainsKey("mode"))
             {
                 InputMode = parameters["mode"] as string;
             }
             IsBusy = false;
         }
-    }
 
-    public class InfectedType
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        //Override string and return what you want to be displayed
-        public override string ToString() => Name;
+        private CowStatusDto InitCowStatus()
+        {
+            CowStatusDto cowStatus = new CowStatusDto();
+            if (InputMode.Equals("dryoff"))
+            {
+                cowStatus.CowIdentifier = TestCowId;
+                cowStatus.InfectedAtDryOff = CowInfected;
+                cowStatus.Farm_ID = App.SelectedFarm.ID;
+                cowStatus.DateAddedDryOff = DateTime.Now;
+            }
+            else
+            {
+                cowStatus.CowIdentifier = TestCowId;
+                cowStatus.InfectedAtCalving = CowInfected;
+                cowStatus.Farm_ID = App.SelectedFarm.ID;
+                cowStatus.DateAddedCalving = DateTime.Now;
+            }
+            return cowStatus;
+        }
+
+        private async void PopulateCowStatusData()
+        {
+            Barrel.Current.Empty(key: "GetCowsStatusByFarmID" + App.SelectedFarm.ID);
+            try
+            {
+                await RunSafe(GetCowStatusData());
+            }
+            catch (Exception ex)
+            {
+                MetricsManager.TrackException(ex.Message, ex);
+            }
+        }
+
+        async Task GetCowStatusData()
+        {
+            var tryHistoric = false;
+            var serviceResponse = await ApiManager.GetCowsStatusByFarmID(App.SelectedFarm.ID);
+
+            if (serviceResponse.IsSuccessStatusCode || serviceResponse.StatusCode == HttpStatusCode.NotModified)
+            {
+                var response = await serviceResponse.Content.ReadAsStringAsync();
+                var cowStatusData = await Task.Run(() => JsonConvert.DeserializeObject<List<CowStatusDto>>(response));
+                if (cowStatusData != null && cowStatusData.Count > 0)
+                {
+                    App.LatestCowStatusData = new List<CowStatusDto>(cowStatusData);
+                    tryHistoric = true;
+                }
+            }
+
+            if (tryHistoric)
+            {
+                var previousYear = App.LatestCowStatusData[0].DateAddedCalving.Value.Year - 1;
+                var historicResponse = await ApiManager.GetCowsStatusByFarmIDandYear(App.SelectedFarm.ID, previousYear);
+
+                if (historicResponse.IsSuccessStatusCode || historicResponse.StatusCode == HttpStatusCode.NotModified)
+                {
+                    var response = await historicResponse.Content.ReadAsStringAsync();
+                    var cowStatusData = await Task.Run(() => JsonConvert.DeserializeObject<List<CowStatusDto>>(response));
+                    if (cowStatusData != null && cowStatusData.Count > 0)
+                    {
+                        App.PreviousCowStatusData = new List<CowStatusDto>(cowStatusData);
+                    }
+                }
+            }
+        }
     }
 }

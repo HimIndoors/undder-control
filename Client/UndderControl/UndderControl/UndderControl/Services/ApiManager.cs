@@ -381,5 +381,14 @@ namespace UndderControl.Services
 
             return await task;
         }
+
+        public async Task<HttpResponseMessage> UpdateCowStatus(CowStatusDto status)
+        {
+            var cts = new CancellationTokenSource();
+            var task = RemoteRequestAsync(_cowStatusApi.GetApi(Priority.UserInitiated).UpdateCowStatus(status), null);
+            _runningTasks.Add(task.Id, cts);
+
+            return await task;
+        }
     }
 }

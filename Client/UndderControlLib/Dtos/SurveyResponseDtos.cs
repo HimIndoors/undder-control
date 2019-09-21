@@ -39,7 +39,7 @@ namespace UndderControlLib.Dtos
         /// <summary>
         /// Date the survey response was submitted.
         /// </summary>
-        public DateTimeOffset SubmittedDate { get; set; }
+        public DateTime SubmittedDate { get; set; }
 
         // While most questions only allow one answer, this will allow multiple-choice responses.
         /// <summary>

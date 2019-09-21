@@ -32,7 +32,7 @@ namespace UndderControlService.Controllers
         {
             try
             {
-                var value = db.SurveyResponses.DefaultIfEmpty(null).Where(s => s.User_ID == id).OrderByDescending(s => s.SubmittedDate).Take(2).ToList();
+                var value = db.SurveyResponses.DefaultIfEmpty(null).Where(s => s.Farm_ID == id).OrderByDescending(s => s.SubmittedDate).Take(2).ToList();
                 if (value != null && value.Count > 0)
                 {
                     var result = Mapper.Map<List<SurveyResponseDto>>(value);

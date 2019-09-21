@@ -6,16 +6,15 @@ using System.Text;
 namespace UndderControl.Events
 {
     public class CowStatusResultsEvent : PubSubEvent
-    {
-    }
+    { }
     public class SurveyResultsEvent : PubSubEvent
-    {
-    }
+    { }
     public class QuestionChangedEvent : PubSubEvent
-    {
-    }
+    { }
     public class HtmlChangedEvent : PubSubEvent
-    {
-    }
+    { }
     public class FarmNavigationEvent : PubSubEvent
+    { }
+    public class CowStatusRefreshEvent : PubSubEvent
+    { }
 }

@@ -225,7 +225,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>INFECTED AFTER CALVING</value>
   </data>
   <data name="CsInfectedAtDryoff" xml:space="preserve">
-    <value>INFECTED AT DRY&#x1F;OFF</value>
+    <value>INFECTED AT DRYOFF</value>
   </data>
   <data name="CsNewInfection" xml:space="preserve">
     <value>NEW INFECTION</value>
@@ -234,7 +234,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>NOT INFECTED AFTER CALVING</value>
   </data>
   <data name="CsNotInfectedAtDryoff" xml:space="preserve">
-    <value>NOT INFECTED AT DRY&#x1F;OFF</value>
+    <value>NOT INFECTED AT DRYOFF</value>
   </data>
   <data name="CsPreventionOfNewInfection" xml:space="preserve">
     <value>PREVENTION OF NEW INFECTION</value>
@@ -322,6 +322,9 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
   </data>
   <data name="SurveyResultSdctUnsuitable" xml:space="preserve">
     <value>SWITCHING TO SDCT MAY POSE A RISK FOR UDDER HEALTH ON THIS FARM!</value>
+  </data>
+  <data name="SurveyResultsPageTitle" xml:space="preserve">
+    <value>RESULTS</value>
   </data>
   <data name="SurveyStartQuestionsButton" xml:space="preserve">
     <value>Start Questions</value>

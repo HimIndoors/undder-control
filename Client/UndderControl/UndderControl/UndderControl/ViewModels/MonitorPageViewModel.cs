@@ -67,7 +67,7 @@ namespace UndderControl.ViewModels
                 var previousYear = App.LatestCowStatusData[0].DateAddedCalving.Value.Year - 1;
                 var historicResponse = await ApiManager.GetCowsStatusByFarmIDandYear(App.SelectedFarm.ID, previousYear);
 
-                if (historicResponse.IsSuccessStatusCode)
+                if (historicResponse.IsSuccessStatusCode || historicResponse.StatusCode == HttpStatusCode.NotModified)
                 {
                     var response = await historicResponse.Content.ReadAsStringAsync();
                     var cowStatusData = await Task.Run(() => JsonConvert.DeserializeObject<List<CowStatusDto>>(response));

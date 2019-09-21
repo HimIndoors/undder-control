@@ -378,7 +378,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INFECTED AT DRYOFF.
+        ///   Looks up a localized string similar to INFECTED AT DRYOFF.
         /// </summary>
         public static string CsInfectedAtDryoff {
             get {
@@ -405,7 +405,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NOT INFECTED AT DRYOFF.
+        ///   Looks up a localized string similar to NOT INFECTED AT DRYOFF.
         /// </summary>
         public static string CsNotInfectedAtDryoff {
             get {
@@ -671,6 +671,15 @@ namespace UndderControl.Text {
         public static string SurveyResultSdctUnsuitable {
             get {
                 return ResourceManager.GetString("SurveyResultSdctUnsuitable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RESULTS.
+        /// </summary>
+        public static string SurveyResultsPageTitle {
+            get {
+                return ResourceManager.GetString("SurveyResultsPageTitle", resourceCulture);
             }
         }
         

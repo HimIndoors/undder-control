@@ -16,7 +16,7 @@
                     </syncfusion:SfListView.Behaviors>
                     <syncfusion:SfListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Padding="21,5">
+                            <Grid Padding="21,8">
                                 <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
                             </Grid>
                         </DataTemplate>

@@ -25,9 +25,9 @@
                     <Label x:Name="Title4" Style="{StaticResource TextSubtitle}" />
                     <Label x:Name="Text4" Style="{StaticResource Text}"/>
                     <StackLayout Margin="0,13,0,0">
-                        <Button x:Name="StatusButton" Command="{Binding OnStatusCommand}" CommandParameter="CowStatusPage" Padding="0,13" />
-                        <Button x:Name="SummaryButton" Command="{Binding OnSummaryCommand}" CommandParameter="CowStatusResultsPage" Padding="0,13" Margin="0,10,0,0" />
-                        <Button x:Name="CompareButton" Command="{Binding OnCompareCommand}" CommandParameter="CowStatusComparisonPage" Padding="0,13" Margin="0,10,0,0" />
+                        <Button x:Name="StatusButton" Command="{Binding OnStatusCommand}" CommandParameter="CowStatusPage" HeightRequest="70" />
+                        <Button x:Name="SummaryButton" Command="{Binding OnSummaryCommand}" CommandParameter="CowStatusResultsPage" HeightRequest="70" Margin="0,10,0,0" />
+                        <Button x:Name="CompareButton" Command="{Binding OnCompareCommand}" CommandParameter="CowStatusComparisonPage" HeightRequest="70" Margin="0,10,0,0" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

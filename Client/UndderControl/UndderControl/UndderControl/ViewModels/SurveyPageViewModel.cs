@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using MonkeyCache.SQLite;
+using Prism.Commands;
 using Prism.Events;
 using Prism.Navigation;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UndderControl.Events;
 using UndderControl.Extensions;
+using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
 using Xamarin.Forms;
@@ -109,6 +111,7 @@ namespace UndderControl.ViewModels
             {
                 { "response", _response }
             };
+            navigationParams.Add("useModalNavigation", true);
             await NavigationService.NavigateAsync("SurveyResultsPage", navigationParams);
         }
 
@@ -249,10 +252,26 @@ namespace UndderControl.ViewModels
 
         async Task UploadResponse()
         {
+            //Add global fields
+            _response.User_ID = UserSettings.UserId;
+            _response.Farm_ID = App.SelectedFarm.ID;
+            _response.Survey_Version = App.LatestSurvey.Version;
+
             var serviceResponse = await ApiManager.UploadResponse(_response);
             if (!serviceResponse.IsSuccessStatusCode)
             {
                 PageDialog.Alert("Unable to upload the assessment currently!", "Error", "OK");
+            }
+            else
+            {
+                PageDialog.Toast("Assessment Saved");
+                //Reshuffle assessment data
+                if (App.LatestSurveyResponse != null)
+                    App.PreviousSurveyResponse = App.LatestSurveyResponse;
+                App.LatestSurveyResponse = _response;
+
+                //Empty MonkeyCache.
+                Barrel.Current.Empty(key: "GetResponseByFarmId" + App.SelectedFarm.ID);
             }
         }
     }

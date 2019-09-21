@@ -24,14 +24,17 @@ namespace UndderControl.Views
             {
                 foreach (var item in _vm.Statements)
                 {
-                    var itemLabel = new Label() { Text = item.Key.ToUpper() }; //Enforcing uppercase for subtitles
-                    itemLabel.SetDynamicResource(StyleProperty, "TextSubtitle");
-                    StatementStack.Children.Add(itemLabel);
-                    foreach (string statement in item.Value)
+                    if(item.Value.Count >0)
                     {
-                        var label = new Label() { Text = statement };
-                        label.SetDynamicResource(StyleProperty, "Text");
-                        StatementStack.Children.Add(label);
+                        var itemLabel = new Label() { Text = item.Key.ToUpper() }; //Enforcing uppercase for subtitles
+                        itemLabel.SetDynamicResource(StyleProperty, "TextSubtitle");
+                        StatementStack.Children.Add(itemLabel);
+                        foreach (string statement in item.Value)
+                        {
+                            var label = new Label() { Text = statement };
+                            label.SetDynamicResource(StyleProperty, "Text");
+                            StatementStack.Children.Add(label);
+                        }
                     }
                 }
             }

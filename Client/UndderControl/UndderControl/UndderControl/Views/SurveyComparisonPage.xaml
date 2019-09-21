@@ -14,25 +14,37 @@
                         Android="21" />
             </StackLayout.Padding>
             <StackLayout HeightRequest="400">
-                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <chart:SfChart.Title>
-                        <chart:ChartTitle Text="Assessment Comparison"  />
-                    </chart:SfChart.Title>
+                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" Scale="1.25">
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
                     </chart:SfChart.Margin>
                     <chart:SfChart.Legend>
-                        <chart:ChartLegend IconHeight="14" IconWidth="14" DockPosition="Bottom" />
+                        <chart:ChartLegend IconHeight="14" IconWidth="14" DockPosition="Floating" OffsetX="100" OffsetY="200" />
                     </chart:SfChart.Legend>
                     <chart:SfChart.PrimaryAxis>
                         <chart:CategoryAxis>
+                            <chart:CategoryAxis.MajorGridLineStyle>
+                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                            </chart:CategoryAxis.MajorGridLineStyle>
+                            <chart:CategoryAxis.AxisLineStyle>
+                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                            </chart:CategoryAxis.AxisLineStyle>
+                            <chart:CategoryAxis.LabelStyle>
+                                <chart:ChartAxisLabelStyle TextColor="black" />
+                            </chart:CategoryAxis.LabelStyle>
                         </chart:CategoryAxis>
                     </chart:SfChart.PrimaryAxis>
                     <chart:SfChart.SecondaryAxis>
                         <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1">
                             <chart:NumericalAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelSyle"/>
+                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="black" />
                             </chart:NumericalAxis.LabelStyle>
+                            <chart:NumericalAxis.AxisLineStyle>
+                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                            </chart:NumericalAxis.AxisLineStyle>
+                            <chart:NumericalAxis.MajorGridLineStyle>
+                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                            </chart:NumericalAxis.MajorGridLineStyle>
                         </chart:NumericalAxis>
                     </chart:SfChart.SecondaryAxis>
                     <chart:SfChart.Series>

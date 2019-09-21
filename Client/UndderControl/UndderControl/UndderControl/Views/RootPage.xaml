@@ -14,7 +14,7 @@
                 VerticalOptions="Fill"
                 DownsampleToViewSize="True"
                 Aspect="Fill" />
-            <StackLayout>
+            <StackLayout VerticalOptions="StartAndExpand">
                 <StackLayout.Padding>
                     <OnPlatform x:TypeArguments="Thickness"
                         iOS="54"
@@ -58,6 +58,9 @@
                         <Label x:Name="RootMonitor3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
                     </StackLayout>
                 </Frame>
+            </StackLayout>
+            <StackLayout VerticalOptions="End" HorizontalOptions="Start">
+                <Button x:Name="EditFarmButton" Text="Edit farm details" BackgroundColor="Transparent" FontSize="15" FontAttributes="None" Command="{Binding OnEditFarmCommand}" IsVisible="{Binding EditFarmEnabled}" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

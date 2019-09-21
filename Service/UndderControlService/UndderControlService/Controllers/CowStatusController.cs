@@ -50,7 +50,7 @@ namespace UndderControlService.Controllers
 
         // POST api/<controller>
         /// <summary>
-        /// Sumbit a new cow status
+        /// Sumbit a new cow status, this methos will update an existing record if it finds one to allow for calving data to be added
         /// </summary>
         /// <param name="CowStatusDto"></param>
         /// <returns></returns>
@@ -65,12 +65,10 @@ namespace UndderControlService.Controllers
                 Logger.Info("CowStatus modelstate invalid {@value1}", value);
                 return BadRequest(ModelState);
             }
-                
-
+  
             try
             {
                 CowStatus cow = Mapper.Map<CowStatus>(value);
-
                 db.CowStatus.Add(cow);
                 db.SaveChanges();
                 Logger.Info("CowStatus {id} created successfully", cow.ID);
@@ -109,7 +107,7 @@ namespace UndderControlService.Controllers
         /// <summary>
         /// Update cow status
         /// </summary>
-        /// <param name="farmDto"></param>
+        /// <param name="CowStatusDto"></param>
         /// <returns></returns>
         [ResponseType(typeof(void))]
         [SwaggerOperation("UpdateCowStatus")]
@@ -122,23 +120,30 @@ namespace UndderControlService.Controllers
                 Logger.Info("Modelstate invalid: {@value1}", value);
                 return BadRequest(ModelState);
             }
-                
 
-            var cowStatus = db.CowStatus.Find(value.ID);
+            CowStatus cow = Mapper.Map<CowStatus>(value);
+            var cowStatus = db.CowStatus.DefaultIfEmpty(null).Where(x => x.Farm_ID == cow.Farm_ID && x.CowIdentifier == cow.CowIdentifier).FirstOrDefault();
             if (cowStatus != null)
             {
-                cowStatus.InfectedAtCalving = value.InfectedAtCalving;
-                cowStatus.DateAddedCalving = value.DateAddedCalving;
-                db.SaveChanges();
-                Logger.Info("CowStatus Updated: {@value1}", cowStatus);
+                try
+                {
+                    cowStatus.InfectedAtCalving = value.InfectedAtCalving;
+                    cowStatus.DateAddedCalving = value.DateAddedCalving;
+                    db.SaveChanges();
+                    Logger.Info("CowStatus Updated: {@value1}", cowStatus);
 
-                return StatusCode(HttpStatusCode.NoContent);
+                    return StatusCode(HttpStatusCode.NoContent);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, ex.Message);
+                    return InternalServerError(ex);
+                }
             }
             else
             {
                 try
                 {
-                    CowStatus cow = Mapper.Map<CowStatus>(value);
 
                     db.CowStatus.Add(cow);
                     db.SaveChanges();

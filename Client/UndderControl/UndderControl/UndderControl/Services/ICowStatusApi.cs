@@ -11,6 +11,9 @@ namespace UndderControl.Services
         Task<HttpResponseMessage> GetStatusByFarmId(int id);
 
         [Post("/cowstatus/")]
-        Task<HttpResponseMessage> CreateCowStatus([Body] CowStatusDto farm);
+        Task<HttpResponseMessage> CreateCowStatus([Body] CowStatusDto status);
+
+        [Put("/cowstatus/")]
+        Task<HttpResponseMessage> UpdateCowStatus([Body] CowStatusDto status);
     }
 }

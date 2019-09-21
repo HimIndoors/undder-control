@@ -33,10 +33,11 @@ namespace UndderControl.Views
             StringBuilder sb = new StringBuilder(
                 @"<html><head>
                 <style>
-                    body { background:#7CCCBD; }
-                    table { width:100%; border-collapse: collapse; border: 1px solid #ffffff; }
-                    td { padding: 5px; font-weight: 700; }
+                    body { background:#7CCCBD; color: #30454A; margin: 0; padding: 0; box-sizing: border-box; }
+                    table { width:99.5%; border-collapse: collapse; border: 1px solid #ffffff; margin: 0; box-sizing: border-box; }
+                    td, th { padding: 8px; font-weight: 700; }
                     .value { text-align: center; border-left: 1px solid #ffffff; }
+                    .value span { background: #ffffff; padding: 3px 6px; color: #30454A !important;}
                     .status { margin-top: 1em; background: #00827F; }
                     .status td, .status th { color: #ffffff; }
                     .status th { border-bottom: 1px solid #ffffff; }
@@ -57,7 +58,7 @@ namespace UndderControl.Views
             sb.AppendLine("<tr><td>PREVENTION RATE (%)</td><td class='value'>" + preventionRate + "</td></tr>");
             sb.AppendLine("<tr><td>FAILURE TO CURE RATE (%)</td><td class='value'>" + failureToCureRate + "</td></tr>");
             sb.AppendLine("<tr><td>CURE RATE (%)</td><td class='value'>" + cureRate + "</td></tr>");
-            sb.AppendLine("</table><table class='status'><tr><th>STATUS</th><th>THRESHOLD<br/>(PER FARM)</th></tr>");
+            sb.AppendLine("</table><table class='status'><tr><th>STATUS</th><th class='value'>THRESHOLD<br/>(PER FARM)</th></tr>");
             
             sb.AppendLine("<tr><td>NEW INFECTION</td><td class='value'><span>10%</span></td></tr>");
             sb.AppendLine("<tr><td>PREVENTION RATE (%)</td><td class='value'><span>90%</span></td></tr>");
@@ -67,7 +68,7 @@ namespace UndderControl.Views
 
             htmlSource.Html = sb.ToString();
             browser.Source = htmlSource;
-            browser.HeightRequest = 20;
+            browser.HeightRequest = 200;
             browser.HorizontalOptions = LayoutOptions.Fill;
 
             WebViewLayout.Children.Add(browser);

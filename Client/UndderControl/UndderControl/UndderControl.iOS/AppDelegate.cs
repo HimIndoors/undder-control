@@ -7,6 +7,8 @@ using Prism;
 using Prism.Ioc;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
+using Syncfusion.SfNumericTextBox.XForms.iOS;
+using Syncfusion.XForms.iOS.Border;
 using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.ComboBox;
 using Syncfusion.XForms.iOS.TextInputLayout;
@@ -31,16 +33,21 @@ namespace UndderControl.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            new SfComboBoxRenderer();
-
             global::Xamarin.Forms.Forms.Init();
+
+            new SfComboBoxRenderer();
+            new SfNumericTextBoxRenderer();
+
             LoadApplication(new App(new iOSInitializer()));
 
             AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
+
             SfChartRenderer.Init();
             SfSegmentedControlRenderer.Init();
             SfListViewRenderer.Init();
             SfTextInputLayoutRenderer.Init();
+            SfBorderRenderer.Init();
+            SfButtonRenderer.Init();
 
             CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();

@@ -25,7 +25,7 @@
                     <Label x:Name="FarmName" Style="{StaticResource StatusData}"/>
                     <Label x:Name="ResultDate" Text="{Binding ResultYear}" Style="{StaticResource StatusData}"/>
                 </StackLayout>
-                <StackLayout x:Name="WebViewLayout" VerticalOptions="CenterAndExpand" />
+                <StackLayout x:Name="WebViewLayout" VerticalOptions="CenterAndExpand" BackgroundColor="#7CCCBD" />
                 <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
                     <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource ResultSubtitle}" Margin="0"/>
                 </ContentView>

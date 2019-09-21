@@ -34,6 +34,7 @@ namespace UndderControl.Services
 
         #region CowStatus methods
         Task<HttpResponseMessage> CreateCowStatus(CowStatusDto farm);
+        Task<HttpResponseMessage> UpdateCowStatus(CowStatusDto status);
         Task<HttpResponseMessage> GetStatusByFarmId(int id);
         #endregion CowStatusResponse methods
 

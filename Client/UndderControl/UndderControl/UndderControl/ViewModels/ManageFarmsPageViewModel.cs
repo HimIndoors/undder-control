@@ -37,7 +37,8 @@ namespace UndderControl.ViewModels
             {
                 if (SetProperty(ref _selectedItem, value))
                 {
-                    GoToDetail();
+                    if (_selectedItem != null)
+                        GoToDetail();
                 }
             }
         }

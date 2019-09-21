@@ -63,6 +63,19 @@
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
+            <Style TargetType="Label" x:Key="InputTitle">
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style TargetType="Label" x:Key="InputCaption">
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style x:Key="StatusButton" TargetType="Button">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HeightRequest" Value="80"/>
+            </Style>
             <ControlTemplate x:Key="MenuPageTemplate">
 
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">

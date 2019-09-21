@@ -22,13 +22,14 @@ namespace UndderControl.ViewModels
         public IDictionary<string, List<string>> Statements;
         public ObservableCollection<ChartDataModel> RadarData { get; set; }
         public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
-        private string _suitabilityStatement;
         public string SuitabilityStatement { get; set; }
         public string RadarColour { get; set; }
+        public string AssessmentDate { get; set; }
 
         public SurveyResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
+            Title = AppTextResource.SurveyResultsPageTitle;
             _response = App.LatestSurveyResponse;
             BuildResultData();
         }
@@ -87,6 +88,7 @@ namespace UndderControl.ViewModels
                     SuitabilityStatement = AppTextResource.SurveyResultSdctUnsuitable;
 
                 RadarColour = ReturnHexValue(lowestScore);
+                AssessmentDate = _response.SubmittedDate.ToShortDateString();
             }
 
             PageDialog.HideLoading();

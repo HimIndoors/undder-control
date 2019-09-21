@@ -42,6 +42,7 @@ namespace UndderControl.ViewModels
                     App.SelectedFarm = value; //Update global farm
                 FrameEnabled = true;
                 FrameTextColour = "#009096";
+                EditFarmEnabled = true;
                 OnNavigateCommand.RaiseCanExecuteChanged();
                 RaisePropertyChanged("SelectedFarm");
             }
@@ -82,6 +83,16 @@ namespace UndderControl.ViewModels
                 RaisePropertyChanged("FrameMonitorColour");
             }
         }
+        private bool _editFarmEnabled;
+        public bool EditFarmEnabled
+        {
+            get { return _editFarmEnabled; }
+            set
+            {
+                _editFarmEnabled = value;
+                RaisePropertyChanged("EditFarmEnabled");
+            }
+        }
 
         private DelegateCommand<string> _navigateCommand;
         public DelegateCommand<string> OnNavigateCommand =>
@@ -90,9 +101,14 @@ namespace UndderControl.ViewModels
         private bool UserFarmsFound = false;
         private readonly IPageDialogService _dialogService;
 
+        private DelegateCommand _onEditFarmCommand;
+        public DelegateCommand OnEditFarmCommand =>
+            _onEditFarmCommand ?? (_onEditFarmCommand = new DelegateCommand(EditFarm));
+
         public RootPageViewModel(INavigationService navigationService, IMetricsManagerService metricsSevice, IPageDialogService dialogueService) 
             : base(navigationService, metricsSevice)
         {
+            EditFarmEnabled = false;
             _dialogService = dialogueService;
             Title = "UnDDER CONTROL";
             if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;
@@ -146,6 +162,14 @@ namespace UndderControl.ViewModels
         {
             MetricsManager.TrackEvent("Navigate: " + page);
             await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+        }
+        async void EditFarm()
+        {
+            var navigationParams = new NavigationParameters
+            {
+                { "farm", App.SelectedFarm }
+            };
+            await NavigationService.NavigateAsync("FarmDetailPage", navigationParams);
         }
 
         bool CanNavigate(string obj)

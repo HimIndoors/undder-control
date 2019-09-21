@@ -52,7 +52,6 @@ namespace UndderControl
             VersionTracking.Track();
             InitializeComponent();
 
-
             await NavigateToPage();
         }
 

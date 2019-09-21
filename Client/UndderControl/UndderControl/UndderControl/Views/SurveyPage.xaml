@@ -19,21 +19,39 @@
                         <StackLayout.Padding>
                             <OnPlatform x:TypeArguments="Thickness"
                                 iOS="21"
-                                Android="21"
-                                WinPhone="21" />
+                                Android="21"/>
                         </StackLayout.Padding>
                         <Label x:Name="StageTitle"
-                            Margin="13"
+                            Margin="8"
                             TextColor="White"
-                            FontSize="34"
-                        HorizontalTextAlignment="Center"/>
+                            FontSize="38"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"/>
                         <Label x:Name="StageText"
                             Margin="13"
-                            FontSize="21"
+                            FontSize="33"
+                            TextColor="White"
                             HorizontalTextAlignment="Center"/>
                         <Button x:Name="StartQuestionsButton" Text="Start Questions"
-                            Margin="13"
+                            HorizontalOptions="Center"
+                            HeightRequest="70"
+                            Margin="16"
                             Command="{Binding StartStageCommand}"/>
+                    </StackLayout>
+                    <StackLayout x:Name="Scoring" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                        <StackLayout.Padding>
+                            <OnPlatform x:TypeArguments="Thickness"
+                                iOS="21"
+                                Android="21"/>
+                        </StackLayout.Padding>
+                        <Label Text="YES = 1, NO = 0" FontAttributes="Bold" Margin="0"/>
+                        <Label>
+                            <Label.Text>
+                                THE HIGHER THE SCORE,
+THE MORE PREPARED YOUR
+FARM IS TO IMPLEMENTS SDCT
+                            </Label.Text>
+                        </Label>
                     </StackLayout>
                 </Grid>
             </ScrollView>
@@ -57,7 +75,7 @@
                         <StackLayout x:Name="AnswerButtonStackLayout"
                             Margin="21"
                             Orientation="Horizontal" 
-                            HeightRequest="89">
+                            HeightRequest="150">
                             <Button x:Name="YesButton" Text="..."
                                 TextColor="#009096"
                                 BackgroundColor="White"
@@ -73,21 +91,22 @@
                                 Margin="21"
                                 Command="{Binding AnswerNoCommand}"/>
                         </StackLayout>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <Label 
-                            Text="Pos:"
-                            VerticalTextAlignment="Center"/>
-                            <Label
-                            x:Name="Increment"
-                            Text="{Binding QuestionIncrement}"
-                            VerticalTextAlignment="Center"/>
-                            <Label 
-                            Text="of"
-                            VerticalTextAlignment="Center"/>
-                            <Label 
-                            x:Name="StageQuestionCount"
-                            Text="{Binding StageQuestionCount}"
-                            VerticalTextAlignment="Center"/>
+                        <StackLayout x:Name="ProgressBar" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="8">
+                            <StackLayout.Padding>
+                                <OnPlatform x:TypeArguments="Thickness"
+                                    iOS="5"
+                                    Android="5"/>
+                            </StackLayout.Padding>
+                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip1" Source="resource://UndderControl.Svg.progressdark.svg"
+                                HeightRequest="20" WidthRequest="20" />
+                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip2" Source="resource://UndderControl.Svg.progresslight.svg"
+                                HeightRequest="20" WidthRequest="20" />
+                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip3" Source="resource://UndderControl.Svg.progresslight.svg"
+                                HeightRequest="20" WidthRequest="20" />
+                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip4" Source="resource://UndderControl.Svg.progresslight.svg"
+                                HeightRequest="20" WidthRequest="20" />
+                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip5" Source="resource://UndderControl.Svg.progresslight.svg"
+                                HeightRequest="20" WidthRequest="20" />
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

@@ -76,6 +76,8 @@ namespace UndderControl.ViewModels
             await RunSafe(GetUser(userToken));
             UserSettings.UserId = User.ID;
             UserSettings.UserToken = User.Token;
+
+            await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
         }
 
         private async Task GetUser(string userToken)

@@ -31,6 +31,7 @@ namespace UndderControl.ViewModels
             {
                 if (SetProperty(ref _isBusy, value))
                 {
+                    RaisePropertyChanged(nameof(IsBusy));
                     RaisePropertyChanged(nameof(IsNotBusy));
                 }
             }
@@ -71,7 +72,7 @@ namespace UndderControl.ViewModels
             {
                 if (IsBusy) return;
                 IsBusy = true;
-                if (ShowLoading) PageDialog.ShowLoading(loadingMessage ?? "Loading");
+                //if (ShowLoading) PageDialog.ShowLoading(loadingMessage ?? "Loading");
                 await Task.Run( () => task);
             }
             catch (Exception e)
@@ -83,7 +84,7 @@ namespace UndderControl.ViewModels
             finally
             {
                 IsBusy = false;
-                if (ShowLoading) PageDialog.HideLoading();
+                //if (ShowLoading) PageDialog.HideLoading();
             }
         }
 

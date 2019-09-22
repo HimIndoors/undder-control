@@ -62,6 +62,7 @@
             <StackLayout VerticalOptions="End" HorizontalOptions="Start">
                 <Button x:Name="EditFarmButton" Text="Edit farm details" BackgroundColor="Transparent" FontSize="15" FontAttributes="None" Command="{Binding OnEditFarmCommand}" IsVisible="{Binding EditFarmEnabled}" />
             </StackLayout>
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Black" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

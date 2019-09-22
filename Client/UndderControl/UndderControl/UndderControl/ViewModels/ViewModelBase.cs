@@ -72,7 +72,7 @@ namespace UndderControl.ViewModels
                 if (IsBusy) return;
                 IsBusy = true;
                 if (ShowLoading) PageDialog.ShowLoading(loadingMessage ?? "Loading");
-                await task;
+                await Task.Run( () => task);
             }
             catch (Exception e)
             {

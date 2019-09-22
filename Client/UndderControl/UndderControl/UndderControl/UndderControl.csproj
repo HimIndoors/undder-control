@@ -47,6 +47,7 @@
     <PackageReference Include="SkiaSharp" Version="1.68.0" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.2.0.51" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.2.0.51" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.2.0.51" />

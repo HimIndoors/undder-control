@@ -90,6 +90,9 @@
     <PackageReference Include="Syncfusion.Xamarin.Core">
       <Version>17.2.0.51</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
+      <Version>17.2.0.51</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
       <Version>17.2.0.51</Version>
     </PackageReference>

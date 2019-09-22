@@ -9,6 +9,6 @@
     <item>
       <bitmap
             android:src="@drawable/splash"
-            android:gravity="fill_vertical"/>
+            android:gravity="center"/>
     </item>     
 </layer-list>

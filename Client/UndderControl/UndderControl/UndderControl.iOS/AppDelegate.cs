@@ -6,6 +6,7 @@ using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using Syncfusion.SfNumericTextBox.XForms.iOS;
 using Syncfusion.XForms.iOS.Border;
@@ -37,6 +38,7 @@ namespace UndderControl.iOS
 
             new SfComboBoxRenderer();
             new SfNumericTextBoxRenderer();
+            new SfBusyIndicatorRenderer();
 
             LoadApplication(new App(new iOSInitializer()));
 

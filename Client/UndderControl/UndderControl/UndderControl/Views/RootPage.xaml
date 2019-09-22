@@ -3,66 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.RootPage"
              Title="{Binding Title}">
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <ffimageloadingsvg:SvgCachedImage 
+                <ffimageloadingsvg:SvgCachedImage 
                 Source="resource://UndderControl.Svg.blank_background.svg"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"
                 DownsampleToViewSize="True"
                 Aspect="Fill" />
-            <StackLayout VerticalOptions="StartAndExpand">
-                <StackLayout.Padding>
-                    <OnPlatform x:TypeArguments="Thickness"
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness"
                         iOS="54"
                         Android="54" />
-                </StackLayout.Padding>
-                <Frame VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Black" BorderColor="White">
-                    <Frame.Padding>
-                        <OnPlatform x:TypeArguments="Thickness"
+                    </StackLayout.Padding>
+                    <Frame VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Black" BorderColor="White">
+                        <Frame.Padding>
+                            <OnPlatform x:TypeArguments="Thickness"
                             iOS="13"
                             Android="13" />
-                    </Frame.Padding>
-                    <Picker x:Name="FarmPicker" ItemsSource="{Binding FarmList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedFarm}" Title="Select a farm" BackgroundColor="Black" TextColor="White" TitleColor="Gray" />
-                </Frame>
-                <Frame x:Name="AssessmentFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameAssessmentColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}" Margin="0,15,0,15">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnNavigateCommand}" CommandParameter="AssessmentPage" Tapped="TapGestureRecognizer_Tapped_Assessment"  />
-                    </Frame.GestureRecognizers>
-                    <Frame.Padding>
-                        <OnPlatform x:TypeArguments="Thickness"
+                        </Frame.Padding>
+                        <Picker x:Name="FarmPicker" ItemsSource="{Binding FarmList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedFarm}" Title="Select a farm" BackgroundColor="Black" TextColor="White" TitleColor="Gray" />
+                    </Frame>
+                    <Frame x:Name="AssessmentFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameAssessmentColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}" Margin="0,15,0,15">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnNavigateCommand}" CommandParameter="AssessmentPage" Tapped="TapGestureRecognizer_Tapped_Assessment"  />
+                        </Frame.GestureRecognizers>
+                        <Frame.Padding>
+                            <OnPlatform x:TypeArguments="Thickness"
                             iOS="13"
                             Android="13" />
-                    </Frame.Padding>
-                    <StackLayout>
-                        <Label x:Name="RootAssessment3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
-                        <Label x:Name="RootAssessment2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
-                        <Label x:Name="RootAssessment1" FontSize="33" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontAttributes="Bold" Margin="0"/>
-                    </StackLayout>
-                </Frame>
-                <Frame x:Name="MonitorFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameMonitorColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnNavigateCommand}" CommandParameter="MonitorPage" Tapped="TapGestureRecognizer_Tapped_Monitor" />
-                    </Frame.GestureRecognizers>
-                    <Frame.Padding>
-                        <OnPlatform x:TypeArguments="Thickness"
+                        </Frame.Padding>
+                        <StackLayout>
+                            <Label x:Name="RootAssessment3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
+                            <Label x:Name="RootAssessment2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
+                            <Label x:Name="RootAssessment1" FontSize="33" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontAttributes="Bold" Margin="0"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame x:Name="MonitorFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameMonitorColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnNavigateCommand}" CommandParameter="MonitorPage" Tapped="TapGestureRecognizer_Tapped_Monitor" />
+                        </Frame.GestureRecognizers>
+                        <Frame.Padding>
+                            <OnPlatform x:TypeArguments="Thickness"
                                 iOS="13"
                                 Android="13" />
-                    </Frame.Padding>
-                    <StackLayout>
-                        <Label x:Name="RootMonitor1" FontSize="33" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontAttributes="Bold" Margin="0"/>
-                        <Label x:Name="RootMonitor2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
-                        <Label x:Name="RootMonitor3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
-            <StackLayout VerticalOptions="End" HorizontalOptions="Start">
-                <Button x:Name="EditFarmButton" Text="Edit farm details" BackgroundColor="Transparent" FontSize="15" FontAttributes="None" Command="{Binding OnEditFarmCommand}" IsVisible="{Binding EditFarmEnabled}" />
-            </StackLayout>
-            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Black" />
-        </Grid>
+                        </Frame.Padding>
+                        <StackLayout>
+                            <Label x:Name="RootMonitor1" FontSize="33" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontAttributes="Bold" Margin="0"/>
+                            <Label x:Name="RootMonitor2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
+                            <Label x:Name="RootMonitor3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout VerticalOptions="End" HorizontalOptions="Start">
+                    <Button x:Name="EditFarmButton" Text="Edit farm details" BackgroundColor="Transparent" FontSize="15" FontAttributes="None" Command="{Binding OnEditFarmCommand}" IsVisible="{Binding EditFarmEnabled}" />
+                </StackLayout>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

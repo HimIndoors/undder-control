@@ -30,5 +30,6 @@
   <style name="SplashTheme" parent="android:Theme.NoTitleBar.Fullscreen">
     <item name="android:windowBackground">@drawable/splash_background</item>
     <item name="android:windowNoTitle">true</item>
+    <item name="android:scaleType">fitCenter</item>
   </style>
 </resources>

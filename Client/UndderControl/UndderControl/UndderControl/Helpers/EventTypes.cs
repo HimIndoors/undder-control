@@ -17,4 +17,6 @@ namespace UndderControl.Events
     { }
     public class CowStatusRefreshEvent : PubSubEvent
     { }
+    public class RootPageRefreshEvent : PubSubEvent
+    { }
 }

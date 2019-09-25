@@ -2,6 +2,7 @@
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
@@ -12,6 +13,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using UndderControl.Events;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
@@ -105,13 +107,14 @@ namespace UndderControl.ViewModels
         public DelegateCommand OnEditFarmCommand =>
             _onEditFarmCommand ?? (_onEditFarmCommand = new DelegateCommand(EditFarm));
 
-        public RootPageViewModel(INavigationService navigationService, IMetricsManagerService metricsSevice, IPageDialogService dialogueService) 
+        private readonly IEventAggregator _eventAggregator;
+
+        public RootPageViewModel(INavigationService navigationService, IMetricsManagerService metricsSevice, IPageDialogService dialogueService, IEventAggregator eventAggregator) 
             : base(navigationService, metricsSevice)
         {
-            EditFarmEnabled = false;
+            _eventAggregator = eventAggregator;
             _dialogService = dialogueService;
             Title = "UnDDER CONTROL";
-            if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;
             InitAsync();
         }
 
@@ -137,6 +140,18 @@ namespace UndderControl.ViewModels
                     await NavigationService.NavigateAsync("ManageFarmsPage");
                 }
             }
+            
+            if (App.SelectedFarm != null)
+            {
+                EditFarmEnabled = true;
+                SelectedFarm = App.SelectedFarm;
+                _eventAggregator.GetEvent<RootPageRefreshEvent>().Publish();
+            }
+            else
+            {
+                EditFarmEnabled = false;
+            }
+            
         }
 
         async Task GetFarms()

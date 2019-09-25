@@ -22,9 +22,10 @@ namespace UndderControl.ViewModels
         public FarmDto CurrentFarm
         {
             get { return _currentFarm; }
-            private set
+            set
             {
                 SetProperty(ref _currentFarm, value);
+                RaisePropertyChanged("CurrentFarm");
             }
         }
         private string _validationErrorMessage;
@@ -89,6 +90,7 @@ namespace UndderControl.ViewModels
                 await PageDialog.AlertAsync("Unable to load farm types", "Error", "OK");
                 MetricsManager.TrackException("Error loading farm types", ex);
             }
+
             if (CurrentFarm.FarmType_ID > 0)
                 SelectedType = FarmTypes.DefaultIfEmpty(null).Where(x => x.ID == CurrentFarm.FarmType_ID).FirstOrDefault();
         }
@@ -148,7 +150,14 @@ namespace UndderControl.ViewModels
         {
             if (parameters !=null && parameters.ContainsKey("farm"))
             {
-                CurrentFarm = parameters["farm"] as FarmDto;
+                try
+                {
+                    CurrentFarm = parameters["farm"] as FarmDto;
+                }
+                catch(Exception ex)
+                {
+                    MetricsManager.TrackException(ex.Message, ex);
+                }
             }
         }
 

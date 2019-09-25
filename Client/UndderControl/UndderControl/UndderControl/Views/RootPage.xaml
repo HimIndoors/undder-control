@@ -15,10 +15,10 @@
                 VerticalOptions="Fill"
                 DownsampleToViewSize="True"
                 Aspect="Fill" />
-                <StackLayout VerticalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="StartAndExpand">
                     <StackLayout.Padding>
                         <OnPlatform x:TypeArguments="Thickness"
-                        iOS="54"
+                        iOS="80,54"
                         Android="54" />
                     </StackLayout.Padding>
                     <Frame VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Black" BorderColor="White">

@@ -6,9 +6,5 @@
     <item android:drawable="@android:color/black"/>
 
     <!-- logo -->
-    <item>
-      <bitmap
-            android:src="@drawable/splash"
-            android:gravity="center"/>
-    </item>     
+  <item android:drawable="@mipmap/splash"/>   
 </layer-list>

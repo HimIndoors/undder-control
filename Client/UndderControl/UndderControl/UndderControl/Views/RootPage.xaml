@@ -18,7 +18,7 @@
                 <StackLayout VerticalOptions="StartAndExpand">
                     <StackLayout.Padding>
                         <OnPlatform x:TypeArguments="Thickness"
-                        iOS="80,54"
+                        iOS="54"
                         Android="54" />
                     </StackLayout.Padding>
                     <Frame VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Black" BorderColor="White">

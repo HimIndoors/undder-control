@@ -1,0 +1,1 @@
+﻿[{"ID":1,"Name":"Beef","Active":true},{"ID":2,"Name":"Dairy","Active":true},{"ID":3,"Name":"Finishing","Active":true},{"ID":4,"Name":"Organic Beef","Active":true},{"ID":5,"Name":"Organic Dairy","Active":true},{"ID":6,"Name":"Sucker","Active":true}]

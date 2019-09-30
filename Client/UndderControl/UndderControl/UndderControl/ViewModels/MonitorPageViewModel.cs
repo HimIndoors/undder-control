@@ -69,13 +69,21 @@ namespace UndderControl.ViewModels
 
                 if (historicResponse.IsSuccessStatusCode || historicResponse.StatusCode == HttpStatusCode.NotModified)
                 {
-                    var response = await historicResponse.Content.ReadAsStringAsync();
-                    var cowStatusData = await Task.Run(() => JsonConvert.DeserializeObject<List<CowStatusDto>>(response));
-                    if (cowStatusData != null && cowStatusData.Count > 0)
+                    try
                     {
-                        App.PreviousCowStatusData = new List<CowStatusDto>(cowStatusData);
-                        OnCompareCommand.RaiseCanExecuteChanged();
-                    }  
+                        var response = await historicResponse.Content.ReadAsStringAsync();
+                        var cowStatusData = await Task.Run(() => JsonConvert.DeserializeObject<List<CowStatusDto>>(response));
+                        if (cowStatusData != null && cowStatusData.Count > 0)
+                        {
+                            App.PreviousCowStatusData = new List<CowStatusDto>(cowStatusData);
+                            OnCompareCommand.RaiseCanExecuteChanged();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MetricsManager.TrackException(ex.Message, ex);
+                    }
+                      
                 }
             }
             

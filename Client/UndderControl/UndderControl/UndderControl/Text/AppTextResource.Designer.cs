@@ -702,15 +702,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This tool is being provided strictly as a convenience to its
-        ///users. Any and all liability arising directly or indirectly
-        ///from the use of this tool is hereby disclaimed. The tool is
-        ///provided without any warranty expressed or implied,
-        ///including any implied warranties of merchantability,
-        ///fitness for a particular purpose or non-infringement.
-        ///Any and all indirect, special, incidental, consequential or
-        ///punitive damage arising from any use of this tool or data
-        ///generated with the tool is specifically discla [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to This tool is being provided strictly as a convenience to its users. Any and all liability arising directly or indirectly from the use of this tool is hereby disclaimed. The tool is provided without any warranty expressed or implied, including any implied warranties of merchantability, fitness for a particular purpose or non-infringement. Any and all indirect, special, incidental, consequential or punitive damage arising from any use of this tool or data generated with the tool is specifically disclaimed and [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Terms {
             get {

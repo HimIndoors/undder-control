@@ -175,7 +175,7 @@
     <AndroidAsset Include="Assets\Survey.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Cows.txt" />
+    <AndroidAsset Include="Assets\CowStatus19.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_splash.xml" />
@@ -223,7 +223,13 @@
     <AndroidResource Include="Resources\drawable\stop.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidAsset Include="Assets\CowStatus18.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\FarmType.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\SurveyResponse.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

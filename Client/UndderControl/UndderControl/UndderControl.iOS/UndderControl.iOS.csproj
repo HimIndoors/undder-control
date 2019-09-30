@@ -295,5 +295,17 @@
   <ItemGroup>
     <BundleResource Include="Resources\stop.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CowStatus18.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CowStatus19.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FarmType.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SurveyResponse.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -257,29 +257,12 @@ namespace UndderControl.Services
 
         public async Task<HttpResponseMessage> GetResponseByFarmId(int id)
         {
-            try
-            {
-                var cts = new CancellationTokenSource();
-                var task = RemoteRequestAsync(_surveyResponseApi.GetApi(Priority.UserInitiated).GetResponseByFarmId(id), "GetResponseByFarmId"+id);
-                _runningTasks.Add(task.Id, cts);
-
-                return await task;
-            }
-            catch (Exception ex)
-            {
-                _metricsManager.TrackException(ex.Message, ex);
-                return null;
-            }
-        }
-
-        public async Task<HttpResponseMessage> GetStatusByFarmId(int id)
-        {
             if (Config.TestMode)
             {
                 string fileContents = string.Empty;
                 try
                 {
-                    using (var stream = await FileSystem.OpenAppPackageFileAsync("Cows.txt"))
+                    using (var stream = await FileSystem.OpenAppPackageFileAsync("SurveyResponse.txt"))
                     {
                         using (var reader = new StreamReader(stream))
                         {
@@ -290,6 +273,52 @@ namespace UndderControl.Services
                 catch (Exception ex)
                 {
                     _metricsManager.TrackException("Error retrieving farm details from embedded resource", ex);
+                }
+
+                var response = new HttpResponseMessage
+                {
+                    Content = new StringContent(fileContents),
+                    StatusCode = HttpStatusCode.OK
+                };
+
+                return response;
+            }
+            else
+            {
+                try
+                {
+                    var cts = new CancellationTokenSource();
+                    var task = RemoteRequestAsync(_surveyResponseApi.GetApi(Priority.UserInitiated).GetResponseByFarmId(id), "GetResponseByFarmId" + id);
+                    _runningTasks.Add(task.Id, cts);
+
+                    return await task;
+                }
+                catch (Exception ex)
+                {
+                    _metricsManager.TrackException(ex.Message, ex);
+                    return null;
+                }
+            }
+        }
+
+        public async Task<HttpResponseMessage> GetStatusByFarmId(int id)
+        {
+            if (Config.TestMode)
+            {
+                string fileContents = string.Empty;
+                try
+                {
+                    using (var stream = await FileSystem.OpenAppPackageFileAsync("CowStatus19.txt"))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            fileContents = await reader.ReadToEndAsync();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _metricsManager.TrackException("Error retrieving cow status 19 from embedded resource", ex);
                 }
 
                 var response = new HttpResponseMessage
@@ -340,28 +369,88 @@ namespace UndderControl.Services
 
         public async Task<HttpResponseMessage> GetCowsStatusByFarmID(int id)
         {
-            try
+            if (Config.TestMode)
             {
-                var cts = new CancellationTokenSource();
-                var task = RemoteRequestAsync(_cowStatusFarmApi.GetApi(Priority.UserInitiated).GetCowsStatusByFarmID(id), null);
-                _runningTasks.Add(task.Id, cts);
+                string fileContents = string.Empty;
+                try
+                {
+                    using (var stream = await FileSystem.OpenAppPackageFileAsync("CowStatus19.txt"))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            fileContents = await reader.ReadToEndAsync();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _metricsManager.TrackException("Error retrieving cow status 19 from embedded resource", ex);
+                }
 
-                return await task;
+                var response = new HttpResponseMessage
+                {
+                    Content = new StringContent(fileContents),
+                    StatusCode = HttpStatusCode.OK
+                };
+
+                return response;
+
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                try
+                {
+                    var cts = new CancellationTokenSource();
+                    var task = RemoteRequestAsync(_cowStatusFarmApi.GetApi(Priority.UserInitiated).GetCowsStatusByFarmID(id), null);
+                    _runningTasks.Add(task.Id, cts);
+
+                    return await task;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
             
         }
 
         public async Task<HttpResponseMessage> GetCowsStatusByFarmIDandYear(int id, int year)
         {
-            var cts = new CancellationTokenSource();
-            var task = RemoteRequestAsync(_cowStatusFarmApi.GetApi(Priority.UserInitiated).GetCowsStatusByFarmIDandYear(id, year), null);
-            _runningTasks.Add(task.Id, cts);
+            if (Config.TestMode)
+            {
+                string fileContents = string.Empty;
+                try
+                {
+                    using (var stream = await FileSystem.OpenAppPackageFileAsync("CowStatus18.txt"))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            fileContents = await reader.ReadToEndAsync();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _metricsManager.TrackException("Error retrieving cow status 2018 from embedded resource", ex);
+                }
 
-            return await task;
+                var response = new HttpResponseMessage
+                {
+                    Content = new StringContent(fileContents),
+                    StatusCode = HttpStatusCode.OK
+                };
+
+                return response;
+
+            }
+            else
+            {
+                var cts = new CancellationTokenSource();
+                var task = RemoteRequestAsync(_cowStatusFarmApi.GetApi(Priority.UserInitiated).GetCowsStatusByFarmIDandYear(id, year), null);
+                _runningTasks.Add(task.Id, cts);
+
+                return await task;
+            }
         }
 
         public async Task<HttpResponseMessage> GetFarmById(int id)
@@ -375,11 +464,41 @@ namespace UndderControl.Services
 
         public async Task<HttpResponseMessage> GetFarmTypes()
         {
-            var cts = new CancellationTokenSource();
-            var task = RemoteRequestAsync(_farmTypeApi.GetApi(Priority.UserInitiated).GetFarmTypes(), "GetFarmTypes");
-            _runningTasks.Add(task.Id, cts);
+            if (Config.TestMode)
+            {
+                string fileContents = string.Empty;
+                try
+                {
+                    using (var stream = await FileSystem.OpenAppPackageFileAsync("FarmType.txt"))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            fileContents = await reader.ReadToEndAsync();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _metricsManager.TrackException("Error retrieving farm types from embedded resource", ex);
+                }
 
-            return await task;
+                var response = new HttpResponseMessage
+                {
+                    Content = new StringContent(fileContents),
+                    StatusCode = HttpStatusCode.OK
+                };
+
+                return response;
+
+            }
+            else
+            {
+                var cts = new CancellationTokenSource();
+                var task = RemoteRequestAsync(_farmTypeApi.GetApi(Priority.UserInitiated).GetFarmTypes(), "GetFarmTypes");
+                _runningTasks.Add(task.Id, cts);
+
+                return await task;
+            }
         }
 
         public async Task<HttpResponseMessage> UpdateCowStatus(CowStatusDto status)

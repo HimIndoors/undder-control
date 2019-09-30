@@ -23,6 +23,18 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
             </Style>
+            <Style TargetType="Button" x:Key="SurveyButton">
+                <Setter Property="BackgroundColor" Value="#ffffff" />
+                <Setter Property="TextColor" Value="#009096" />
+                <Setter Property="FontSize">
+                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="21" />
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Margin" Value="21" />
+            </Style>
             <Style TargetType="Label" x:Key="FormLabel">
                 <Setter Property="TextColor" Value="White"/>
             </Style>

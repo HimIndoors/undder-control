@@ -76,20 +76,8 @@ FARM IS TO IMPLEMENTS SDCT
                             Margin="21"
                             Orientation="Horizontal" 
                             HeightRequest="150">
-                            <Button x:Name="YesButton" Text="..."
-                                TextColor="#009096"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"
-                                Margin="21"
-                                Command="{Binding AnswerYesCommand}"/>
-                            <Button x:Name="NoButton" Text="..."
-                                TextColor="#009096"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"
-                                Margin="21"
-                                Command="{Binding AnswerNoCommand}"/>
+                            <Button x:Name="YesButton" Style="{StaticResource SurveyButton}" Command="{Binding AnswerYesCommand}"/>
+                            <Button x:Name="NoButton" Style="{StaticResource SurveyButton}" Command="{Binding AnswerNoCommand}"/>
                         </StackLayout>
                         <StackLayout x:Name="ProgressBar" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="8">
                             <StackLayout.Padding>

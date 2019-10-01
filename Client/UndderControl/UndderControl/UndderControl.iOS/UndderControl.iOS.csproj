@@ -60,14 +60,14 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>iPhone Distribution: Simon Hewitt (XQ4G3S3W93)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <OptimizePNGs>true</OptimizePNGs>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <CodesignProvision>VS com.pmn.unddercontrol</CodesignProvision>
     <BuildIpa>true</BuildIpa>
-    <IpaIncludeArtwork>true</IpaIncludeArtwork>
-    <IpaPackageName>Undder Control</IpaPackageName>
+    <IpaIncludeArtwork>false</IpaIncludeArtwork>
+    <IpaPackageName>UndderControl</IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -195,6 +195,9 @@
     <ImageAsset Include="Assets.xcassets\Background.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImages.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Splash.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -214,7 +217,6 @@
     <BundleResource Include="Resources\Default-Portrait@2x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default@2x.png" />
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Resources\SplashScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>

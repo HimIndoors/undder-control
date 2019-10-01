@@ -43,15 +43,13 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>UIMainStoryboardFile</key>
-	<string>LaunchScreen</string>
-	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImages.launchimage</string>
 	<key>CFBundleName</key>
 	<string>UndderControl</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UILaunchStoryboardName</key>
+	<string>SplashScreen</string>
+	<key>UIMainStoryboardFile</key>
 	<string>SplashScreen</string>
 </dict>
 </plist>

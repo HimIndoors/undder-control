@@ -23,7 +23,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>UndderControl</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pmn.unddercontrol</string>
+	<string>com.pmn.UndderControl</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>NSAppTransportSecurity</key>

@@ -15,7 +15,7 @@
                 VerticalOptions="Fill"
                 DownsampleToViewSize="True"
                 Aspect="Fill" />
-                <StackLayout VerticalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="StartAndExpand">
                     <StackLayout.Padding>
                         <OnPlatform x:TypeArguments="Thickness"
                         iOS="54"

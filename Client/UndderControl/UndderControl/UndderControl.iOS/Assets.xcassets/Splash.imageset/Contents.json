@@ -1,16 +1,19 @@
 {
   "images": [
     {
+      "appearances": [],
       "scale": "1x",
       "idiom": "universal",
       "filename": "splash-320x480.png"
     },
     {
+      "appearances": [],
       "scale": "2x",
       "idiom": "universal",
       "filename": "splash-640x960.png"
     },
     {
+      "appearances": [],
       "scale": "3x",
       "idiom": "universal",
       "filename": "splash-1280x1920.png"

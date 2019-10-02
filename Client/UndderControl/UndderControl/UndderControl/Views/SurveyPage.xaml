@@ -6,43 +6,36 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyPage">
     <ContentPage.Content>
-        <FlexLayout JustifyContent="Center">
-            <ScrollView x:Name="SurveyStageView" IsVisible="False">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <ffimageloadingsvg:SvgCachedImage 
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ffimageloadingsvg:SvgCachedImage 
                         Source="resource://UndderControl.Svg.blank_background.svg"
                         HorizontalOptions="Fill"
                         VerticalOptions="Fill"
                         DownsampleToViewSize="True"
-                        Aspect="Fill" />
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        Aspect="Fill"
+                        x:Name="StageBackground"/>
+            <ScrollView x:Name="SurveyStageView" IsVisible="False">
+
+                <AbsoluteLayout>
+                    <Label x:Name="StageTitle"
+                        Margin="8"
+                        TextColor="White"
+                        FontSize="38"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                            AbsoluteLayout.LayoutBounds=".5,.4,.9,.15" AbsoluteLayout.LayoutFlags="All"/>
+                    <Label x:Name="StageText"
+                        Margin="13"
+                        FontSize="33"
+                        TextColor="White"
+                        HorizontalTextAlignment="Center" AbsoluteLayout.LayoutBounds=".5,.47,.9,.15" AbsoluteLayout.LayoutFlags="All"/>
+                    <Button x:Name="StartQuestionsButton" Text="START QUESTIONS"
+                        HorizontalOptions="Center"
+                        HeightRequest="70"
+                        Command="{Binding StartStageCommand}" AbsoluteLayout.LayoutBounds=".5,.6,.9,.09" AbsoluteLayout.LayoutFlags="All" Padding="13,0"/>
+                    <StackLayout x:Name="Scoring" HorizontalOptions="FillAndExpand" VerticalOptions="End" AbsoluteLayout.LayoutBounds="0,1,1,.2" AbsoluteLayout.LayoutFlags="All">
                         <StackLayout.Padding>
-                            <OnPlatform x:TypeArguments="Thickness"
-                                iOS="21"
-                                Android="21"/>
-                        </StackLayout.Padding>
-                        <Label x:Name="StageTitle"
-                            Margin="8"
-                            TextColor="White"
-                            FontSize="38"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Center"/>
-                        <Label x:Name="StageText"
-                            Margin="13"
-                            FontSize="33"
-                            TextColor="White"
-                            HorizontalTextAlignment="Center"/>
-                        <Button x:Name="StartQuestionsButton" Text="Start Questions"
-                            HorizontalOptions="Center"
-                            HeightRequest="70"
-                            Margin="16"
-                            Command="{Binding StartStageCommand}"/>
-                    </StackLayout>
-                    <StackLayout x:Name="Scoring" HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                        <StackLayout.Padding>
-                            <OnPlatform x:TypeArguments="Thickness"
-                                iOS="21"
-                                Android="21"/>
+                            <OnPlatform x:TypeArguments="Thickness" iOS="8,8" Android="8,8" />
                         </StackLayout.Padding>
                         <Label Text="YES = 1, NO = 0" FontAttributes="Bold" Margin="0"/>
                         <Label>
@@ -53,7 +46,8 @@ FARM IS TO IMPLEMENTS SDCT
                             </Label.Text>
                         </Label>
                     </StackLayout>
-                </Grid>
+                </AbsoluteLayout>
+                
             </ScrollView>
             <ScrollView x:Name="SurveyQuestionView" IsVisible="False">
                 <StackLayout>
@@ -99,7 +93,7 @@ FARM IS TO IMPLEMENTS SDCT
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-        </FlexLayout>
+        </Grid>
     </ContentPage.Content>
-  
+
 </ContentPage>

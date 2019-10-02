@@ -33,7 +33,7 @@ namespace UndderControl.Views
             StringBuilder sb = new StringBuilder(
                 @"<html><head>
                 <style>
-                    body { background:#7CCCBD; color: #30454A; margin: 0; padding: 0; box-sizing: border-box; }
+                    body { background:#7CCCBD; color: #30454A; margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
                     table { width:99.5%; border-collapse: collapse; border: 1px solid #ffffff; margin: 0; box-sizing: border-box; }
                     td, th { padding: 8px; font-weight: 700; }
                     .value { text-align: center; border-left: 1px solid #ffffff; }

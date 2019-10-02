@@ -37,14 +37,15 @@ namespace UndderControl.Views
                     //Show Stage view
                     SurveyStageView.IsVisible = true;
                     SurveyQuestionView.IsVisible = false;
+                    StageBackground.IsVisible = true;
 
                     StageTitle.Text = stage.StageTitle.ToUpper(); //Force uppercase
                     StageText.Text = stage.StageText.ToUpper(); //Force uppercase
-                    if (stage.ID > 1)
+                    if (stage.ID == 2)
                     {
                         Scoring.IsVisible = true;
                     }
-                    else if (stage.ID > 1)
+                    else
                     {
                         Scoring.IsVisible = false;
                     }
@@ -54,6 +55,7 @@ namespace UndderControl.Views
                     //Show Question view
                     SurveyStageView.IsVisible = false;
                     SurveyQuestionView.IsVisible = true;
+                    StageBackground.IsVisible = false;
 
                     // Render the current question
                     var q = _viewModel.CurrentQuestion;

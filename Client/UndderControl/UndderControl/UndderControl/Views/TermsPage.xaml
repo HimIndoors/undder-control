@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="UndderControl.Views.TermsPage">
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness"
-            iOS="21"
-            Android="21"
-            WinPhone="21" />
-    </ContentPage.Padding>
+             x:Class="UndderControl.Views.TermsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True">
     <StackLayout>
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness"
+                iOS="21"
+                Android="21"
+                WinPhone="21" />
+        </StackLayout.Padding>
         <ScrollView VerticalOptions="StartAndExpand">
             <ScrollView.Padding>
                 <OnPlatform x:TypeArguments="Thickness"
@@ -19,7 +21,7 @@
                 WinPhone="8" />
             </ScrollView.Padding>
             <StackLayout>
-                <Label x:Name="TermsTitle" FontSize="Subtitle" FontAttributes="Bold" />
+                <Label x:Name="TermsTitle" FontSize="Title" FontAttributes="Bold" />
                 <Label x:Name="Terms" />
                 <Label>
                     <Label.FormattedText>

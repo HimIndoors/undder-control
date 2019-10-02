@@ -22,7 +22,7 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout>
-                    <Label x:Name="FarmName" Style="{StaticResource StatusData}"/>
+                    <Label x:Name="FarmName" FontSize="Title" FontAttributes="Bold"/>
                     <Label x:Name="ResultDate" Text="{Binding ResultYear}" Style="{StaticResource StatusData}"/>
                 </StackLayout>
                 <StackLayout x:Name="WebViewLayout" VerticalOptions="CenterAndExpand" BackgroundColor="#7CCCBD" />

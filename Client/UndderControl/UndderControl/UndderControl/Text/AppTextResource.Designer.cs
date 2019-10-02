@@ -315,7 +315,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You will need to input the cow’s status at DRYOFF and CALVING..
+        ///   Looks up a localized string similar to You will need to input the cow’s status atDRYOFF and CALVING..
         /// </summary>
         public static string CowStatusText2 {
             get {

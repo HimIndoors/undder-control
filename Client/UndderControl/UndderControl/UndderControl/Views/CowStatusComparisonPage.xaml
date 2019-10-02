@@ -16,7 +16,7 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout>
-                    <Label x:Name="FarmName" Style="{StaticResource StatusData}"/>
+                    <Label x:Name="FarmName"  FontSize="Title" FontAttributes="Bold"/>
                     <Label x:Name="ResultDate" Text="{Binding ResultYear}" FontSize="Medium" FontAttributes="Bold"/>
                 </StackLayout>
                 <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">

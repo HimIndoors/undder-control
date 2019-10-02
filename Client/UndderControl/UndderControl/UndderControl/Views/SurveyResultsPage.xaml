@@ -15,13 +15,16 @@
     <ScrollView>
         <StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,3,0,0">
-                <Label Text="DATE" Style="{StaticResource TextSubtitle}" Margin="0"/>
+                <Label Text="DATE"  FontSize="Title" FontAttributes="Bold" Margin="0"/>
                 <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0,-3,0,0" Padding="2">
-                    <Label Text="{Binding AssessmentDate}" HorizontalTextAlignment="Center" Style="{StaticResource TextSubtitle}" />
+                    <Label Text="{Binding AssessmentDate}" HorizontalTextAlignment="Center"  FontSize="Title" FontAttributes="Bold" />
                 </Frame>
             </StackLayout>
             <StackLayout HeightRequest="320">
                 <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" Scale="1.25">
+                    <chart:SfChart.Scale>
+                        <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1.25" />
+                    </chart:SfChart.Scale>
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />
                     </chart:SfChart.Margin>
@@ -56,7 +59,7 @@
                     </chart:SfChart.Series>
                 </chart:SfChart>
             </StackLayout>
-            <Label x:Name="FarmSuitability" Text="{Binding SuitabilityStatement}" Style="{StaticResource ResultSubtitle}"/>
+            <Label x:Name="FarmSuitability" Text="{Binding SuitabilityStatement}" FontSize="Header" FontAttributes="Bold" TextColor="White"/>
             <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
             <StackLayout x:Name="StatementStack" />
             <Button x:Name="CompareButton" Command="{Binding CompareCommand}" />

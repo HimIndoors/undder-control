@@ -27,15 +27,6 @@ namespace UndderControlService.App_Start
                 cfg.CreateMap<SurveyResponseDto, SurveyResponse>();
                 cfg.CreateMap<SurveyQuestionResponseDto, SurveyQuestionResponse>();
                 cfg.CreateMap<UserDto, User>();
-
-                //cfg.CreateMap<CowStatus, CowStatusDto>().ReverseMap();
-                //cfg.CreateMap<Farm, FarmDto>().ReverseMap();
-                //cfg.CreateMap<Survey, SurveyDto>().ReverseMap();
-                //cfg.CreateMap<SurveyQuestion, SurveyQuestionDto>().ReverseMap();
-                //cfg.CreateMap<SurveyStage, SurveyStageDto>().ReverseMap();
-                //cfg.CreateMap<SurveyResponse, SurveyResponseDto>().ReverseMap();
-                //cfg.CreateMap<SurveyQuestionResponse, SurveyQuestionResponseDto>().ReverseMap();
-                //cfg.CreateMap<User, UserDto>().ReverseMap();
             });
         }
     }

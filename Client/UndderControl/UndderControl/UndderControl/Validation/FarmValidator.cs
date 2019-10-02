@@ -12,7 +12,7 @@ namespace UndderControl.Validation
             RuleFor(farm => farm.ContactName).NotEmpty();
             RuleFor(farm => farm.HerdSize).GreaterThan(0);
             RuleFor(farm => farm.Name).NotEmpty();
-            RuleFor(farm => farm.PhoneNumber).NotEmpty().Matches(@"^(?:0|\+?44)(?:\d\s?){9,10}$");
+            RuleFor(farm => farm.PhoneNumber).NotEmpty();//.Matches(@"^(?:0|\+?44)(?:\d\s?){9,10}$");
             RuleFor(farm => farm.FarmType_ID).GreaterThan(0);
         }
     }

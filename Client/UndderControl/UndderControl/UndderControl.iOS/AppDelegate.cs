@@ -12,6 +12,7 @@ using Syncfusion.SfNumericTextBox.XForms.iOS;
 using Syncfusion.XForms.iOS.Border;
 using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.ComboBox;
+using Syncfusion.XForms.iOS.MaskedEdit;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
 using UndderControl.iOS.Services;
@@ -50,6 +51,7 @@ namespace UndderControl.iOS
             SfTextInputLayoutRenderer.Init();
             SfBorderRenderer.Init();
             SfButtonRenderer.Init();
+            SfMaskedEditRenderer.Init();
 
             CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();

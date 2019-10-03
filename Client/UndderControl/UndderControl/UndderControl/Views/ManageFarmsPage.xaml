@@ -7,7 +7,7 @@
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout Margin="25" x:Name="ButtonStack">
-            <ListView x:Name="FarmList" ItemsSource="{Binding Farms}" CachingStrategy="RecycleElement" HasUnevenRows="True" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorVisibility="None">
+            <ListView x:Name="FarmList" ItemsSource="{Binding Farms}" CachingStrategy="RecycleElement" HasUnevenRows="True" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorVisibility="None" BackgroundColor="{StaticResource PageBackgroundColor}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Tapped="ViewCell_Tapped">

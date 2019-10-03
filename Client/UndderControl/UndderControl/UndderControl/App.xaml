@@ -9,8 +9,10 @@
             <x:Int32 x:Key="SmallCornerRadius">4</x:Int32>
             <x:Int32 x:Key="MediumCornerRadius">8</x:Int32>
             <x:Int32 x:Key="LargeCornerRadius">16</x:Int32>
+            <Color x:Key="PageBackgroundColor">#7CCCBD</Color>
+            <Color x:Key="TextColor">#009096</Color>
             <Style TargetType="Page" ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor" Value="#7CCCBD" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
             </Style>
             <Style TargetType="NavigationPage" ApplyToDerivedTypes="True">
                 <Setter Property="BarBackgroundColor" Value="#2B8E81" />
@@ -18,14 +20,14 @@
             </Style>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#ffffff" />
-                <Setter Property="TextColor" Value="#009096" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
             </Style>
             <Style TargetType="Button" x:Key="SurveyButton">
                 <Setter Property="BackgroundColor" Value="#ffffff" />
-                <Setter Property="TextColor" Value="#009096" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
                 <Setter Property="FontSize">
                     <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="21" />
                 </Setter>
@@ -39,7 +41,7 @@
                 <Setter Property="TextColor" Value="White"/>
             </Style>
             <Style TargetType="Entry">
-                <Setter Property="TextColor" Value="#007367"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
                 <Setter Property="BackgroundColor" Value="White"/>
             </Style>
             <Style x:Key="DarkButton" TargetType="Button">

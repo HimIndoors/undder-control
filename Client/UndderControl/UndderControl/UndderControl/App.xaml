@@ -69,7 +69,7 @@
             </Style>
             <Style x:Key="StatusData" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
             </Style>
             <Style TargetType="Label" x:Key="Text">
                 <Setter Property="FontSize" Value="17"/>

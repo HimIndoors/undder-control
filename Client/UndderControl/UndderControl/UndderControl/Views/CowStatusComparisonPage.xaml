@@ -53,7 +53,7 @@
                             </DataTemplate>
                         </ResourceDictionary>
                     </StackLayout.Resources>
-                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="NIRate">
+                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White" x:Name="NIRate">
                         <chart:SfChart.Title>
                             <chart:ChartTitle Text=" "  />
                         </chart:SfChart.Title>
@@ -70,9 +70,6 @@
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
                             <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
-                                <chart:NumericalAxis.Title>
-                                    <chart:ChartAxisTitle Text="Infection Rate (%)" />
-                                </chart:NumericalAxis.Title>
                                 <chart:NumericalAxis.LabelStyle>
                                     <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle1"/>
                                 </chart:NumericalAxis.LabelStyle>
@@ -94,7 +91,14 @@
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>
-                            <chart:LineAnnotation X1="10" Y1="0" X2="10" Y2="1" Text="Threshold" StrokeColor="Red"/>
+                            <chart:HorizontalLineAnnotation Y1="10" ShowAxisLabel="true" StrokeColor="Red" Text="Threshold" FillColor="Red">
+                                <chart:HorizontalLineAnnotation.AxisLabelStyle>
+                                    <chart:ChartLabelStyle BackgroundColor="White" TextColor="Red"/>
+                                </chart:HorizontalLineAnnotation.AxisLabelStyle>
+                                <chart:HorizontalLineAnnotation.LabelStyle>
+                                    <chart:ChartAnnotationLabelStyle TextColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                                </chart:HorizontalLineAnnotation.LabelStyle>
+                            </chart:HorizontalLineAnnotation>
                         </chart:SfChart.ChartAnnotations>
                     </chart:SfChart>
                 </StackLayout>
@@ -132,7 +136,7 @@
                             </DataTemplate>
                         </ResourceDictionary>
                     </StackLayout.Resources>
-                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="CureRate">
+                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White" x:Name="CureRate">
                         <chart:SfChart.Title>
                             <chart:ChartTitle Text=" "/>
                         </chart:SfChart.Title>
@@ -149,9 +153,6 @@
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
                             <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
-                                <chart:NumericalAxis.Title>
-                                    <chart:ChartAxisTitle Text="Infection Rate (%)" />
-                                </chart:NumericalAxis.Title>
                                 <chart:NumericalAxis.LabelStyle>
                                     <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle2"/>
                                 </chart:NumericalAxis.LabelStyle>
@@ -172,6 +173,16 @@
                             <chart:StackingColumn100Series x:Name="series4" ItemsSource="{Binding CureRateInfected}" XBindingPath="Name" YBindingPath="Value" Label="Failure to cure" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
+                        <chart:SfChart.ChartAnnotations>
+                            <chart:HorizontalLineAnnotation Y1="85" ShowAxisLabel="true" StrokeColor="Red" Text="Threshold" FillColor="Red">
+                                <chart:HorizontalLineAnnotation.AxisLabelStyle>
+                                    <chart:ChartLabelStyle BackgroundColor="White" TextColor="Red"/>
+                                </chart:HorizontalLineAnnotation.AxisLabelStyle>
+                                <chart:HorizontalLineAnnotation.LabelStyle>
+                                    <chart:ChartAnnotationLabelStyle TextColor="Red" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                                </chart:HorizontalLineAnnotation.LabelStyle>
+                            </chart:HorizontalLineAnnotation>
+                        </chart:SfChart.ChartAnnotations>
                     </chart:SfChart>
                 </StackLayout>
             </StackLayout>

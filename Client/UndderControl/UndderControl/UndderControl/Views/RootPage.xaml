@@ -26,7 +26,7 @@
                     <Picker x:Name="FarmPicker" ItemsSource="{Binding FarmList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedFarm}" Title="Select a farm" BackgroundColor="Black" TextColor="White" TitleColor="Gray" FontFamily="{StaticResource NormalFont}" />
                 </Frame>
                 <Frame x:Name="AssessmentFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameAssessmentColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}" Margin="0,15,0,15"
-                       AbsoluteLayout.LayoutBounds=".5,.35,.65,.3" AbsoluteLayout.LayoutFlags="All">
+                       AbsoluteLayout.LayoutBounds=".5,.37,.65,.3" AbsoluteLayout.LayoutFlags="All">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnNavigateCommand}" CommandParameter="AssessmentPage" Tapped="TapGestureRecognizer_Tapped_Assessment"  />
                     </Frame.GestureRecognizers>

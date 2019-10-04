@@ -15,12 +15,17 @@
                         Android="21" />
             </StackLayout.Padding>
             <StackLayout HeightRequest="400">
-                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" Scale="1.3">
+                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" Scale="1.4">
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
                     </chart:SfChart.Margin>
                     <chart:SfChart.Legend>
-                        <chart:ChartLegend IconHeight="14" IconWidth="14" DockPosition="Bottom" OffsetX="0" OffsetY="-200" />
+                        <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Floating" OffsetX="350" OffsetY="800">
+                            <chart:ChartLegend.LabelStyle>
+                                <chart:ChartLegendLabelStyle TextColor="black" />
+                            </chart:ChartLegend.LabelStyle>
+                        </chart:ChartLegend>
+
                     </chart:SfChart.Legend>
                     <chart:SfChart.PrimaryAxis>
                         <chart:CategoryAxis>
@@ -37,8 +42,11 @@
                     </chart:SfChart.PrimaryAxis>
                     <chart:SfChart.SecondaryAxis>
                         <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1">
+                            <chart:NumericalAxis.MajorTickStyle>
+                                <chart:ChartAxisTickStyle StrokeColor="Transparent" />
+                            </chart:NumericalAxis.MajorTickStyle>
                             <chart:NumericalAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="black" />
+                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="Black" />
                             </chart:NumericalAxis.LabelStyle>
                             <chart:NumericalAxis.AxisLineStyle>
                                 <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
@@ -49,8 +57,8 @@
                         </chart:NumericalAxis>
                     </chart:SfChart.SecondaryAxis>
                     <chart:SfChart.Series>
-                        <chart:RadarSeries x:Name="series2" Label="{Binding RadarLabel2}" ItemsSource="{Binding RadarData2}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#ED247C" LegendIcon="StraightLine" />
-                        <chart:RadarSeries x:Name="series1" Label="{Binding RadarLabel1}" ItemsSource="{Binding RadarData1}"  EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#00ACE6" LegendIcon="StraightLine" />
+                        <chart:RadarSeries x:Name="series2" Label="{Binding RadarLabel2}" ItemsSource="{Binding RadarData2}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#ED247C" LegendIcon="Rectangle" />
+                        <chart:RadarSeries x:Name="series1" Label="{Binding RadarLabel1}" ItemsSource="{Binding RadarData1}"  EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#00ACE6" LegendIcon="Rectangle" />
                     </chart:SfChart.Series>
                 </chart:SfChart>
             </StackLayout>

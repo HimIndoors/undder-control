@@ -76,9 +76,6 @@
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
                             <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
-                                <chart:NumericalAxis.Title>
-                                    <chart:ChartAxisTitle Text="Infection Rate (%)" />
-                                </chart:NumericalAxis.Title>
                                 <chart:NumericalAxis.LabelStyle>
                                     <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle1"/>
                                 </chart:NumericalAxis.LabelStyle>
@@ -104,6 +101,9 @@
                                 <chart:HorizontalLineAnnotation.AxisLabelStyle>
                                     <chart:ChartLabelStyle BackgroundColor="White" TextColor="Red"/>
                                 </chart:HorizontalLineAnnotation.AxisLabelStyle>
+                                <chart:HorizontalLineAnnotation.LabelStyle>
+                                    <chart:ChartAnnotationLabelStyle TextColor="Red" HorizontalTextAlignment="End" VerticalTextAlignment="Start"/>
+                                </chart:HorizontalLineAnnotation.LabelStyle>
                             </chart:HorizontalLineAnnotation>
                         </chart:SfChart.ChartAnnotations>
                     </chart:SfChart>
@@ -123,7 +123,7 @@
                                     <BoxView Color="White" HeightRequest="0.75" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
                                     <StackLayout Orientation="Horizontal"  VerticalOptions="FillAndExpand" BackgroundColor="#404041" Spacing="0" Padding="3" Margin="0">
                                         <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="#CCCCCC" FontAttributes="Bold" FontFamily="Helvetica" FontSize="12" />
-                                        <Label Text="{Binding Value,StringFormat=' :  {0}'}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" />
+                                        <Label Text="{Binding Value,StringFormat=' :  {0}%'}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" />
                                     </StackLayout>
                                 </StackLayout>
                             </DataTemplate>
@@ -136,7 +136,7 @@
                                     <BoxView Grid.Row="1" Color="White" HeightRequest="0.75" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
                                     <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" BackgroundColor="#404041" Spacing="0" Padding="3" Margin="0">
                                         <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" TextColor="#CCCCCC" FontAttributes="Bold" FontFamily="Helvetica" FontSize="12" />
-                                        <Label Text="{Binding Value,StringFormat=' :  {0}'}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" />
+                                        <Label Text="{Binding Value,StringFormat=' :  {0}%'}" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0" FontSize="12" />
                                     </StackLayout>
                                 </StackLayout>
                             </DataTemplate>
@@ -159,9 +159,6 @@
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
                             <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
-                                <chart:NumericalAxis.Title>
-                                    <chart:ChartAxisTitle Text="Infection Rate (%)" />
-                                </chart:NumericalAxis.Title>
                                 <chart:NumericalAxis.LabelStyle>
                                     <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle2"/>
                                 </chart:NumericalAxis.LabelStyle>
@@ -187,6 +184,9 @@
                                 <chart:HorizontalLineAnnotation.AxisLabelStyle>
                                     <chart:ChartLabelStyle BackgroundColor="White" TextColor="Red"/>
                                 </chart:HorizontalLineAnnotation.AxisLabelStyle>
+                                <chart:HorizontalLineAnnotation.LabelStyle>
+                                    <chart:ChartAnnotationLabelStyle TextColor="Red" HorizontalTextAlignment="End" VerticalTextAlignment="Start"/>
+                                </chart:HorizontalLineAnnotation.LabelStyle>
                             </chart:HorizontalLineAnnotation>
                         </chart:SfChart.ChartAnnotations>
                     </chart:SfChart>

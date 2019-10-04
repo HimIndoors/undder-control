@@ -18,7 +18,7 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout VerticalOptions="StartAndExpand">
-                    <Label x:Name="FarmName"  FontSize="Title" FontAttributes="Bold"/>
+                    <Label x:Name="FarmName"  FontSize="Title" FontFamily="{StaticResource BoldFont}"/>
                     <Label x:Name="Date" Style="{StaticResource StatusData}" Margin="0,0,0,21"/>
                     <Label x:Name="IdLabel" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">

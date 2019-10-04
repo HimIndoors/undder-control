@@ -21,7 +21,7 @@
                 WinPhone="8" />
             </ScrollView.Padding>
             <StackLayout>
-                <Label x:Name="TermsTitle" FontSize="Title" FontAttributes="Bold" />
+                <Label x:Name="TermsTitle" FontSize="Title" FontFamily="{StaticResource BoldFont}" />
                 <Label x:Name="Terms" />
                 <Label>
                     <Label.FormattedText>

@@ -23,7 +23,7 @@
                         iOS="13"
                         Android="13" />
                     </Frame.Padding>
-                    <Picker x:Name="FarmPicker" ItemsSource="{Binding FarmList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedFarm}" Title="Select a farm" BackgroundColor="Black" TextColor="White" TitleColor="Gray" />
+                    <Picker x:Name="FarmPicker" ItemsSource="{Binding FarmList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedFarm}" Title="Select a farm" BackgroundColor="Black" TextColor="White" TitleColor="Gray" FontFamily="{StaticResource NormalFont}" />
                 </Frame>
                 <Frame x:Name="AssessmentFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameAssessmentColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}" Margin="0,15,0,15"
                        AbsoluteLayout.LayoutBounds=".5,.35,.65,.3" AbsoluteLayout.LayoutFlags="All">
@@ -38,7 +38,7 @@
                     <StackLayout>
                         <Label x:Name="RootAssessment3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
                         <Label x:Name="RootAssessment2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
-                        <Label x:Name="RootAssessment1" FontSize="33" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontAttributes="Bold" Margin="0"/>
+                        <Label x:Name="RootAssessment1" FontSize="33" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontFamily="{StaticResource BoldFont}" Margin="0"/>
                     </StackLayout>
                 </Frame>
                 <Frame x:Name="MonitorFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameMonitorColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}"
@@ -52,7 +52,7 @@
                             Android="13" />
                     </Frame.Padding>
                     <StackLayout>
-                        <Label x:Name="RootMonitor1" FontSize="33" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontAttributes="Bold" Margin="0"/>
+                        <Label x:Name="RootMonitor1" FontSize="33" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontFamily="{StaticResource BoldFont}" Margin="0"/>
                         <Label x:Name="RootMonitor2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
                         <Label x:Name="RootMonitor3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
                     </StackLayout>

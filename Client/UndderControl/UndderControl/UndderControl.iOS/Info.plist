@@ -53,5 +53,10 @@
 	<string>SplashScreen</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>dinot.otf</string>
+		<string>dinot-bold.otf</string>
+	</array>
 </dict>
 </plist>

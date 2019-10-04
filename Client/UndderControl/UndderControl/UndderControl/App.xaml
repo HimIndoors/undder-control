@@ -11,6 +11,18 @@
             <x:Int32 x:Key="LargeCornerRadius">16</x:Int32>
             <Color x:Key="PageBackgroundColor">#7CCCBD</Color>
             <Color x:Key="TextColor">#009096</Color>
+            <Color x:Key="CheckpointColor">#D7EEE9</Color>
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="dinot-bold.otf#DINOT-BOLD" />
+                <On Platform="iOS" Value="dinot-bold" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="dinot.otf#DINOT" />
+                <On Platform="iOS" Value="dinot" />
+            </OnPlatform>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
+            </Style>
             <Style TargetType="Page" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
             </Style>
@@ -24,12 +36,14 @@
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+                <Setter Property="Padding" Value="21,0" />
             </Style>
             <Style TargetType="Button" x:Key="SurveyButton">
                 <Setter Property="BackgroundColor" Value="#ffffff" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
                 <Setter Property="FontSize">
-                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="21" />
+                    <OnPlatform x:TypeArguments="x:Double" Android="21" iOS="21" />
                 </Setter>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
@@ -58,28 +72,28 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
             <Style TargetType="Label" x:Key="Text">
-                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontSize" Value="17"/>
                 <Setter Property="Margin" Value="0,0,0,5"/>
             </Style>
             <Style TargetType="Label" x:Key="TextSubtitle">
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="Margin" Value="0,0,0,5"/> 
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
             </Style>
             <Style TargetType="Label" x:Key="ResultSubtitle">
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
                 <Setter Property="TextColor" Value="White"/>
             </Style>
             <Style TargetType="Label" x:Key="FarmName">
                 <Setter Property="FontSize" Value="17"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
             <Style TargetType="Label" x:Key="InputTitle">
                 <Setter Property="FontSize" Value="30"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
                 <Setter Property="TextColor" Value="White"/>
             </Style>
             <Style TargetType="Label" x:Key="InputCaption">
@@ -87,7 +101,7 @@
             </Style>
             <Style x:Key="StatusButton" TargetType="Button">
                 <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
                 <Setter Property="HeightRequest" Value="80"/>
             </Style>
             <ControlTemplate x:Key="MenuPageTemplate">

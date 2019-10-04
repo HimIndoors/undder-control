@@ -204,7 +204,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>Once SDCT has been implemented on farm it is important to monitor the herd to catch and fix any issues which may arise.</value>
   </data>
   <data name="CowStatusText2" xml:space="preserve">
-    <value>You will need to input the cow’s status atDRYOFF and CALVING.</value>
+    <value>You will need to input the cow’s status at DRYOFF and CALVING.</value>
   </data>
   <data name="CowStatusText3" xml:space="preserve">
     <value>Data will be analysed and results will be available after calving information has been input.</value>

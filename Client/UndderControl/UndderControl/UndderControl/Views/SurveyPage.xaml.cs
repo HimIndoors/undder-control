@@ -18,8 +18,8 @@ namespace UndderControl.Views
         {
             InitializeComponent();
             StartQuestionsButton.Text = AppTextResource.SurveyStartQuestionsButton;
-            YesButton.Text = AppTextResource.SurveyYesButton;
-            NoButton.Text = AppTextResource.SurveyNoButton;
+            YesButton.Text = AppTextResource.SurveyYesButton.ToUpper(); //Force Uppercase
+            NoButton.Text = AppTextResource.SurveyNoButton.ToUpper(); //Force Uppercase
             _viewModel = BindingContext as SurveyPageViewModel;
             UpdateQuestion();
             ea.GetEvent<QuestionChangedEvent>().Subscribe(UpdateQuestion);

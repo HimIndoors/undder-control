@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyPage">
     <ContentPage.Content>
@@ -19,20 +20,20 @@
                 <AbsoluteLayout>
                     <Label x:Name="StageTitle"
                         Margin="8"
-                        TextColor="White"
+                        TextColor="{StaticResource CheckpointColor}"
                         FontSize="38"
-                        FontAttributes="Bold"
+                        FontFamily="{StaticResource BoldFont}"
                         HorizontalTextAlignment="Center"
-                            AbsoluteLayout.LayoutBounds=".5,.4,.9,.15" AbsoluteLayout.LayoutFlags="All"/>
+                        AbsoluteLayout.LayoutBounds=".5,.33,.9,.15" AbsoluteLayout.LayoutFlags="All"/>
                     <Label x:Name="StageText"
                         Margin="13"
                         FontSize="33"
                         TextColor="White"
-                        HorizontalTextAlignment="Center" AbsoluteLayout.LayoutBounds=".5,.47,.9,.15" AbsoluteLayout.LayoutFlags="All"/>
+                        HorizontalTextAlignment="Center" AbsoluteLayout.LayoutBounds=".5,.53,.9,.3" AbsoluteLayout.LayoutFlags="All"/>
                     <Button x:Name="StartQuestionsButton" Text="START QUESTIONS"
                         HorizontalOptions="Center"
-                        HeightRequest="70"
-                        Command="{Binding StartStageCommand}" AbsoluteLayout.LayoutBounds=".5,.6,.9,.09" AbsoluteLayout.LayoutFlags="All" Padding="13,0"/>
+                        Margin="0"
+                        Command="{Binding StartStageCommand}" AbsoluteLayout.LayoutBounds=".5,.62,.9,.09" AbsoluteLayout.LayoutFlags="All"/>
                     <StackLayout x:Name="Scoring" HorizontalOptions="FillAndExpand" VerticalOptions="End" AbsoluteLayout.LayoutBounds="0,1,1,.2" AbsoluteLayout.LayoutFlags="All">
                         <StackLayout.Padding>
                             <OnPlatform x:TypeArguments="Thickness" iOS="8,8" Android="8,8" />
@@ -47,51 +48,48 @@ FARM IS TO IMPLEMENTS SDCT
                         </Label>
                     </StackLayout>
                 </AbsoluteLayout>
-                
             </ScrollView>
             <ScrollView x:Name="SurveyQuestionView" IsVisible="False">
-                <StackLayout>
-                    <StackLayout VerticalOptions="CenterAndExpand">
-                        <Label x:Name="QuestionLabel"
-                        Text="Loading question..."
+                <AbsoluteLayout>
+                    <f9p:Label x:Name="QuestionLabel"
                         Margin="13"
                         TextColor="White"
                         FontSize="34"
-                        HorizontalTextAlignment="Center"/>
-                        <Label x:Name="HelpTextLabel"
-                        Text="Loading question..."
+                        MinFontSize="20"
+                        HorizontalTextAlignment="Center"
+                        FontFamily="{StaticResource BoldFont}"
+                        Lines="0"
+                        AbsoluteLayout.LayoutBounds=".5,.17,.9,.415" AbsoluteLayout.LayoutFlags="All"/>
+                    <Label x:Name="HelpTextLabel"
                         Margin="13"
                         FontSize="21"
                         TextColor="#2E987E"
-                        HorizontalTextAlignment="Center" />
-                    </StackLayout>
-                    <StackLayout VerticalOptions="End">
-                        <StackLayout x:Name="AnswerButtonStackLayout"
-                            Margin="21"
+                        HorizontalTextAlignment="Center" 
+                        AbsoluteLayout.LayoutBounds=".5,.62,.9,.2" AbsoluteLayout.LayoutFlags="All"/>
+                    <StackLayout x:Name="AnswerButtonStackLayout"
                             Orientation="Horizontal" 
-                            HeightRequest="150">
-                            <Button x:Name="YesButton" Style="{StaticResource SurveyButton}" Command="{Binding AnswerYesCommand}"/>
-                            <Button x:Name="NoButton" Style="{StaticResource SurveyButton}" Command="{Binding AnswerNoCommand}"/>
-                        </StackLayout>
-                        <StackLayout x:Name="ProgressBar" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="8">
-                            <StackLayout.Padding>
-                                <OnPlatform x:TypeArguments="Thickness"
+                            AbsoluteLayout.LayoutBounds=".5,.85,.9,.2" AbsoluteLayout.LayoutFlags="All">
+                        <Button x:Name="YesButton" Style="{StaticResource SurveyButton}" Command="{Binding AnswerYesCommand}"/>
+                        <Button x:Name="NoButton" Style="{StaticResource SurveyButton}" Command="{Binding AnswerNoCommand}"/>
+                    </StackLayout>
+                    <StackLayout x:Name="ProgressBar" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="8" AbsoluteLayout.LayoutBounds=".5,1,.9,.1" AbsoluteLayout.LayoutFlags="All">
+                        <StackLayout.Padding>
+                            <OnPlatform x:TypeArguments="Thickness"
                                     iOS="5"
                                     Android="5"/>
-                            </StackLayout.Padding>
-                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip1" Source="resource://UndderControl.Svg.progressdark.svg"
+                        </StackLayout.Padding>
+                        <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip1" Source="resource://UndderControl.Svg.progressdark.svg"
                                 HeightRequest="20" WidthRequest="20" />
-                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip2" Source="resource://UndderControl.Svg.progresslight.svg"
+                        <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip2" Source="resource://UndderControl.Svg.progresslight.svg"
                                 HeightRequest="20" WidthRequest="20" />
-                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip3" Source="resource://UndderControl.Svg.progresslight.svg"
+                        <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip3" Source="resource://UndderControl.Svg.progresslight.svg"
                                 HeightRequest="20" WidthRequest="20" />
-                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip4" Source="resource://UndderControl.Svg.progresslight.svg"
+                        <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip4" Source="resource://UndderControl.Svg.progresslight.svg"
                                 HeightRequest="20" WidthRequest="20" />
-                            <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip5" Source="resource://UndderControl.Svg.progresslight.svg"
+                        <ffimageloadingsvg:SvgCachedImage x:Name="ProgressPip5" Source="resource://UndderControl.Svg.progresslight.svg"
                                 HeightRequest="20" WidthRequest="20" />
-                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
+                </AbsoluteLayout>
             </ScrollView>
         </Grid>
     </ContentPage.Content>

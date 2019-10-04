@@ -7,14 +7,14 @@
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              Title="{Binding Title}">
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness"
+    <ScrollView>
+        <StackLayout>
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness"
             iOS="21"
             Android="21"
             WinPhone="21" />
-    </ContentPage.Padding>
-    <ScrollView>
-        <StackLayout>
+            </StackLayout.Padding>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,0,0,18">
                 <Label Text="DATE"  FontSize="18" FontFamily="{StaticResource BoldFont}" Margin="0"/>
                 <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0, 1,0,0" Padding="8,0">
@@ -60,7 +60,7 @@
                     </chart:SfChart.Series>
                 </chart:SfChart>
             </StackLayout>
-            <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18"/>
+            <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18" Lines="2"/>
             <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
             <StackLayout x:Name="StatementStack" />
             <Button x:Name="CompareButton" Command="{Binding CompareCommand}" />

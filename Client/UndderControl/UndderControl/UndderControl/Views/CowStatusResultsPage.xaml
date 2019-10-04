@@ -12,17 +12,16 @@
             <helpers:HtmlSourceConverter x:Key="htmlSource" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness"
-            iOS="21"
-            Android="21"
-            WinPhone="21" />
-    </ContentPage.Padding>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness"
+                        iOS="21"
+                        Android="21" />
+                </StackLayout.Padding>
                 <StackLayout>
-                    <Label x:Name="FarmName" FontSize="Title" FontAttributes="Bold"/>
+                    <Label x:Name="FarmName" FontSize="Title" FontFamily="{StaticResource BoldFont}"/>
                     <Label x:Name="ResultDate" Text="{Binding ResultYear}" Style="{StaticResource StatusData}"/>
                 </StackLayout>
                 <StackLayout x:Name="WebViewLayout" VerticalOptions="CenterAndExpand" BackgroundColor="#7CCCBD" />

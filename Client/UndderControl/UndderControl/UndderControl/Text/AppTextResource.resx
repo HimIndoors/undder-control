@@ -240,10 +240,10 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>PREVENTION OF NEW INFECTION</value>
   </data>
   <data name="ImprovementNevagive" xml:space="preserve">
-    <value>THERE IS NO IMPROVEMENT!</value>
+    <value>THERE IS &lt;u&gt;NO&lt;/u&gt; IMPROVEMENT!</value>
   </data>
   <data name="ImprovementPositive" xml:space="preserve">
-    <value>THERE IS AN IMPROVEMENT!</value>
+    <value>THERE &lt;u&gt;IS&lt;/u&gt; AN IMPROVEMENT!</value>
   </data>
   <data name="MonitorCompareButton" xml:space="preserve">
     <value>COMPARE RESULTS</value>
@@ -318,10 +318,10 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>AREAS FOR IMPROVEMENT</value>
   </data>
   <data name="SurveyResultSdctSuitable" xml:space="preserve">
-    <value>SWITCHING TO SDCT IS SUITABLE ON THIS FARM!</value>
+    <value>SWITCHING TO SDCT &lt;u&gt;IS&lt;/u&gt; SUITABLE ON THIS FARM!</value>
   </data>
   <data name="SurveyResultSdctUnsuitable" xml:space="preserve">
-    <value>SWITCHING TO SDCT MAY POSE A RISK FOR UDDER HEALTH ON THIS FARM!</value>
+    <value>SWITCHING TO SDCT MAY POSE A &lt;u&gt;RISK&lt;/u&gt; FOR UDDER HEALTH ON THIS FARM!</value>
   </data>
   <data name="SurveyResultsPageTitle" xml:space="preserve">
     <value>RESULTS</value>

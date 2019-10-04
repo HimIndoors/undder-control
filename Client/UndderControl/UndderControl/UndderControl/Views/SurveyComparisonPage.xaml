@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyComparisonPage"
              Title="{Binding Title}">
@@ -14,23 +15,20 @@
                         Android="21" />
             </StackLayout.Padding>
             <StackLayout HeightRequest="400">
-                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" Scale="1.25">
-                    <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1.3" />
-                    </chart:SfChart.Scale>
+                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" Scale="1.3">
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
                     </chart:SfChart.Margin>
                     <chart:SfChart.Legend>
-                        <chart:ChartLegend IconHeight="14" IconWidth="14" DockPosition="Floating" OffsetX="100" OffsetY="200" />
+                        <chart:ChartLegend IconHeight="14" IconWidth="14" DockPosition="Bottom" OffsetX="0" OffsetY="-200" />
                     </chart:SfChart.Legend>
                     <chart:SfChart.PrimaryAxis>
                         <chart:CategoryAxis>
                             <chart:CategoryAxis.MajorGridLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
                             </chart:CategoryAxis.MajorGridLineStyle>
                             <chart:CategoryAxis.AxisLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
                             </chart:CategoryAxis.AxisLineStyle>
                             <chart:CategoryAxis.LabelStyle>
                                 <chart:ChartAxisLabelStyle TextColor="black" />
@@ -43,20 +41,20 @@
                                 <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="black" />
                             </chart:NumericalAxis.LabelStyle>
                             <chart:NumericalAxis.AxisLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
                             </chart:NumericalAxis.AxisLineStyle>
                             <chart:NumericalAxis.MajorGridLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
                             </chart:NumericalAxis.MajorGridLineStyle>
                         </chart:NumericalAxis>
                     </chart:SfChart.SecondaryAxis>
                     <chart:SfChart.Series>
-                        <chart:RadarSeries x:Name="series2" Label="{Binding RadarLabel2}" ItemsSource="{Binding RadarData2}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#ED247C" LegendIcon="Triangle" />
-                        <chart:RadarSeries x:Name="series1" Label="{Binding RadarLabel1}" ItemsSource="{Binding RadarData1}"  EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#00ACE6" LegendIcon="Triangle" />
+                        <chart:RadarSeries x:Name="series2" Label="{Binding RadarLabel2}" ItemsSource="{Binding RadarData2}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#ED247C" LegendIcon="StraightLine" />
+                        <chart:RadarSeries x:Name="series1" Label="{Binding RadarLabel1}" ItemsSource="{Binding RadarData1}"  EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#00ACE6" LegendIcon="StraightLine" />
                     </chart:SfChart.Series>
                 </chart:SfChart>
             </StackLayout>
-            <Label Text="{Binding ImprovementStatement}" Style="{StaticResource ResultSubtitle}"/>
+            <f9p:Label HtmlText="{Binding ImprovementStatement}" Style="{StaticResource ResultSubtitle}"/>
             <StackLayout x:Name="ImprovementStack" />
         </StackLayout>
     </ScrollView>

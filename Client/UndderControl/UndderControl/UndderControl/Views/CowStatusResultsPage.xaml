@@ -60,7 +60,7 @@
                             </DataTemplate>
                         </ResourceDictionary>
                     </StackLayout.Resources>
-                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="NIRate">
+                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White" x:Name="NIRate">
                         <chart:SfChart.Title>
                             <chart:ChartTitle Text=" "  />
                         </chart:SfChart.Title>
@@ -143,7 +143,7 @@
                             </DataTemplate>
                         </ResourceDictionary>
                     </StackLayout.Resources>
-                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="CureRate">
+                    <chart:SfChart VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White" x:Name="CureRate">
                         <chart:SfChart.Title>
                             <chart:ChartTitle Text=" "/>
                         </chart:SfChart.Title>

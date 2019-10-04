@@ -5,6 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyResultsPage"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              Title="{Binding Title}">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
@@ -21,9 +22,9 @@
                 </Frame>
             </StackLayout>
             <StackLayout HeightRequest="320">
-                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" Scale="1.25">
+                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0">
                     <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1.3" />
+                        <OnPlatform x:TypeArguments="x:Double" iOS="2" Android="1.3" />
                     </chart:SfChart.Scale>
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />
@@ -59,7 +60,7 @@
                     </chart:SfChart.Series>
                 </chart:SfChart>
             </StackLayout>
-            <Label x:Name="FarmSuitability" Text="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18"/>
+            <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18"/>
             <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
             <StackLayout x:Name="StatementStack" />
             <Button x:Name="CompareButton" Command="{Binding CompareCommand}" />

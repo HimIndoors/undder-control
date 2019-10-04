@@ -1,13 +1,10 @@
 ﻿using MonkeyCache.SQLite;
-using Newtonsoft.Json;
 using Prism;
 using Prism.Ioc;
-using Prism.Navigation.Xaml;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UndderControl.Helpers;
-using UndderControl.Services;
 using UndderControl.ViewModels;
 using UndderControl.Views;
 using UndderControlLib.Dtos;
@@ -41,7 +38,8 @@ namespace UndderControl
         protected override async void OnInitialized()
         {
             //Register Syncfusion license
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTIwOTUxQDMxMzcyZTMyMmUzMFlvWjZiUENiOVVkTm1CSG04RXRGWEJ0cW4rR0Fuc2ZNK2pjM2p0REZCelk9");
+            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTIwOTUxQDMxMzcyZTMyMmUzMFlvWjZiUENiOVVkTm1CSG04RXRGWEJ0cW4rR0Fuc2ZNK2pjM2p0REZCelk9"); // Version 1.7.2.*
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUxNTY5QDMxMzcyZTMzMmUzMFZnS0V6ZjZKTUF2WFF6Q2F3MjNud0hzVFVvaVJOSThXK0xQbHpNbFVmS0E9");// Version 1.7.3.*
             if (Config.TestMode) UserSettings.UserId = 1;
             //Initialize MonkeyCache barrel
             Barrel.ApplicationId = "MSC_Undder_Control";

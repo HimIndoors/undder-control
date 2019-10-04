@@ -423,7 +423,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to THERE IS NO IMPROVEMENT!.
+        ///   Looks up a localized string similar to THERE IS &lt;u&gt;NO&lt;/u&gt; IMPROVEMENT!.
         /// </summary>
         public static string ImprovementNevagive {
             get {
@@ -432,7 +432,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to THERE IS AN IMPROVEMENT!.
+        ///   Looks up a localized string similar to THERE &lt;u&gt;IS&lt;/u&gt; AN IMPROVEMENT!.
         /// </summary>
         public static string ImprovementPositive {
             get {
@@ -657,7 +657,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SWITCHING TO SDCT IS SUITABLE ON THIS FARM!.
+        ///   Looks up a localized string similar to SWITCHING TO SDCT &lt;u&gt;IS&lt;/u&gt; SUITABLE ON THIS FARM!.
         /// </summary>
         public static string SurveyResultSdctSuitable {
             get {
@@ -666,7 +666,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SWITCHING TO SDCT MAY POSE A RISK FOR UDDER HEALTH ON THIS FARM!.
+        ///   Looks up a localized string similar to SWITCHING TO SDCT MAY POSE A &lt;u&gt;RISK&lt;/u&gt; FOR UDDER HEALTH ON THIS FARM!.
         /// </summary>
         public static string SurveyResultSdctUnsuitable {
             get {

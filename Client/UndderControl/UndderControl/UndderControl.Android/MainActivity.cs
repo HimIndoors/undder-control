@@ -36,6 +36,7 @@ namespace UndderControl.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.Essentials.Platform.Init(this, bundle);
 
+            Forms9Patch.Droid.Settings.Initialize(this);
             CachedImageRenderer.Init(enableFastRenderer: true);
             CachedImageRenderer.InitImageViewHandler();
 

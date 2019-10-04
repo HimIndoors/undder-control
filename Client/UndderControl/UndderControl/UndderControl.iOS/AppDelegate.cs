@@ -40,6 +40,7 @@ namespace UndderControl.iOS
             new SfComboBoxRenderer();
             new SfNumericTextBoxRenderer();
             new SfBusyIndicatorRenderer();
+            Forms9Patch.iOS.Settings.Initialize(this);
 
             LoadApplication(new App(new iOSInitializer()));
 

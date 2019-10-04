@@ -71,7 +71,7 @@
                         <chart:SfChart.SecondaryAxis>
                             <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
                                 <chart:NumericalAxis.LabelStyle>
-                                    <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle1"/>
+                                    <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle1" TextColor="Black"/>
                                 </chart:NumericalAxis.LabelStyle>
                                 <chart:NumericalAxis.AxisLineStyle>
                                     <chart:ChartLineStyle StrokeWidth="0" />
@@ -82,7 +82,11 @@
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
                         <chart:SfChart.Legend>
-                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14" />
+                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14">
+                                <chart:ChartLegend.LabelStyle>
+                                    <chart:ChartLegendLabelStyle TextColor="black" />
+                                </chart:ChartLegend.LabelStyle>
+                            </chart:ChartLegend>
                         </chart:SfChart.Legend>
                         <chart:SfChart.Series>
                             <chart:StackingColumn100Series x:Name="series1" ItemsSource="{Binding NiRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="Healthy" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
@@ -154,7 +158,7 @@
                         <chart:SfChart.SecondaryAxis>
                             <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
                                 <chart:NumericalAxis.LabelStyle>
-                                    <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle2"/>
+                                    <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle2" TextColor="Black"/>
                                 </chart:NumericalAxis.LabelStyle>
                                 <chart:NumericalAxis.AxisLineStyle>
                                     <chart:ChartLineStyle StrokeWidth="0" />

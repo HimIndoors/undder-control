@@ -28,19 +28,7 @@ namespace UndderControl.ViewModels
         public SurveyStageDto CurrentStage => Stage(_stageIndex);
         public int StageQuestionCount => QuestionCount();
         public bool ShowStage { get; private set; }
-        public int QuestionIncrement { get; private set; }
-        private int _fontSize;
-        public int FontSize
-        {
-            get { return _fontSize; }
-            set
-            {
-                if (SetProperty(ref _fontSize, value))
-                {
-                    RaisePropertyChanged("FontSize");
-                }
-            }
-        }
+        public int QuestionIncrement { get; private set; }     
 
         public SurveyPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator ea)
             : base(navigationService, metricsManager)

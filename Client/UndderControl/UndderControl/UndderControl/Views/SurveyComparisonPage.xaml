@@ -14,24 +14,35 @@
                         iOS="21"
                         Android="21" />
             </StackLayout.Padding>
-            <StackLayout HeightRequest="400" Margin="0,0,-21,0">
+            <StackLayout HeightRequest="400">
+                <StackLayout.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0,-31,0,0" Android="0,-13,0,0"/>
+                </StackLayout.Margin>
                 <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0">
                     <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1.2" Android="1.4"  />
+                        <OnPlatform x:TypeArguments="x:Double" iOS="1.52" Android="1.4"  />
                     </chart:SfChart.Scale>
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
                     </chart:SfChart.Margin>
                     <chart:SfChart.Legend>
                         <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Floating" OffsetX="350" OffsetY="800">
+                            <chart:ChartLegend.OffsetX>
+                                <OnPlatform x:TypeArguments="x:Double" iOS="130" Android="350" />
+                            </chart:ChartLegend.OffsetX>
+                            <chart:ChartLegend.OffsetY>
+                                <OnPlatform x:TypeArguments="x:Double" iOS="300" Android="800" />
+                            </chart:ChartLegend.OffsetY>
                             <chart:ChartLegend.LabelStyle>
                                 <chart:ChartLegendLabelStyle TextColor="black" />
                             </chart:ChartLegend.LabelStyle>
                         </chart:ChartLegend>
-
                     </chart:SfChart.Legend>
                     <chart:SfChart.PrimaryAxis>
                         <chart:CategoryAxis>
+                            <chart:CategoryAxis.MajorTickStyle>
+                                <chart:ChartAxisTickStyle StrokeColor="Transparent" />
+                            </chart:CategoryAxis.MajorTickStyle>
                             <chart:CategoryAxis.MajorGridLineStyle>
                                 <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
                             </chart:CategoryAxis.MajorGridLineStyle>
@@ -49,7 +60,7 @@
                                 <chart:ChartAxisTickStyle StrokeColor="Transparent" />
                             </chart:NumericalAxis.MajorTickStyle>
                             <chart:NumericalAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="Black" />
+                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="Black" FontSize="7" />
                             </chart:NumericalAxis.LabelStyle>
                             <chart:NumericalAxis.AxisLineStyle>
                                 <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />

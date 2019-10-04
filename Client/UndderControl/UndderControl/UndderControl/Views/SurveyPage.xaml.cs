@@ -61,7 +61,30 @@ namespace UndderControl.Views
                     var q = _viewModel.CurrentQuestion;
 
                     // Update question text
+                    //Set fontsize!
+                    int textLength = q.QuestionText.Length;
+                    if (textLength <= 80)
+                    {
+                        _viewModel.FontSize = 34;
+                    }
+                    else if (textLength > 80 && textLength <= 90)
+                    {
+                        _viewModel.FontSize = 32;
+                    }
+                    else if (textLength > 90 && textLength <= 100)
+                    {
+                        _viewModel.FontSize = 30;
+                    }
+                    else if (textLength > 100 && textLength <= 120)
+                    {
+                        _viewModel.FontSize = 28;
+                    }
+                    else
+                    {
+                        _viewModel.FontSize = 26;
+                    }
                     QuestionLabel.Text = q.QuestionText.ToUpper(); //Force uppercase
+
                     HelpTextLabel.Text = q.QuestionHelpText;
 
                     RenderProgress();

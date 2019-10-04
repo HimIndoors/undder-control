@@ -51,15 +51,15 @@ FARM IS TO IMPLEMENTS SDCT
             </ScrollView>
             <ScrollView x:Name="SurveyQuestionView" IsVisible="False">
                 <AbsoluteLayout>
-                    <f9p:Label x:Name="QuestionLabel"
+                    <Label x:Name="QuestionLabel"
                         Margin="13"
                         TextColor="White"
-                        FontSize="34"
-                        MinFontSize="20"
+                        FontSize="{Binding FontSize}"
+                       
                         HorizontalTextAlignment="Center"
                         FontFamily="{StaticResource BoldFont}"
-                        Lines="0"
-                        AbsoluteLayout.LayoutBounds=".5,.17,.9,.415" AbsoluteLayout.LayoutFlags="All"/>
+                        
+                        AbsoluteLayout.LayoutBounds=".5,.155,.9,.415" AbsoluteLayout.LayoutFlags="All"/>
                     <Label x:Name="HelpTextLabel"
                         Margin="13"
                         FontSize="21"

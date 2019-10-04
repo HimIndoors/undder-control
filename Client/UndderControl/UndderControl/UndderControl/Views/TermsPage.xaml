@@ -39,7 +39,7 @@
             </StackLayout>
         </ScrollView>
         <StackLayout VerticalOptions="End" Margin="0,21,0,0">
-            <Button Text="Accept"  Command="{Binding OnAcceptCommand}" />
+            <Button x:Name="TermsButton" Command="{Binding OnAcceptCommand}" />
         </StackLayout>
     </StackLayout>
   

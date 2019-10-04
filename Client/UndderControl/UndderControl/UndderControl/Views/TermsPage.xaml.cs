@@ -10,6 +10,7 @@ namespace UndderControl.Views
             InitializeComponent();
             Terms.Text = AppTextResource.Terms;
             TermsTitle.Text = AppTextResource.TermsTitle;
+            TermsButton.Text = AppTextResource.TermsAcceptButton.ToUpper(); //Forcing uppercase
         }
     }
 }

@@ -335,6 +335,9 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
   <data name="Terms" xml:space="preserve">
     <value>This tool is being provided strictly as a convenience to its users. Any and all liability arising directly or indirectly from the use of this tool is hereby disclaimed. The tool is provided without any warranty expressed or implied, including any implied warranties of merchantability, fitness for a particular purpose or non-infringement. Any and all indirect, special, incidental, consequential or punitive damage arising from any use of this tool or data generated with the tool is specifically disclaimed and excluded.</value>
   </data>
+  <data name="TermsAcceptButton" xml:space="preserve">
+    <value>Accept</value>
+  </data>
   <data name="TermsTitle" xml:space="preserve">
     <value>Terms and Conditions</value>
   </data>

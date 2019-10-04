@@ -711,6 +711,15 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        public static string TermsAcceptButton {
+            get {
+                return ResourceManager.GetString("TermsAcceptButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Terms and Conditions.
         /// </summary>
         public static string TermsTitle {

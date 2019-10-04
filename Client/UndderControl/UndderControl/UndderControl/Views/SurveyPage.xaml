@@ -59,7 +59,7 @@ FARM IS TO IMPLEMENTS SDCT
                         HorizontalTextAlignment="Center"
                         FontFamily="{StaticResource BoldFont}"
                         
-                        AbsoluteLayout.LayoutBounds=".5,.155,.9,.415" AbsoluteLayout.LayoutFlags="All"/>
+                        AbsoluteLayout.LayoutBounds=".5,.14,.9,.42" AbsoluteLayout.LayoutFlags="All"/>
                     <Label x:Name="HelpTextLabel"
                         Margin="13"
                         FontSize="21"

@@ -14,7 +14,7 @@
                         iOS="21"
                         Android="21" />
             </StackLayout.Padding>
-            <StackLayout HeightRequest="400">
+            <StackLayout HeightRequest="400" Margin="0,0,-21,0">
                 <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" Scale="1.4">
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />

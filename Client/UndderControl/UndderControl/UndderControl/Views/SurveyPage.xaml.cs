@@ -63,13 +63,13 @@ namespace UndderControl.Views
                     // Update question text
                     //Set fontsize!
                     int textLength = q.QuestionText.Length;
-                    if (textLength <= 80)
+                    if (textLength <= 79)
                     {
                         _viewModel.FontSize = 34;
                     }
-                    else if (textLength > 80 && textLength <= 90)
+                    else if (textLength > 79 && textLength <= 90)
                     {
-                        _viewModel.FontSize = 32;
+                        _viewModel.FontSize = 30;
                     }
                     else if (textLength > 90 && textLength <= 100)
                     {
@@ -79,9 +79,13 @@ namespace UndderControl.Views
                     {
                         _viewModel.FontSize = 28;
                     }
+                    else if (textLength > 120 && textLength <= 150)
+                    {
+                        _viewModel.FontSize = 24;
+                    }
                     else
                     {
-                        _viewModel.FontSize = 26;
+                        _viewModel.FontSize = 22;
                     }
                     QuestionLabel.Text = q.QuestionText.ToUpper(); //Force uppercase
 

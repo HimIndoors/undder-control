@@ -27,7 +27,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="To find out more about our privacy terms " />
-                            <Span Text="click here" TextDecorations="Underline">
+                            <Span Text="click here" TextDecorations="Underline" FontFamily="{StaticResource BoldFont}">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnBrowseCommand}" />
                                 </Span.GestureRecognizers>

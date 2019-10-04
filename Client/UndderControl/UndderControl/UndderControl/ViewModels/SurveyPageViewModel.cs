@@ -112,7 +112,8 @@ namespace UndderControl.ViewModels
             try
             {
                 // Upload and delete the survey upon completion
-                 await UploadAndDeleteAsync();
+                if (!Config.TestMode)
+                    await UploadAndDeleteAsync();
 
             }
             catch (Exception ex)

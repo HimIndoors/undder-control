@@ -94,7 +94,7 @@ namespace UndderControl.ViewModels
             ValidationResult result = validator.Validate(cs);
             if (result.IsValid)
             {
-                await RunSafe(UploadCowStatus(cs));
+                if (!Config.TestMode) await RunSafe(UploadCowStatus(cs));
                 _EventAggregator.GetEvent<CowStatusRefreshEvent>().Publish();
             }
             else
@@ -112,7 +112,7 @@ namespace UndderControl.ViewModels
             ValidationResult result = validator.Validate(cs);
             if (result.IsValid)
             {
-                await RunSafe(UploadCowStatus(cs));
+                if (!Config.TestMode) await RunSafe(UploadCowStatus(cs));
                 if (InputMode.Equals("dryoff"))
                     await NavigationService.NavigateAsync("CowStatusFinishPage");
                 else

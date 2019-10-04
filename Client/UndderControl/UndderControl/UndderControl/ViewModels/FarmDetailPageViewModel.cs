@@ -129,7 +129,7 @@ namespace UndderControl.ViewModels
             {
                 try
                 {
-                    await RunSafe(SaveFarm());
+                    if (!Config.TestMode) await RunSafe(SaveFarm());
                     await NavigationService.GoBackAsync();
                 }
                 catch (Exception ex)

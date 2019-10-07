@@ -20,6 +20,10 @@
                 <On Platform="Android" Value="dinot.otf#DINOT" />
                 <On Platform="iOS" Value="dinot" />
             </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="MediumFont">
+                <On Platform="Android" Value="dinot-medium.otf#DINOT-Medium" />
+                <On Platform="iOS" Value="dinot-medium" />
+            </OnPlatform>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
             </Style>
@@ -33,8 +37,7 @@
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#ffffff" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-                <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="26" />
                 <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
                 <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
                 <Setter Property="Padding" Value="21,0" />
@@ -108,14 +111,14 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
-                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontSize" Value="17" />
             </Style>
             <Style TargetType="Label" x:Key="TableCellValue">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontSize" Value="17" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

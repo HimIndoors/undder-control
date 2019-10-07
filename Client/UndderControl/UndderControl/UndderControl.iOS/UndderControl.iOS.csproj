@@ -121,6 +121,7 @@
     <ITunesArtwork Include="iTunesArtwork@2x.png" />
     <BundleResource Include="Resources\dinot-bold.otf" />
     <BundleResource Include="Resources\dinot.otf" />
+    <BundleResource Include="Resources\dinot-medium.otf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png">

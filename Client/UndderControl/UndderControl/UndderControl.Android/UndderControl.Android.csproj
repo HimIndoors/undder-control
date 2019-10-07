@@ -157,6 +157,7 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\dinot.otf" />
     <AndroidAsset Include="Assets\dinot-bold.otf" />
+    <AndroidAsset Include="Assets\dinot-medium.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>

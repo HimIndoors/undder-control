@@ -9,10 +9,7 @@
              x:Class="UndderControl.Views.CowStatusInputPage"
              Title="{Binding Title}">
     <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness"
-            iOS="21"
-            Android="21"
-            WinPhone="21" />
+        <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
     </ContentPage.Padding>
     <ContentPage.Content>
         <ScrollView>

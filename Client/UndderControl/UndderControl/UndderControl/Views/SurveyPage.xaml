@@ -7,39 +7,32 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyPage">
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <ffimageloadingsvg:SvgCachedImage 
-                        Source="resource://UndderControl.Svg.blank_background.svg"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill"
-                        DownsampleToViewSize="True"
-                        Aspect="Fill"
-                        x:Name="StageBackground"/>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#97CABD">
+            <ffimageloadingsvg:SvgCachedImage Source="resource://UndderControl.Svg.blank_background.svg" HorizontalOptions="EndAndExpand" x:Name="StageBackground"/>
             <ScrollView x:Name="SurveyStageView" IsVisible="False">
-
-                <AbsoluteLayout>
-                    <Label x:Name="StageTitle"
-                        Margin="8"
-                        TextColor="{StaticResource CheckpointColor}"
-                        FontSize="38"
-                        FontFamily="{StaticResource BoldFont}"
-                        HorizontalTextAlignment="Center"
-                        AbsoluteLayout.LayoutBounds=".5,.33,.9,.15" AbsoluteLayout.LayoutFlags="All"/>
-                    <Label x:Name="StageText"
-                        Margin="13"
-                        FontSize="33"
-                        TextColor="White"
-                        HorizontalTextAlignment="Center" AbsoluteLayout.LayoutBounds=".5,.53,.9,.3" AbsoluteLayout.LayoutFlags="All"/>
-                    <Button x:Name="StartQuestionsButton" Text="START QUESTIONS"
-                        HorizontalOptions="Center"
-                        Margin="0"
-                        Command="{Binding StartStageCommand}" AbsoluteLayout.LayoutBounds=".5,.62,.9,.09" AbsoluteLayout.LayoutFlags="All"/>
-                    <StackLayout x:Name="Scoring" HorizontalOptions="FillAndExpand" VerticalOptions="End" AbsoluteLayout.LayoutBounds="0,1,1,.2" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label x:Name="StageTitle"
+                            Margin="0,31,0,0"
+                            TextColor="{StaticResource CheckpointColor}"
+                            FontSize="38"
+                            FontFamily="{StaticResource BoldFont}"
+                            HorizontalTextAlignment="Center" />
+                        <Label x:Name="StageText"
+                            Margin="40,0"
+                            FontSize="33"
+                            TextColor="White" HorizontalTextAlignment="Center" />
+                        <Button x:Name="StartQuestionsButton" Text="START QUESTIONS"
+                            HorizontalOptions="Center"
+                            BackgroundColor="White" BorderColor="White" BorderRadius="10"
+                            Command="{Binding StartStageCommand}" Margin="0,34"/>
+                    </StackLayout>
+                    <StackLayout x:Name="Scoring" HorizontalOptions="FillAndExpand" VerticalOptions="End">
                         <StackLayout.Padding>
                             <OnPlatform x:TypeArguments="Thickness" iOS="8,8" Android="8,8" />
                         </StackLayout.Padding>
-                        <Label Text="YES = 1, NO = 0" FontAttributes="Bold" Margin="0"/>
-                        <Label>
+                        <Label Text="YES = 1, NO = 0" FontAttributes="Bold" Margin="0" FontSize="14"/>
+                        <Label FontSize="14">
                             <Label.Text>
                                 THE HIGHER THE SCORE,
 THE MORE PREPARED YOUR
@@ -47,17 +40,17 @@ FARM IS TO IMPLEMENTS SDCT
                             </Label.Text>
                         </Label>
                     </StackLayout>
-                </AbsoluteLayout>
+                </StackLayout>
             </ScrollView>
             <ScrollView x:Name="SurveyQuestionView" IsVisible="False">
                 <AbsoluteLayout>
                     <f9p:Label x:Name="QuestionLabel"
                         Margin="13"
                         TextColor="White"
-                        FontSize="34"
+                        FontSize="42"
                         MinFontSize="20"
                         HorizontalTextAlignment="Center"
-                        FontFamily="{StaticResource BoldFont}"
+                        FontFamily="{StaticResource MediumFont}"
                         Lines="0"
                         AbsoluteLayout.LayoutBounds=".5,.14,.9,.42" AbsoluteLayout.LayoutFlags="All"/>
                     <Label x:Name="HelpTextLabel"

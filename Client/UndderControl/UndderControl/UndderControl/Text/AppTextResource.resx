@@ -139,18 +139,17 @@
     <value>SUMMARY OF RESULTS</value>
   </data>
   <data name="AssessText1" xml:space="preserve">
-    <value>SDCT is widely regarded best practice during dry off and essential in reducing the use of antibiotics in the dairy industry. MSD Animal Health has provided this tool to assist vets and farmers to assess whether SDCT is right for them and then monitor success after SDCT has been implemented.</value>
+    <value>SDCT is widely regarded best practice during dry-off and essential in responsible usage of antibiotics in the dairy industry. MSD Animal Health has provided this tool to assist vets and farmers to assess whether the farm is ready to implement SDCT and then monitor success after SDCT has been implemented.</value>
   </data>
   <data name="AssessText2" xml:space="preserve">
-    <value>Once a farm has been analysed and the process of monitoring has begun, SDCT can help reduce the economic loss from discarded milk, medicine and treatment costs. Farm analysis and monitoring resulting in better management, can reduce the threat of new infection and the associated fatality costs, increased culling costs and reduced yield for
-the lactation.</value>
+    <value>Once a farm has been analysed and the process of monitoring has begun, SDCT can help reduce the economic loss from discarded milk, medicine and treatment costs. Farm analysis and monitoring resulting in better management, can reduce the threat of new infection and the associated fatality costs, increased culling costs and reduced yield for the lactation.</value>
   </data>
   <data name="AssessText3" xml:space="preserve">
-    <value>SDCT is based on analysing and monitoring the herd by gathering data through regular and repeated cow SCCs and accurate infection records.</value>
+    <value>SDCT is based on analysing and monitoring the herd by gathering data through regular and repeated cow SCCs and accurate infection records and diagnostics.</value>
   </data>
   <data name="AssessText4" xml:space="preserve">
     <value>SDCT can only be used if other best practice procedures are put into place, and this app will help to establish a pathway to using SDCT as common practice.
-All farms must conduct monthly cow SCC measurements (last cow SCC before dry off and the first SCC after calving) before implementing SDCT, or alternatively you may use another reliable test.</value>
+All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off and the first SCC after calving) before implementing SDCT, or alternatively you may use another reliable test.</value>
   </data>
   <data name="AssessTitle1" xml:space="preserve">
     <value>SELECTIVE DRY COW TREATMENT (SDCT) IS...</value>
@@ -168,10 +167,10 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>CALVING</value>
   </data>
   <data name="CowStatusButtonDryOff" xml:space="preserve">
-    <value>DRYOFF</value>
+    <value>DRY-OFF</value>
   </data>
   <data name="CowStatusFinishText1" xml:space="preserve">
-    <value>THANK YOU FOR PROVIDING THE DATA FOR THE DRYOFF PERIOD.</value>
+    <value>THANK YOU FOR PROVIDING THE DATA FOR THE DRY-OFF PERIOD.</value>
   </data>
   <data name="CowStatusFinishText2" xml:space="preserve">
     <value>Results and comparisons will be available once the calving data has been completed.</value>
@@ -192,7 +191,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>STATUS AT CALVING</value>
   </data>
   <data name="CowStatusInputTextDryoffStatus" xml:space="preserve">
-    <value>STATUS AT DRYOFF</value>
+    <value>STATUS AT DRY-OFF</value>
   </data>
   <data name="CowStatusInputTitle" xml:space="preserve">
     <value>INPUT DATA</value>
@@ -204,7 +203,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>Once SDCT has been implemented on farm it is important to monitor the herd to catch and fix any issues which may arise.</value>
   </data>
   <data name="CowStatusText2" xml:space="preserve">
-    <value>You will need to input the cow’s status at DRYOFF and CALVING.</value>
+    <value>You will need to input the cow’s status at DRY-OFF and CALVING.</value>
   </data>
   <data name="CowStatusText3" xml:space="preserve">
     <value>Data will be analysed and results will be available after calving information has been input.</value>
@@ -225,7 +224,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>INFECTED AFTER CALVING</value>
   </data>
   <data name="CsInfectedAtDryoff" xml:space="preserve">
-    <value>INFECTED AT DRYOFF</value>
+    <value>INFECTED AT DRY-OFF</value>
   </data>
   <data name="CsNewInfection" xml:space="preserve">
     <value>NEW INFECTION</value>
@@ -234,7 +233,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry off
     <value>NOT INFECTED AFTER CALVING</value>
   </data>
   <data name="CsNotInfectedAtDryoff" xml:space="preserve">
-    <value>NOT INFECTED AT DRYOFF</value>
+    <value>NOT INFECTED AT DRY-OFF</value>
   </data>
   <data name="CsPreventionOfNewInfection" xml:space="preserve">
     <value>PREVENTION OF NEW INFECTION</value>

@@ -7,10 +7,7 @@
              Title="{Binding Title}">
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
         <StackLayout.Padding>
-            <OnPlatform x:TypeArguments="Thickness"
-                iOS="21"
-                Android="21"
-                WinPhone="21" />
+            <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
         </StackLayout.Padding>
         <Label x:Name="PageText" Margin="13" TextColor="White" FontSize="34" HorizontalTextAlignment="Center" />
         <Label x:Name="PageCaption" Margin="13" FontSize="21" HorizontalTextAlignment="Center"/>

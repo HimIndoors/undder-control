@@ -124,7 +124,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SDCT is widely regarded best practice during dry off and essential in reducing the use of antibiotics in the dairy industry. MSD Animal Health has provided this tool to assist vets and farmers to assess whether SDCT is right for them and then monitor success after SDCT has been implemented..
+        ///   Looks up a localized string similar to SDCT is widely regarded best practice during dry-off and essential in responsible usage of antibiotics in the dairy industry. MSD Animal Health has provided this tool to assist vets and farmers to assess whether the farm is ready to implement SDCT and then monitor success after SDCT has been implemented..
         /// </summary>
         public static string AssessText1 {
             get {
@@ -133,8 +133,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Once a farm has been analysed and the process of monitoring has begun, SDCT can help reduce the economic loss from discarded milk, medicine and treatment costs. Farm analysis and monitoring resulting in better management, can reduce the threat of new infection and the associated fatality costs, increased culling costs and reduced yield for
-        ///the lactation..
+        ///   Looks up a localized string similar to Once a farm has been analysed and the process of monitoring has begun, SDCT can help reduce the economic loss from discarded milk, medicine and treatment costs. Farm analysis and monitoring resulting in better management, can reduce the threat of new infection and the associated fatality costs, increased culling costs and reduced yield for the lactation..
         /// </summary>
         public static string AssessText2 {
             get {
@@ -143,7 +142,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SDCT is based on analysing and monitoring the herd by gathering data through regular and repeated cow SCCs and accurate infection records..
+        ///   Looks up a localized string similar to SDCT is based on analysing and monitoring the herd by gathering data through regular and repeated cow SCCs and accurate infection records and diagnostics..
         /// </summary>
         public static string AssessText3 {
             get {
@@ -153,7 +152,7 @@ namespace UndderControl.Text {
         
         /// <summary>
         ///   Looks up a localized string similar to SDCT can only be used if other best practice procedures are put into place, and this app will help to establish a pathway to using SDCT as common practice.
-        ///All farms must conduct monthly cow SCC measurements (last cow SCC before dry off and the first SCC after calving) before implementing SDCT, or alternatively you may use another reliable test..
+        ///All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off and the first SCC after calving) before implementing SDCT, or alternatively you may use another reliable test..
         /// </summary>
         public static string AssessText4 {
             get {
@@ -207,7 +206,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DRYOFF.
+        ///   Looks up a localized string similar to DRY-OFF.
         /// </summary>
         public static string CowStatusButtonDryOff {
             get {
@@ -216,7 +215,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to THANK YOU FOR PROVIDING THE DATA FOR THE DRYOFF PERIOD..
+        ///   Looks up a localized string similar to THANK YOU FOR PROVIDING THE DATA FOR THE DRY-OFF PERIOD..
         /// </summary>
         public static string CowStatusFinishText1 {
             get {
@@ -279,7 +278,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to STATUS AT DRYOFF.
+        ///   Looks up a localized string similar to STATUS AT DRY-OFF.
         /// </summary>
         public static string CowStatusInputTextDryoffStatus {
             get {
@@ -315,7 +314,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You will need to input the cow’s status at DRYOFF and CALVING..
+        ///   Looks up a localized string similar to You will need to input the cow’s status at DRY-OFF and CALVING..
         /// </summary>
         public static string CowStatusText2 {
             get {
@@ -378,7 +377,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INFECTED AT DRYOFF.
+        ///   Looks up a localized string similar to INFECTED AT DRY-OFF.
         /// </summary>
         public static string CsInfectedAtDryoff {
             get {
@@ -405,7 +404,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NOT INFECTED AT DRYOFF.
+        ///   Looks up a localized string similar to NOT INFECTED AT DRY-OFF.
         /// </summary>
         public static string CsNotInfectedAtDryoff {
             get {

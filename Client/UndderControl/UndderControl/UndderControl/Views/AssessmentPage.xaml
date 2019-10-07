@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:custom="clr-namespace:UndderControl.Custom"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.AssessmentPage">
     <ContentPage.Content>
@@ -12,10 +11,7 @@
                 <ffimageloadingsvg:SvgCachedImage HorizontalOptions="FillAndExpand" Source="resource://UndderControl.Svg.head_assessment.svg"/>
                 <StackLayout>
                     <StackLayout.Padding>
-                        <OnPlatform x:TypeArguments="Thickness"
-                            iOS="21"
-                            Android="21"
-                            WinPhone="21" />
+                        <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31"/>
                     </StackLayout.Padding>
                     <Label x:Name="Title1" Style="{StaticResource TextSubtitle}" />
                     <Label x:Name="Text1" Style="{StaticResource Text}" />

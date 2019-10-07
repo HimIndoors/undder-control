@@ -10,29 +10,21 @@
     <ScrollView>
         <StackLayout>
             <StackLayout.Padding>
-                <OnPlatform x:TypeArguments="Thickness"
-                        iOS="21"
-                        Android="21" />
+                <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
             </StackLayout.Padding>
-            <StackLayout HeightRequest="400">
+            <StackLayout>
                 <StackLayout.Margin>
-                    <OnPlatform x:TypeArguments="Thickness" iOS="0,-31,0,0" Android="0,-13,0,0"/>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,0,0,0"/>
                 </StackLayout.Margin>
-                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0">
+                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="13" HeightRequest="320">
                     <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1.52" Android="1.4"  />
+                        <OnPlatform x:TypeArguments="x:Double" iOS="1.2" Android="1.2"  />
                     </chart:SfChart.Scale>
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
                     </chart:SfChart.Margin>
                     <chart:SfChart.Legend>
-                        <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Floating" OffsetX="350" OffsetY="800">
-                            <chart:ChartLegend.OffsetX>
-                                <OnPlatform x:TypeArguments="x:Double" iOS="130" Android="350" />
-                            </chart:ChartLegend.OffsetX>
-                            <chart:ChartLegend.OffsetY>
-                                <OnPlatform x:TypeArguments="x:Double" iOS="300" Android="800" />
-                            </chart:ChartLegend.OffsetY>
+                        <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Bottom" OffsetY="-90">
                             <chart:ChartLegend.LabelStyle>
                                 <chart:ChartLegendLabelStyle TextColor="black" />
                             </chart:ChartLegend.LabelStyle>

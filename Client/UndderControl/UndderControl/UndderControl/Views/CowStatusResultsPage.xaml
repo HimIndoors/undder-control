@@ -17,9 +17,7 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout.Padding>
-                    <OnPlatform x:TypeArguments="Thickness"
-                        iOS="21"
-                        Android="21" />
+                    <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
                 </StackLayout.Padding>
                 <StackLayout>
                     <Label x:Name="FarmName" FontSize="Title" FontFamily="{StaticResource BoldFont}"/>
@@ -50,30 +48,30 @@
                         <ColumnDefinition Width="0" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="   NOT INFECTED AT DRYOFF" Style="{StaticResource TableCell}" Grid.Row="1" Grid.Column="1"/>
+                    <Label Text=" NOT INFECTED AT DRY-OFF" Style="{StaticResource TableCell}" Grid.Row="1" Grid.Column="1"/>
                     <Label x:Name="Cell1KeyValue" Style="{StaticResource TableCellValue}" Grid.Row="1" Grid.Column="2"/>
-                    <Label Text="   INFECTED AT DRYOFF" Style="{StaticResource TableCell}" Grid.Row="2" Grid.Column="1"/>
+                    <Label Text=" INFECTED AT DRY-OFF" Style="{StaticResource TableCell}" Grid.Row="2" Grid.Column="1"/>
                     <Label x:Name="Cell2KeyValue" Style="{StaticResource TableCellValue}" Grid.Row="2" Grid.Column="2" />
-                    <Label Text="   NOT INFECTED AFTER CALVING" Style="{StaticResource TableCell}" Grid.Row="3" Grid.Column="1"/>
+                    <Label Text=" NOT INFECTED AFTER CALVING" Style="{StaticResource TableCell}" Grid.Row="3" Grid.Column="1"/>
                     <Label x:Name="Cell3KeyValue" Style="{StaticResource TableCellValue}" Grid.Row="3" Grid.Column="2" />
-                    <Label Text="   INFECTED AFTER CALVING" Style="{StaticResource TableCell}" Grid.Row="4" Grid.Column="1"/>
+                    <Label Text=" INFECTED AT DRY-OFF" Style="{StaticResource TableCell}" Grid.Row="4" Grid.Column="1"/>
                     <Label x:Name="Cell4KeyValue" Style="{StaticResource TableCellValue}" Grid.Row="4" Grid.Column="2" />
-                    <Label Text="   NEW INFECTION" Style="{StaticResource TableCell}" Grid.Row="5" Grid.Column="1"/>
+                    <Label Text=" NEW INFECTION" Style="{StaticResource TableCell}" Grid.Row="5" Grid.Column="1"/>
                     <Label x:Name="Cell5KeyValue" Style="{StaticResource TableCellValue}" Grid.Row="5" Grid.Column="2" />
-                    <Label Text="   PREVENTION OF NEW INFECTION" Style="{StaticResource TableCell}" Grid.Row="6" Grid.Column="1"/>
+                    <Label Text=" PREVENTION OF NEW INFECTION" Style="{StaticResource TableCell}" Grid.Row="6" Grid.Column="1"/>
                     <Label x:Name="Cell6KeyValue" Style="{StaticResource TableCellValue}" Grid.Row="6" Grid.Column="2" />
-                    <Label Text="   FAILURE TO CURE" Style="{StaticResource TableCell}" Grid.Row="7" Grid.Column="1"/>
+                    <Label Text=" FAILURE TO CURE" Style="{StaticResource TableCell}" Grid.Row="7" Grid.Column="1"/>
                     <Label x:Name="Cell7KeyValue" Style="{StaticResource TableCellValue}" Grid.Row="7" Grid.Column="2"/>
-                    <Label Text="   CURE" Style="{StaticResource TableCell}" Grid.Row="8" Grid.Column="1"/>
+                    <Label Text=" CURE" Style="{StaticResource TableCell}" Grid.Row="8" Grid.Column="1"/>
                     <Label x:Name="Cell8KeyValue" Style="{StaticResource TableCellValue}" Grid.Row="8" Grid.Column="2" />
 
-                    <Label Text="   NEW INFECTION RATE (%)" Style="{StaticResource TableCell}" Grid.Row="10" Grid.Column="1" />
+                    <Label Text=" NEW INFECTION RATE (%)" Style="{StaticResource TableCell}" Grid.Row="10" Grid.Column="1" />
                     <Label x:Name="CellniRate" Style="{StaticResource TableCellValue}" Grid.Row="10" Grid.Column="2"/>
-                    <Label Text="   PREVENTION RATE(%)" Style="{StaticResource TableCell}" Grid.Row="11" Grid.Column="1"/>
+                    <Label Text=" PREVENTION RATE(%)" Style="{StaticResource TableCell}" Grid.Row="11" Grid.Column="1"/>
                     <Label x:Name="CellpRate" Style="{StaticResource TableCellValue}" Grid.Row="11" Grid.Column="2"/>
-                    <Label Text="   FAILURE TO CURE RATE (%)" Style="{StaticResource TableCell}" Grid.Row="12" Grid.Column="1"/>
+                    <Label Text=" FAILURE TO CURE RATE (%)" Style="{StaticResource TableCell}" Grid.Row="12" Grid.Column="1"/>
                     <Label x:Name="CellftcRate" Style="{StaticResource TableCellValue}" Grid.Row="12" Grid.Column="2"/>
-                    <Label Text="   CURE RATE (%)" Style="{StaticResource TableCell}" Grid.Row="13" Grid.Column="1"/>
+                    <Label Text=" CURE RATE (%)" Style="{StaticResource TableCell}" Grid.Row="13" Grid.Column="1"/>
                     <Label x:Name="CellcRate" Style="{StaticResource TableCellValue}" Grid.Row="13" Grid.Column="2"/>
 
                     <BoxView HeightRequest="1" BackgroundColor="White" Grid.Row="0" Grid.ColumnSpan="4" />
@@ -82,7 +80,7 @@
                     <BoxView WidthRequest="1" BackgroundColor="White" Grid.RowSpan="10" Grid.Column="0" />
                     <BoxView WidthRequest="1" BackgroundColor="White" Grid.RowSpan="10" Grid.Column="3" />
                 </Grid>
-                <numeric:SfNumericUpDown x:Name="numericUpDown" Value="{Binding NiThreshold}" FormatString="p" PercentDisplayMode="Value" MaximumDecimalDigits="0" Margin="0,8"/>
+                <numeric:SfNumericUpDown x:Name="numericUpDown" Value="{Binding NiThreshold}" FormatString="p" PercentDisplayMode="Value" MaximumDecimalDigits="0" Margin="0,8" ValueChangeMode="OnKeyFocus" Maximum="100"/>
                 <Slider Maximum="100" Minimum="0" Value="{Binding NiThreshold}" Margin="0,8"/>
                 <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
                     <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource ResultSubtitle}" Margin="0"/>
@@ -131,12 +129,15 @@
                                     <chart:ChartAxisTickStyle TickSize="8">
                                     </chart:ChartAxisTickStyle>
                                 </chart:CategoryAxis.MajorTickStyle>
+                                <chart:CategoryAxis.LabelStyle>
+                                    <chart:ChartAxisLabelStyle TextColor="black" />
+                                </chart:CategoryAxis.LabelStyle>
                             </chart:CategoryAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
                             <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
                                 <chart:NumericalAxis.LabelStyle>
-                                    <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle1"/>
+                                    <chart:ChartAxisLabelStyle TextColor="Black"/>
                                 </chart:NumericalAxis.LabelStyle>
                                 <chart:NumericalAxis.AxisLineStyle>
                                     <chart:ChartLineStyle StrokeWidth="0" />
@@ -147,12 +148,16 @@
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
                         <chart:SfChart.Legend>
-                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14" />
+                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14">
+                                <chart:ChartLegend.LabelStyle>
+                                    <chart:ChartLegendLabelStyle TextColor="Black" />
+                                </chart:ChartLegend.LabelStyle>
+                            </chart:ChartLegend>
                         </chart:SfChart.Legend>
                         <chart:SfChart.Series>
-                            <chart:StackingColumn100Series x:Name="series1" ItemsSource="{Binding NiRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="Healthy" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
+                            <chart:StackingColumn100Series ItemsSource="{Binding NiRateNewInfection}" XBindingPath="Name" YBindingPath="Value" Label="NEW INFECTION" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
-                            <chart:StackingColumn100Series x:Name="series2" ItemsSource="{Binding NiRateNewInfection}" XBindingPath="Name" YBindingPath="Value" Label="New infection" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
+                            <chart:StackingColumn100Series ItemsSource="{Binding NiRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="HEALTHY" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>
@@ -214,12 +219,15 @@
                                     <chart:ChartAxisTickStyle TickSize="8">
                                     </chart:ChartAxisTickStyle>
                                 </chart:CategoryAxis.MajorTickStyle>
+                                <chart:CategoryAxis.LabelStyle>
+                                    <chart:ChartAxisLabelStyle TextColor="black" />
+                                </chart:CategoryAxis.LabelStyle>
                             </chart:CategoryAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
                             <chart:NumericalAxis Maximum="0" Minimum="100" Interval="10">
                                 <chart:NumericalAxis.LabelStyle>
-                                    <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle2"/>
+                                    <chart:ChartAxisLabelStyle TextColor="Black"/>
                                 </chart:NumericalAxis.LabelStyle>
                                 <chart:NumericalAxis.AxisLineStyle>
                                     <chart:ChartLineStyle StrokeWidth="0" />
@@ -230,12 +238,16 @@
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
                         <chart:SfChart.Legend>
-                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14" />
+                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14">
+                                <chart:ChartLegend.LabelStyle>
+                                    <chart:ChartLegendLabelStyle TextColor="Black" />
+                                </chart:ChartLegend.LabelStyle>
+                            </chart:ChartLegend>
                         </chart:SfChart.Legend>
                         <chart:SfChart.Series>
-                            <chart:StackingColumn100Series x:Name="series3" ItemsSource="{Binding CureRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="Cure rare" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
+                            <chart:StackingColumn100Series ItemsSource="{Binding CureRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="CURE RATE" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
-                            <chart:StackingColumn100Series x:Name="series4" ItemsSource="{Binding CureRateInfected}" XBindingPath="Name" YBindingPath="Value" Label="Failure to cure" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
+                            <chart:StackingColumn100Series ItemsSource="{Binding CureRateInfected}" XBindingPath="Name" YBindingPath="Value" Label="FAILURE TO CURE" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>

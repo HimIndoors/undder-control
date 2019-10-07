@@ -85,16 +85,16 @@
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
                         <chart:SfChart.Legend>
-                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14">
+                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Bottom" IconWidth="14" IconHeight="14">
                                 <chart:ChartLegend.LabelStyle>
                                     <chart:ChartLegendLabelStyle TextColor="Black" />
                                 </chart:ChartLegend.LabelStyle>
                             </chart:ChartLegend>
                         </chart:SfChart.Legend>
                         <chart:SfChart.Series>
-                            <chart:StackingColumn100Series x:Name="series1" ItemsSource="{Binding NiRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="HEALTHY" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
+                            <chart:StackingColumn100Series ItemsSource="{Binding NiRateNewInfection}" XBindingPath="Name" YBindingPath="Value" Label="NEW INFECTION" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
-                            <chart:StackingColumn100Series x:Name="series2" ItemsSource="{Binding NiRateNewInfection}" XBindingPath="Name" YBindingPath="Value" Label="NEW INFECTION" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
+                            <chart:StackingColumn100Series ItemsSource="{Binding NiRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="HEALTHY" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>
@@ -175,16 +175,16 @@
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
                         <chart:SfChart.Legend>
-                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Right" IconWidth="14" IconHeight="14">
+                            <chart:ChartLegend ToggleSeriesVisibility="True" DockPosition="Bottom" IconWidth="14" IconHeight="14">
                                 <chart:ChartLegend.LabelStyle>
                                     <chart:ChartLegendLabelStyle TextColor="Black" />
                                 </chart:ChartLegend.LabelStyle>
                             </chart:ChartLegend>
                         </chart:SfChart.Legend>
                         <chart:SfChart.Series>
-                            <chart:StackingColumn100Series ItemsSource="{Binding CureRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="Cure rare" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
+                            <chart:StackingColumn100Series ItemsSource="{Binding CureRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="CURE RATE" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
-                            <chart:StackingColumn100Series ItemsSource="{Binding CureRateInfected}" XBindingPath="Name" YBindingPath="Value" Label="Failure to cure" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
+                            <chart:StackingColumn100Series ItemsSource="{Binding CureRateInfected}" XBindingPath="Name" YBindingPath="Value" Label="FAIURE TO CURE" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>

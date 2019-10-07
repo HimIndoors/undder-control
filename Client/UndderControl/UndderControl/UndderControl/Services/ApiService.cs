@@ -19,6 +19,8 @@ namespace UndderControl.Services
                     BaseAddress = new Uri(apiBaseAddress)
                 };
 
+                client.DefaultRequestHeaders.Add("X-App-Token", Config.AppKey);
+
                 return RestService.For<T>(client);
             };
         }

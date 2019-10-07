@@ -104,45 +104,19 @@
                 <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
                 <Setter Property="HeightRequest" Value="80"/>
             </Style>
-            <ControlTemplate x:Key="MenuPageTemplate">
-
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="110"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- Begin Header -->
-                    <StackLayout
-            Orientation="Vertical"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            Spacing="0"
-            BackgroundColor="#2B2B2B"
-            HeightRequest="100"
-            Grid.Column="0" Grid.Row="0">
-                        <StackLayout.Padding>
-                            <OnPlatform x:TypeArguments="Thickness"
-                            iOS="10, 10, 10, 10"
-                            Android="10, 10, 10, 10"
-                            WinPhone="10, 10, 10, 10" />
-                        </StackLayout.Padding>
-                        <!-- My header content to make my app the prettiest. -->
-                        <Image Source="{local:ImageResource UndderControl.Assets.burger.png}" WidthRequest="30" HeightRequest="30">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMenuButtonPressed" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </StackLayout>
-                    <!-- End Header -->
-
-                    <!-- Begin Content -->
-                    <ScrollView Grid.Column="0" Grid.Row="1">
-                        <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
-                    </ScrollView>
-                    <!-- End Content -->
-                </Grid>
-            </ControlTemplate>
+            <Style TargetType="Label" x:Key="TableCell">
+                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+            <Style TargetType="Label" x:Key="TableCellValue">
+                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="18" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

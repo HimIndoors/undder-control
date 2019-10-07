@@ -39,6 +39,27 @@ namespace UndderControl.ViewModels
             }
         }
 
+        private int _niThreshold;
+        public int NiThreshold
+        {
+            get { return _niThreshold; }
+            set
+            {
+                _niThreshold = value;
+                RaisePropertyChanged("NiThreshold");
+            }
+        }
+
+        private int _cureThreshold;
+        public int CureThreshold
+        {
+            get { return _cureThreshold; }
+            set
+            {
+                _cureThreshold = value;
+                RaisePropertyChanged("CureThreshold");
+            }
+        }
 
         #region Graph Data
         private ObservableCollection<ChartDataModel> _niRateHealthy;
@@ -87,6 +108,8 @@ namespace UndderControl.ViewModels
             : base(navigationService, metricsManager)
         {
             Title = AppTextResource.SummaryResultTitle;
+            _niThreshold = 10;
+            _cureThreshold = 85;
             Init();
         }
 

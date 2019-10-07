@@ -9,6 +9,7 @@ using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using Syncfusion.SfNumericTextBox.XForms.iOS;
+using Syncfusion.SfNumericUpDown.XForms.iOS;
 using Syncfusion.XForms.iOS.Border;
 using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.ComboBox;
@@ -39,13 +40,8 @@ namespace UndderControl.iOS
 
             new SfComboBoxRenderer();
             new SfNumericTextBoxRenderer();
-            new SfBusyIndicatorRenderer();
             Forms9Patch.iOS.Settings.Initialize(this);
-
-            LoadApplication(new App(new iOSInitializer()));
-
-            AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
-
+            SfNumericUpDownRenderer.Init();
             SfChartRenderer.Init();
             SfSegmentedControlRenderer.Init();
             SfListViewRenderer.Init();
@@ -53,6 +49,10 @@ namespace UndderControl.iOS
             SfBorderRenderer.Init();
             SfButtonRenderer.Init();
             SfMaskedEditRenderer.Init();
+
+            LoadApplication(new App(new iOSInitializer()));
+
+            AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
 
             CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();

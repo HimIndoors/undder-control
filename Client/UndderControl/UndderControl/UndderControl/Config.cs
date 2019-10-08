@@ -15,7 +15,7 @@ namespace UndderControl
         public static string AppCenterIosKey = "ios=e106c265-bdad-4dd2-96ca-64677c07d169;";
 
         public static double MonkeyCacheExpiry = 7;
-        public static bool TestMode = false;
+        public static bool TestMode = true;
 
         public static string SurveyFileName = "sdct.survey.json";
     }

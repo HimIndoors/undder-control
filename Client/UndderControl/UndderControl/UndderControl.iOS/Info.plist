@@ -25,7 +25,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.pmn.UndderControl</string>
 	<key>CFBundleVersion</key>
-	<string>1.6</string>
+	<string>1.7</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -41,6 +41,17 @@
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
+      <key>services.merck-animal-health.com</key>
+      <dict>
+        <key>NSExceptionMinimumTLSVersion</key>
+        <string>TLSv1.0</string>
+        <key>NSExceptionRequiresForwardSecrecy</key>
+        <false/>
+        <key>NSExceptionAllowsInsecureHTTPLoads</key>
+        <true/>
+        <key>NSIncludesSubdomains</key>
+        <true/>
+      </dict>
 		</dict>
 	</dict>
 	<key>CFBundleName</key>

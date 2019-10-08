@@ -6,6 +6,9 @@
                   xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="UndderControl.Views.SdctMasterDetailPage">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+    </NavigationPage.TitleView>
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
             <StackLayout HorizontalOptions="StartAndExpand">

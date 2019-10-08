@@ -6,6 +6,9 @@
              xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyPage">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#97CABD">
             <ffimageloadingsvg:SvgCachedImage Source="resource://UndderControl.Svg.blank_background.svg" HorizontalOptions="EndAndExpand" x:Name="StageBackground"/>

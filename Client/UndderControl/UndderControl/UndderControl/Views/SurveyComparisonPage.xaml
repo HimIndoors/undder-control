@@ -5,8 +5,10 @@
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="UndderControl.Views.SurveyComparisonPage"
-             Title="{Binding Title}">
+             x:Class="UndderControl.Views.SurveyComparisonPage">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+    </NavigationPage.TitleView>
     <ScrollView>
         <StackLayout>
             <StackLayout.Padding>

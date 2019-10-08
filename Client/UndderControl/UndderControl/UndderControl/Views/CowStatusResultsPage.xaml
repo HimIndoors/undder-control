@@ -5,11 +5,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:helpers="clr-namespace:UndderControl.Helpers"
-             xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms"
-             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
-             x:Class="UndderControl.Views.CowStatusResultsPage"
-             Title="{Binding Title}">
+             x:Class="UndderControl.Views.CowStatusResultsPage">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+    </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>
             <helpers:HtmlSourceConverter x:Key="htmlSource" />

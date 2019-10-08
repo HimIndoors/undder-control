@@ -6,6 +6,9 @@
              x:Class="UndderControl.Views.TermsPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+    </NavigationPage.TitleView>
     <StackLayout>
         <StackLayout.Padding>
             <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />

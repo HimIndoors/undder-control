@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="UndderControl.Views.NoResultsComparisonPage"
-             Title="{Binding Title}">
+             x:Class="UndderControl.Views.NoResultsComparisonPage">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+    </NavigationPage.TitleView>
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
         <StackLayout.Padding>
             <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />

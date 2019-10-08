@@ -6,8 +6,10 @@
              xmlns:segmentCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="UndderControl.Views.CowStatusInputPage"
-             Title="{Binding Title}">
+             x:Class="UndderControl.Views.CowStatusInputPage">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+    </NavigationPage.TitleView>
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
     </ContentPage.Padding>

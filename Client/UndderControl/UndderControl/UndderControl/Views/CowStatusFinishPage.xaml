@@ -10,10 +10,15 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout VerticalOptions="CenterAndExpand">
-                <ffimageloadingsvg:SvgCachedImage Source="resource://UndderControl.Svg.tick.svg" HorizontalOptions="Center" HeightRequest="100" Aspect="AspectFit" />
-                <Label x:Name="Text1" Margin="13" TextColor="White" FontSize="34" HorizontalTextAlignment="Center"/>
-                <Label x:Name="Text2" Margin="13" FontSize="21" HorizontalTextAlignment="Center"/>
+            <StackLayout>
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <ffimageloadingsvg:SvgCachedImage Source="resource://UndderControl.Svg.tick.svg" HorizontalOptions="Center" HeightRequest="100" Aspect="AspectFit" />
+                    <Label x:Name="Text1" Margin="13" TextColor="White" FontSize="34" HorizontalTextAlignment="Center"/>
+                    <Label x:Name="Text2" Margin="13" FontSize="21" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout VerticalOptions="End">
+                    <Button Text="HOME" Command="{Binding OnNavigate}" CommandParameter="/SdctMasterDetailPage/NavigationPage/RootPage" />
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

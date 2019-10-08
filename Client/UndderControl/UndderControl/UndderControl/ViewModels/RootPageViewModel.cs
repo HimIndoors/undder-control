@@ -176,7 +176,7 @@ namespace UndderControl.ViewModels
         async void NavigateAsync(string page)
         {
             MetricsManager.TrackEvent("Navigate: " + page);
-            await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+            await NavigationService.NavigateAsync(new Uri(page, UriKind.Absolute));
         }
         async void EditFarm()
         {

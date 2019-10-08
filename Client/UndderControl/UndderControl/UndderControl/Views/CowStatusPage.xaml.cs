@@ -10,9 +10,9 @@ namespace UndderControl.Views
             InitializeComponent();
             #region TextSetup
             Text1.Text = AppTextResource.CowStatusText1;
-            Text2.Text = AppTextResource.CowStatusText2;
+            Text2.HtmlText = AppTextResource.CowStatusText2;
             Text3.Text = AppTextResource.CowStatusText3;
-            Text4.Text = AppTextResource.CowStatusText4;
+            Text4.HtmlText = AppTextResource.CowStatusText4;
             Text5.Text = AppTextResource.CowStatusText5;
             InputTitle.Text = AppTextResource.CowStatusInputTitle;
             InputCaption.Text = AppTextResource.CowStatusInputCaption;

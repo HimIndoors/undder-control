@@ -314,7 +314,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You will need to input the cow’s status at DRY-OFF and CALVING..
+        ///   Looks up a localized string similar to You will need to input the cow’s status at &lt;b&gt;DRY-OFF&lt;/b&gt; and &lt;b&gt;CALVING&lt;/b&gt;..
         /// </summary>
         public static string CowStatusText2 {
             get {
@@ -332,7 +332,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The definition of ‘infected’ is based on the internationally agreed SCC threshold of 200k cells/ml, or alternatively you may use your own threshold if desired..
+        ///   Looks up a localized string similar to The definition of &lt;b&gt;‘infected’&lt;/b&gt; is based on the internationally agreed SCC threshold of 200k cells/ml, or alternatively you may use your own threshold if desired..
         /// </summary>
         public static string CowStatusText4 {
             get {

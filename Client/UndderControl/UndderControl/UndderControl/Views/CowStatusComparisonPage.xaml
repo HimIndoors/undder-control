@@ -20,7 +20,7 @@
                     <Label x:Name="ResultDate" Text="{Binding ResultYear}" FontSize="Medium" FontAttributes="Bold"/>
                 </StackLayout>
                 <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
-                    <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="#009994" TextColor="White" Margin="0"/>
+                    <Label Text="NEW INFECTION RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="#009994" TextColor="White" Margin="0" FontFamily="{StaticResource BoldFont}"/>
                 </ContentView>
                 <StackLayout HeightRequest="400">
                     <StackLayout.Resources>
@@ -110,7 +110,7 @@
                     </chart:SfChart>
                 </StackLayout>
                 <ContentView Padding="8" Margin="0,0,0,-6" BackgroundColor="#009994">
-                    <Label Text="CURE RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="#009994" Margin="0"/>
+                    <Label Text="CURE RATE (%)" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="#009994" Margin="0" FontFamily="{StaticResource BoldFont}"/>
                 </ContentView>
                 <StackLayout HeightRequest="400">
                     <StackLayout.Resources>

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.CowStatusPage"
              Title="{Binding Title}">
@@ -12,9 +13,9 @@
         <ScrollView>
             <StackLayout>
                 <Label x:Name="Text1" Style="{StaticResource Text}" />
-                <Label x:Name="Text2" Style="{StaticResource Text}" />
+                <f9p:Label x:Name="Text2" Style="{StaticResource Text}" />
                 <Label x:Name="Text3" Style="{StaticResource Text}" />
-                <Label x:Name="Text4" Style="{StaticResource Text}" />
+                <f9p:Label x:Name="Text4" Style="{StaticResource Text}" />
                 <Label x:Name="Text5" Style="{StaticResource Text}" />
                 <Label x:Name="InputTitle" Style="{StaticResource InputTitle}" HorizontalOptions="CenterAndExpand" />
                 <Label x:Name="InputCaption" Style="{StaticResource InputCaption}" HorizontalOptions="CenterAndExpand" />

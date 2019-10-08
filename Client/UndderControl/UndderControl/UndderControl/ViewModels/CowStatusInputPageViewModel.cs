@@ -73,7 +73,29 @@ namespace UndderControl.ViewModels
             }
         }
 
-        public string TestCowId { get; set; }
+        private string cowId;
+        public string CowId
+        {
+            get { return cowId; }
+            set
+            {
+                cowId = value;
+                IsIdEmpty = false;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool isIdEmpty;
+        public bool IsIdEmpty
+        {
+            get { return isIdEmpty; }
+            set
+            {
+                isIdEmpty = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public bool CowInfected { get; set; }
 
         readonly IEventAggregator _EventAggregator;
@@ -89,6 +111,7 @@ namespace UndderControl.ViewModels
 
         private async void NextInput()
         {
+            IsIdEmpty = string.IsNullOrEmpty(CowId);
             CowStatusDto cs = InitCowStatus();
             CowStatusValidator validator = new CowStatusValidator();
             ValidationResult result = validator.Validate(cs);
@@ -97,16 +120,11 @@ namespace UndderControl.ViewModels
                 if (!Config.TestMode) await RunSafe(UploadCowStatus(cs));
                 _EventAggregator.GetEvent<CowStatusRefreshEvent>().Publish();
             }
-            else
-            {
-                ValidationErrorMessage = result.Errors[0].ErrorMessage;
-                ShowValidationErrors = true;
-            }
-
         }
 
         private async void FinishInput()
         {
+            IsIdEmpty = string.IsNullOrEmpty(CowId);
             CowStatusDto cs = InitCowStatus();
             CowStatusValidator validator = new CowStatusValidator();
             ValidationResult result = validator.Validate(cs);
@@ -121,11 +139,6 @@ namespace UndderControl.ViewModels
                     await NavigationService.NavigateAsync("CowStatusResultsPage");
                 }
 
-            }
-            else
-            {
-                ValidationErrorMessage = result.Errors[0].ErrorMessage;
-                ShowValidationErrors = true;
             }
         }
 
@@ -166,14 +179,14 @@ namespace UndderControl.ViewModels
             CowStatusDto cowStatus = new CowStatusDto();
             if (InputMode.Equals("dryoff"))
             {
-                cowStatus.CowIdentifier = TestCowId;
+                cowStatus.CowIdentifier = CowId;
                 cowStatus.InfectedAtDryOff = CowInfected;
                 cowStatus.Farm_ID = App.SelectedFarm.ID;
                 cowStatus.DateAddedDryOff = DateTime.Now;
             }
             else
             {
-                cowStatus.CowIdentifier = TestCowId;
+                cowStatus.CowIdentifier = CowId;
                 cowStatus.InfectedAtCalving = CowInfected;
                 cowStatus.Farm_ID = App.SelectedFarm.ID;
                 cowStatus.DateAddedCalving = DateTime.Now;

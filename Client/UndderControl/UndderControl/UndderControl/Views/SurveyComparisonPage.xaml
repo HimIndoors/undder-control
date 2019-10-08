@@ -20,13 +20,16 @@
                 </StackLayout.Margin>
                 <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="13" HeightRequest="320">
                     <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1.2" Android="1.2"  />
+                        <OnPlatform x:TypeArguments="x:Double" iOS="1.7" Android="1.2"  />
                     </chart:SfChart.Scale>
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
                     </chart:SfChart.Margin>
                     <chart:SfChart.Legend>
-                        <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Bottom" OffsetY="-90">
+                        <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Bottom">
+                            <chart:ChartLegend.OffsetY>
+                                <OnPlatform x:TypeArguments="x:Double" Android="-90" iOS="-55" />
+                            </chart:ChartLegend.OffsetY>
                             <chart:ChartLegend.LabelStyle>
                                 <chart:ChartLegendLabelStyle TextColor="black" />
                             </chart:ChartLegend.LabelStyle>

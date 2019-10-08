@@ -17,6 +17,7 @@ namespace UndderControl.Views
             InitializeComponent();
             _vm = BindingContext as CowStatusResultsPageViewModel;
             FarmName.Text = App.SelectedFarm.Name;
+            CompareButton.Text = AppTextResource.SurveyResultCompareButton.ToUpper();
 
             var newInfectionRate = (int)Math.Round((double)(100 * _vm.Results[AppTextResource.CsNewInfection]) / _vm.Results[AppTextResource.CsNotInfectedAtDryoff]);
             var preventionRate = (int)Math.Round((double)(100 * _vm.Results[AppTextResource.CsPreventionOfNewInfection]) / _vm.Results[AppTextResource.CsNotInfectedAtDryoff]);

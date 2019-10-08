@@ -122,42 +122,13 @@ namespace UndderControl.ViewModels
 
         async void NavigateAsync()
         {
-            try
+            if (App.PreviousSurveyResponse != null)
             {
-                await RunSafe(GetResponses());
-            }
-            catch (Exception ex)
-            {
-                MetricsManager.TrackException("GetSurveyResponsesFailed", ex);
-            }
-
-            if (_responses != null && _responses.Count > 1)
-            {
-                var navigationParams = new NavigationParameters
-                {
-                    { "responses", _responses }
-                };
-                await NavigationService.NavigateAsync("SurveyComparisonPage", navigationParams);
+                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/SurveyComparisonPage");
             }
             else
             {
                 await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/NoResultComparisonPage");
-            }
-        }
-
-        async Task GetResponses()
-        {
-            var response = await ApiManager.GetResponseByFarmId(App.SelectedFarm.ID);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var responseString = await response.Content.ReadAsStringAsync();
-                var json = await Task.Run(() => JsonConvert.DeserializeObject<List<SurveyResponseDto>>(responseString));
-                _responses = json;
-            }
-            else
-            {
-                await PageDialog.AlertAsync("Unable to retrieve survey response data", "Error", "OK");
             }
         }
     }

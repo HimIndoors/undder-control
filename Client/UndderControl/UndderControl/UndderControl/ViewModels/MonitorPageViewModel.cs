@@ -93,9 +93,9 @@ namespace UndderControl.ViewModels
         {
             if (page.Equals("CowStatusComparisonPage") && App.PreviousCowStatusData == null)
 
-                await NavigationService.NavigateAsync(new Uri("NoResultsComparisonPage", UriKind.Relative));
+                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/NoResultsComparisonPage");
             else
-                await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+                await NavigationService.NavigateAsync(page);
         }
 
         bool CanSummaryNavigate(string obj)

@@ -115,7 +115,7 @@ namespace UndderControl.ViewModels
         private async void NavigateAsync(string page)
         {
             MetricsManager.TrackEvent("Navigate: " + page);
-            await NavigationService.NavigateAsync(new Uri(page, UriKind.Relative));
+            await NavigationService.NavigateAsync(page);
         }
 
         private bool CanSummaryNavigate(string arg)

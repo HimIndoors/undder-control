@@ -1,13 +1,10 @@
 ﻿using Acr.UserDialogs;
-using Newtonsoft.Json;
-using Prism.Events;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using UndderControl.Custom;
-using UndderControl.Events;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControl.Text;
@@ -84,6 +81,9 @@ namespace UndderControl.ViewModels
                 RaisePropertyChanged("FailCureThreshold");
             }
         }
+
+        private DelegateCommand _compareCommand;
+        public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
 
         #region Graph Data
         private ObservableCollection<ChartDataModel> _niRateHealthy;
@@ -219,6 +219,18 @@ namespace UndderControl.ViewModels
 
             //Set result date
             ResultYear = _cowStatusList[0].DateAddedCalving.Value.Year;
+        }
+
+        private async void NavigateAsync()
+        {
+            if (App.PreviousCowStatusData != null)
+            {
+                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/CowStatusComparisonPage");
+            }
+            else
+            {
+                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/NoResultComparisonPage");
+            }
         }
     }
 }

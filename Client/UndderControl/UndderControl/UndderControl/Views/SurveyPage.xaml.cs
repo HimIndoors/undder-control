@@ -17,7 +17,7 @@ namespace UndderControl.Views
         public SurveyPage(IEventAggregator ea)
         {
             InitializeComponent();
-            StartQuestionsButton.Text = AppTextResource.SurveyStartQuestionsButton;
+            StartQuestionsButton.Text = AppTextResource.SurveyStartQuestionsButton.ToUpper(); //Force Uppercase
             YesButton.Text = AppTextResource.SurveyYesButton.ToUpper(); //Force Uppercase
             NoButton.Text = AppTextResource.SurveyNoButton.ToUpper(); //Force Uppercase
             _viewModel = BindingContext as SurveyPageViewModel;

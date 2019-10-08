@@ -22,7 +22,7 @@
                             Margin="40,0"
                             FontSize="33"
                             TextColor="White" HorizontalTextAlignment="Center" />
-                        <Button x:Name="StartQuestionsButton" Text="START QUESTIONS"
+                        <Button x:Name="StartQuestionsButton" 
                             HorizontalOptions="Center"
                             BackgroundColor="White" BorderColor="White" BorderRadius="10"
                             Command="{Binding StartStageCommand}" Margin="0,34"/>
@@ -48,7 +48,7 @@ FARM IS TO IMPLEMENTS SDCT
                         Margin="13"
                         TextColor="White"
                         FontSize="42"
-                        MinFontSize="20"
+                        MinFontSize="18"
                         HorizontalTextAlignment="Center"
                         FontFamily="{StaticResource MediumFont}"
                         Lines="0"

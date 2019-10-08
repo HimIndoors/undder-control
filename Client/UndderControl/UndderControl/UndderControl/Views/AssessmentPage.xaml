@@ -22,9 +22,9 @@
                     <Label x:Name="Title4" Style="{StaticResource TextSubtitle}" />
                     <Label x:Name="Text4" Style="{StaticResource Text}"/>
                     <StackLayout Margin="0,21,0,0">
-                        <Button x:Name="QuestionButton" Command="{Binding OnNavigateCommand}" CommandParameter="SurveyPage" HeightRequest="70" />
-                        <Button x:Name="SummaryButton" Command="{Binding OnSummaryCommand}" CommandParameter="SurveyResultsPage" HeightRequest="70" Margin="0,10,0,0"/>
-                        <Button x:Name="CompareButton" Command="{Binding OnCompareCommand}" CommandParameter="SurveyComparisonPage" HeightRequest="70" Margin="0,10,0,0"/>
+                        <Button x:Name="QuestionButton" Command="{Binding OnNavigateCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/SurveyPage" HeightRequest="70" />
+                        <Button x:Name="SummaryButton" Command="{Binding OnSummaryCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/SurveyResultsPage" HeightRequest="70" Margin="0,10,0,0"/>
+                        <Button x:Name="CompareButton" Command="{Binding OnCompareCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/SurveyComparisonPage" HeightRequest="70" Margin="0,10,0,0"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

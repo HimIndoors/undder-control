@@ -317,6 +317,7 @@
                         </chart:SfChart.ChartAnnotations>
                     </chart:SfChart>
                 </StackLayout>
+                <Button x:Name="CompareButton" Command="{Binding CompareCommand}" HeightRequest="70" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

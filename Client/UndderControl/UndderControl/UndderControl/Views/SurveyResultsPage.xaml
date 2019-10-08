@@ -21,7 +21,7 @@
             <StackLayout>
                 <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" HeightRequest="300">
                     <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1.2" Android="1.2" />
+                        <OnPlatform x:TypeArguments="x:Double" iOS="1.7" Android="1.2" />
                     </chart:SfChart.Scale>
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />

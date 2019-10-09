@@ -8,7 +8,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
              x:Class="UndderControl.Views.CowStatusResultsPage">
     <NavigationPage.TitleView>
-        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+        <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>

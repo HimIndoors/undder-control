@@ -142,7 +142,6 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1367" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Custom\CustomNavigationPageRenderer.cs" />
     <Compile Include="Custom\ExtendedWebViewRenderer.cs">
       <SubType>Code</SubType>
     </Compile>

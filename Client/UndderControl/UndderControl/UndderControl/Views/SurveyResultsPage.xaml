@@ -7,7 +7,7 @@
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch">
     <NavigationPage.TitleView>
-        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+        <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
     <ScrollView>
         <StackLayout>
@@ -21,9 +21,9 @@
                 </Frame>
             </StackLayout>
             <StackLayout>
-                <chart:SfChart x:Name="Chart" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" ChartPadding="0" HeightRequest="400">
+                <chart:SfChart x:Name="Chart" HorizontalOptions="Center" VerticalOptions="Center" ChartPadding="0" HeightRequest="400">
                     <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1.7" Android="1" />
+                        <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1" />
                     </chart:SfChart.Scale>
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />

@@ -25,7 +25,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.pmn.UndderControl</string>
 	<key>CFBundleVersion</key>
-	<string>1.8</string>
+	<string>1.9</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -68,8 +68,8 @@
 	<array>
 		<string>dinot.otf</string>
 		<string>dinot-bold.otf</string>
-    <string>dinot-medium.otf</string>
-    <string>fontello.ttf</string>
+		<string>dinot-medium.otf</string>
+		<string>fontello.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -5,12 +5,15 @@
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.CowStatusFinishPage">
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
-    </ContentPage.Padding>
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
+                </StackLayout.Padding>
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <ffimageloadingsvg:SvgCachedImage Source="resource://UndderControl.Svg.tick.svg" HorizontalOptions="Center" HeightRequest="100" Aspect="AspectFit" />
                     <Label x:Name="Text1" Margin="13" TextColor="White" FontSize="34" HorizontalTextAlignment="Center"/>

@@ -7,7 +7,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyPage">
     <NavigationPage.TitleView>
-        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+        <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#97CABD">
@@ -52,6 +52,7 @@ FARM IS TO IMPLEMENTS SDCT
                         FontSize="42"
                         MinFontSize="18"
                         HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
                         FontFamily="{StaticResource MediumFont}"
                         Lines="0"
                         AbsoluteLayout.LayoutBounds=".5,.14,.9,.42" AbsoluteLayout.LayoutFlags="All"/>
@@ -63,7 +64,7 @@ FARM IS TO IMPLEMENTS SDCT
                         AbsoluteLayout.LayoutBounds=".5,.62,.9,.2" AbsoluteLayout.LayoutFlags="All"/>
                     <StackLayout x:Name="AnswerButtonStackLayout"
                             Orientation="Horizontal" 
-                            AbsoluteLayout.LayoutBounds=".5,.85,.9,.2" AbsoluteLayout.LayoutFlags="All">
+                            AbsoluteLayout.LayoutBounds=".5,.85,.9,.15" AbsoluteLayout.LayoutFlags="All">
                         <Button x:Name="YesButton" Style="{StaticResource SurveyButton}" Command="{Binding AnswerYesCommand}"/>
                         <Button x:Name="NoButton" Style="{StaticResource SurveyButton}" Command="{Binding AnswerNoCommand}"/>
                     </StackLayout>

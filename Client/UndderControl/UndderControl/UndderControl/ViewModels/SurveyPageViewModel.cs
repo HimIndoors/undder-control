@@ -108,12 +108,8 @@ namespace UndderControl.ViewModels
             {
                 MetricsManager.TrackException("SurveyEndException", ex);
             }
-            var navigationParams = new NavigationParameters
-            {
-                { "response", _response }
-            };
-            navigationParams.Add("useModalNavigation", true);
-            await NavigationService.NavigateAsync("SurveyResultsPage", navigationParams);
+
+            await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/SurveyResultsPage");
         }
 
         /// <summary>

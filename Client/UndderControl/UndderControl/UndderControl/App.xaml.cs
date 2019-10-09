@@ -71,7 +71,6 @@ namespace UndderControl
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<CustomNavigationPage>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<SdctMasterDetailPage, SdctMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<AssessmentPage, AssessmentPageViewModel>();

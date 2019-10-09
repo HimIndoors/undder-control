@@ -7,35 +7,34 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SurveyPage">
     <NavigationPage.TitleView>
-        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" />
+        <Label Text="{Binding Title}" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#97CABD">
             <ffimageloadingsvg:SvgCachedImage Source="resource://UndderControl.Svg.blank_background.svg" HorizontalOptions="EndAndExpand" x:Name="StageBackground"/>
             <ScrollView x:Name="SurveyStageView" IsVisible="False">
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <StackLayout VerticalOptions="CenterAndExpand">
+                <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="CenterAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
                         <Label x:Name="StageTitle"
-                            Margin="0,31,0,0"
                             TextColor="{StaticResource CheckpointColor}"
                             FontSize="38"
                             FontFamily="{StaticResource BoldFont}"
                             HorizontalTextAlignment="Center" />
                         <Label x:Name="StageText"
-                            Margin="40,0"
+                            Margin="30,0,30,13"
                             FontSize="33"
                             TextColor="White" HorizontalTextAlignment="Center" />
-                        <Button x:Name="StartQuestionsButton" 
+                        <f9p:Button x:Name="StartQuestionsButton" Lines="2" WidthRequest="100" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0"
                             HorizontalOptions="Center"
                             BackgroundColor="White" BorderColor="White" BorderRadius="10"
-                            Command="{Binding StartStageCommand}" Margin="0,34"/>
+                            Command="{Binding StartStageCommand}" />
                     </StackLayout>
-                    <StackLayout x:Name="Scoring" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    <StackLayout x:Name="Scoring" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,1,AutoSize,AutoSize">
                         <StackLayout.Padding>
                             <OnPlatform x:TypeArguments="Thickness" iOS="8,8" Android="8,8" />
                         </StackLayout.Padding>
-                        <Label Text="YES = 1, NO = 0" FontAttributes="Bold" Margin="0" FontSize="14"/>
-                        <Label FontSize="14">
+                        <Label Text="YES = 1, NO = 0" FontAttributes="Bold" Margin="0" FontSize="14" TextColor="#2E987E"/>
+                        <Label FontSize="14" TextColor="#2E987E">
                             <Label.Text>
                                 THE HIGHER THE SCORE,
 THE MORE PREPARED YOUR
@@ -43,7 +42,7 @@ FARM IS TO IMPLEMENTS SDCT
                             </Label.Text>
                         </Label>
                     </StackLayout>
-                </StackLayout>
+                </AbsoluteLayout>
             </ScrollView>
             <ScrollView x:Name="SurveyQuestionView" IsVisible="False">
                 <AbsoluteLayout>

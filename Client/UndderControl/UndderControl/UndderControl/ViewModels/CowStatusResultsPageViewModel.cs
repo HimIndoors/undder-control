@@ -22,7 +22,7 @@ namespace UndderControl.ViewModels
             set
             {
                 SetProperty(ref _results, value);
-                RaisePropertyChanged("Results");
+                RaisePropertyChanged();
             }
         }
 
@@ -32,7 +32,7 @@ namespace UndderControl.ViewModels
             get { return _resultYear; }
             set {
                 _resultYear = value;
-                RaisePropertyChanged("ResultYear");
+                RaisePropertyChanged();
             }
         }
 
@@ -44,7 +44,7 @@ namespace UndderControl.ViewModels
             {
                 _niThreshold = value;
                 PreventThreshold = 100 - value;
-                RaisePropertyChanged("NiThreshold");
+                RaisePropertyChanged();
             }
         }
 
@@ -56,7 +56,7 @@ namespace UndderControl.ViewModels
             {
                 _cureThreshold = value;
                 FailCureThreshold = 100 - value;
-                RaisePropertyChanged("CureThreshold");
+                RaisePropertyChanged();
             }
         }
 
@@ -67,7 +67,7 @@ namespace UndderControl.ViewModels
             set
             {
                 _preventThreshold = value;
-                RaisePropertyChanged("PreventThreshold");
+                RaisePropertyChanged();
             }
         }
 
@@ -78,12 +78,12 @@ namespace UndderControl.ViewModels
             set
             {
                 _failCureThreshold = value;
-                RaisePropertyChanged("FailCureThreshold");
+                RaisePropertyChanged();
             }
         }
 
-        private DelegateCommand _compareCommand;
-        public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
+        private DelegateCommand<string> _navigateCommand;
+        public DelegateCommand<string> CompareCommand => _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync));
 
         #region Graph Data
         private ObservableCollection<ChartDataModel> _niRateHealthy;
@@ -139,9 +139,9 @@ namespace UndderControl.ViewModels
 
         private void Init()
         {
+            UserDialogs.Instance.ShowLoading();
             try
             {
-                UserDialogs.Instance.ShowLoading();
                 _cowStatusList = App.LatestCowStatusData;
                 BuildCowData();              
             }
@@ -202,35 +202,43 @@ namespace UndderControl.ViewModels
             //Set up graph data
             NiRateHealthy = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppTextResource.CsPreventionOfNewInfection]) / Results[AppTextResource.CsNotInfectedAtDryoff]))
+                new ChartDataModel("CURRENT RATE", (int)Math.Round((double)(100 * Results[AppTextResource.CsPreventionOfNewInfection]) / Results[AppTextResource.CsNotInfectedAtDryoff]))
             };
             NiRateNewInfection = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppTextResource.CsNewInfection]) / Results[AppTextResource.CsNotInfectedAtDryoff])),
+                new ChartDataModel("CURRENT RATE", (int)Math.Round((double)(100 * Results[AppTextResource.CsNewInfection]) / Results[AppTextResource.CsNotInfectedAtDryoff])),
             };
             CureRateHealthy = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppTextResource.CsCure]) / Results[AppTextResource.CsInfectedAtDryoff])),
+                new ChartDataModel("CURRENT RATE", (int)Math.Round((double)(100 * Results[AppTextResource.CsCure]) / Results[AppTextResource.CsInfectedAtDryoff])),
             };
             CureRateInfected = new ObservableCollection<ChartDataModel>
             {
-                new ChartDataModel("Current Rate", (int)Math.Round((double)(100 * Results[AppTextResource.CsFailureToCure]) / Results[AppTextResource.CsInfectedAtDryoff])),
+                new ChartDataModel("CURRENT RATE", (int)Math.Round((double)(100 * Results[AppTextResource.CsFailureToCure]) / Results[AppTextResource.CsInfectedAtDryoff])),
             };
 
             //Set result date
             ResultYear = _cowStatusList[0].DateAddedCalving.Value.Year;
         }
 
-        private async void NavigateAsync()
+        private async void NavigateAsync(string page)
         {
-            if (App.PreviousCowStatusData != null)
+            if (page.Equals("compare"))
             {
-                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/CowStatusComparisonPage");
+                if (App.PreviousCowStatusData != null)
+                {
+                    await NavigationService.NavigateAsync("CowStatusComparisonPage");
+                }
+                else
+                {
+                    await NavigationService.NavigateAsync("NoResultComparisonPage");
+                }
             }
             else
             {
-                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/NoResultComparisonPage");
+                await NavigationService.NavigateAsync("SurveyResultsPage");
             }
+            
         }
     }
 }

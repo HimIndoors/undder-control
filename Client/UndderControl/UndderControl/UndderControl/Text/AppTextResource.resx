@@ -247,6 +247,9 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
   <data name="MonitorCompareButton" xml:space="preserve">
     <value>COMPARE RESULTS</value>
   </data>
+  <data name="MonitorReviewButton" xml:space="preserve">
+    <value>REVIEW ASSESSMENT</value>
+  </data>
   <data name="MonitorStatusButton" xml:space="preserve">
     <value>COW STATUS INPUT</value>
   </data>
@@ -263,7 +266,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
     <value>Overcoming problems is part of everyday life when managing a dairy herd and SDCT is no different, by fostering good working relationships, MSD Animal Health Representatives, vets and farmers can work together to overcome any challenges which may arise.</value>
   </data>
   <data name="MonitorText4" xml:space="preserve">
-    <value>SDCT provides both short term and long term benefits; reducing antibiotic use in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain SDCT.</value>
+    <value>SDCT provides both short term and long term benefits; fostering responsible usage of antibiotics in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain SDCT.</value>
   </data>
   <data name="MonitorTitle1" xml:space="preserve">
     <value>IT IS IMPORTANT TO CONTINUE MONITORING THE FARM ONCE SDCT IS IMPLEMENTED...</value>

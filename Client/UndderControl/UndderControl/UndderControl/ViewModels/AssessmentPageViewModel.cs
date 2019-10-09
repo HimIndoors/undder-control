@@ -61,30 +61,6 @@ namespace UndderControl.ViewModels
 
         async Task GetData()
         {
-            var surveyResponse = await ApiManager.GetLatestSurvey();
-            if (surveyResponse.IsSuccessStatusCode)
-            {
-                try
-                {
-                    var content = await surveyResponse.Content.ReadAsStringAsync();
-                    var survey = await Task.Run(() => JsonConvert.DeserializeObject<SurveyDto>(content));
-                    if (survey != null && (App.LatestSurvey == null || App.LatestSurvey.Version < survey.Version))
-                    {
-                        var fileHelper = new FileHelper();
-                        App.LatestSurvey = survey;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MetricsManager.TrackException("Error reading survey json", ex);
-                }
-
-            }
-            else
-            {
-                await PageDialog.AlertAsync("Unable to retrieve survey data", "Error", "OK");
-            }
-
             var serviceResponse = await ApiManager.GetResponseByFarmId(App.SelectedFarm.ID);
             if (serviceResponse.IsSuccessStatusCode || serviceResponse.StatusCode == HttpStatusCode.NotModified)
             {
@@ -107,7 +83,7 @@ namespace UndderControl.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    MetricsManager.TrackException("Error reading survey json", ex);
+                    MetricsManager.TrackException("Error reading response json", ex);
                 }
             }
         }

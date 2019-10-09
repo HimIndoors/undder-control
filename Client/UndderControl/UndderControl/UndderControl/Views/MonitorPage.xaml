@@ -22,9 +22,9 @@
                     <Label x:Name="Title4" Style="{StaticResource TextSubtitle}" />
                     <Label x:Name="Text4" Style="{StaticResource Text}"/>
                     <StackLayout Margin="0,13,0,0">
-                        <Button x:Name="StatusButton" Command="{Binding OnStatusCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/CowStatusPage" />
-                        <Button x:Name="SummaryButton" Command="{Binding OnSummaryCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/CowStatusResultsPage" Margin="0,10,0,0" />
-                        <Button x:Name="CompareButton" Command="{Binding OnCompareCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/CowStatusComparisonPage" Margin="0,10,0,0" />
+                        <Button x:Name="StatusButton" Command="{Binding OnStatusCommand}" CommandParameter="CowStatusPage" />
+                        <Button x:Name="SummaryButton" Command="{Binding OnSummaryCommand}" CommandParameter="CowStatusResultsPage" Margin="0,10,0,0" />
+                        <Button x:Name="CompareButton" Command="{Binding OnCompareCommand}" CommandParameter="CowStatusComparisonPage" Margin="0,10,0,0" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

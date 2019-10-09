@@ -20,10 +20,10 @@
                     <Label Text="{Binding AssessmentDate}" HorizontalTextAlignment="Center"  FontSize="16" FontAttributes="Bold" />
                 </Frame>
             </StackLayout>
-            <StackLayout>
-                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" HeightRequest="300">
+            <StackLayout HeightRequest="350" BackgroundColor="Aqua">
+                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" ChartPadding="0">
                     <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1.7" Android="1.2" />
+                        <OnPlatform x:TypeArguments="x:Double" iOS="1.7" Android="1" />
                     </chart:SfChart.Scale>
                     <chart:SfChart.Margin>
                         <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />
@@ -70,7 +70,7 @@
             <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18" Lines="2"/>
             <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
             <StackLayout x:Name="StatementStack" />
-            <Button x:Name="CompareButton" Command="{Binding CompareCommand}" HeightRequest="70" />
+            <f9p:Button x:Name="CompareButton" Command="{Binding CompareCommand}" Lines="2" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0" HorizontalOptions="CenterAndExpand" BackgroundColor="White" BorderColor="White" BorderRadius="10" />
         </StackLayout>
     </ScrollView>
 

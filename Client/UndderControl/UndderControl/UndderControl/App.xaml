@@ -34,7 +34,7 @@
                 <Setter Property="BarBackgroundColor" Value="#2B8E81" />
                 <Setter Property="BarTextColor" Value="#D1E8E3" />
             </Style>
-            <Style TargetType="Button">
+            <Style TargetType="Button" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="#ffffff" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
                 <Setter Property="FontSize" Value="20" />

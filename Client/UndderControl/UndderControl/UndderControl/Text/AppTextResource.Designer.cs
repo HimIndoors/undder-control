@@ -449,6 +449,15 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to REVIEW ASSESSMENT.
+        /// </summary>
+        public static string MonitorReviewButton {
+            get {
+                return ResourceManager.GetString("MonitorReviewButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to COW STATUS INPUT.
         /// </summary>
         public static string MonitorStatusButton {
@@ -494,7 +503,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SDCT provides both short term and long term benefits; reducing antibiotic use in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain SDCT..
+        ///   Looks up a localized string similar to SDCT provides both short term and long term benefits; fostering responsible usage of antibiotics in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain SDCT..
         /// </summary>
         public static string MonitorText4 {
             get {

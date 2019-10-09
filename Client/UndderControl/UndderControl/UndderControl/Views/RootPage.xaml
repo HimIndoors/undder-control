@@ -26,7 +26,7 @@
                             iOS="13"
                             Android="13" />
                     </Frame.Padding>
-                    <Picker x:Name="FarmPicker" ItemsSource="{Binding FarmList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedFarm}" Title="Select a farm" BackgroundColor="Black" TextColor="White" TitleColor="Gray" />
+                    <Picker x:Name="FarmPicker" ItemsSource="{Binding FarmList}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedFarm}" Title="Select a farm" BackgroundColor="Black" TextColor="White" TitleColor="Gray" FontFamily="{StaticResource NormalFont}" />
                 </Frame>
                 <Frame x:Name="AssessmentFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameAssessmentColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}" Margin="0,15,0,15">
                     <Frame.GestureRecognizers>

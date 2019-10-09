@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using UndderControl.Custom;
 using UndderControl.Helpers;
@@ -16,26 +17,108 @@ namespace UndderControl.ViewModels
 {
     public class SurveyResultsPageViewModel : ViewModelBase
     {
-        private readonly SurveyResponseDto _response;
+        private SurveyResponseDto _response;
+        
+        private IDictionary<string, List<string>> statements;
+        public IDictionary<string, List<string>> Statements
+        {
+            get { return statements; }
+            set
+            {
+                statements = value;
+                RaisePropertyChanged();
+            }
+        }
+        private ObservableCollection<ChartDataModel> radarData;
+        public ObservableCollection<ChartDataModel> RadarData {
+            get { return radarData; }
+            set {
+                radarData = value;
+                RaisePropertyChanged();
+            } 
+        }
+        private string suitabilityStatement;
+        public string SuitabilityStatement {
+            get { return suitabilityStatement; }
+            set {
+                suitabilityStatement = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string radarColour;
+        public string RadarColour {
+            get { return radarColour; }
+            set {
+                radarColour = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string assessmentDate;
+        public string AssessmentDate
+        {
+            get { return assessmentDate; }
+            set
+            {
+                assessmentDate = value;
+                RaisePropertyChanged();
+            }
+        }
         private DelegateCommand _compareCommand;
-        private List<SurveyResponseDto> _responses;
-        public IDictionary<string, List<string>> Statements;
-        public ObservableCollection<ChartDataModel> RadarData { get; set; }
         public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
-        public string SuitabilityStatement { get; set; }
-        public string RadarColour { get; set; }
-        public string AssessmentDate { get; set; }
 
         public SurveyResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
             : base(navigationService, metricsManager)
         {
             Title = AppTextResource.SurveyResultsPageTitle;
-            _response = App.LatestSurveyResponse;
             BuildResultData();
         }
-        private void BuildResultData()
+
+        async Task GetSurveyResults()
+        {
+            var serviceResponse = await ApiManager.GetResponseByFarmId(App.SelectedFarm.ID);
+            if (serviceResponse.IsSuccessStatusCode || serviceResponse.StatusCode == HttpStatusCode.NotModified)
+            {
+                try
+                {
+                    var response = await serviceResponse.Content.ReadAsStringAsync();
+                    var responseData = await Task.Run(() => JsonConvert.DeserializeObject<List<SurveyResponseDto>>(response));
+                    if (responseData != null && responseData.Count == 1)
+                    {
+                        App.LatestSurveyResponse = responseData[0];
+                    }
+                    else if (responseData != null && responseData.Count == 2)
+                    {
+                        App.LatestSurveyResponse = responseData[0];
+                        App.PreviousSurveyResponse = responseData[1];
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MetricsManager.TrackException("Error reading survey json", ex);
+                }
+            }
+        }
+
+        private async void BuildResultData()
         {
             PageDialog.ShowLoading("Loading");
+
+            if (App.LatestSurveyResponse != null)
+            {
+                _response = App.LatestSurveyResponse;
+            }
+            else
+            {
+                try
+                {
+                    await RunSafe(GetSurveyResults());
+                    _response = App.LatestSurveyResponse;
+                }
+                catch (Exception ex)
+                {
+                    MetricsManager.TrackException(ex.Message, ex);
+                }
+            }
 
             if (_response != null)
             {

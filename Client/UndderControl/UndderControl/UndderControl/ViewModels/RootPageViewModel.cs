@@ -1,23 +1,19 @@
 ﻿using Newtonsoft.Json;
-using Plugin.Settings;
-using Plugin.Settings.Abstractions;
 using Prism.Commands;
 using Prism.Events;
-using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using UndderControl.Events;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
-using Xamarin.Forms;
 
 namespace UndderControl.ViewModels
 {
@@ -151,7 +147,43 @@ namespace UndderControl.ViewModels
             {
                 EditFarmEnabled = false;
             }
-            
+
+            //Load latest survey here
+            try
+            {
+                await RunSafe(GetSurvey());
+            }
+            catch (Exception ex)
+            {
+                MetricsManager.TrackException("GetFarmsFailed", ex);
+            }
+        }
+
+        async Task GetSurvey()
+        {
+            var surveyResponse = await ApiManager.GetLatestSurvey();
+            if (surveyResponse.IsSuccessStatusCode)
+            {
+                try
+                {
+                    var content = await surveyResponse.Content.ReadAsStringAsync();
+                    var survey = await Task.Run(() => JsonConvert.DeserializeObject<SurveyDto>(content));
+                    if (survey != null && (App.LatestSurvey == null || App.LatestSurvey.Version < survey.Version))
+                    {
+                        var fileHelper = new FileHelper();
+                        App.LatestSurvey = survey;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MetricsManager.TrackException("Error reading survey json", ex);
+                }
+
+            }
+            else
+            {
+                await PageDialog.AlertAsync("Unable to retrieve survey data", "Error", "OK");
+            }
         }
 
         async Task GetFarms()

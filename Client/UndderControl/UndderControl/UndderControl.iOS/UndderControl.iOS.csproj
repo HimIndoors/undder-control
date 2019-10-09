@@ -122,6 +122,7 @@
     <BundleResource Include="Resources\dinot-bold.otf" />
     <BundleResource Include="Resources\dinot.otf" />
     <BundleResource Include="Resources\dinot-medium.otf" />
+    <BundleResource Include="Resources\fontello.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png">
@@ -310,12 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Cows.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\play.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\stop.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\CowStatus18.txt" />

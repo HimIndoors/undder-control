@@ -43,12 +43,28 @@
                     </buttons:SfSegmentedControl>
                 </StackLayout>
                 <StackLayout Margin="8" Orientation="Horizontal" HeightRequest="70" HorizontalOptions="FillAndExpand"  VerticalOptions="End">
-                    <buttons:SfButton x:Name="ButtonNext" Text="Next" Command="{Binding OnNextCommand}" BackgroundColor="White" FontAttributes="Bold" TextColor="#009096" CornerRadius="8" 
-                                        ShowIcon="True" ImageSource="play.png" ImageWidth="20" ImageAlignment="End" FontSize="18"
-                                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                    <buttons:SfButton x:Name="ButtonFinish" Text="Finish" Command="{Binding OnFinishCommand}" BackgroundColor="White" FontAttributes="Bold" TextColor="#009096" CornerRadius="8" 
-                                        ShowIcon="True" ImageSource="stop.png" ImageWidth="30" ImageAlignment="End" FontSize="18"
-                                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    <buttons:SfButton x:Name="ButtonNext" Command="{Binding OnNextCommand}" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="8">
+                        <buttons:SfButton.Content>
+                            <Grid Margin="0,5,0,5" BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60*"/>
+                                    <ColumnDefinition Width="40*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1" Text="&#xe800;" TextColor="{StaticResource TextColor}"  HorizontalTextAlignment="Start"  VerticalTextAlignment="Center" FontFamily="{StaticResource Fontello}" FontSize="18" />
+                                <Label  Grid.Column="0" HorizontalTextAlignment="End" TextColor="{StaticResource TextColor}" FontFamily="{StaticResource BoldFont}" Text="NEXT" FontSize="18"  VerticalTextAlignment="Center" />
+                            </Grid>
+                        </buttons:SfButton.Content>
+                    </buttons:SfButton>
+                    <buttons:SfButton x:Name="ButtonFinish" Text="Finish" Command="{Binding OnFinishCommand}" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="8">
+                        <Grid Margin="0,5,0,5" BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60*"/>
+                                <ColumnDefinition Width="40*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1" Text="&#xe801;" TextColor="{StaticResource TextColor}"  HorizontalTextAlignment="Start"  VerticalTextAlignment="Center" FontFamily="{StaticResource Fontello}" FontSize="18" />
+                            <Label  Grid.Column="0" HorizontalTextAlignment="End" TextColor="{StaticResource TextColor}" FontFamily="{StaticResource BoldFont}" Text="FINISH" FontSize="18"  VerticalTextAlignment="Center" />
+                        </Grid>
+                    </buttons:SfButton>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

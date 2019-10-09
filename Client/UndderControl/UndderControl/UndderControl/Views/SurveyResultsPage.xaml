@@ -20,8 +20,8 @@
                     <Label Text="{Binding AssessmentDate}" HorizontalTextAlignment="Center"  FontSize="16" FontAttributes="Bold" />
                 </Frame>
             </StackLayout>
-            <StackLayout HeightRequest="350" BackgroundColor="Aqua">
-                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" ChartPadding="0">
+            <StackLayout>
+                <chart:SfChart x:Name="Chart" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" ChartPadding="0" HeightRequest="400">
                     <chart:SfChart.Scale>
                         <OnPlatform x:TypeArguments="x:Double" iOS="1.7" Android="1" />
                     </chart:SfChart.Scale>

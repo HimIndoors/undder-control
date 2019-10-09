@@ -19,8 +19,6 @@ namespace UndderControl.Views
             FarmName.Text = App.SelectedFarm.Name;
             Date.Text = DateTime.Now.ToShortDateString();
             IdLabel.Text = AppTextResource.CowStatusInputLabel;
-            ButtonNext.Text = AppTextResource.CowStatusInputButtonNext;
-            ButtonFinish.Text = AppTextResource.CowStatusInputButtonFinish;
             #endregion TextSetup
 
             SelectionIndicatorSettings selectionIndicator = new SelectionIndicatorSettings();

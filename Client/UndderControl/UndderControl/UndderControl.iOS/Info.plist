@@ -68,6 +68,8 @@
 	<array>
 		<string>dinot.otf</string>
 		<string>dinot-bold.otf</string>
+    <string>dinot-medium.otf</string>
+    <string>fontello.ttf</string>
 	</array>
 </dict>
 </plist>

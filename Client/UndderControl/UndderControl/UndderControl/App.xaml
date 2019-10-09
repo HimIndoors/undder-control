@@ -12,6 +12,10 @@
             <Color x:Key="PageBackgroundColor">#7CCCBD</Color>
             <Color x:Key="TextColor">#009096</Color>
             <Color x:Key="CheckpointColor">#D7EEE9</Color>
+            <OnPlatform x:Key="Fontello" x:TypeArguments="x:String">
+                <On Platform="Android" Value="fontello.ttf#fontello" />
+                <On Platform="iOS" Value="fontello" />
+            </OnPlatform>
             <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
                 <On Platform="Android" Value="dinot-bold.otf#DINOT-BOLD" />
                 <On Platform="iOS" Value="dinot-bold" />

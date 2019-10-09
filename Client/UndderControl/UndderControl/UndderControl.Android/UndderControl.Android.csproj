@@ -158,6 +158,7 @@
     <AndroidAsset Include="Assets\dinot.otf" />
     <AndroidAsset Include="Assets\dinot-bold.otf" />
     <AndroidAsset Include="Assets\dinot-medium.otf" />
+    <AndroidAsset Include="Assets\fontello.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -231,12 +232,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\play.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\stop.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\CowStatus18.txt" />

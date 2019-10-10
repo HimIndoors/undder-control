@@ -62,7 +62,7 @@
             <Style TargetType="Label" x:Key="FormLabel">
                 <Setter Property="TextColor" Value="White"/>
             </Style>
-            <Style TargetType="Entry">
+            <Style TargetType="Entry" ApplyToDerivedTypes="True">
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
                 <Setter Property="BackgroundColor" Value="White"/>
             </Style>

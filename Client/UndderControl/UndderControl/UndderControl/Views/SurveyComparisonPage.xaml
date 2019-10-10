@@ -45,7 +45,7 @@
                     </chart:CategoryAxis>
                 </chart:SfChart.PrimaryAxis>
                 <chart:SfChart.SecondaryAxis>
-                    <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1">
+                    <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1" LabelsIntersectAction="MultipleRows">
                         <chart:NumericalAxis.MajorTickStyle>
                             <chart:ChartAxisTickStyle StrokeColor="Transparent" />
                         </chart:NumericalAxis.MajorTickStyle>

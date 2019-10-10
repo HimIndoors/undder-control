@@ -21,11 +21,11 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>UndderControl</string>
+	<string>Undder Control</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.pmn.UndderControl</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>2.01</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>

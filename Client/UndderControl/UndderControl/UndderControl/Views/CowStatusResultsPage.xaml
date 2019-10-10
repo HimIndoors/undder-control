@@ -111,25 +111,25 @@
                         <Label Text="NEW INFECTION" TextColor="White" FontFamily="{StaticResource BoldFont}" VerticalTextAlignment="Center" />
                     </ContentView>
                     <ContentView Grid.Row="3" Grid.Column="2" BackgroundColor="#007367" Padding="21,3">
-                        <syncfusion:SfNumericTextBox Value="{Binding NiThreshold}" TextAlignment="Center" FormatString="p" PercentDisplayMode="Value" MaximumNumberDecimalDigits="0" BackgroundColor="White" TextColor="Black" ValueChangeMode="OnKeyFocus" Maximum="100" />
+                        <syncfusion:SfNumericTextBox Value="{Binding NiThreshold}" TextAlignment="Center" FormatString="p" PercentDisplayMode="Value" MaximumNumberDecimalDigits="0" BackgroundColor="White" TextColor="Black" ValueChangeMode="OnKeyFocus" Maximum="100" AllowNull="True" Watermark="0 %"/>
                     </ContentView>
                     <ContentView Grid.Row="4" Grid.Column="1" Padding="8,3" BackgroundColor="#00827F">
                         <Label Text="PREVENTION OF NEW INFECTION" TextColor="White" FontFamily="{StaticResource BoldFont}" VerticalTextAlignment="Center" />
                     </ContentView>
                     <ContentView Grid.Row="4" Grid.Column="2" BackgroundColor="#00827F" Padding="21,3">
-                        <syncfusion:SfNumericTextBox Value="{Binding PreventThreshold}" TextAlignment="Center" FormatString="p" PercentDisplayMode="Value" MaximumNumberDecimalDigits="0" BackgroundColor="White" TextColor="Black" Maximum="100" IsEnabled="False"/>
+                        <syncfusion:SfNumericTextBox Value="{Binding PreventThreshold}" TextAlignment="Center" FormatString="p" PercentDisplayMode="Value" MaximumNumberDecimalDigits="0" BackgroundColor="White" TextColor="Black" Maximum="100" IsEnabled="False" AllowNull="True" Watermark="0 %"/>
                     </ContentView>
                     <ContentView Grid.Row="5" Grid.Column="1" BackgroundColor="#007367" Padding="8,3">
                         <Label Text="FAILURE TO CURE" TextColor="White" FontFamily="{StaticResource BoldFont}" VerticalTextAlignment="Center" />
                     </ContentView>
                     <ContentView Grid.Row="5" Grid.Column="2" BackgroundColor="#007367" Padding="21,3">
-                        <syncfusion:SfNumericTextBox Value="{Binding FailCureThreshold}" TextAlignment="Center" FormatString="p" PercentDisplayMode="Value" MaximumNumberDecimalDigits="0" BackgroundColor="White" TextColor="Black" Maximum="100" IsEnabled="False" />
+                        <syncfusion:SfNumericTextBox Value="{Binding FailCureThreshold}" TextAlignment="Center" FormatString="p" PercentDisplayMode="Value" MaximumNumberDecimalDigits="0" BackgroundColor="White" TextColor="Black" Maximum="100" IsEnabled="False" AllowNull="True" Watermark="0 %"/>
                     </ContentView>
                     <ContentView Grid.Row="6" Grid.Column="1" BackgroundColor="#00827F" Padding="8,3">
                         <Label Text="CURE" TextColor="White" FontFamily="{StaticResource BoldFont}" VerticalTextAlignment="Center" />
                     </ContentView>
                     <ContentView Grid.Row="6" Grid.Column="2"  BackgroundColor="#00827F" Padding="21,3">
-                        <syncfusion:SfNumericTextBox Value="{Binding CureThreshold}" TextAlignment="Center" FormatString="p" PercentDisplayMode="Value" MaximumNumberDecimalDigits="0" BackgroundColor="White" TextColor="Black" ValueChangeMode="OnKeyFocus" Maximum="100"/>
+                        <syncfusion:SfNumericTextBox Value="{Binding CureThreshold}" TextAlignment="Center" FormatString="p" PercentDisplayMode="Value" MaximumNumberDecimalDigits="0" BackgroundColor="White" TextColor="Black" ValueChangeMode="OnKeyFocus" Maximum="100" AllowNull="True" Watermark="0 %"/>
                     </ContentView>
 
                     <BoxView HeightRequest="1" BackgroundColor="White" Grid.Row="0" Grid.ColumnSpan="4" />

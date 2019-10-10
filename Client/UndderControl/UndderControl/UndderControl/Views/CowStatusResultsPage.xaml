@@ -315,8 +315,22 @@
                         </chart:SfChart.Legend>
                         <chart:SfChart.Series>
                             <chart:StackingColumn100Series ItemsSource="{Binding CureRateHealthy}" XBindingPath="Name" YBindingPath="Value" Label="Cure rate" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="true" TooltipTemplate="{StaticResource toolTipTemplate1}" Color="#00827F" Width="0.45" DataMarkerPosition="Center">
+                                <chart:StackingColumn100Series.DataMarker>
+                                    <chart:ChartDataMarker>
+                                        <chart:ChartDataMarker.LabelStyle>
+                                            <chart:DataMarkerLabelStyle FontSize="14"/>
+                                        </chart:ChartDataMarker.LabelStyle>
+                                    </chart:ChartDataMarker>
+                                </chart:StackingColumn100Series.DataMarker>
                             </chart:StackingColumn100Series>
                             <chart:StackingColumn100Series ItemsSource="{Binding CureRateInfected}" XBindingPath="Name" YBindingPath="Value" Label="Failure to cure" LegendIcon="SeriesType" EnableTooltip="true" EnableAnimation="True" TooltipTemplate="{StaticResource toolTipTemplate2}" Color="#30454A" Width="0.45" DataMarkerPosition="Center">
+                                <chart:StackingColumn100Series.DataMarker>
+                                    <chart:ChartDataMarker>
+                                        <chart:ChartDataMarker.LabelStyle>
+                                            <chart:DataMarkerLabelStyle FontSize="14"/>
+                                        </chart:ChartDataMarker.LabelStyle>
+                                    </chart:ChartDataMarker>
+                                </chart:StackingColumn100Series.DataMarker>
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>

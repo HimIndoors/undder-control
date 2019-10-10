@@ -260,7 +260,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
     <value>Once SDCT has been implemented, continuous monitoring is required in order to refine practices on farm in order to optimise success levels and ultimately productivity, profitability and animal welfare.</value>
   </data>
   <data name="MonitorText2" xml:space="preserve">
-    <value>This app will help you to analyse the infection rates of the herd at dry-off and calving. By inputing the infection status of each cow in the herd you can monitor the overall results and analyse which areas are working well and where improvement may be required.</value>
+    <value>This app will help you to analyse the infection rates of the herd at dry-off and calving. By inputing the infection status of each cow in the herd you can monitor the overall results and, together with SDCT assessment tool, analyse which areas are working well and where improvement may be required.</value>
   </data>
   <data name="MonitorText3" xml:space="preserve">
     <value>Overcoming problems is part of everyday life when managing a dairy herd and SDCT is no different, by fostering good working relationships, MSD Animal Health Representatives, vets and farmers can work together to overcome any challenges which may arise.</value>

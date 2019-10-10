@@ -45,25 +45,17 @@
                 <StackLayout Margin="8" Orientation="Horizontal" HeightRequest="70" HorizontalOptions="FillAndExpand"  VerticalOptions="End">
                     <buttons:SfButton x:Name="ButtonNext" Command="{Binding OnNextCommand}" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="8">
                         <buttons:SfButton.Content>
-                            <Grid Margin="0,5,0,5" BackgroundColor="White">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="65*"/>
-                                    <ColumnDefinition Width="35*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="1" Text="&#xe800;" TextColor="{StaticResource TextColor}"  HorizontalTextAlignment="Start"  VerticalTextAlignment="Center" FontFamily="{StaticResource Fontello}" FontSize="18" />
-                                <Label  Grid.Column="0" HorizontalTextAlignment="End" TextColor="{StaticResource TextColor}" FontFamily="{StaticResource BoldFont}" Text="NEXT" FontSize="18"  VerticalTextAlignment="Center" />
-                            </Grid>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                                <Label TextColor="{StaticResource TextColor}" FontFamily="{StaticResource BoldFont}" Text="NEXT" FontSize="18" />
+                                <Label Text="&#xe800;" TextColor="{StaticResource TextColor}"  VerticalTextAlignment="Center" FontFamily="{StaticResource Fontello}" FontSize="18" />
+                            </StackLayout>
                         </buttons:SfButton.Content>
                     </buttons:SfButton>
                     <buttons:SfButton x:Name="ButtonFinish" Text="Finish" Command="{Binding OnFinishCommand}" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="8">
-                        <Grid Margin="0,5,0,5" BackgroundColor="White">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="65*"/>
-                                <ColumnDefinition Width="35*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="1" Text="&#xe801;" TextColor="{StaticResource TextColor}"  HorizontalTextAlignment="Start"  VerticalTextAlignment="Center" FontFamily="{StaticResource Fontello}" FontSize="18" />
-                            <Label  Grid.Column="0" HorizontalTextAlignment="End" TextColor="{StaticResource TextColor}" FontFamily="{StaticResource BoldFont}" Text="FINISH" FontSize="18"  VerticalTextAlignment="Center" />
-                        </Grid>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label TextColor="{StaticResource TextColor}" FontFamily="{StaticResource BoldFont}" Text="FINISH" FontSize="18" />
+                            <Label Text="&#xe801;" TextColor="{StaticResource TextColor}" VerticalTextAlignment="Center" FontFamily="{StaticResource Fontello}" FontSize="18" />
+                        </StackLayout>
                     </buttons:SfButton>
                 </StackLayout>
             </StackLayout>

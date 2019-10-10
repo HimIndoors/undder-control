@@ -22,7 +22,7 @@ namespace UndderControl.ViewModels
             {
                 { "mode", mode }
             };
-            await NavigationService.NavigateAsync("CowStatusInputPage", navigationParams);
+            await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/CowStatusInputPage", navigationParams);
         }
     }
 }

@@ -485,7 +485,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This app will help you to analyse the infection rates of the herd at dry-off and calving. By inputing the infection status of each cow in the herd you can monitor the overall results and analyse which areas are working well and where improvement may be required..
+        ///   Looks up a localized string similar to This app will help you to analyse the infection rates of the herd at dry-off and calving. By inputing the infection status of each cow in the herd you can monitor the overall results and, together with SDCT assessment tool, analyse which areas are working well and where improvement may be required..
         /// </summary>
         public static string MonitorText2 {
             get {

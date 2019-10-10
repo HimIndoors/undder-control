@@ -124,21 +124,18 @@ namespace UndderControl.ViewModels
 
         private async void FinishInput()
         {
-            IsIdEmpty = string.IsNullOrEmpty(CowId);
-            CowStatusDto cs = InitCowStatus();
-            CowStatusValidator validator = new CowStatusValidator();
-            ValidationResult result = validator.Validate(cs);
-            if (result.IsValid)
+            if (!string.IsNullOrEmpty(CowId))
             {
+                CowStatusDto cs = InitCowStatus();
                 if (!Config.TestMode) await RunSafe(UploadCowStatus(cs));
-                if (InputMode.Equals("dryoff"))
-                    await NavigationService.NavigateAsync("CowStatusFinishPage");
-                else
-                {
-                    PopulateCowStatusData();
-                    await NavigationService.NavigateAsync("CowStatusResultsPage");
-                }
+            }
 
+            if (InputMode.Equals("dryoff"))
+                await NavigationService.NavigateAsync("CowStatusFinishPage");
+            else
+            {
+                PopulateCowStatusData();
+                await NavigationService.NavigateAsync("CowStatusResultsPage");
             }
         }
 

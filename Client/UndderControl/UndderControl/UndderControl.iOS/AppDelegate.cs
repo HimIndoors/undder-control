@@ -6,10 +6,8 @@ using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 using Syncfusion.ListView.XForms.iOS;
-using Syncfusion.SfBusyIndicator.XForms.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
 using Syncfusion.SfNumericTextBox.XForms.iOS;
-using Syncfusion.SfNumericUpDown.XForms.iOS;
 using Syncfusion.XForms.iOS.Border;
 using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.ComboBox;
@@ -41,7 +39,6 @@ namespace UndderControl.iOS
             new SfComboBoxRenderer();
             new SfNumericTextBoxRenderer();
             Forms9Patch.iOS.Settings.Initialize(this);
-            SfNumericUpDownRenderer.Init();
             SfChartRenderer.Init();
             SfSegmentedControlRenderer.Init();
             SfListViewRenderer.Init();

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using UndderControl.Custom;
+using UndderControl.Events;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControl.Text;
@@ -27,6 +29,7 @@ namespace UndderControl.ViewModels
             {
                 statements = value;
                 RaisePropertyChanged();
+                _eventAggregator.GetEvent<StatementsUpdatedEvent>().Publish();
             }
         }
         private ObservableCollection<ChartDataModel> radarData;
@@ -65,10 +68,12 @@ namespace UndderControl.ViewModels
         }
         private DelegateCommand _compareCommand;
         public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
+        private IEventAggregator _eventAggregator;
 
-        public SurveyResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+        public SurveyResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator eventAggregator)
             : base(navigationService, metricsManager)
         {
+            _eventAggregator = eventAggregator;
             Title = AppTextResource.SurveyResultsPageTitle;
             BuildResultData();
         }
@@ -207,11 +212,11 @@ namespace UndderControl.ViewModels
         {
             if (App.PreviousSurveyResponse != null)
             {
-                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/SurveyComparisonPage");
+                await NavigationService.NavigateAsync("SurveyComparisonPage");
             }
             else
             {
-                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/NoResultComparisonPage");
+                await NavigationService.NavigateAsync("NoResultComparisonPage");
             }
         }
     }

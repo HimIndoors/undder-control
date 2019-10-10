@@ -46,7 +46,10 @@ namespace UndderControl.ViewModels
         public string Title
         {
             get { return _title; }
-            set { SetProperty(ref _title, value); }
+            set { 
+                SetProperty(ref _title, value);
+                RaisePropertyChanged();
+            }
         }
         public IUserDialogs PageDialog = UserDialogs.Instance;
         public IApiManager ApiManager;

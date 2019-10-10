@@ -11,66 +11,66 @@
     </NavigationPage.TitleView>
     <ScrollView>
         <StackLayout>
-            <StackLayout.Padding>
-                <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
-            </StackLayout.Padding>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,0,0,18">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="31,31,31,18">
                 <Label Text="DATE"  FontSize="18" FontFamily="{StaticResource BoldFont}" Margin="0"/>
                 <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0, 1,0,0" Padding="8,0">
                     <Label Text="{Binding AssessmentDate}" HorizontalTextAlignment="Center"  FontSize="16" FontAttributes="Bold" />
                 </Frame>
             </StackLayout>
+            <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ChartPadding="0" HeightRequest="320" BackgroundColor="Transparent">
+                <chart:SfChart.Scale>
+                    <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1" />
+                </chart:SfChart.Scale>
+                <chart:SfChart.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />
+                </chart:SfChart.Margin>
+                <chart:SfChart.PrimaryAxis>
+                    <chart:CategoryAxis>
+                        <chart:CategoryAxis.MajorTickStyle>
+                            <chart:ChartAxisTickStyle StrokeColor="Transparent" />
+                        </chart:CategoryAxis.MajorTickStyle>
+                        <chart:CategoryAxis.MajorGridLineStyle>
+                            <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
+                        </chart:CategoryAxis.MajorGridLineStyle>
+                        <chart:CategoryAxis.AxisLineStyle>
+                            <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
+                        </chart:CategoryAxis.AxisLineStyle>
+                        <chart:CategoryAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle TextColor="Black" />
+                        </chart:CategoryAxis.LabelStyle>
+                    </chart:CategoryAxis>
+                </chart:SfChart.PrimaryAxis>
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1" >
+                        <chart:NumericalAxis.MajorTickStyle>
+                            <chart:ChartAxisTickStyle StrokeColor="Transparent"/>
+                        </chart:NumericalAxis.MajorTickStyle>
+                        <chart:NumericalAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="Black" FontSize="7"/>
+                        </chart:NumericalAxis.LabelStyle>
+                        <chart:NumericalAxis.AxisLineStyle>
+                            <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
+                        </chart:NumericalAxis.AxisLineStyle>
+                        <chart:NumericalAxis.MajorGridLineStyle>
+                            <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
+                        </chart:NumericalAxis.MajorGridLineStyle>
+                    </chart:NumericalAxis>
+                </chart:SfChart.SecondaryAxis>
+                <chart:SfChart.Series>
+                    <chart:RadarSeries x:Name="series1" ItemsSource="{Binding RadarData}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.8" DrawType="Area" Color="{Binding RadarColour}">
+
+                    </chart:RadarSeries>
+                </chart:SfChart.Series>
+            </chart:SfChart>
             <StackLayout>
-                <chart:SfChart x:Name="Chart" HorizontalOptions="Center" VerticalOptions="Center" ChartPadding="0" HeightRequest="400">
-                    <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1" />
-                    </chart:SfChart.Scale>
-                    <chart:SfChart.Margin>
-                        <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />
-                    </chart:SfChart.Margin>
-                    <chart:SfChart.PrimaryAxis>
-                        <chart:CategoryAxis>
-                            <chart:CategoryAxis.MajorTickStyle>
-                                <chart:ChartAxisTickStyle StrokeColor="Transparent" />
-                            </chart:CategoryAxis.MajorTickStyle>
-                            <chart:CategoryAxis.MajorGridLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
-                            </chart:CategoryAxis.MajorGridLineStyle>
-                            <chart:CategoryAxis.AxisLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
-                            </chart:CategoryAxis.AxisLineStyle>
-                            <chart:CategoryAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle TextColor="Black" />
-                            </chart:CategoryAxis.LabelStyle>
-                        </chart:CategoryAxis>
-                    </chart:SfChart.PrimaryAxis>
-                    <chart:SfChart.SecondaryAxis>
-                        <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1" >
-                            <chart:NumericalAxis.MajorTickStyle>
-                                <chart:ChartAxisTickStyle StrokeColor="Transparent"/>
-                            </chart:NumericalAxis.MajorTickStyle>
-                            <chart:NumericalAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="Black" FontSize="7"/>
-                            </chart:NumericalAxis.LabelStyle>
-                            <chart:NumericalAxis.AxisLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
-                            </chart:NumericalAxis.AxisLineStyle>
-                            <chart:NumericalAxis.MajorGridLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
-                            </chart:NumericalAxis.MajorGridLineStyle>
-                        </chart:NumericalAxis>
-                    </chart:SfChart.SecondaryAxis>
-                    <chart:SfChart.Series>
-                        <chart:RadarSeries x:Name="series1" ItemsSource="{Binding RadarData}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.8" DrawType="Area" Color="{Binding RadarColour}">
-                            
-                        </chart:RadarSeries>
-                    </chart:SfChart.Series>
-                </chart:SfChart>
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
+                </StackLayout.Padding>
+                <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18" Lines="2"/>
+                <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
+                <StackLayout x:Name="StatementStack" />
+                <f9p:Button x:Name="CompareButton" Command="{Binding CompareCommand}" Lines="2" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0" HorizontalOptions="FillAndExpand" BackgroundColor="White" BorderColor="White" BorderRadius="10" />
             </StackLayout>
-            <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18" Lines="2"/>
-            <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
-            <StackLayout x:Name="StatementStack" />
-            <f9p:Button x:Name="CompareButton" Command="{Binding CompareCommand}" Lines="2" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0" HorizontalOptions="CenterAndExpand" BackgroundColor="White" BorderColor="White" BorderRadius="10" />
         </StackLayout>
     </ScrollView>
 

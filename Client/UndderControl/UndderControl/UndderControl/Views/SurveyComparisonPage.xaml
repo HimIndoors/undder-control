@@ -11,70 +11,67 @@
     </NavigationPage.TitleView>
     <ScrollView>
         <StackLayout>
-            <StackLayout.Padding>
-                <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
-            </StackLayout.Padding>
+            <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" HeightRequest="320">
+                <chart:SfChart.Scale>
+                    <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1"  />
+                </chart:SfChart.Scale>
+                <chart:SfChart.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
+                </chart:SfChart.Margin>
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Bottom">
+                        <chart:ChartLegend.OffsetY>
+                            <OnPlatform x:TypeArguments="x:Double" Android="-90" iOS="0" />
+                        </chart:ChartLegend.OffsetY>
+                        <chart:ChartLegend.LabelStyle>
+                            <chart:ChartLegendLabelStyle TextColor="black" />
+                        </chart:ChartLegend.LabelStyle>
+                    </chart:ChartLegend>
+                </chart:SfChart.Legend>
+                <chart:SfChart.PrimaryAxis>
+                    <chart:CategoryAxis>
+                        <chart:CategoryAxis.MajorTickStyle>
+                            <chart:ChartAxisTickStyle StrokeColor="Transparent" />
+                        </chart:CategoryAxis.MajorTickStyle>
+                        <chart:CategoryAxis.MajorGridLineStyle>
+                            <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
+                        </chart:CategoryAxis.MajorGridLineStyle>
+                        <chart:CategoryAxis.AxisLineStyle>
+                            <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
+                        </chart:CategoryAxis.AxisLineStyle>
+                        <chart:CategoryAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle TextColor="black" />
+                        </chart:CategoryAxis.LabelStyle>
+                    </chart:CategoryAxis>
+                </chart:SfChart.PrimaryAxis>
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1">
+                        <chart:NumericalAxis.MajorTickStyle>
+                            <chart:ChartAxisTickStyle StrokeColor="Transparent" />
+                        </chart:NumericalAxis.MajorTickStyle>
+                        <chart:NumericalAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="Black" FontSize="7" />
+                        </chart:NumericalAxis.LabelStyle>
+                        <chart:NumericalAxis.AxisLineStyle>
+                            <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
+                        </chart:NumericalAxis.AxisLineStyle>
+                        <chart:NumericalAxis.MajorGridLineStyle>
+                            <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
+                        </chart:NumericalAxis.MajorGridLineStyle>
+                    </chart:NumericalAxis>
+                </chart:SfChart.SecondaryAxis>
+                <chart:SfChart.Series>
+                    <chart:RadarSeries x:Name="series2" Label="{Binding RadarLabel2}" ItemsSource="{Binding RadarData2}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#ED247C" LegendIcon="Rectangle" />
+                    <chart:RadarSeries x:Name="series1" Label="{Binding RadarLabel1}" ItemsSource="{Binding RadarData1}"  EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#00ACE6" LegendIcon="Rectangle" />
+                </chart:SfChart.Series>
+            </chart:SfChart>
             <StackLayout>
-                <StackLayout.Margin>
-                    <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,0,0,0"/>
-                </StackLayout.Margin>
-                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="13" HeightRequest="320">
-                    <chart:SfChart.Scale>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="1.7" Android="1.2"  />
-                    </chart:SfChart.Scale>
-                    <chart:SfChart.Margin>
-                        <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
-                    </chart:SfChart.Margin>
-                    <chart:SfChart.Legend>
-                        <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Bottom">
-                            <chart:ChartLegend.OffsetY>
-                                <OnPlatform x:TypeArguments="x:Double" Android="-90" iOS="-55" />
-                            </chart:ChartLegend.OffsetY>
-                            <chart:ChartLegend.LabelStyle>
-                                <chart:ChartLegendLabelStyle TextColor="black" />
-                            </chart:ChartLegend.LabelStyle>
-                        </chart:ChartLegend>
-                    </chart:SfChart.Legend>
-                    <chart:SfChart.PrimaryAxis>
-                        <chart:CategoryAxis>
-                            <chart:CategoryAxis.MajorTickStyle>
-                                <chart:ChartAxisTickStyle StrokeColor="Transparent" />
-                            </chart:CategoryAxis.MajorTickStyle>
-                            <chart:CategoryAxis.MajorGridLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
-                            </chart:CategoryAxis.MajorGridLineStyle>
-                            <chart:CategoryAxis.AxisLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
-                            </chart:CategoryAxis.AxisLineStyle>
-                            <chart:CategoryAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle TextColor="black" />
-                            </chart:CategoryAxis.LabelStyle>
-                        </chart:CategoryAxis>
-                    </chart:SfChart.PrimaryAxis>
-                    <chart:SfChart.SecondaryAxis>
-                        <chart:NumericalAxis x:Name="secondary" Maximum="5" Minimum="0" Interval="1">
-                            <chart:NumericalAxis.MajorTickStyle>
-                                <chart:ChartAxisTickStyle StrokeColor="Transparent" />
-                            </chart:NumericalAxis.MajorTickStyle>
-                            <chart:NumericalAxis.LabelStyle>
-                                <chart:ChartAxisLabelStyle x:Name="secondaryAxisLabelStyle" TextColor="Black" FontSize="7" />
-                            </chart:NumericalAxis.LabelStyle>
-                            <chart:NumericalAxis.AxisLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
-                            </chart:NumericalAxis.AxisLineStyle>
-                            <chart:NumericalAxis.MajorGridLineStyle>
-                                <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="1" />
-                            </chart:NumericalAxis.MajorGridLineStyle>
-                        </chart:NumericalAxis>
-                    </chart:SfChart.SecondaryAxis>
-                    <chart:SfChart.Series>
-                        <chart:RadarSeries x:Name="series2" Label="{Binding RadarLabel2}" ItemsSource="{Binding RadarData2}" EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#ED247C" LegendIcon="Rectangle" />
-                        <chart:RadarSeries x:Name="series1" Label="{Binding RadarLabel1}" ItemsSource="{Binding RadarData1}"  EnableTooltip="True" EnableAnimation="True" XBindingPath="Name" YBindingPath="Value" Opacity="0.5" DrawType="Area" Color="#00ACE6" LegendIcon="Rectangle" />
-                    </chart:SfChart.Series>
-                </chart:SfChart>
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
+                </StackLayout.Padding>
+                <f9p:Label HtmlText="{Binding ImprovementStatement}" Style="{StaticResource ResultSubtitle}"/>
+                <StackLayout x:Name="ImprovementStack" />
             </StackLayout>
-            <f9p:Label HtmlText="{Binding ImprovementStatement}" Style="{StaticResource ResultSubtitle}"/>
-            <StackLayout x:Name="ImprovementStack" />
         </StackLayout>
     </ScrollView>
   

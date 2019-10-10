@@ -1,4 +1,6 @@
-﻿using UndderControl.Text;
+﻿using Prism.Events;
+using UndderControl.Events;
+using UndderControl.Text;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
 
@@ -7,7 +9,7 @@ namespace UndderControl.Views
     public partial class SurveyResultsPage : ContentPage
     {
         private readonly SurveyResultsPageViewModel _vm;
-        public SurveyResultsPage()
+        public SurveyResultsPage(IEventAggregator eventAggregator)
         {
             InitializeComponent();
 
@@ -16,6 +18,7 @@ namespace UndderControl.Views
 
             _vm = BindingContext as SurveyResultsPageViewModel;
             UpdateView();
+            eventAggregator.GetEvent<StatementsUpdatedEvent>().Subscribe(UpdateView);
         }
 
         private void UpdateView()

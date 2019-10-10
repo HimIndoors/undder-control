@@ -30,7 +30,7 @@ namespace UndderControl.Views
             try
             {
                 var stage = _viewModel.CurrentStage;
-                Title = stage.StageTitle.ToUpper(); //Force uppercase
+                _viewModel.Title = stage.StageTitle.ToUpper(); //Force uppercase
 
                 if (_viewModel.ShowStage)
                 {

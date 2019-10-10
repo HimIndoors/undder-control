@@ -19,4 +19,6 @@ namespace UndderControl.Events
     { }
     public class RootPageRefreshEvent : PubSubEvent
     { }
+    public class StatementsUpdatedEvent : PubSubEvent
+    { }
 }

@@ -20,9 +20,8 @@
                     <Label x:Name="FarmName"  FontSize="Title" FontFamily="{StaticResource BoldFont}"/>
                     <Label x:Name="Date" Style="{StaticResource StatusData}" Margin="0,0,0,21"/>
                     <Label x:Name="IdLabel" />
-                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0"
-                        ErrorText="Enter an I.D." HasError="{Binding IsIdEmpty}">
-                            <Entry x:Name="IdEntry" Margin="0" Text="{Binding CowId}" TextColor="Black" />
+                    <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0" ErrorText="Enter an I.D." HasError="{Binding IsIdEmpty}">
+                        <Entry x:Name="IdEntry" Margin="0" Text="{Binding CowId}" TextColor="Black" FontFamily="{StaticResource NormalFont}" />
                     </inputLayout:SfTextInputLayout>
                     <Label x:Name="StatusText" Text="{Binding InputModeText}" Style="{StaticResource StatusData}"  Margin="0,21" />
                     <buttons:SfSegmentedControl
@@ -35,6 +34,7 @@
                         SelectedIndex="1"
                         FontColor="#929292"
                         FontSize="18"
+                        FontFamily="{StaticResource NormalFont}"
                         SelectionChanged="InfectionSegment_SelectionChanged">
                             <segmentCollection:List x:TypeArguments="x:String">
                             <x:String>Infected</x:String>

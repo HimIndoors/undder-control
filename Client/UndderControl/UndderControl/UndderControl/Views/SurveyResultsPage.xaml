@@ -11,15 +11,15 @@
     </NavigationPage.TitleView>
     <ScrollView>
         <StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="31,31,31,18">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="31,21,31,18">
                 <Label Text="DATE"  FontSize="18" FontFamily="{StaticResource BoldFont}" Margin="0"/>
                 <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0, 1,0,0" Padding="8,0">
                     <Label Text="{Binding AssessmentDate}" HorizontalTextAlignment="Center"  FontSize="16" FontAttributes="Bold" />
                 </Frame>
             </StackLayout>
-            <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ChartPadding="0" HeightRequest="320" BackgroundColor="Transparent">
+            <chart:SfChart x:Name="Chart" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" ChartPadding="0" HeightRequest="350" BackgroundColor="Transparent">
                 <chart:SfChart.Scale>
-                    <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1" />
+                    <OnPlatform x:TypeArguments="x:Double" iOS="1.2" Android="1.2" />
                 </chart:SfChart.Scale>
                 <chart:SfChart.Margin>
                     <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />

@@ -11,12 +11,12 @@
     </NavigationPage.TitleView>
     <ScrollView>
         <StackLayout>
-            <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" ChartPadding="0" HeightRequest="320">
+            <chart:SfChart x:Name="Chart" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent" ChartPadding="0" HeightRequest="350">
                 <chart:SfChart.Scale>
-                    <OnPlatform x:TypeArguments="x:Double" iOS="1" Android="1"  />
+                    <OnPlatform x:TypeArguments="x:Double" iOS="1.2" Android="1.2"  />
                 </chart:SfChart.Scale>
                 <chart:SfChart.Margin>
-                    <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0"  WinPhone="0" />
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0,31,0,0"  WinPhone="0" />
                 </chart:SfChart.Margin>
                 <chart:SfChart.Legend>
                     <chart:ChartLegend IconHeight="14" IconWidth="14" Orientation="Horizontal" DockPosition="Bottom">

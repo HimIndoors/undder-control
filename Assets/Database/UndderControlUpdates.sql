@@ -56,5 +56,11 @@ UPDATE [dbo].[SurveyQuestion]
 UPDATE [dbo].[SurveyQuestion]
    SET QuestionText = 'Does the calving pen provide sufficient space; clean, soft and dry bedding; seclusion and available nutrition?'
  WHERE ID = 23
- GO
+GO
 
+/* Update survey version */
+UPDATE [dbo].[Survey]
+   SET [Version] = 21,
+	   LastUpdated = GETDATE()
+ WHERE ID = 1
+GO

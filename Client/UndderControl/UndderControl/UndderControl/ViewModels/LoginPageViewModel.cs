@@ -93,13 +93,13 @@ namespace UndderControl.ViewModels
                 }
                 else
                 {
-                    await PageDialog.AlertAsync("Unable to retrieve cow status data", "Error", "OK");
+                    await PageDialog.AlertAsync("Unable to retrieve user data", "Error", "OK");
                 }
             }
             catch (Exception ex)
             {
                 MetricsManager.TrackException("Error getting cowstatus data", ex);
-                await PageDialog.AlertAsync("Unable to retrieve cow status data", "Error", "OK");
+                await PageDialog.AlertAsync("Unable to retrieve user data", "Error", "OK");
             }
 
 

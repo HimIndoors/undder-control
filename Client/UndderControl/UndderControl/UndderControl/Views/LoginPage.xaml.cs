@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using UndderControl.Custom;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
 
@@ -16,9 +17,9 @@ namespace UndderControl.Views
             _vm = BindingContext as LoginPageViewModel;
             var loginView = new WebView
             {
-                Source = "http://lfwmobilehybrid.merck-animal-health.com/LoginCheck.asp?lfwmobileapp=lfwmodetest",
-                HeightRequest = 400,
-                WidthRequest = 400
+                Source = "https://lfwmobilehybrid.merck-animal-health.com/logincheck.asp?lfwmobileapp=sdct",
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
             };
             loginView.Navigated += LoginView_Navigated;
             LoginStack.Children.Add(loginView);

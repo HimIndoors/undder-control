@@ -36,25 +36,23 @@ namespace UndderControl.ViewModels
             }
         }
 
-        private int _niThreshold;
         public int NiThreshold
         {
-            get { return _niThreshold; }
+            get { return UserSettings.NewInfectionThreshold; }
             set
             {
-                _niThreshold = value;
+                UserSettings.NewInfectionThreshold = value;
                 PreventThreshold = 100 - value;
                 RaisePropertyChanged();
             }
         }
 
-        private int _cureThreshold;
         public int CureThreshold
         {
-            get { return _cureThreshold; }
+            get { return UserSettings.CureThreshold; }
             set
             {
-                _cureThreshold = value;
+                UserSettings.CureThreshold = value;
                 FailCureThreshold = 100 - value;
                 RaisePropertyChanged();
             }
@@ -132,8 +130,8 @@ namespace UndderControl.ViewModels
             : base(navigationService, metricsManager)
         {
             Title = AppTextResource.SummaryResultTitle;
-            NiThreshold = 10;
-            CureThreshold = 85;
+            NiThreshold = UserSettings.NewInfectionThreshold;
+            CureThreshold = UserSettings.CureThreshold;
             Init();
         }
 

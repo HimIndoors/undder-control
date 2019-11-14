@@ -16,6 +16,8 @@ namespace UndderControl.Helpers
         private const string UserTokenKey = "usertoken";
         private const string UserIdKey = "userid";
         private const string TermsVersionKey = "termsversion";
+        private const string UserCureThreshold = "usercure";
+        private const string UserNewInfectionThreshold = "usernewinfection";
         #endregion
 
         /// <summary>
@@ -63,5 +65,34 @@ namespace UndderControl.Helpers
             }
         }
 
+        /// <summary>
+        /// The cached users cure threshold value from cow status reporting.
+        /// </summary>
+        public static int CureThreshold
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserCureThreshold, 85);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(UserCureThreshold, value);
+            }
+        }
+
+        /// <summary>
+        /// The cached users failure to cure threshold value from cow status reporting.
+        /// </summary>
+        public static int NewInfectionThreshold
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserNewInfectionThreshold, 10);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(UserNewInfectionThreshold, value);
+            }
+        }
     }
 }

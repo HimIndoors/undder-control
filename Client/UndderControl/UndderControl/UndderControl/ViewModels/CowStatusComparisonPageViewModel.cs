@@ -56,6 +56,9 @@ namespace UndderControl.ViewModels
                 RaisePropertyChanged("CureRateInfected");
             }
         }
+        public int NiThreshold { get; set; }
+        public int CureThreshold { get; set; }
+
         #endregion Graph Data
 
         private readonly ObservableDictionary<string, int> latestResults;
@@ -78,6 +81,8 @@ namespace UndderControl.ViewModels
             Title = "";
             latestResults = BuildCowData(App.LatestCowStatusData);
             previousResults = BuildCowData(App.PreviousCowStatusData);
+            NiThreshold = UserSettings.NewInfectionThreshold;
+            CureThreshold = UserSettings.CureThreshold;
             BuildGraphData();
         }
 

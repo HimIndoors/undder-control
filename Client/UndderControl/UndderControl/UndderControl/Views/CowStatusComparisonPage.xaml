@@ -113,7 +113,7 @@
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>
-                            <chart:HorizontalLineAnnotation Y1="10" ShowAxisLabel="true" StrokeColor="Red" Text="Threshold" FillColor="Red">
+                            <chart:HorizontalLineAnnotation Y1="{Binding NiThreshold}" ShowAxisLabel="true" StrokeColor="Red" Text="Threshold" FillColor="Red">
                                 <chart:HorizontalLineAnnotation.AxisLabelStyle>
                                     <chart:ChartLabelStyle BackgroundColor="White" TextColor="Red"/>
                                 </chart:HorizontalLineAnnotation.AxisLabelStyle>
@@ -217,7 +217,7 @@
                             </chart:StackingColumn100Series>
                         </chart:SfChart.Series>
                         <chart:SfChart.ChartAnnotations>
-                            <chart:HorizontalLineAnnotation Y1="85" ShowAxisLabel="true" StrokeColor="Red" Text="Threshold" FillColor="Red">
+                            <chart:HorizontalLineAnnotation Y1="{Binding CureThreshold}" ShowAxisLabel="true" StrokeColor="Red" Text="Threshold" FillColor="Red">
                                 <chart:HorizontalLineAnnotation.AxisLabelStyle>
                                     <chart:ChartLabelStyle BackgroundColor="White" TextColor="Red"/>
                                 </chart:HorizontalLineAnnotation.AxisLabelStyle>

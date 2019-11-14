@@ -43,7 +43,7 @@ namespace UndderControl
             if (Config.TestMode) UserSettings.UserId = 1;
 
             //DEV: Forcing new user login every time
-            UserSettings.UserId = 0;
+            //UserSettings.UserId = 0;
 
             //Initialize MonkeyCache barrel
             Barrel.ApplicationId = "MSC_Undder_Control";

@@ -126,16 +126,6 @@ namespace UndderControl.ViewModels
             {
                 MetricsManager.TrackException("GetFarmsFailed", ex);
             }
-
-            //New user with no farms so direct to add farm page
-            if (!UserFarmsFound)
-            {
-                var result = await _dialogService.DisplayAlertAsync("No farms found", "Would you like to add a farm?", "Yes", "No");
-                if (result)
-                {
-                    await NavigationService.NavigateAsync("ManageFarmsPage");
-                }
-            }
             
             if (App.SelectedFarm != null)
             {
@@ -224,11 +214,23 @@ namespace UndderControl.ViewModels
             return App.SelectedFarm == null ? false : true;
         }
 
-        public override void OnResume()
+        public async override void OnResume()
         {
             base.OnResume();
-            if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;
             ResetButtons();
+            //New user with no farms so direct to add farm page
+            if (!UserFarmsFound)
+            {
+                var result = await _dialogService.DisplayAlertAsync("No farms found", "Would you like to add a farm?", "Yes", "No");
+                if (result)
+                {
+                    await NavigationService.NavigateAsync("ManageFarmsPage");
+                }
+            }
+            else
+            {
+                if (App.SelectedFarm != null) SelectedFarm = App.SelectedFarm;
+            }
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)

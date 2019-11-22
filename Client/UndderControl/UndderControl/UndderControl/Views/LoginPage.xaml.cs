@@ -17,7 +17,7 @@ namespace UndderControl.Views
             _vm = BindingContext as LoginPageViewModel;
             var loginView = new WebView
             {
-                Source = "https://lfwmobilehybrid.merck-animal-health.com/logincheck.asp?lfwmobileapp=sdct",
+                Source = Config.LoginUrl,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };

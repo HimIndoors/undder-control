@@ -22,7 +22,7 @@
                     <OnPlatform x:TypeArguments="x:Double" iOS="1.2" Android="1.2" />
                 </chart:SfChart.Scale>
                 <chart:SfChart.Margin>
-                    <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="0" />
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0,21,0,0" Android="0" />
                 </chart:SfChart.Margin>
                 <chart:SfChart.PrimaryAxis>
                     <chart:CategoryAxis>
@@ -69,7 +69,11 @@
                 <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18" Lines="2"/>
                 <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
                 <StackLayout x:Name="StatementStack" />
-                <f9p:Button x:Name="CompareButton" Command="{Binding CompareCommand}" Lines="2" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0" HorizontalOptions="FillAndExpand" BackgroundColor="White" BorderColor="White" BorderRadius="10" />
+                <f9p:StateButton x:Name="CompareButton" Command="{Binding CompareCommand}" Lines="2" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0" HorizontalOptions="FillAndExpand" BackgroundColor="White" BorderColor="White" BorderRadius="10">
+                    <f9p:StateButton.DisabledState>
+                        <f9p:ButtonState TextColor="#BDBDBD" BackgroundColor="White" />
+                    </f9p:StateButton.DisabledState>
+                </f9p:StateButton>
             </StackLayout>
         </StackLayout>
     </ScrollView>

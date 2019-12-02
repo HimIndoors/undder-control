@@ -42,14 +42,8 @@ namespace UndderControl
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUxNTY5QDMxMzcyZTMzMmUzMFZnS0V6ZjZKTUF2WFF6Q2F3MjNud0hzVFVvaVJOSThXK0xQbHpNbFVmS0E9");// Version 1.7.3.*
             if (Config.TestMode) UserSettings.UserId = 1;
 
-            //DEV: Forcing new user login every time
-            //UserSettings.UserId = 0;
-
             //Initialize MonkeyCache barrel
             Barrel.ApplicationId = "MSC_Undder_Control";
-
-            //TODO: Important - remove this line for live
-            Barrel.Current.EmptyAll();
 
             VersionTracking.Track();
             InitializeComponent();

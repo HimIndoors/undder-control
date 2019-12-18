@@ -24,8 +24,6 @@
 	<string>Undder Control</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.pmn.UndderControl</string>
-	<key>CFBundleVersion</key>
-	<string>2.02</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -62,8 +60,6 @@
 	<string>SplashScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>SplashScreen</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>dinot.otf</string>
@@ -71,5 +67,9 @@
 		<string>dinot-medium.otf</string>
 		<string>fontello.ttf</string>
 	</array>
+	<key>CFBundleShortVersionString</key>
+	<string>3.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>3.0</string>
 </dict>
 </plist>

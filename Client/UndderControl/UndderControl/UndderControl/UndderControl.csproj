@@ -18,6 +18,7 @@
     <None Remove="Svg\head_assessment.svg" />
     <None Remove="Svg\head_monitor.svg" />
     <None Remove="Svg\tick.svg" />
+    <None Remove="Svg\screenbg.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,7 @@
     <EmbeddedResource Include="Svg\head_assessment.svg" />
     <EmbeddedResource Include="Svg\head_monitor.svg" />
     <EmbeddedResource Include="Svg\tick.svg" />
+    <EmbeddedResource Include="Svg\screenbg.svg" />
   </ItemGroup>
 
   <ItemGroup>

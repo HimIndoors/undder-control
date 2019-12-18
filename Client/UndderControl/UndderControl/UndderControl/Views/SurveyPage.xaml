@@ -5,13 +5,15 @@
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="UndderControl.Views.SurveyPage">
+             x:Class="UndderControl.Views.SurveyPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True">
     <NavigationPage.TitleView>
         <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#97CABD">
-            <ffimageloadingsvg:SvgCachedImage Source="resource://UndderControl.Svg.blank_background.svg" HorizontalOptions="EndAndExpand" x:Name="StageBackground"/>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image Source="background" HorizontalOptions="EndAndExpand" x:Name="StageBackground"/>
             <ScrollView x:Name="SurveyStageView" IsVisible="False">
                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <StackLayout VerticalOptions="CenterAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">

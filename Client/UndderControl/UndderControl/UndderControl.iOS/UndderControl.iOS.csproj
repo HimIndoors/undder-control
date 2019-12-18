@@ -27,6 +27,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -108,7 +110,6 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Custom\CowStatusResultsRenderer.cs" />
     <Compile Include="Custom\ExtendedWebViewRenderer.cs" />
     <Compile Include="Helpers\IOSFileHelper.cs" />
     <Compile Include="Main.cs" />
@@ -180,25 +181,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\87.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Background.imageset\blank_background.pdf">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Background.imageset\back1280x1920.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Background.imageset\back320.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Background.imageset\back640x960.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Background.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImages.imageset\Contents.json">
@@ -207,22 +193,16 @@
     <ImageAsset Include="Assets.xcassets\Splash.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Splash.imageset\splash-1280x1920.png">
+    <ImageAsset Include="Assets.xcassets\Splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-1280x1920-2.png" />
+    <ImageAsset Include="Assets.xcassets\Logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Logo.imageset\MSD198-SDCT-App-MSD-logo-for-2048x2048.png" />
+    <ImageAsset Include="Assets.xcassets\background.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Splash.imageset\splash-320x480.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Splash.imageset\splash-640x960.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\background.imageset\MSD198-SDCT-App-Screen-BG-2048x2732.png" />
+    <ImageAsset Include="Assets.xcassets\background.imageset\MSD198-SDCT-App-Screen-BG-1242x2688.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h@2x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait@2x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default@2x.png" />
     <InterfaceDefinition Include="Resources\SplashScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +306,10 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\SurveyResponse.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\Logo.imageset\" />
+    <Folder Include="Assets.xcassets\background.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

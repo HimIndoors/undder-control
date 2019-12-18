@@ -1,4 +1,4 @@
-﻿using MonkeyCache.SQLite;
+using MonkeyCache.SQLite;
 using Prism;
 using Prism.Ioc;
 using System;
@@ -38,7 +38,6 @@ namespace UndderControl
         protected override async void OnInitialized()
         {
             //Register Syncfusion license
-            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTIwOTUxQDMxMzcyZTMyMmUzMFlvWjZiUENiOVVkTm1CSG04RXRGWEJ0cW4rR0Fuc2ZNK2pjM2p0REZCelk9"); // Version 1.7.2.*
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUxNTY5QDMxMzcyZTMzMmUzMFZnS0V6ZjZKTUF2WFF6Q2F3MjNud0hzVFVvaVJOSThXK0xQbHpNbFVmS0E9");// Version 1.7.3.*
             if (Config.TestMode) UserSettings.UserId = 1;
 
@@ -59,7 +58,7 @@ namespace UndderControl
                 if (VersionTracking.IsFirstLaunchEver || VersionTracking.IsFirstLaunchForCurrentVersion|| Config.TestMode)
                     await NavigationService.NavigateAsync("TermsPage");
                 else
-                    await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
+                    await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/AssessmentPage");
         }
 
         public void OnMenuButtonPressed(object sender, EventArgs e)

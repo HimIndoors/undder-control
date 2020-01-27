@@ -28,21 +28,10 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>lfwmobilehybrid.merck-animal-health.com</key>
+			<key>merck-animal-health.com</key>
 			<dict>
 				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.0</string>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-			<key>services.merck-animal-health.com</key>
-			<dict>
-				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.0</string>
+				<string>TLSv1.2</string>
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
@@ -68,8 +57,8 @@
 		<string>fontello.ttf</string>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.0</string>
+	<string>3.1.0</string>
 	<key>CFBundleVersion</key>
-	<string>3.0</string>
+	<string>3.1</string>
 </dict>
 </plist>

@@ -229,7 +229,7 @@ namespace UndderControl.ViewModels
                 }
                 else
                 {
-                    await NavigationService.NavigateAsync("NoResultComparisonPage");
+                    await NavigationService.NavigateAsync("NoResultsComparisonPage");
                 }
             }
             else

@@ -11,7 +11,7 @@
     </NavigationPage.TitleView>
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <StackLayout HorizontalOptions="StartAndExpand">
+            <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
                 <syncfusion:SfListView x:Name="listView" ItemsSource="{Binding MenuItems}" SelectionMode="Single"
                  SelectionGesture="Tap" SelectionBackgroundColor="#E4E4E4" HeaderSize="120">
                     <syncfusion:SfListView.Behaviors>
@@ -30,7 +30,7 @@
                                 <Label LineBreakMode="NoWrap"
                                     Margin="0" Text="UnDDER CONTROL" FontAttributes="Bold"
                                     FontSize="18" TextColor="White" HorizontalOptions="Center"
-                                    VerticalOptions="Center"/>      
+                                    VerticalOptions="Center"/>
                             </Grid>
                         </DataTemplate>
                     </syncfusion:SfListView.HeaderTemplate>

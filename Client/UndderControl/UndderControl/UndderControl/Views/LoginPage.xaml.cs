@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,7 +17,7 @@ namespace UndderControl.Views
             _vm = BindingContext as LoginPageViewModel;
             var loginView = new WebView
             {
-                Source = "https://lfwmobilehybrid.merck-animal-health.com/logincheck.asp?lfwmobileapp=sdct",
+                Source = Config.LoginUrl,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };

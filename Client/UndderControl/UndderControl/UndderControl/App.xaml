@@ -2,7 +2,6 @@
 <prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
-             xmlns:local="clr-namespace:UndderControl.Custom"
              x:Class="UndderControl.App">
 	<Application.Resources>
         <ResourceDictionary>
@@ -137,7 +136,7 @@
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Margin">
                     <Setter.Value>
-                        <x:OnPlatform Android="0" iOS="-44,0,0,0"/>
+                        <x:OnPlatform Android="-60,0,0,0" iOS="-44,0,0,0"/>
                     </Setter.Value>
                 </Setter>
             </Style>

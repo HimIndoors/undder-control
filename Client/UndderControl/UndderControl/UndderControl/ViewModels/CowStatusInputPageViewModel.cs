@@ -134,7 +134,7 @@ namespace UndderControl.ViewModels
                 await NavigationService.NavigateAsync("CowStatusFinishPage");
             else
             {
-                PopulateCowStatusData();
+                await PopulateCowStatusData();
                 await NavigationService.NavigateAsync("CowStatusResultsPage");
             }
         }
@@ -191,7 +191,7 @@ namespace UndderControl.ViewModels
             return cowStatus;
         }
 
-        private async void PopulateCowStatusData()
+        private async Task PopulateCowStatusData()
         {
             Barrel.Current.Empty(key: "GetCowsStatusByFarmID" + App.SelectedFarm.ID);
             try

@@ -5,15 +5,15 @@
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="UndderControl.Views.RootPage">
+             x:Class="UndderControl.Views.RootPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True">
     <NavigationPage.TitleView>
         <Label Text="{Binding Title}" Style="{StaticResource NavHeader}" />
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#97CABD">
-            <ffimageloadingsvg:SvgCachedImage 
-                Source="resource://UndderControl.Svg.blank_background.svg"
-                HorizontalOptions="EndAndExpand" />
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" Margin="0">
+            <Image Source="background" HorizontalOptions="EndAndExpand" />
             <StackLayout VerticalOptions="CenterAndExpand">
                 <StackLayout.Padding>
                     <OnPlatform x:TypeArguments="Thickness"

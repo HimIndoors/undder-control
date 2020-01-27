@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Assets\burger.png" />
     <None Remove="Assets\play.png" />
     <None Remove="Assets\progressdark.svg" />
     <None Remove="Assets\progresslight.svg" />
@@ -18,10 +17,10 @@
     <None Remove="Svg\head_assessment.svg" />
     <None Remove="Svg\head_monitor.svg" />
     <None Remove="Svg\tick.svg" />
+    <None Remove="Svg\screenbg.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\burger.png" />
     <EmbeddedResource Include="Assets\play.png" />
     <EmbeddedResource Include="Svg\progressdark.svg" />
     <EmbeddedResource Include="Svg\progresslight.svg" />
@@ -30,6 +29,7 @@
     <EmbeddedResource Include="Svg\head_assessment.svg" />
     <EmbeddedResource Include="Svg\head_monitor.svg" />
     <EmbeddedResource Include="Svg\tick.svg" />
+    <EmbeddedResource Include="Svg\screenbg.svg" />
   </ItemGroup>
 
   <ItemGroup>

@@ -53,7 +53,7 @@ namespace UndderControl.ViewModels
         {
             _EventAggregator = eventAggregator;
             Title = "FARMS";
-            InitAsync();
+            //InitAsync();
         }
 
         private async void AddFarm(string page)
@@ -101,6 +101,7 @@ namespace UndderControl.ViewModels
         {
             base.OnNavigatedTo(parameters);
             _EventAggregator.GetEvent<FarmNavigationEvent>().Publish();
+            InitAsync();
         }
     }
 }

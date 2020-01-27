@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Firebase.Analytics;
+using Foundation;
+using System;
 using System.Collections.Generic;
-using Microsoft.AppCenter.Analytics;
 using UndderControl.iOS.Services;
 using UndderControl.Services;
 using Xamarin.Forms;
@@ -13,12 +14,12 @@ namespace UndderControl.iOS.Services
     {
         public void TrackEvent(string eventName)
         {
-            Analytics.TrackEvent(eventName);
+            SendEvent(eventName, null);
         }
 
         public void TrackEvent(string eventName, Dictionary<string, string> properties)
         {
-            Analytics.TrackEvent(eventName, properties);
+            SendEvent(eventName, properties);
         }
 
         public void TrackException(string eventName, Exception exception)
@@ -28,7 +29,7 @@ namespace UndderControl.iOS.Services
                 {"error", exception.Message},
             };
 
-            Analytics.TrackEvent(eventName, properties);
+            SendEvent(eventName, properties);
         }
 
         public void TrackLatency(string eventName, TimeSpan latency)
@@ -38,7 +39,27 @@ namespace UndderControl.iOS.Services
                 { "latency", latency.TotalMilliseconds.ToString() },
             };
 
-            Analytics.TrackEvent(eventName, properties);
+            SendEvent(eventName, properties);
+        }
+
+        private void SendEvent(string eventId, IDictionary<string, string> parameters)
+        {
+            if (parameters == null)
+            {
+                Analytics.LogEvent(eventId, (Dictionary<object, object>)null);
+                return;
+            }
+
+            var keys = new List<NSString>();
+            var values = new List<NSString>();
+            foreach (var item in parameters)
+            {
+                keys.Add(new NSString(item.Key));
+                values.Add(new NSString(item.Value));
+            }
+
+            var parametersDictionary = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(values.ToArray(), keys.ToArray(), keys.Count);
+            Analytics.LogEvent(eventId, parametersDictionary);
         }
     }
 }

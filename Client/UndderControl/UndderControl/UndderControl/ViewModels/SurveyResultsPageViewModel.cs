@@ -67,8 +67,9 @@ namespace UndderControl.ViewModels
             }
         }
         private DelegateCommand _compareCommand;
-        public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync));
-        private IEventAggregator _eventAggregator;
+        public DelegateCommand CompareCommand => _compareCommand ?? (_compareCommand = new DelegateCommand(NavigateAsync, CanCompareNavigate));
+
+        private readonly IEventAggregator _eventAggregator;
 
         public SurveyResultsPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator eventAggregator)
             : base(navigationService, metricsManager)
@@ -95,6 +96,7 @@ namespace UndderControl.ViewModels
                     {
                         App.LatestSurveyResponse = responseData[0];
                         App.PreviousSurveyResponse = responseData[1];
+                        CompareCommand.RaiseCanExecuteChanged();
                     }
                 }
                 catch (Exception ex)
@@ -216,8 +218,12 @@ namespace UndderControl.ViewModels
             }
             else
             {
-                await NavigationService.NavigateAsync("NoResultComparisonPage");
+                await NavigationService.NavigateAsync("NoResultsComparisonPage");
             }
+        }
+        private bool CanCompareNavigate()
+        {
+            return App.PreviousSurveyResponse == null ? false : true;
         }
     }
 }

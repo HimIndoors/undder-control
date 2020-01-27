@@ -10,7 +10,7 @@ namespace UndderControl.Views
 {
     public partial class CowStatusInputPage : ContentPage
     {
-        CowStatusInputPageViewModel vm;
+        readonly CowStatusInputPageViewModel vm;
         public CowStatusInputPage(IEventAggregator eventAggregator)
         {
             InitializeComponent();
@@ -21,9 +21,11 @@ namespace UndderControl.Views
             IdLabel.Text = AppTextResource.CowStatusInputLabel;
             #endregion TextSetup
 
-            SelectionIndicatorSettings selectionIndicator = new SelectionIndicatorSettings();
-            selectionIndicator.Position = SelectionIndicatorPosition.Fill;
-            selectionIndicator.Color = Color.FromHex("#FF4081");
+            SelectionIndicatorSettings selectionIndicator = new SelectionIndicatorSettings
+            {
+                Position = SelectionIndicatorPosition.Fill,
+                Color = Color.FromHex("#FF4081")
+            };
             InfectionSegment.SelectionIndicatorSettings = selectionIndicator;
 
             eventAggregator.GetEvent<CowStatusRefreshEvent>().Subscribe(ClearScreen);
@@ -39,11 +41,11 @@ namespace UndderControl.Views
         {
             if (e.Index == 0)
             {
-                vm.CowInfected = false;
+                vm.CowInfected = true;
             }
             else
             {
-                vm.CowInfected = true;
+                vm.CowInfected = false;
             }
         }
     }

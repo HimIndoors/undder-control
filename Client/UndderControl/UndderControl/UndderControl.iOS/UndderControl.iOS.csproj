@@ -27,6 +27,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>

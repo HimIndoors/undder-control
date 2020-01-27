@@ -1,10 +1,6 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using UndderControl.Helpers;
 using UndderControl.Services;
 
@@ -36,7 +32,7 @@ namespace UndderControl.ViewModels
                 new MenuItemModel{ Name="Manage Farms", Icon="farm.png",Page="NavigationPage/ManageFarmsPage"},
                 //new MenuItemModel{ Name="Assess Farm", Icon="farm.png",Page="NavigationPage/AssessmentPage"},
                 //new MenuItemModel{ Name="Monitor Farm", Icon="farm.png",Page="NavigationPage/MonitorPage"},
-                new MenuItemModel{ Name="About", Icon="about.png",Page="NavigationPage/AboutPage"}
+                //new MenuItemModel{ Name="About", Icon="about.png",Page="NavigationPage/AboutPage"}
             };
         }
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1026306019614-1sjlke4lm20976mu1vdg2gdeetrsf6n7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1026306019614-1sjlke4lm20976mu1vdg2gdeetrsf6n7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBXSzqKbexD_hdSP0TrEJ63U5A3U_tx1cc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1026306019614</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.merck.ah.con.int.01.SDCT</string>
+	<key>PROJECT_ID</key>
+	<string>sdct-cc762</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sdct-cc762.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1026306019614:ios:c5a835f91775044970b90f</string>
+	<key>DATABASE_URL</key>
+	<string>https://sdct-cc762.firebaseio.com</string>
+</dict>
+</plist>

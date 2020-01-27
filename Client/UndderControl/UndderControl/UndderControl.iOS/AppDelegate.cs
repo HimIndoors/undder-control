@@ -1,8 +1,5 @@
 ﻿using FFImageLoading.Forms.Platform;
 using Foundation;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using Prism;
 using Prism.Ioc;
 using Syncfusion.ListView.XForms.iOS;
@@ -47,9 +44,11 @@ namespace UndderControl.iOS
             SfButtonRenderer.Init();
             SfMaskedEditRenderer.Init();
 
+            Firebase.Core.App.Configure();
+
             LoadApplication(new App(new iOSInitializer()));
 
-            AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
+            //AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
 
             CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();

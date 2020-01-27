@@ -23,7 +23,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Undder Control</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pmn.UndderControl</string>
+	<string>com.merck.ah.con.int.01.SDCT</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>

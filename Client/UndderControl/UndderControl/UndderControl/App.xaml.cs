@@ -41,6 +41,8 @@ namespace UndderControl
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUxNTY5QDMxMzcyZTMzMmUzMFZnS0V6ZjZKTUF2WFF6Q2F3MjNud0hzVFVvaVJOSThXK0xQbHpNbFVmS0E9");// Version 1.7.3.*
             if (Config.TestMode) UserSettings.UserId = 1;
 
+            UserSettings.UserId = 0;
+
             //Initialize MonkeyCache barrel
             Barrel.ApplicationId = "MSC_Undder_Control";
 
@@ -58,7 +60,7 @@ namespace UndderControl
                 if (VersionTracking.IsFirstLaunchEver || VersionTracking.IsFirstLaunchForCurrentVersion|| Config.TestMode)
                     await NavigationService.NavigateAsync("TermsPage");
                 else
-                    await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/AssessmentPage");
+                    await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
         }
 
         public void OnMenuButtonPressed(object sender, EventArgs e)

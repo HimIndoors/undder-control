@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Assets\burger.png" />
     <None Remove="Assets\play.png" />
     <None Remove="Assets\progressdark.svg" />
     <None Remove="Assets\progresslight.svg" />
@@ -22,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\burger.png" />
     <EmbeddedResource Include="Assets\play.png" />
     <EmbeddedResource Include="Svg\progressdark.svg" />
     <EmbeddedResource Include="Svg\progresslight.svg" />

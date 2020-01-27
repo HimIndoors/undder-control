@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1026306019614",
+    "firebase_url": "https://sdct-cc762.firebaseio.com",
+    "project_id": "sdct-cc762",
+    "storage_bucket": "sdct-cc762.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026306019614:android:db23aaf50023515c70b90f",
+        "android_client_info": {
+          "package_name": "com.merck.sdct"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026306019614-bvasigl3k38khp3kjkqlp72mbdvn92de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy-cjOubnkuiLpi4ov6Dx9_SqPcmAkhHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026306019614-bvasigl3k38khp3kjkqlp72mbdvn92de.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1026306019614-1sjlke4lm20976mu1vdg2gdeetrsf6n7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.merck.ah.con.int.01.SDCT"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

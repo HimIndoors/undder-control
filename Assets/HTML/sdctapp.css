@@ -5,23 +5,23 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	height: 100%
 }
-body { margin: 0; padding:0; }
+body { margin: 0; padding:0; height: 100%; display: flex; justify-content: center; align-items: center; }
 
-#login_form { max-width: 58%; margin: 45% auto 0; }
+#login_form { max-width: 58%; min-width: 50%; margin: 0; }
 #login_form legend { text-transform: uppercase; color: #fff; font-size: 1.6em; text-align: center; }
 #login_form fieldset { border: none; margin: 0; padding: 0; }
 #login_form label { color: #fff; }
 #login_form dd { margin: 0; }
 #login_form input[type=text],
-#login_form input[type=password] { border-radius: .5em; background: #fff; border: none; padding: .5em; width: 100%; }
+#login_form input[type=password] { border-radius: .5em; background: #fff; border: none; padding: .5em 2%; width: 96%; }
 #login_form label { font-size: .8em; }
-#login_form input[type=submit] { border-radius: .5em; background: #7CCCBD; border: 2px solid #fff; padding: .5em 5em; font-size: 1.1em; text-transform: uppercase; }
+#login_form input[type=submit] { border-radius: .5em; background: #7CCCBD; border: 2px solid #fff; padding: .5em 0; font-size: 1.1em; text-transform: uppercase; width: 100%; }
 
 /* Tweaks for country selector */
-#hybrCountrySelect { padding-top: 55px; }
 #hybrCountrySelect dd { border-radius: .5em; background: #fff; border: none; padding: .2em; width: 100%; }
-#hybrCountrySelect select { width: 100%; overflow: hidden; text-overflow: ellipsis; border: none; }
+#hybrCountrySelect select { width: 100%; overflow: hidden; text-overflow: ellipsis; border: none; font-size: 1.2em; }
 
 #hybrEverythingElse a { color: #fff; text-decoration: none; background-color: #009183; border: 2px solid #fff; padding: .2em .5em; display: inline-block; margin-top: 5px; }
 #hybrEverythingElse fieldset a { display: inline; border-radius: 0; background: transparent; border: none;padding: 0; }

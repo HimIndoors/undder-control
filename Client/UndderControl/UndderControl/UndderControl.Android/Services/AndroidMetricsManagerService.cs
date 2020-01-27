@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using UndderControl.Services;
-using Microsoft.AppCenter.Analytics;
 using UndderControl.Droid.Services;
+using Firebase.Analytics;
+using Xamarin.Forms;
+using Android.OS;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidMetricsManagerService))]
 namespace UndderControl.Droid.Services
@@ -11,12 +13,12 @@ namespace UndderControl.Droid.Services
     {
         public void TrackEvent(string eventName)
         {
-            Analytics.TrackEvent(eventName);
+            SendEvent(eventName, null);
         }
 
         public void TrackEvent(string eventName, Dictionary<string, string> properties)
         {
-            Analytics.TrackEvent(eventName, properties);
+            SendEvent(eventName, properties);
         }
 
         public void TrackException(string eventName, Exception exception)
@@ -26,7 +28,7 @@ namespace UndderControl.Droid.Services
                 {"error", exception.Message},
             };
 
-            Analytics.TrackEvent(eventName, properties);
+            SendEvent(eventName, properties);
         }
 
         public void TrackLatency(string eventName, TimeSpan latency)
@@ -36,7 +38,26 @@ namespace UndderControl.Droid.Services
                 { "latency", latency.TotalMilliseconds.ToString() },
             };
 
-            Analytics.TrackEvent(eventName, properties);
+            SendEvent(eventName, properties);
+        }
+
+        private void SendEvent(string eventName, Dictionary<string,string> parameters)
+        {
+            var firebaseAnalytics =  FirebaseAnalytics.GetInstance(Android.App.Application.Context);
+
+            if (parameters == null)
+            {
+                firebaseAnalytics.LogEvent(eventName, null);
+                return;
+            }
+
+            var bundle = new Bundle();
+            foreach (var param in parameters)
+            {
+                bundle.PutString(param.Key, param.Value);
+            }
+
+            firebaseAnalytics.LogEvent(eventName, bundle);
         }
     }
 }

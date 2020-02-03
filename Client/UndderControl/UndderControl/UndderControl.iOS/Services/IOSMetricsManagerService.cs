@@ -2,6 +2,7 @@
 using Foundation;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using UndderControl.iOS.Services;
 using UndderControl.Services;
 using Xamarin.Forms;
@@ -36,7 +37,7 @@ namespace UndderControl.iOS.Services
         {
             var properties = new Dictionary<string, string>
             {
-                { "latency", latency.TotalMilliseconds.ToString() },
+                { "latency", latency.TotalMilliseconds.ToString(new CultureInfo("en-GB")) },
             };
 
             SendEvent(eventName, properties);

@@ -243,7 +243,7 @@ namespace UndderControl.ViewModels
             }
         }
 
-        public async override void OnNavigatedTo(INavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
             ResetButtons();

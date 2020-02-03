@@ -48,8 +48,6 @@ namespace UndderControl.iOS
 
             LoadApplication(new App(new iOSInitializer()));
 
-            //AppCenter.Start(Config.AppCenterIosKey, typeof(Analytics), typeof(Crashes));
-
             CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();
 

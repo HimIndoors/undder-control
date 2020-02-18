@@ -197,6 +197,24 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to connect to the user service, please check your internet connection and try again.
+        /// </summary>
+        public static string ConnIssueText {
+            get {
+                return ResourceManager.GetString("ConnIssueText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CONNECTION ISSUE.
+        /// </summary>
+        public static string ConnIssueTitle {
+            get {
+                return ResourceManager.GetString("ConnIssueTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CALVING.
         /// </summary>
         public static string CowStatusButtonCalving {

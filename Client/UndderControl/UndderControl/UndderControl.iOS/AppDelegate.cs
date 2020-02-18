@@ -1,4 +1,5 @@
 ﻿using FFImageLoading.Forms.Platform;
+using Firebase.Analytics;
 using Foundation;
 using Prism;
 using Prism.Ioc;
@@ -10,6 +11,12 @@ using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.ComboBox;
 using Syncfusion.XForms.iOS.MaskedEdit;
 using Syncfusion.XForms.iOS.TextInputLayout;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using UIKit;
 using UndderControl.iOS.Services;
 using UndderControl.Services;
@@ -33,8 +40,8 @@ namespace UndderControl.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
-            new SfComboBoxRenderer();
-            new SfNumericTextBoxRenderer();
+            SfComboBoxRenderer.Init();
+            SfNumericTextBoxRenderer.Init();
             Forms9Patch.iOS.Settings.Initialize(this);
             SfChartRenderer.Init();
             SfSegmentedControlRenderer.Init();
@@ -46,12 +53,99 @@ namespace UndderControl.iOS
 
             Firebase.Core.App.Configure();
 
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+
+            DisplayCrashReport();
+
             LoadApplication(new App(new iOSInitializer()));
 
             CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();
 
+            //Thread.Sleep(2000);
+
             return base.FinishedLaunching(app, options);
+        }
+
+        private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+        {
+            var newExc = new Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+            LogUnhandledException(newExc);
+        }
+
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            var newExc = new Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as Exception);
+            LogUnhandledException(newExc);
+        }
+
+        internal static void LogUnhandledException(Exception exception)
+        {
+            try
+            {
+                const string errorFileName = "Fatal.log";
+                var libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Resources); 
+                var errorFilePath = Path.Combine(libraryPath, errorFileName);
+                var errorMessage = string.Format("Time: {0}\r\nError: Unhandled Exception\r\n{1}", DateTime.Now, exception.ToString());
+                File.WriteAllText(errorFilePath, errorMessage);
+
+                var keys = new List<NSString>();
+                var values = new List<NSString>(); 
+                keys.Add(new NSString("Exception"));
+                values.Add(new NSString(exception.Message));
+                keys.Add(new NSString("Stack"));
+                values.Add(new NSString(exception.StackTrace));
+                var parametersDictionary = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(values.ToArray(), keys.ToArray(), keys.Count); 
+
+                Analytics.LogEvent("AppCrash", parametersDictionary);
+
+                var alertView = new UIAlertView()
+                {
+                    Title = "Crashed",
+                    Message = "Oops, something has gone wrong, the error has been logged. Please reopen the app and try again."
+                };
+                alertView.Clicked += (sender, args) =>
+                {
+                    //User clicked OK
+                };
+                alertView.Show();
+            }
+            catch
+            {
+                // just suppress any error logging exceptions
+            }
+        }
+
+        /// <summary>
+        // If there is an unhandled exception, the exception information is diplayed 
+        // on screen the next time the app is started (only in debug configuration)
+        /// </summary>
+        [Conditional("DEBUG")]
+        private static void DisplayCrashReport()
+        {
+            const string errorFilename = "Fatal.log";
+            var libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Resources);
+            var errorFilePath = Path.Combine(libraryPath, errorFilename);
+
+            if (!File.Exists(errorFilePath))
+            {
+                return;
+            }
+
+            var errorText = File.ReadAllText(errorFilePath);
+            var alertView = new UIAlertView()
+            {
+                Title = "Crash Report",
+                Message = errorText
+            };
+            alertView.AddButton("OK");
+            alertView.Clicked += (sender, args) =>
+            {
+                //User clicked OK
+                File.Delete(errorFilePath);
+            };
+            alertView.Show();
         }
     }
 

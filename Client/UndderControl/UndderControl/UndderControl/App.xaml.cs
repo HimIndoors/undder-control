@@ -54,6 +54,10 @@ namespace UndderControl
 
         private async Task NavigateToPage()
         {
+            await NavigationService.NavigateAsync("SplashPage");
+            /*
+             * Moved to SplashPage to allow branding to show for 3 seconds
+             * 
             if (UserSettings.UserId <= 0)
                 await NavigationService.NavigateAsync("LoginPage");
             else
@@ -61,6 +65,7 @@ namespace UndderControl
                     await NavigationService.NavigateAsync("TermsPage");
                 else
                     await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
+            */
         }
 
         public void OnMenuButtonPressed(object sender, EventArgs e)
@@ -87,8 +92,9 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<SurveyComparisonPage, SurveyComparisonPageViewModel>();
             containerRegistry.RegisterForNavigation<CowStatusInputPage, CowStatusInputPageViewModel>();
             containerRegistry.RegisterForNavigation<CowStatusFinishPage, CowStatusFinishPageViewModel>();
-            containerRegistry.RegisterForNavigation<AboutPage, AboutPageViewModel>();
             containerRegistry.RegisterForNavigation<NoResultsComparisonPage, NoResultsComparisonPageViewModel>();
+            containerRegistry.RegisterForNavigation<SplashPage, SplashPageViewModel>();
+            containerRegistry.RegisterForNavigation<ConnectionIssuePage, ConnectionIssuePageViewModel>();
         }
     }
 }

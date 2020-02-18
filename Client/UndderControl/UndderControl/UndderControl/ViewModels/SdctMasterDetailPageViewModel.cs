@@ -30,6 +30,7 @@ namespace UndderControl.ViewModels
             {
                 new MenuItemModel{ Name="Home", Icon="home.png",Page="/SdctMasterDetailPage/NavigationPage/RootPage"},
                 new MenuItemModel{ Name="Manage Farms", Icon="farm.png",Page="NavigationPage/ManageFarmsPage"},
+                new MenuItemModel{ Name="Log out", Icon="user.png",Page="LoginPage"},
                 //new MenuItemModel{ Name="Assess Farm", Icon="farm.png",Page="NavigationPage/AssessmentPage"},
                 //new MenuItemModel{ Name="Monitor Farm", Icon="farm.png",Page="NavigationPage/MonitorPage"},
                 //new MenuItemModel{ Name="About", Icon="about.png",Page="NavigationPage/AboutPage"}
@@ -38,6 +39,10 @@ namespace UndderControl.ViewModels
 
         async void MenuNavigate(MenuItemModel item)
         {
+            if (item.Name.Equals("Log out"))
+            {
+                UserSettings.UserId = -1;
+            }
             var page = item.Page;
             await NavigationService.NavigateAsync(page);
         }

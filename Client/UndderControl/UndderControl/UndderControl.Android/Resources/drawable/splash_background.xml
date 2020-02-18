@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<layer-list 
-  xmlns:android="http://schemas.android.com/apk/res/android">
-  
-    <!-- background with solid color -->
-    <item android:drawable="@android:color/black"/>
-
-    <!-- logo -->
-  <item android:drawable="@mipmap/splash"/>   
+ <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <color android:color="#009183"/>
+  </item>
+  <item>
+    <bitmap
+      android:src="@drawable/icon"
+      android:tileMode="disabled"
+      android:gravity="center"/>
+  </item>
 </layer-list>
+

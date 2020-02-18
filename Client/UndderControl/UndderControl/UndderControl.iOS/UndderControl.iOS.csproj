@@ -121,6 +121,15 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\IOSCloseApplication.cs" />
     <Compile Include="Services\IOSMetricsManagerService.cs" />
+    <ImageAsset Include="Assets.xcassets\splash.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\background.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <None Include="Entitlements.plist" />
     <BundleResource Include="GoogleService-Info.plist" />
     <None Include="Info.plist" />
@@ -131,6 +140,7 @@
     <BundleResource Include="Resources\dinot.otf" />
     <BundleResource Include="Resources\dinot-medium.otf" />
     <BundleResource Include="Resources\fontello.ttf" />
+    <InterfaceDefinition Include="Resources\MinimalSplash.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024.png">
@@ -326,9 +336,76 @@
   <ItemGroup>
     <BundleResource Include="Resources\SurveyResponse.txt" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Assets.xcassets\background.imageset\" />
-    <Folder Include="Assets.xcassets\Logo.imageset\" />
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-1280x1920-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-1280x1920-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-1280x1920.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-2048x2048-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-2048x2048-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-2048x2048.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-320x480-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-320x480.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-640x960-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-640x960-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\splash.imageset\MSD198-SDCT-App-Splash-Screen-no-logo-640x960.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\logo.imageset\logo.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\background.imageset\MSD198-SDCT-App-Screen-BG-1242x2688.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\background.imageset\MSD198-SDCT-App-Screen-BG-2048x2732.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

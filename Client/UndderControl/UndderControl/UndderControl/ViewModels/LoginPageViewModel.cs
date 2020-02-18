@@ -2,17 +2,11 @@
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Events;
-using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using UndderControl.Events;
-using UndderControl.Extensions;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
@@ -34,6 +28,7 @@ namespace UndderControl.ViewModels
         }
         private Dictionary<string, string> _userDetails = new Dictionary<string, string>();
         private UserDto User { get; set; }
+        public DelegateCommand OnBackCommand { get; private set; }
 
         public LoginPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, IMetricsManagerService metricsManager)
             :base(navigationService, metricsManager)
@@ -41,12 +36,22 @@ namespace UndderControl.ViewModels
             Title = "";
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<HtmlChangedEvent>().Subscribe(CheckLogin);
+
+            OnBackCommand = new DelegateCommand(ResetLogin);
+        }
+
+        private void ResetLogin()
+        {
+            _eventAggregator.GetEvent<LoginBackEvent>().Publish();
         }
 
         private void CheckLogin()
         {
             if (Html.Contains("LOGIN-SUCCESS"))
             {
+                //Clear down our dictionary just in case it's not the first time through and the Merck login has a valid user cookie.
+                _userDetails.Clear();
+
                 var htmlDoc = new HtmlDocument();
                 htmlDoc.LoadHtml(Html);
                 var comment = htmlDoc.DocumentNode.SelectSingleNode("//comment()");
@@ -72,12 +77,23 @@ namespace UndderControl.ViewModels
 
         private async void LocalLoginAsync(string userToken)
         {
-            MetricsManager.TrackEvent("UserLogin");
+            
             await RunSafe(GetUser(userToken));
-            UserSettings.UserId = User.ID;
-            UserSettings.UserToken = User.Token;
 
-            await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
+            if (User != null)
+            {
+                UserSettings.UserId = User.ID;
+                UserSettings.UserToken = User.Token;
+
+                MetricsManager.TrackEvent("UserLogin");
+
+                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
+            } 
+            else
+            {
+                await NavigationService.NavigateAsync("/ConnectionIssuePage");
+            }
+            
         }
 
         private async Task GetUser(string userToken)
@@ -101,9 +117,9 @@ namespace UndderControl.ViewModels
                 MetricsManager.TrackException("Error getting cowstatus data", ex);
                 await PageDialog.AlertAsync("Unable to retrieve user data", "Error", "OK");
             }
-
-
         }
+
+
 
 
     }

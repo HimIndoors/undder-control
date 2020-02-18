@@ -6,6 +6,12 @@
 
   <ItemGroup>
     <Compile Remove="Svg\SvgImage.cs" />
+    <Compile Remove="ViewModels\AboutPageViewModel.cs" />
+    <Compile Remove="Views\AboutPage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\AboutPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -84,10 +90,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppTextResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AboutPage.xaml">
+    <EmbeddedResource Update="Views\AssessmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AssessmentPage.xaml">
+    <EmbeddedResource Update="Views\ConnectionIssuePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CowStatusComparisonPage.xaml">
@@ -124,6 +130,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SdctMasterDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SplashPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SurveyComparisonPage.xaml">

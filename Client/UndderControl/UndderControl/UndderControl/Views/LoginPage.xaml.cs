@@ -1,8 +1,9 @@
+using Prism.Events;
 using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using UndderControl.Custom;
+using UndderControl.Events;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
 
@@ -11,7 +12,7 @@ namespace UndderControl.Views
     public partial class LoginPage : ContentPage
     {
         private readonly LoginPageViewModel _vm;
-        public LoginPage()
+        public LoginPage(IEventAggregator eventAggregator)
         {
             InitializeComponent();
             _vm = BindingContext as LoginPageViewModel;
@@ -23,6 +24,14 @@ namespace UndderControl.Views
             };
             loginView.Navigated += LoginView_Navigated;
             LoginStack.Children.Add(loginView);
+
+            eventAggregator.GetEvent<LoginBackEvent>().Subscribe(UpdateView);
+        }
+
+        private void UpdateView()
+        {
+            WebView loginView = (WebView)LoginStack.Children[0];
+            loginView.Source = Config.LoginUrl;
         }
 
         private async void LoginView_Navigated(object sender, WebNavigatedEventArgs e)

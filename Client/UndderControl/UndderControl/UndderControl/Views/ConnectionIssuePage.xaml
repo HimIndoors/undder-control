@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="UndderControl.Views.ConnectionIssuePage">
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="ErrorTitle"
+                TextColor="{StaticResource CheckpointColor}"
+                FontSize="21"
+                FontFamily="{StaticResource BoldFont}"
+                HorizontalTextAlignment="Center" />
+            <Label x:Name="ErrorText"
+                FontSize="16"
+                TextColor="White" HorizontalTextAlignment="Center" />
+            <f9p:Button x:Name="StartQuestionsButton" Lines="2" WidthRequest="100" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0"
+                HorizontalOptions="Center"
+                BackgroundColor="White" BorderColor="White" BorderRadius="10"
+                Command="{Binding RetryCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -49,8 +49,4 @@
             <point key="canvasLocation" x="52.73438" y="374.6706"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Logo" width="138.6667" height="184.6667"/>
-        <image name="Splash" width="426.6667" height="640"/>
-    </resources>
 </document>

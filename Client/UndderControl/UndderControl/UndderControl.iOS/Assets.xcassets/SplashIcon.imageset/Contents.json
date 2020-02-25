@@ -13,7 +13,8 @@
     {
       "appearances": [],
       "scale": "3x",
-      "idiom": "universal"
+      "idiom": "universal",
+      "filename": "icon.png"
     }
   ],
   "properties": {},

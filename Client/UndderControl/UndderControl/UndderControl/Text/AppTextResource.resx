@@ -163,6 +163,9 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
   <data name="AssessTitle4" xml:space="preserve">
     <value>AM I ELIGIBLE FOR SDCT?</value>
   </data>
+  <data name="ConnIssueButton" xml:space="preserve">
+    <value>RETRY</value>
+  </data>
   <data name="ConnIssueText" xml:space="preserve">
     <value>Unable to connect to the user service, please check your internet connection and try again</value>
   </data>

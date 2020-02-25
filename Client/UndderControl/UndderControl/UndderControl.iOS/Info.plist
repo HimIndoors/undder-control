@@ -46,9 +46,7 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UILaunchStoryboardName</key>
-	<string>SplashScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>SplashScreen</string>
+	<string>MinimalSplash</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>dinot.otf</string>
@@ -60,5 +58,7 @@
 	<string>3.1.0</string>
 	<key>CFBundleVersion</key>
 	<string>3.1</string>
+	<key>UIMainStoryboardFile</key>
+	<string>MinimalSplash</string>
 </dict>
 </plist>

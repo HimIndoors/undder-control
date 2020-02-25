@@ -49,23 +49,8 @@ namespace UndderControl
             VersionTracking.Track();
             InitializeComponent();
 
-            await NavigateToPage();
-        }
-
-        private async Task NavigateToPage()
-        {
             await NavigationService.NavigateAsync("SplashPage");
-            /*
-             * Moved to SplashPage to allow branding to show for 3 seconds
-             * 
-            if (UserSettings.UserId <= 0)
-                await NavigationService.NavigateAsync("LoginPage");
-            else
-                if (VersionTracking.IsFirstLaunchEver || VersionTracking.IsFirstLaunchForCurrentVersion|| Config.TestMode)
-                    await NavigationService.NavigateAsync("TermsPage");
-                else
-                    await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
-            */
+            //await NavigationService.NavigateAsync("ConnectionIssuePage");
         }
 
         public void OnMenuButtonPressed(object sender, EventArgs e)

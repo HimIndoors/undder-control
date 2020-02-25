@@ -197,6 +197,15 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RETRY.
+        /// </summary>
+        public static string ConnIssueButton {
+            get {
+                return ResourceManager.GetString("ConnIssueButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to connect to the user service, please check your internet connection and try again.
         /// </summary>
         public static string ConnIssueText {

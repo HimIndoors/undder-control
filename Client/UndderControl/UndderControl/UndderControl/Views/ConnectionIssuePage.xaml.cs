@@ -10,6 +10,7 @@ namespace UndderControl.Views
             InitializeComponent();
             ErrorTitle.Text = AppTextResource.ConnIssueTitle;
             ErrorText.Text = AppTextResource.ConnIssueText;
+            RetryButton.Text = AppTextResource.ConnIssueButton;
         }
     }
 }

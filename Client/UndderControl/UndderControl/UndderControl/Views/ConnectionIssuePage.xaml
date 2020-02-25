@@ -9,16 +9,18 @@
         <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Label x:Name="ErrorTitle"
                 TextColor="{StaticResource CheckpointColor}"
-                FontSize="21"
+                FontSize="42"
+                Margin="13"
                 FontFamily="{StaticResource BoldFont}"
                 HorizontalTextAlignment="Center" />
             <Label x:Name="ErrorText"
-                FontSize="16"
+                FontSize="21"
+                Margin="13"
                 TextColor="White" HorizontalTextAlignment="Center" />
-            <f9p:Button x:Name="StartQuestionsButton" Lines="2" WidthRequest="100" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0"
+            <f9p:Button x:Name="RetryButton" Lines="2" WidthRequest="100" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0"
                 HorizontalOptions="Center"
                 BackgroundColor="White" BorderColor="White" BorderRadius="10"
                 Command="{Binding RetryCommand}" />

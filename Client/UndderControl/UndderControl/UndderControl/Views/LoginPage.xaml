@@ -7,5 +7,7 @@
     <NavigationPage.TitleView>
         <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
-    <StackLayout x:Name="LoginStack" />
+    <ScrollView>
+        <StackLayout x:Name="LoginStack" />
+    </ScrollView>
 </ContentPage>

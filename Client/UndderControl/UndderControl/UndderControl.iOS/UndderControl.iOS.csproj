@@ -247,12 +247,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ItunesArtwork%402x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\background.imageset\MSD198-SDCT-App-Screen-BG-1242x26881.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\background.imageset\MSD198-SDCT-App-Screen-BG-2048x27321.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -275,9 +269,6 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\SplashIcon.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Background.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Contents.json" />
@@ -663,6 +654,9 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\SplashIcon.imageset\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\logo.imageset\MSD198-SDCT-App-MSD-logo-for-2048x2048.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

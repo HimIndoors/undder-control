@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="432">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="432">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
         <scene sceneID="431">
             <objects>
                 <viewController id="432" sceneMemberID="viewController">
@@ -12,15 +15,23 @@
                         <viewControllerLayoutGuide type="bottom" id="430"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="433">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0.56862745098039214" blue="0.51372549019607838" alpha="1"/>
-                        <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4693" translatesAutoresizingMaskIntoConstraints="NO" image="SplashIcon" fixedFrame="YES">
-                                <rect key="frame" x="98" y="243" width="180" height="180"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4693">
+                                <rect key="frame" x="127" y="368" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="AAr-pu-4hp"/>
+                                    <constraint firstAttribute="height" constant="160" id="fF1-E7-LJm"/>
+                                </constraints>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.56862745098039214" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.039215686274509803" green="0.37647058823529411" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4693" firstAttribute="centerX" secondItem="433" secondAttribute="centerX" id="sGi-uB-RTx"/>
+                            <constraint firstItem="4693" firstAttribute="centerY" secondItem="433" secondAttribute="centerY" id="yOb-nw-Imz"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="434" userLabel="First Responder" sceneMemberID="firstResponder"/>

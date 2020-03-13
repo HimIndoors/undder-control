@@ -5,6 +5,7 @@ using Prism.Events;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using UndderControl.Events;
 using UndderControl.Helpers;
@@ -101,7 +102,7 @@ namespace UndderControl.ViewModels
             try
             {
                 var apiresponse = await ApiManager.GetUserByToken(userToken);
-                if (apiresponse.IsSuccessStatusCode)
+                if (apiresponse.IsSuccessStatusCode || (apiresponse.StatusCode.Equals(HttpStatusCode.NotModified)))
                 {
                     var response = await apiresponse.Content.ReadAsStringAsync();
                     var json = await Task.Run(() => JsonConvert.DeserializeObject<UserDto>(response));

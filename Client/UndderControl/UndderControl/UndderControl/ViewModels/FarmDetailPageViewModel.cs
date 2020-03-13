@@ -170,10 +170,12 @@ namespace UndderControl.ViewModels
             { 
                 await PageDialog.AlertAsync("Unable to save farm details", "Error", "OK");
             }
-
-            //Empty MonkeyCache farmlist for this user.
-            Barrel.Current.Empty(key: "GetFarmsByUserId" + UserSettings.UserId);
-            PageDialog.Toast("Farm Saved");
+            else
+            {
+                //Empty MonkeyCache farmlist for this user.
+                Barrel.Current.Empty(key: "GetFarmsByUserId" + UserSettings.UserId);
+                PageDialog.Toast("Farm Saved");
+            } 
         }
     }
 }

@@ -121,31 +121,31 @@ namespace UndderControl.ViewModels
             try
             {
                 await RunSafe(GetFarms());
+
+                //New user with no farms so direct to add farm page
+                if (!UserFarmsFound)
+                {
+                    var result = await _dialogService.DisplayAlertAsync("No farms found", "Would you like to add a farm?", "Yes", "No");
+                    if (result)
+                    {
+                        await NavigationService.NavigateAsync("ManageFarmsPage");
+                    }
+                }
+
+                if (App.SelectedFarm != null)
+                {
+                    EditFarmEnabled = true;
+                    SelectedFarm = App.SelectedFarm;
+                    _eventAggregator.GetEvent<RootPageRefreshEvent>().Publish();
+                }
+                else
+                {
+                    EditFarmEnabled = false;
+                }
             }
             catch (Exception ex)
             {
                 MetricsManager.TrackException("GetFarmsFailed", ex);
-            }
-
-            //New user with no farms so direct to add farm page
-            if (!UserFarmsFound)
-            {
-                var result = await _dialogService.DisplayAlertAsync("No farms found", "Would you like to add a farm?", "Yes", "No");
-                if (result)
-                {
-                    await NavigationService.NavigateAsync("ManageFarmsPage");
-                }
-            }
-
-            if (App.SelectedFarm != null)
-            {
-                EditFarmEnabled = true;
-                SelectedFarm = App.SelectedFarm;
-                _eventAggregator.GetEvent<RootPageRefreshEvent>().Publish();
-            }
-            else
-            {
-                EditFarmEnabled = false;
             }
 
             //Load latest survey here
@@ -162,7 +162,7 @@ namespace UndderControl.ViewModels
         async Task GetSurvey()
         {
             var surveyResponse = await ApiManager.GetLatestSurvey();
-            if (surveyResponse.IsSuccessStatusCode)
+            if (surveyResponse.IsSuccessStatusCode || surveyResponse.StatusCode == HttpStatusCode.NotModified)
             {
                 try
                 {

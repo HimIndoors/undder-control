@@ -3,8 +3,6 @@ using Prism;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using UndderControl.Helpers;
 using UndderControl.ViewModels;
 using UndderControl.Views;
 using UndderControlLib.Dtos;
@@ -39,9 +37,9 @@ namespace UndderControl
         {
             //Register Syncfusion license
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUxNTY5QDMxMzcyZTMzMmUzMFZnS0V6ZjZKTUF2WFF6Q2F3MjNud0hzVFVvaVJOSThXK0xQbHpNbFVmS0E9");// Version 1.7.3.*
-            if (Config.TestMode) UserSettings.UserId = 1;
 
-            UserSettings.UserId = 0;
+            //if (Config.TestMode) UserSettings.UserId = 1;
+            //UserSettings.UserId = 0;
 
             //Initialize MonkeyCache barrel
             Barrel.ApplicationId = "MSC_Undder_Control";
@@ -50,7 +48,6 @@ namespace UndderControl
             InitializeComponent();
 
             await NavigationService.NavigateAsync("SplashPage");
-            //await NavigationService.NavigateAsync("ConnectionIssuePage");
         }
 
         public void OnMenuButtonPressed(object sender, EventArgs e)

@@ -12,8 +12,8 @@
             <Image Source="splash" Aspect="AspectFill" x:Name="StageBackground"/>
             <ScrollView x:Name="SurveyStageView" IsVisible="true">
                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Label x:Name="VersionLabel" FontFamily="{StaticResource MediumFont}" AbsoluteLayout.LayoutBounds=".1,.03,1,40" AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional" Margin="10,0,10,0" FontSize="14" />
-                    <Image Source="logo" x:Name="MerckLogo" AbsoluteLayout.LayoutBounds="0,.9,.3,.3" AbsoluteLayout.LayoutFlags="All" />
+                    <Label x:Name="VersionLabel" FontFamily="{StaticResource MediumFont}" AbsoluteLayout.LayoutBounds=".1,.045,1,40" AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional" Margin="10,0,10,0" FontSize="12" />
+                    <Image Source="logo" x:Name="MerckLogo" AbsoluteLayout.LayoutBounds="0,.96,.3,.3" AbsoluteLayout.LayoutFlags="All" />
                 </AbsoluteLayout>
             </ScrollView>
         </Grid>

@@ -3,11 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="True"
              x:Class="UndderControl.Views.LoginPage">
     <NavigationPage.TitleView>
         <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
-    <ScrollView>
-        <StackLayout x:Name="LoginStack" />
-    </ScrollView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Back" />
+    </ContentPage.ToolbarItems>
+    
+    <WebView x:Name="LoginWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Navigated="LoginView_Navigated" />
+
 </ContentPage>

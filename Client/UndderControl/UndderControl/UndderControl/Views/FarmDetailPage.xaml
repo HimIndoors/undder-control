@@ -18,27 +18,27 @@
                 <StackLayout>
                     <Label Text="Name" Style="{StaticResource FormLabel}" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmName" Margin="0" Text="{Binding CurrentFarm.Name, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" />
+                        <Entry x:Name="FarmName" Margin="0" Text="{Binding CurrentFarm.Name, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" ReturnType="Next" TabIndex="0" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Address" Style="{StaticResource FormLabel}" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmAddress" Margin="0" Text="{Binding CurrentFarm.Address, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" />
+                        <Entry x:Name="FarmAddress" Margin="0" Text="{Binding CurrentFarm.Address, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" ReturnType="Next" TabIndex="1" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Contact Name" Style="{StaticResource FormLabel}" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmContact" Margin="0" Text="{Binding CurrentFarm.ContactName, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" />
+                        <Entry x:Name="FarmContact" Margin="0" Text="{Binding CurrentFarm.ContactName, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" ReturnType="Next" TabIndex="2" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Phone Number" Style="{StaticResource FormLabel}" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmPhone" Margin="0" Text="{Binding CurrentFarm.PhoneNumber, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" />
+                        <Entry x:Name="FarmPhone" Margin="0" Text="{Binding CurrentFarm.PhoneNumber, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" ReturnType="Next" TabIndex="3" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Herd Size" Style="{StaticResource FormLabel}" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
-                        <Entry x:Name="FarmHerd" Margin="0" Text="{Binding CurrentFarm.HerdSize, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" />
+                        <Entry x:Name="FarmHerd" Margin="0" Text="{Binding CurrentFarm.HerdSize, Mode=TwoWay}" TextColor="Black" FontFamily="{StaticResource NormalFont}" TabIndex="4" />
                     </inputLayout:SfTextInputLayout>
                     <Label Text="Type" Style="{StaticResource FormLabel}" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
-                        <combobox:SfComboBox x:Name="comboBox" DataSource="{Binding FarmTypes}" DisplayMemberPath="Name" IsEditableMode="false" MultiSelectMode="None" SelectedItem="{Binding SelectedType}"  FontFamily="{StaticResource NormalFont}" DropDownItemFontFamily="{StaticResource NormalFont}" SelectionChanged="ComboBox_SelectionChanged" Margin="0">
+                        <combobox:SfComboBox x:Name="comboBox" DataSource="{Binding FarmTypes}" DisplayMemberPath="Name" IsEditableMode="false" MultiSelectMode="None" SelectedItem="{Binding SelectedType}" TabIndex="5" FontFamily="{StaticResource NormalFont}" DropDownItemFontFamily="{StaticResource NormalFont}" SelectionChanged="ComboBox_SelectionChanged" Margin="0">
                             <combobox:SfComboBox.HeightRequest>
                                 <OnPlatform x:TypeArguments="x:Double" Android="52" iOS="21" />
                             </combobox:SfComboBox.HeightRequest>

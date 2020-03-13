@@ -1,9 +1,8 @@
 using Prism.Events;
-using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using UndderControl.Custom;
 using UndderControl.Events;
+using UndderControl.Text;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
 
@@ -16,6 +15,8 @@ namespace UndderControl.Views
         {
             InitializeComponent();
             _vm = BindingContext as LoginPageViewModel;
+
+            /*
             var loginView = new WebView
             {
                 Source = Config.LoginUrl,
@@ -24,14 +25,16 @@ namespace UndderControl.Views
             };
             loginView.Navigated += LoginView_Navigated;
             LoginStack.Children.Add(loginView);
+            */
+
+            LoginWebView.Source = Config.LoginUrl;
 
             eventAggregator.GetEvent<LoginBackEvent>().Subscribe(UpdateView);
         }
 
         private void UpdateView()
         {
-            WebView loginView = (WebView)LoginStack.Children[0];
-            loginView.Source = Config.LoginUrl;
+            LoginWebView.Source = Config.LoginUrl;
         }
 
         private async void LoginView_Navigated(object sender, WebNavigatedEventArgs e)
@@ -41,10 +44,13 @@ namespace UndderControl.Views
                 var view = sender as WebView;
                 var output = await view.EvaluateJavaScriptAsync("document.documentElement.innerHTML");
                 _vm.Html = DecodeEncodedNonAsciiCharacters(output);
-            }
-            
+            }  
         }
 
+        private void ToolbarItem_Clicked(object sender, System.EventArgs e)
+        {
+            LoginWebView.GoBack();
+        }
         static string DecodeEncodedNonAsciiCharacters(string value)
         {
             return Regex.Replace(

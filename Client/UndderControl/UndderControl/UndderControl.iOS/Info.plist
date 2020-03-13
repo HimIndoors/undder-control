@@ -55,9 +55,9 @@
 		<string>fontello.ttf</string>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>3.1.0</string>
+	<string>3.5.0</string>
 	<key>CFBundleVersion</key>
-	<string>3.1</string>
+	<string>3.5</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MinimalSplash</string>
 </dict>

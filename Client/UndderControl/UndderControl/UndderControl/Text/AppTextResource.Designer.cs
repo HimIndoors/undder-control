@@ -197,6 +197,15 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BACK.
+        /// </summary>
+        public static string BackButton {
+            get {
+                return ResourceManager.GetString("BackButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RETRY.
         /// </summary>
         public static string ConnIssueButton {

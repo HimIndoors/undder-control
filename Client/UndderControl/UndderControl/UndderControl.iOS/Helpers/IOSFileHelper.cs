@@ -65,7 +65,7 @@ namespace UndderControl.iOS.Helpers
             return Path.Combine(GetDocsPath(), filename);
         }
 
-        string GetDocsPath()
+        private string GetDocsPath()
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         }

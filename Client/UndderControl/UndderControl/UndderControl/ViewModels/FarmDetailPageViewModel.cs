@@ -92,7 +92,9 @@ namespace UndderControl.ViewModels
             }
 
             if (CurrentFarm.FarmType_ID > 0)
+            {
                 SelectedType = FarmTypes.DefaultIfEmpty(null).Where(x => x.ID == CurrentFarm.FarmType_ID).FirstOrDefault();
+            }
         }
 
         private async Task GetFarmTypes()

@@ -1,13 +1,5 @@
-﻿using Plugin.Settings;
-using Plugin.Settings.Abstractions;
-using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Commands;
 using Prism.Navigation;
-using Prism.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControl.Text;

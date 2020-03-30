@@ -11,6 +11,7 @@ using UndderControl.Events;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
+using Xamarin.Essentials;
 
 namespace UndderControl.ViewModels
 {
@@ -87,8 +88,15 @@ namespace UndderControl.ViewModels
                 UserSettings.UserToken = User.Token;
 
                 MetricsManager.TrackEvent("UserLogin");
+                if (VersionTracking.IsFirstLaunchEver || VersionTracking.IsFirstLaunchForCurrentVersion || Config.TestMode)
+                {
+                    await NavigationService.NavigateAsync("TermsPage");
+                } else {
+                    await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
+                }
+                    
 
-                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
+                
             } 
             else
             {

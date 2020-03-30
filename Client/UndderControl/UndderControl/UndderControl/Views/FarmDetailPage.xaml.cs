@@ -12,6 +12,14 @@ namespace UndderControl.Views
             InitializeComponent();
             vm = BindingContext as FarmDetailPageViewModel;
             FarmHerd.ReturnCommand = new Command(() => comboBox.Focus());
+            FarmHerd.Focused += FarmHerd_Focused;
+        }
+        private void FarmHerd_Focused(object sender, FocusEventArgs e)
+        {
+            if (FarmHerd.Text != null && FarmHerd.Text.Equals("0"))
+            {
+                FarmHerd.Text = "";
+            }
         }
 
         private void ComboBox_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)

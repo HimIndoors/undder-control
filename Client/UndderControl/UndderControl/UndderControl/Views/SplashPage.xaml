@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="UndderControl.Views.SplashPage">
+             x:Class="UndderControl.Views.SplashPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="False">
     <NavigationPage.TitleView>
         <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
@@ -12,7 +14,7 @@
             <Image Source="splash" Aspect="AspectFill" x:Name="StageBackground"/>
             <ScrollView x:Name="SurveyStageView" IsVisible="true">
                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Label x:Name="VersionLabel" FontFamily="{StaticResource MediumFont}" AbsoluteLayout.LayoutBounds=".1,.045,1,40" AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional" Margin="10,0,10,0" FontSize="12" />
+                    <Label x:Name="VersionLabel" FontFamily="{StaticResource MediumFont}" AbsoluteLayout.LayoutBounds=".075,.05,.5,.1" AbsoluteLayout.LayoutFlags="All" FontSize="12" />
                     <Image Source="logo" x:Name="MerckLogo" AbsoluteLayout.LayoutBounds="0,.96,.3,.3" AbsoluteLayout.LayoutFlags="All" />
                 </AbsoluteLayout>
             </ScrollView>

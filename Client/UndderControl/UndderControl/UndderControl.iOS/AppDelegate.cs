@@ -14,10 +14,13 @@ using Syncfusion.XForms.iOS.TextInputLayout;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using UIKit;
+using UndderControl.Custom;
+using UndderControl.iOS.Custom;
 using UndderControl.iOS.Services;
 using UndderControl.Services;
 
@@ -87,7 +90,7 @@ namespace UndderControl.iOS
                 const string errorFileName = "Fatal.log";
                 var libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Resources); 
                 var errorFilePath = Path.Combine(libraryPath, errorFileName);
-                var errorMessage = string.Format("Time: {0}\r\nError: Unhandled Exception\r\n{1}", DateTime.Now, exception.ToString());
+                var errorMessage = string.Format(CultureInfo.InvariantCulture, "Time: {0}\r\nError: Unhandled Exception\r\n{1}", DateTime.Now, exception.ToString());
                 File.WriteAllText(errorFilePath, errorMessage);
 
                 var keys = new List<NSString>();
@@ -156,6 +159,7 @@ namespace UndderControl.iOS
             // Register any platform specific implementations
             containerRegistry.Register<IMetricsManagerService, IOSMetricsManagerService>();
             containerRegistry.Register<ICloseApplicationService, IOSCloseApplicationService>();
+            containerRegistry.Register<IClearCookies, IClearCookiesImplementation>();
         }
     }
 }

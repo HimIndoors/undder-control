@@ -1,6 +1,5 @@
 ﻿using HtmlAgilityPack;
 using Newtonsoft.Json;
-using Prism.Commands;
 using Prism.Events;
 using Prism.Navigation;
 using System;
@@ -17,7 +16,7 @@ namespace UndderControl.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
-        private readonly IEventAggregator _eventAggregator;
+        private readonly IEventAggregator EventAggregator;
         private string _html;
         public string Html
         {
@@ -25,26 +24,19 @@ namespace UndderControl.ViewModels
             set {
                 _html = value;
                 RaisePropertyChanged();
-                _eventAggregator.GetEvent<HtmlChangedEvent>().Publish();
+                //EventAggregator.GetEvent<HtmlChangedEvent>().Publish();
+                CheckLogin();
             }
         }
         private Dictionary<string, string> _userDetails = new Dictionary<string, string>();
         private UserDto User { get; set; }
-        public DelegateCommand OnBackCommand { get; private set; }
 
         public LoginPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, IMetricsManagerService metricsManager)
             :base(navigationService, metricsManager)
         {
             Title = "";
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<HtmlChangedEvent>().Subscribe(CheckLogin);
-
-            OnBackCommand = new DelegateCommand(ResetLogin);
-        }
-
-        private void ResetLogin()
-        {
-            _eventAggregator.GetEvent<LoginBackEvent>().Publish();
+            EventAggregator = eventAggregator;
+            //EventAggregator.GetEvent<HtmlChangedEvent>().Subscribe(CheckLogin);
         }
 
         private void CheckLogin()
@@ -73,6 +65,7 @@ namespace UndderControl.ViewModels
                 if (_userDetails["LOGIN-SUCCESS"] == "true" &&_userDetails.ContainsKey("LFW_user"))
                 {
                     LocalLoginAsync(_userDetails["LFW_user"]);
+                    EventAggregator.GetEvent<EndUserSessionEvent>().Publish();
                 } 
             }
         }
@@ -94,15 +87,11 @@ namespace UndderControl.ViewModels
                 } else {
                     await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/RootPage");
                 }
-                    
-
-                
             } 
             else
             {
                 await NavigationService.NavigateAsync("/ConnectionIssuePage");
             }
-            
         }
 
         private async Task GetUser(string userToken)
@@ -127,9 +116,5 @@ namespace UndderControl.ViewModels
                 await PageDialog.AlertAsync("Unable to retrieve user data", "Error", "OK");
             }
         }
-
-
-
-
     }
 }

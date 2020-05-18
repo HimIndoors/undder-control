@@ -1,13 +1,17 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
+using UndderControl.Events;
 using UndderControl.Helpers;
 using UndderControl.Services;
+using UndderControl.Views;
 
 namespace UndderControl.ViewModels
 {
     public class SdctMasterDetailPageViewModel : ViewModelBase
     {
+        private readonly IEventAggregator EventAggregator;
         private ObservableCollection<MenuItemModel> menuItems;
         public ObservableCollection<MenuItemModel> MenuItems
         {
@@ -20,28 +24,27 @@ namespace UndderControl.ViewModels
 
         public DelegateCommand<MenuItemModel> OnItemTapped { get; set; }
 
-        public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager)
+        public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator eventAggregator)
             : base(navigationService, metricsManager)
         {
             Title = "UnDDER CONTROL";
+            EventAggregator = eventAggregator;
             OnItemTapped = new DelegateCommand<MenuItemModel>(MenuNavigate);
 
             MenuItems = new ObservableCollection<MenuItemModel>
             {
                 new MenuItemModel{ Name="Home", Icon="home.png",Page="/SdctMasterDetailPage/NavigationPage/RootPage"},
                 new MenuItemModel{ Name="Manage Farms", Icon="farm.png",Page="NavigationPage/ManageFarmsPage"},
-                new MenuItemModel{ Name="Log out", Icon="user.png",Page="SplashPage"},
-                //new MenuItemModel{ Name="Assess Farm", Icon="farm.png",Page="NavigationPage/AssessmentPage"},
-                //new MenuItemModel{ Name="Monitor Farm", Icon="farm.png",Page="NavigationPage/MonitorPage"},
-                //new MenuItemModel{ Name="About", Icon="about.png",Page="NavigationPage/AboutPage"}
+                new MenuItemModel{ Name="Log out", Icon="user.png",Page="/NavigationPage/LoginPage"}
             };
         }
 
         async void MenuNavigate(MenuItemModel item)
         {
-            if (item.Name.Equals("Log out"))
+            if (item != null && item.Name.Equals("Log out"))
             {
                 UserSettings.UserId = -1;
+                EventAggregator.GetEvent<LogOutEvent>().Publish();
             }
             var page = item.Page;
             await NavigationService.NavigateAsync(page);

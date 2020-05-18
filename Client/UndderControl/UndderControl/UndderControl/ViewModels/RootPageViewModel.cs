@@ -11,6 +11,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using UndderControl.Events;
+using UndderControl.Extensions;
 using UndderControl.Helpers;
 using UndderControl.Services;
 using UndderControlLib.Dtos;
@@ -96,7 +97,6 @@ namespace UndderControl.ViewModels
         public DelegateCommand<string> OnNavigateCommand =>
             _navigateCommand ?? (_navigateCommand = new DelegateCommand<string>(NavigateAsync, CanNavigate));
 
-        private bool UserFarmsFound = false;
         private readonly IPageDialogService _dialogService;
 
         private DelegateCommand _onEditFarmCommand;
@@ -111,7 +111,7 @@ namespace UndderControl.ViewModels
             _eventAggregator = eventAggregator;
             _dialogService = dialogueService;
             Title = "UnDDER CONTROL";
-            //InitAsync();
+            InitAsync();
         }
 
         async void InitAsync()
@@ -123,7 +123,7 @@ namespace UndderControl.ViewModels
                 await RunSafe(GetFarms());
 
                 //New user with no farms so direct to add farm page
-                if (!UserFarmsFound)
+                if (FarmList.Count > 1)
                 {
                     var result = await _dialogService.DisplayAlertAsync("No farms found", "Would you like to add a farm?", "Yes", "No");
                     if (result)
@@ -132,6 +132,11 @@ namespace UndderControl.ViewModels
                     }
                 }
 
+                //If we havent already selected a farm and only a single farm found pre select it
+                if (App.SelectedFarm == null && FarmList.Count == 1)
+                    App.SelectedFarm = FarmList[0];
+
+                //Set up screen based on selected farm
                 if (App.SelectedFarm != null)
                 {
                     EditFarmEnabled = true;
@@ -172,6 +177,8 @@ namespace UndderControl.ViewModels
                     {
                         var fileHelper = new FileHelper();
                         App.LatestSurvey = survey;
+                        // Save the survey to the local filesystem
+                        await fileHelper.SaveAsync(Config.SurveyFileName, survey);
                     }
                 }
                 catch (Exception ex)
@@ -196,8 +203,6 @@ namespace UndderControl.ViewModels
                 var response = await farmresponse.Content.ReadAsStringAsync();
                 var json = await Task.Run(() => JsonConvert.DeserializeObject<List<FarmDto>>(response));
                 FarmList = new ObservableCollection<FarmDto>(json);
-                if (FarmList.Count > 1)
-                    UserFarmsFound = true;
             }
             else
             {
@@ -229,7 +234,7 @@ namespace UndderControl.ViewModels
             base.OnResume();
             ResetButtons();
             //New user with no farms so direct to add farm page
-            if (!UserFarmsFound)
+            if (FarmList.Count > 1)
             {
                 var result = await _dialogService.DisplayAlertAsync("No farms found", "Would you like to add a farm?", "Yes", "No");
                 if (result)
@@ -247,8 +252,6 @@ namespace UndderControl.ViewModels
         {
             base.OnNavigatedTo(parameters);
             ResetButtons();
-            InitAsync();
-
         }
 
         private void ResetButtons()

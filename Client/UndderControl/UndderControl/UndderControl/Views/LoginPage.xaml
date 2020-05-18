@@ -10,9 +10,8 @@
     </NavigationPage.TitleView>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Back" />
+        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Reset" />
     </ContentPage.ToolbarItems>
-    
-    <WebView x:Name="LoginWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Navigated="LoginView_Navigated" />
 
+    <WebView x:Name="LoginWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Navigated="LoginView_Navigated" Navigating="LoginWebView_Navigating" />
 </ContentPage>

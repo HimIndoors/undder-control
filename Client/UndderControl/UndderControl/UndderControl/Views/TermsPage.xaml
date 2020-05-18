@@ -6,18 +6,14 @@
              x:Class="UndderControl.Views.TermsPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True">
-    <StackLayout>
+    <StackLayout VerticalOptions="Fill">
         <StackLayout.Padding>
-            <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
-        </StackLayout.Padding>
-        <ScrollView VerticalOptions="StartAndExpand">
-            <ScrollView.Padding>
-                <OnPlatform x:TypeArguments="Thickness"
+            <OnPlatform x:TypeArguments="Thickness"
                 iOS="8"
                 Android="8"
                 WinPhone="8" />
-            </ScrollView.Padding>
-            <StackLayout>
+        </StackLayout.Padding>
+        <StackLayout VerticalOptions="StartAndExpand">
                 <Label x:Name="TermsTitle" FontSize="Title" FontFamily="{StaticResource BoldFont}" />
                 <Label x:Name="Terms" />
                 <Label>
@@ -34,7 +30,7 @@
                     </Label.FormattedText>
                 </Label>
             </StackLayout>
-        </ScrollView>
+
         <StackLayout VerticalOptions="End" Margin="0,21,0,0">
             <Button x:Name="TermsButton" Command="{Binding OnAcceptCommand}" />
         </StackLayout>

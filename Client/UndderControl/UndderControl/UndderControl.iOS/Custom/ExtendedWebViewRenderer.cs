@@ -20,9 +20,9 @@ namespace UndderControl.iOS.Custom
     {
         readonly ExtendedWebViewRenderer webViewRenderer;
 
-        public ExtendedUIWebViewDelegate(ExtendedWebViewRenderer _webViewRenderer = null)
+        public ExtendedUIWebViewDelegate(ExtendedWebViewRenderer renderer = null)
         {
-            webViewRenderer = _webViewRenderer ?? new ExtendedWebViewRenderer();
+            webViewRenderer = renderer ?? new ExtendedWebViewRenderer();
         }
 
         public override async void LoadingFinished(UIWebView webView)
@@ -30,8 +30,9 @@ namespace UndderControl.iOS.Custom
             var wv = webViewRenderer.Element as ExtendedWebView;
             if (wv != null)
             {
-                await System.Threading.Tasks.Task.Delay(100); // wait here till content is rendered
-                wv.HeightRequest = (double)webView.ScrollView.ContentSize.Height;
+                await System.Threading.Tasks.Task.Delay(100).ConfigureAwait(false); // wait here till content is rendered
+                if (webView != null)
+                    wv.HeightRequest = webView.ScrollView.ContentSize.Height;
             }
         }
     }

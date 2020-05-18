@@ -6,9 +6,6 @@ using Android.Runtime;
 using Android.Views;
 using FFImageLoading.Forms.Platform;
 using Firebase.Analytics;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using Plugin.CurrentActivity;
 using Prism;
 using Prism.Ioc;
@@ -17,13 +14,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using UndderControl.Custom;
+using UndderControl.Droid.Custom;
 using UndderControl.Droid.Services;
 using UndderControl.Services;
 using Environment = System.Environment;
 
 namespace UndderControl.Droid
 {
-    [Activity(Label = "UndderControl", Icon = "@mipmap/ic_launcher", Theme = "@style/SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait )]
+    [Activity(Label = "UnDDER CONTROL", Icon = "@mipmap/ic_launcher", Theme = "@style/SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -148,7 +147,8 @@ namespace UndderControl.Droid
         {
             // Register any platform specific implementations
             containerRegistry.Register<IMetricsManagerService, AndroidMetricsManagerService>();
-            containerRegistry.Register<ICloseApplicationService, AndroidCloseApplicationService>();
+            containerRegistry.Register<ICloseApplicationService, AndroidCloseApplicationService>(); 
+            containerRegistry.Register<IClearCookies, IClearCookiesImplementation>();
         }
     }
 }

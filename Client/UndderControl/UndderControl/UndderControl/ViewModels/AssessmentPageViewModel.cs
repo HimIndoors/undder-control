@@ -61,6 +61,29 @@ namespace UndderControl.ViewModels
 
         async Task GetData()
         {
+            //Attempt to check for newer version of Survey, fall back to existing copy as required
+            var surveyResponse = await ApiManager.GetLatestSurvey();
+            if (surveyResponse.IsSuccessStatusCode)
+            {
+                try
+                {
+                    var content = await surveyResponse.Content.ReadAsStringAsync();
+                    var survey = await Task.Run(() => JsonConvert.DeserializeObject<SurveyDto>(content));
+                    if (survey != null && (App.LatestSurvey == null || App.LatestSurvey.Version < survey.Version))
+                    {
+                        var fileHelper = new FileHelper();
+                        App.LatestSurvey = survey;
+                        // Save the survey to the local filesystem
+                        await fileHelper.SaveAsync(Config.SurveyFileName, survey);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MetricsManager.TrackException("Error reading survey json", ex);
+                }
+
+            }
+
             var serviceResponse = await ApiManager.GetResponseByFarmId(App.SelectedFarm.ID);
             if (serviceResponse.IsSuccessStatusCode || serviceResponse.StatusCode == HttpStatusCode.NotModified)
             {

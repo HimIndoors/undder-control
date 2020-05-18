@@ -21,6 +21,8 @@ namespace UndderControl.Events
     { }
     public class StatementsUpdatedEvent : PubSubEvent
     { }
-    public class LoginBackEvent : PubSubEvent
+    public class LogOutEvent : PubSubEvent
+    { }
+    public class EndUserSessionEvent : PubSubEvent
     { }
 }

@@ -3,6 +3,7 @@ using Prism;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;
+using UndderControl.Services;
 using UndderControl.ViewModels;
 using UndderControl.Views;
 using UndderControlLib.Dtos;
@@ -47,7 +48,8 @@ namespace UndderControl
             VersionTracking.Track();
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("SplashPage");
+            //await NavigationService.NavigateAsync("SplashPage");
+            await NavigationService.NavigateAsync("TestWebPage");
         }
 
         public void OnMenuButtonPressed(object sender, EventArgs e)
@@ -77,6 +79,12 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<NoResultsComparisonPage, NoResultsComparisonPageViewModel>();
             containerRegistry.RegisterForNavigation<SplashPage, SplashPageViewModel>();
             containerRegistry.RegisterForNavigation<ConnectionIssuePage, ConnectionIssuePageViewModel>();
+            containerRegistry.RegisterForNavigation<TestWebPage, TestWebPageViewModel>();
+        }
+
+        public static void UnhandledException(Exception ex, string v)
+        {
+            DependencyService.Get<IMetricsManagerService>().TrackException(v, ex);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace UndderControl.ViewModels
             await Task.Delay(3000); //Show branding screen for three seconds
 
             if (UserSettings.UserId <= 0)
-                await NavigationService.NavigateAsync("/SdctMasterDetailPage/NavigationPage/LoginPage");
+                await NavigationService.NavigateAsync("/NavigationPage/LoginPage");
             else
                 if (VersionTracking.IsFirstLaunchEver || VersionTracking.IsFirstLaunchForCurrentVersion || Config.TestMode)
                 await NavigationService.NavigateAsync("TermsPage");

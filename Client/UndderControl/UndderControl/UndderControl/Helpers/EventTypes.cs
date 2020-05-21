@@ -23,6 +23,4 @@ namespace UndderControl.Events
     { }
     public class LogOutEvent : PubSubEvent
     { }
-    public class EndUserSessionEvent : PubSubEvent
-    { }
 }

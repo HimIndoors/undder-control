@@ -1,38 +1,34 @@
 ﻿using System;
+using System.Globalization;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using UndderControl.Custom;
+using UndderControl.ViewModels;
 using Xamarin.Forms;
 
 namespace UndderControl.Views
 {
     public partial class TestWebPage : ContentPage
     {
-        private Label header;
-        private WebView webView;
-        private Button button;
-        private string queryString = string.Empty;
         private readonly IClearCookies clearCookies;
+        private readonly TestWebPageViewModel _vm;
+
+        private Label header;
+        private JsWebView webView;
+        private Button button;
 
         public TestWebPage(IClearCookies cc)
         {
             InitializeComponent();
             clearCookies = cc;
+            _vm = BindingContext as TestWebPageViewModel;
+
             header = new Label
             {
                 Text = "WebView",
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
                 HorizontalOptions = LayoutOptions.Center
             };
-
-            webView = new WebView
-            {
-                Source = new UrlWebViewSource
-                {
-                    Url = Config.LoginUrl
-                },
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
-            webView.Navigated += WebView_Navigated;
 
             button = new Button
             {
@@ -43,65 +39,52 @@ namespace UndderControl.Views
 
             Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
-            Content = new StackLayout
-            {
-                Children =
-                {
-                    header,
-                    webView,
-                    button
-                }
-            };
+            Build(false);
         }
 
-        private void WebView_Navigated(object sender, WebNavigatedEventArgs e)
+        private async void LoginView_Navigated(object sender, WebNavigatedEventArgs e)
         {
+            _vm.PageDialog.HideLoading();
             if (e.Result == WebNavigationResult.Success)
             {
-                if (e.Url.Contains("?"))
-                    queryString = e.Url.Split('?')[1];
+                var view = sender as WebView;
+                var output = await view.EvaluateJavaScriptAsync("document.documentElement.innerHTML");
+                _vm.Html = DecodeEncodedNonAsciiCharacters(output);
             }
         }
 
-        private void Button_Clicked(object sender, System.EventArgs e)
+        private void ToolbarItem_Clicked(object sender, System.EventArgs e)
         {
-            /*
-            try
-            {
-                HttpClient httpClient = new HttpClient();
-                HttpResponseMessage response = httpClient.GetAsync(Config.LogoutUrl + "?" + queryString).Result;
-                response.EnsureSuccessStatusCode();
-            }
-            catch (Exception ex)
-            {
-                //Catch non 200 status codes
-            }
-            */
-            webView = null;
-            webView = new WebView
-            {
-                Source = new UrlWebViewSource
-                {
-                    Url = Config.LogoutUrl
-                },
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
-            webView.Navigated += WebView_Navigated;
+            webView.Source = new UrlWebViewSource { Url = Config.LoginUrl };
+        }
 
-            Content = new StackLayout
-            {
-                Children =
-                {
-                    header,
-                    webView,
-                    button
-                }
-            };
+        static string DecodeEncodedNonAsciiCharacters(string value)
+        {
+            return Regex.Replace(
+                value,
+                @"\\u(?<Value>[a-zA-Z0-9]{4})",
+                m => {
+                    return ((char)int.Parse(m.Groups["Value"].Value, NumberStyles.HexNumber)).ToString();
+                });
+        }
 
+        private void LoginWebView_Navigating(object sender, WebNavigatingEventArgs e)
+        {
+            _vm.PageDialog.ShowLoading("Loading");
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
             clearCookies.Clear();
+            Build(true);
+        }
 
-            webView = null;
-            webView = new WebView
+        private void Build(bool disposeView)
+        {
+            if (disposeView) { }
+                webView = null; //Avoiding memory leaks
+
+            webView = new JsWebView
             {
                 Source = new UrlWebViewSource
                 {
@@ -109,7 +92,8 @@ namespace UndderControl.Views
                 },
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
-            webView.Navigated += WebView_Navigated;
+            webView.Navigated += LoginView_Navigated;
+            webView.Navigating += LoginWebView_Navigating;
 
             Content = new StackLayout
             {

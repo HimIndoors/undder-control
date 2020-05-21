@@ -43,7 +43,6 @@ namespace UndderControl.Droid.Custom
             {
                 _webView.SetWebViewClient(new ExtendedWebViewClient());
             }
-
         }
     }
 }

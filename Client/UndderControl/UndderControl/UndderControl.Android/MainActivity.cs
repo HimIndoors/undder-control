@@ -4,6 +4,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using Android.Webkit;
 using FFImageLoading.Forms.Platform;
 using Firebase.Analytics;
 using Plugin.CurrentActivity;
@@ -48,8 +49,6 @@ namespace UndderControl.Droid
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
-
-            //Thread.Sleep(2000); //Merck requirement
 
             DisplayCrashReport();
 

@@ -35,7 +35,7 @@ namespace UndderControl.ViewModels
             {
                 new MenuItemModel{ Name="Home", Icon="home.png",Page="/SdctMasterDetailPage/NavigationPage/RootPage"},
                 new MenuItemModel{ Name="Manage Farms", Icon="farm.png",Page="NavigationPage/ManageFarmsPage"},
-                new MenuItemModel{ Name="Log out", Icon="user.png",Page="/NavigationPage/LoginPage"}
+                new MenuItemModel{ Name="Log out", Icon="user.png",Page="/NavigationPage/LoginPage?mode=logout"}
             };
         }
 
@@ -44,6 +44,7 @@ namespace UndderControl.ViewModels
             if (item != null && item.Name.Equals("Log out"))
             {
                 UserSettings.UserId = -1;
+                UserSettings.UserToken = string.Empty;
                 EventAggregator.GetEvent<LogOutEvent>().Publish();
             }
             var page = item.Page;

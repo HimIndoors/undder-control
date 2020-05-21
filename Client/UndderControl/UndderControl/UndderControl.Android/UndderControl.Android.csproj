@@ -130,7 +130,9 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1367" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\CookieWebViewRenderer.cs" />
     <Compile Include="Custom\IClearCookiesImplementation.cs" />
+    <Compile Include="Custom\JsWebViewRenderer.cs" />
     <Compile Include="Helpers\AndroidFileHelper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

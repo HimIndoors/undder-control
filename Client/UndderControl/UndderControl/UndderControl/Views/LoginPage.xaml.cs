@@ -1,4 +1,5 @@
 using Prism.Events;
+using Prism.Navigation;
 using System;
 using System.Globalization;
 using System.Net.Http;
@@ -11,47 +12,62 @@ using Xamarin.Forms;
 
 namespace UndderControl.Views
 {
-    public partial class LoginPage : ContentPage
+    public partial class LoginPage : ContentPage, INavigationAware
     {
         private readonly LoginPageViewModel _vm;
         private readonly IClearCookies ClearCookies;
-        private string QueryString = string.Empty;
+        private JsWebView LoginWebView;
 
         public LoginPage(IEventAggregator eventAggregator, IClearCookies clearCookies)
         {
             InitializeComponent();
             _vm = BindingContext as LoginPageViewModel;
             ClearCookies = clearCookies;
-            LoginWebView.Source = Config.LoginUrl;
+
             eventAggregator.GetEvent<LogOutEvent>().Subscribe(LogoutUser);
-            eventAggregator.GetEvent<EndUserSessionEvent>().Subscribe(ResetWebView);
+
+            //Build(false);
         }
 
-        private void ResetWebView()
+        private void Build(bool disposeView)
         {
-            //Send logoff http request
-            DoLogout();
+            if (disposeView)
+                LoginWebView = null; //Avoiding memory leaks
 
-            //Dispose the webview
+            LoginWebView = new JsWebView
+            {
+                Source = new UrlWebViewSource
+                {
+                    Url = Config.LoginUrl
+                },
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+            LoginWebView.Navigated += LoginView_Navigated;
+            LoginWebView.Navigating += LoginWebView_Navigating;
+
+            Content = LoginWebView;
         }
 
         public async void LogoutUser()
         {
-            await Task.Run(() => DoLogout());
-            await Task.Run(() => ClearCookies.Clear());
-            await Task.Run(() => ResetView());
-        }
+            //Fire the logout URL
+            LoginWebView = null;
+            LoginWebView = new JsWebView
+            {
+                Source = new UrlWebViewSource
+                {
+                    Url = Config.LogoutUrl
+                },
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
+            LoginWebView.Navigated += LoginView_Navigated;
 
-        private void DoLogout()
-        {
-            HttpClient httpClient = new HttpClient();
-            HttpResponseMessage response = httpClient.GetAsync(Config.LogoutUrl + "?" + QueryString).Result;
-            response.EnsureSuccessStatusCode();
-        }
+            Content = LoginWebView;
 
-        private void ResetView()
-        {
-            LoginWebView.Source = new UrlWebViewSource { Url = Config.LoginUrl };        
+            ClearCookies.Clear();
+
+            Build(true);
         }
 
         private async void LoginView_Navigated(object sender, WebNavigatedEventArgs e)
@@ -59,8 +75,6 @@ namespace UndderControl.Views
             _vm.PageDialog.HideLoading();
             if (e.Result == WebNavigationResult.Success)
             {
-                if (e.Url.Contains("?"))
-                    QueryString = e.Url.Split('?')[1];
                 var view = sender as WebView;
                 var output = await view.EvaluateJavaScriptAsync("document.documentElement.innerHTML");
                 _vm.Html = DecodeEncodedNonAsciiCharacters(output);
@@ -69,7 +83,7 @@ namespace UndderControl.Views
 
         private void ToolbarItem_Clicked(object sender, System.EventArgs e)
         {
-            ResetView();
+            LoginWebView.Source = new UrlWebViewSource { Url = Config.LoginUrl };
         }
 
         static string DecodeEncodedNonAsciiCharacters(string value)
@@ -85,6 +99,63 @@ namespace UndderControl.Views
         private void LoginWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
             _vm.PageDialog.ShowLoading("Loading");
+        }
+
+        public void OnNavigatedFrom(INavigationParameters parameters)
+        {
+            var cookies = LoginWebView.Cookies;
+            Uri uri = new Uri("https://secure.merck-animal-health.com/");
+            foreach (var x in cookies.GetCookies(uri))
+            {
+                Console.Write("Cookie: " + x.ToString());
+            }
+            
+        }
+
+        public void OnNavigatedTo(INavigationParameters parameters)
+        {
+            if (LoginWebView != null)
+            {
+                var cookies = LoginWebView.Cookies;
+                Uri uri = new Uri("https://secure.merck-animal-health.com/");
+                foreach (var x in cookies.GetCookies(uri))
+                {
+                    Console.Write("Cookie: " + x.ToString());
+                }
+            }
+            
+
+            string pageMode = parameters["mode"] as string;
+
+            if (pageMode != null && pageMode.ToUpper().Equals("LOGOUT"))
+            {
+                LogoutUser();
+            }
+            else
+            {
+                Build(true);
+            }
+        }
+
+        public void OnNavigatingTo(INavigationParameters parameters)
+        {
+            var cookies = LoginWebView.Cookies;
+            Uri uri = new Uri("https://secure.merck-animal-health.com/");
+            foreach (var x in cookies.GetCookies(uri))
+            {
+                Console.Write("Cookie: " + x.ToString());
+            }
+
+            string pageMode = parameters["mode"] as string;
+
+            if (pageMode != null && pageMode.ToUpper().Equals("LOGOUT"))
+            {
+                LogoutUser();
+            }
+            else
+            {
+                Build(true);
+            }
         }
     }
 }

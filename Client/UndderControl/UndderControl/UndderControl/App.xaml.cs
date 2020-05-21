@@ -48,8 +48,7 @@ namespace UndderControl
             VersionTracking.Track();
             InitializeComponent();
 
-            //await NavigationService.NavigateAsync("SplashPage");
-            await NavigationService.NavigateAsync("TestWebPage");
+            await NavigationService.NavigateAsync("SplashPage");
         }
 
         public void OnMenuButtonPressed(object sender, EventArgs e)

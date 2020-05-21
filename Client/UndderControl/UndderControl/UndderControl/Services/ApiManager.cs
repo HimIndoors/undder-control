@@ -123,8 +123,14 @@ namespace UndderControl.Services
             // If we make it this far and we have a monkeycache barrel id update our local cache and reset expiry
             if (data.IsSuccessStatusCode && !string.IsNullOrEmpty(barrel))
             {
-                var content = await data.Content.ReadAsStringAsync();
-                Barrel.Current.Add(barrel, content, TimeSpan.FromDays(_cacheExpiryDays));
+                try
+                {
+                    var content = await data.Content.ReadAsStringAsync();
+                    Barrel.Current.Add(barrel, content, TimeSpan.FromDays(_cacheExpiryDays));
+                } catch (Exception ex)
+                {
+                   // _metricsManager.TrackException(ex.Message, ex);
+                }
             }
 
             return data;

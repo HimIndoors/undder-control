@@ -65,7 +65,6 @@ namespace UndderControl.ViewModels
                 if (_userDetails["LOGIN-SUCCESS"] == "true" &&_userDetails.ContainsKey("LFW_user"))
                 {
                     LocalLoginAsync(_userDetails["LFW_user"]);
-                    EventAggregator.GetEvent<EndUserSessionEvent>().Publish();
                 } 
             }
         }

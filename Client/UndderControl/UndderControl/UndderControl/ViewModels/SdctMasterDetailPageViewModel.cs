@@ -11,7 +11,8 @@ namespace UndderControl.ViewModels
 {
     public class SdctMasterDetailPageViewModel : ViewModelBase
     {
-        private readonly IEventAggregator EventAggregator;
+        private readonly IEventAggregator eventAggregator;
+        private readonly ICookieService cookieService;
         private ObservableCollection<MenuItemModel> menuItems;
         public ObservableCollection<MenuItemModel> MenuItems
         {
@@ -24,18 +25,19 @@ namespace UndderControl.ViewModels
 
         public DelegateCommand<MenuItemModel> OnItemTapped { get; set; }
 
-        public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator eventAggregator)
+        public SdctMasterDetailPageViewModel(INavigationService navigationService, IMetricsManagerService metricsManager, IEventAggregator ea, ICookieService cs)
             : base(navigationService, metricsManager)
         {
             Title = "UnDDER CONTROL";
-            EventAggregator = eventAggregator;
+            eventAggregator = ea;
+            cookieService = cs;
             OnItemTapped = new DelegateCommand<MenuItemModel>(MenuNavigate);
 
             MenuItems = new ObservableCollection<MenuItemModel>
             {
                 new MenuItemModel{ Name="Home", Icon="home.png",Page="/SdctMasterDetailPage/NavigationPage/RootPage"},
                 new MenuItemModel{ Name="Manage Farms", Icon="farm.png",Page="NavigationPage/ManageFarmsPage"},
-                new MenuItemModel{ Name="Log out", Icon="user.png",Page="/NavigationPage/LoginPage?mode=logout"}
+                new MenuItemModel{ Name="Log out", Icon="user.png",Page="/NavigationPage/LoginPage"}
             };
         }
 
@@ -45,7 +47,8 @@ namespace UndderControl.ViewModels
             {
                 UserSettings.UserId = -1;
                 UserSettings.UserToken = string.Empty;
-                EventAggregator.GetEvent<LogOutEvent>().Publish();
+                cookieService.Clear();
+                //eventAggregator.GetEvent<LogOutEvent>().Publish();
             }
             var page = item.Page;
             await NavigationService.NavigateAsync(page);

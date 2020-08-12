@@ -5,19 +5,17 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="UndderControl.Views.SplashPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="False">
+             ios:Page.UseSafeArea="True">
     <NavigationPage.TitleView>
         <Label Text="{Binding Title}" Style="{StaticResource NavHeader}"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Image Source="splash" Aspect="AspectFill" x:Name="StageBackground"/>
-            <ScrollView x:Name="SurveyStageView" IsVisible="true">
-                <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Label x:Name="VersionLabel" FontFamily="{StaticResource MediumFont}" AbsoluteLayout.LayoutBounds=".075,.05,.5,.1" AbsoluteLayout.LayoutFlags="All" FontSize="12" />
-                    <Image Source="logo" x:Name="MerckLogo" AbsoluteLayout.LayoutBounds="0,.96,.3,.3" AbsoluteLayout.LayoutFlags="All" />
-                </AbsoluteLayout>
-            </ScrollView>
+            <Image Source="splash" x:Name="StageBackground" Aspect="AspectFill" />
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label x:Name="VersionLabel" FontFamily="{StaticResource MediumFont}" AbsoluteLayout.LayoutBounds="0,0,.5,.1" AbsoluteLayout.LayoutFlags="All" FontSize="12" Margin="{x:OnPlatform Android='10, 10, 0, 0', iOS='10, 10, 0, 0'}" />
+                <Image Source="logo" x:Name="MerckLogo" AbsoluteLayout.LayoutBounds="0,1,AutoSize,Autosize" AbsoluteLayout.LayoutFlags="PositionProportional" Margin="0, 0, 0, 0" />
+            </AbsoluteLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

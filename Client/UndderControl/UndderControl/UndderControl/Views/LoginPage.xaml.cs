@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UndderControl.Custom;
 using UndderControl.Events;
+using UndderControl.Services;
 using UndderControl.ViewModels;
 using Xamarin.Forms;
 
@@ -15,59 +16,12 @@ namespace UndderControl.Views
     public partial class LoginPage : ContentPage, INavigationAware
     {
         private readonly LoginPageViewModel _vm;
-        private readonly IClearCookies ClearCookies;
-        private JsWebView LoginWebView;
 
-        public LoginPage(IEventAggregator eventAggregator, IClearCookies clearCookies)
+        public LoginPage()
         {
             InitializeComponent();
             _vm = BindingContext as LoginPageViewModel;
-            ClearCookies = clearCookies;
-
-            eventAggregator.GetEvent<LogOutEvent>().Subscribe(LogoutUser);
-
-            //Build(false);
-        }
-
-        private void Build(bool disposeView)
-        {
-            if (disposeView)
-                LoginWebView = null; //Avoiding memory leaks
-
-            LoginWebView = new JsWebView
-            {
-                Source = new UrlWebViewSource
-                {
-                    Url = Config.LoginUrl
-                },
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand
-            };
-            LoginWebView.Navigated += LoginView_Navigated;
-            LoginWebView.Navigating += LoginWebView_Navigating;
-
-            Content = LoginWebView;
-        }
-
-        public async void LogoutUser()
-        {
-            //Fire the logout URL
-            LoginWebView = null;
-            LoginWebView = new JsWebView
-            {
-                Source = new UrlWebViewSource
-                {
-                    Url = Config.LogoutUrl
-                },
-                VerticalOptions = LayoutOptions.FillAndExpand
-            };
-            LoginWebView.Navigated += LoginView_Navigated;
-
-            Content = LoginWebView;
-
-            ClearCookies.Clear();
-
-            Build(true);
+            LoginWebView.Source = new UrlWebViewSource { Url = Config.LoginUrl };
         }
 
         private async void LoginView_Navigated(object sender, WebNavigatedEventArgs e)
@@ -101,61 +55,14 @@ namespace UndderControl.Views
             _vm.PageDialog.ShowLoading("Loading");
         }
 
-        public void OnNavigatedFrom(INavigationParameters parameters)
-        {
-            var cookies = LoginWebView.Cookies;
-            Uri uri = new Uri("https://secure.merck-animal-health.com/");
-            foreach (var x in cookies.GetCookies(uri))
-            {
-                Console.Write("Cookie: " + x.ToString());
-            }
-            
-        }
-
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (LoginWebView != null)
-            {
-                var cookies = LoginWebView.Cookies;
-                Uri uri = new Uri("https://secure.merck-animal-health.com/");
-                foreach (var x in cookies.GetCookies(uri))
-                {
-                    Console.Write("Cookie: " + x.ToString());
-                }
-            }
-            
-
-            string pageMode = parameters["mode"] as string;
-
-            if (pageMode != null && pageMode.ToUpper().Equals("LOGOUT"))
-            {
-                LogoutUser();
-            }
-            else
-            {
-                Build(true);
-            }
+            LoginWebView.Source = new UrlWebViewSource { Url = Config.LoginUrl };
         }
 
-        public void OnNavigatingTo(INavigationParameters parameters)
+        public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            var cookies = LoginWebView.Cookies;
-            Uri uri = new Uri("https://secure.merck-animal-health.com/");
-            foreach (var x in cookies.GetCookies(uri))
-            {
-                Console.Write("Cookie: " + x.ToString());
-            }
-
-            string pageMode = parameters["mode"] as string;
-
-            if (pageMode != null && pageMode.ToUpper().Equals("LOGOUT"))
-            {
-                LogoutUser();
-            }
-            else
-            {
-                Build(true);
-            }
+            
         }
     }
 }

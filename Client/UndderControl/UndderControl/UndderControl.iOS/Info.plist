@@ -24,23 +24,7 @@
 	<string>UnDDER CONTROL</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.pmn.UndderControl</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>merck-animal-health.com</key>
-			<dict>
-				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.2</string>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
+	
 	<key>CFBundleName</key>
 	<string>UndderControl</string>
 	<key>XSAppIconAssets</key>
@@ -59,6 +43,6 @@
 	<key>UIMainStoryboardFile</key>
 	<string>MinimalSplash</string>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>13</string>
 </dict>
 </plist>

@@ -5,14 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Custom\CookieWebView.cs" />
     <Compile Remove="Custom\ExtendedWebView.cs" />
+    <Compile Remove="Custom\IClearCookies.cs" />
+    <Compile Remove="Custom\JsWebView.cs" />
     <Compile Remove="Svg\SvgImage.cs" />
     <Compile Remove="ViewModels\AboutPageViewModel.cs" />
+    <Compile Remove="ViewModels\TestWebPageViewModel.cs" />
     <Compile Remove="Views\AboutPage.xaml.cs" />
+    <Compile Remove="Views\TestWebPage.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Views\AboutPage.xaml" />
+    <EmbeddedResource Remove="Views\TestWebPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,7 +69,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1367" />
   </ItemGroup>
 
@@ -142,9 +148,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TermsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\TestWebPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

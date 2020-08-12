@@ -19,8 +19,6 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using UIKit;
-using UndderControl.Custom;
-using UndderControl.iOS.Custom;
 using UndderControl.iOS.Services;
 using UndderControl.Services;
 
@@ -150,6 +148,15 @@ namespace UndderControl.iOS
             };
             alertView.Show();
         }
+
+        /// <summary>
+        // Override to turn off all third party keyboards
+        // Security Fix as required by DataTheorum vunerability scan (06/23/2020)
+        /// </summary>
+        public override bool ShouldAllowExtensionPointIdentifier(UIApplication application, NSString extensionPointIdentifier)
+        {
+            return extensionPointIdentifier != UIExtensionPointIdentifier.Keyboard;
+        }
     }
 
     public class iOSInitializer : IPlatformInitializer
@@ -159,7 +166,7 @@ namespace UndderControl.iOS
             // Register any platform specific implementations
             containerRegistry.Register<IMetricsManagerService, IOSMetricsManagerService>();
             containerRegistry.Register<ICloseApplicationService, IOSCloseApplicationService>();
-            containerRegistry.Register<IClearCookies, IClearCookiesImplementation>();
+            containerRegistry.Register<ICookieService, IOSCookieService>();
         }
     }
 }

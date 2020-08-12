@@ -1,4 +1,5 @@
-﻿using Xamarin.Essentials;
+﻿using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace UndderControl.Views
@@ -9,6 +10,12 @@ namespace UndderControl.Views
         {
             InitializeComponent();
             VersionLabel.Text = "Version " + VersionTracking.CurrentVersion;
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            MerckLogo.HeightRequest = 0.5 * Math.Sqrt(0.2 * width * height);
         }
     }
 }

@@ -35,7 +35,7 @@ using Android.App;
 //Required for Xamarin Essentials - connectivity
 [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
 #if DEBUG
-[assembly: Application(Debuggable = true)]
+[assembly: Application(Debuggable = true, AllowBackup=false)]
 #else
-[assembly: Application(Debuggable=false)]
+[assembly: Application(Debuggable=false, AllowBackup=false)]
 #endif

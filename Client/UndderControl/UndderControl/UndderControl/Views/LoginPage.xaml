@@ -13,5 +13,8 @@
         <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Reset" />
     </ContentPage.ToolbarItems>
 
-    
+    <WebView x:Name="LoginWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+             Navigated="LoginView_Navigated" Navigating="LoginWebView_Navigating"/>
+
+
 </ContentPage>

@@ -13,10 +13,7 @@ using Prism.Ioc;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
-using UndderControl.Custom;
-using UndderControl.Droid.Custom;
 using UndderControl.Droid.Services;
 using UndderControl.Services;
 using Environment = System.Environment;
@@ -147,7 +144,7 @@ namespace UndderControl.Droid
             // Register any platform specific implementations
             containerRegistry.Register<IMetricsManagerService, AndroidMetricsManagerService>();
             containerRegistry.Register<ICloseApplicationService, AndroidCloseApplicationService>(); 
-            containerRegistry.Register<IClearCookies, IClearCookiesImplementation>();
+            containerRegistry.Register<ICookieService, AndroidCookieService>();
         }
     }
 }

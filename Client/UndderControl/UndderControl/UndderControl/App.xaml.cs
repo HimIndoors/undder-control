@@ -78,7 +78,7 @@ namespace UndderControl
             containerRegistry.RegisterForNavigation<NoResultsComparisonPage, NoResultsComparisonPageViewModel>();
             containerRegistry.RegisterForNavigation<SplashPage, SplashPageViewModel>();
             containerRegistry.RegisterForNavigation<ConnectionIssuePage, ConnectionIssuePageViewModel>();
-            containerRegistry.RegisterForNavigation<TestWebPage, TestWebPageViewModel>();
+            
         }
 
         public static void UnhandledException(Exception ex, string v)

@@ -19,16 +19,19 @@ using SQLitePCL;
 
 namespace UndderControl.Droid
 {
-    [Activity(Label = "UndderControl", Icon = "@mipmap/ic_launcher", Theme = "@style/SplashTheme", MainLauncher = true)]
+    [Activity(Label = "UnDDER CONTROL", Icon = "@mipmap/ic_launcher", Theme = "@style/SplashTheme", MainLauncher = true)]
     public class SplashActivity : Activity
     { 
         private static readonly int REQUEST_GOOGLE_PLAY_SERVICES_DOWNLOAD = 1000;
-        GoogleApiClient googleApiClient;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             ProviderInstallerCheck(this);
+
+            //Android.Gms.SafetyNet.SafetyNetClientlient(this).isVerifyAppsEnabled()
+                
+
             StartActivity(typeof(MainActivity));
             Finish();
         }

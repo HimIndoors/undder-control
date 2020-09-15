@@ -14,13 +14,13 @@
                 WinPhone="8" />
         </StackLayout.Padding>
         <StackLayout VerticalOptions="StartAndExpand">
-                <Label x:Name="TermsTitle" FontSize="Title" FontFamily="{StaticResource BoldFont}" />
+                <Label x:Name="TermsTitle" FontSize="Title" FontFamily="BoldFont" />
                 <Label x:Name="Terms" />
                 <Label>
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="To find out more about our privacy terms " />
-                            <Span Text="click here" TextDecorations="Underline" FontFamily="{StaticResource BoldFont}">
+                            <Span Text="click here" TextDecorations="Underline" FontFamily="BoldFont">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnBrowseCommand}" />
                                 </Span.GestureRecognizers>

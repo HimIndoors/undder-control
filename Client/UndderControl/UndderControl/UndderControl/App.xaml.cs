@@ -12,6 +12,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+[assembly: ExportFont("fontello.ttf", Alias = "Fontello")]
+[assembly: ExportFont("dinot.otf", Alias = "NormalFont")]
+[assembly: ExportFont("dinot-bold.otf", Alias = "BoldFont")]
+[assembly: ExportFont("dinot-medium.otf", Alias = "MediumFont")]
 namespace UndderControl
 {
     public partial class App
@@ -37,7 +41,8 @@ namespace UndderControl
         protected override async void OnInitialized()
         {
             //Register Syncfusion license
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUxNTY5QDMxMzcyZTMzMmUzMFZnS0V6ZjZKTUF2WFF6Q2F3MjNud0hzVFVvaVJOSThXK0xQbHpNbFVmS0E9");// Version 1.7.3.*
+            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTUxNTY5QDMxMzcyZTMzMmUzMFZnS0V6ZjZKTUF2WFF6Q2F3MjNud0hzVFVvaVJOSThXK0xQbHpNbFVmS0E9");// Version 1.7.3.*
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzE0NTg3QDMxMzgyZTMyMmUzMFNMbitnanBFVmEyVVBxZVBQTHNGOUVnSDZydHV0WkV4L0YyUEk2TGoxQVE9");// Version 18.2.0.44
 
             //if (Config.TestMode) UserSettings.UserId = 1;
             //UserSettings.UserId = 0;

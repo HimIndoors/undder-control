@@ -20,13 +20,13 @@
                         <Label x:Name="StageTitle"
                             TextColor="{StaticResource CheckpointColor}"
                             FontSize="38"
-                            FontFamily="{StaticResource BoldFont}"
+                            FontFamily="BoldFont"
                             HorizontalTextAlignment="Center" />
                         <Label x:Name="StageText"
                             Margin="30,0,30,13"
                             FontSize="33"
                             TextColor="White" HorizontalTextAlignment="Center" />
-                        <f9p:Button x:Name="StartQuestionsButton" Lines="2" WidthRequest="100" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0"
+                        <f9p:Button x:Name="StartQuestionsButton" Lines="2" WidthRequest="100" HeightRequest="70" FontSize="20" FontFamily="UndderControl.Resources.dinot-bold.otf" TextColor="{StaticResource TextColor}" Padding="21,0"
                             HorizontalOptions="Center"
                             BackgroundColor="White" BorderColor="White" BorderRadius="10"
                             Command="{Binding StartStageCommand}" />
@@ -55,7 +55,7 @@ FARM IS TO IMPLEMENT SDCT
                         MinFontSize="18"
                         HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
-                        FontFamily="{StaticResource MediumFont}"
+                        FontFamily="UndderControl.Resources.dinot-medium.otf"
                         Lines="0"
                         AbsoluteLayout.LayoutBounds=".5,.14,.9,.42" AbsoluteLayout.LayoutFlags="All"/>
                     <Label x:Name="HelpTextLabel"

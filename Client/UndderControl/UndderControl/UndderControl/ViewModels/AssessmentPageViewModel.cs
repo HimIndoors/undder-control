@@ -119,11 +119,11 @@ namespace UndderControl.ViewModels
 
         private bool CanSummaryNavigate(string arg)
         {
-            return App.LatestSurveyResponse == null ? false : true;
+            return App.LatestSurveyResponse != null;
         }
         private bool CanCompareNavigate(string arg)
         {
-            return (App.LatestSurveyResponse == null ? false : true) && (App.PreviousSurveyResponse == null ? false : true);
+            return (App.LatestSurveyResponse != null) && (App.PreviousSurveyResponse != null);
         }
     }
 }

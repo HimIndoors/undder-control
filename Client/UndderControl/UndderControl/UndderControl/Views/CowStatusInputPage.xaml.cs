@@ -1,6 +1,7 @@
 ﻿using Prism.Events;
 using Syncfusion.XForms.Buttons;
 using System;
+using UndderControl.Custom;
 using UndderControl.Events;
 using UndderControl.Text;
 using UndderControl.ViewModels;
@@ -20,6 +21,10 @@ namespace UndderControl.Views
             Date.Text = DateTime.Now.ToShortDateString();
             IdLabel.Text = AppTextResource.CowStatusInputLabel;
             #endregion TextSetup
+
+            InfectionSegment.Effects.Add(Effect.Resolve($"PMN.{nameof(PreventTapJackingEffect)}"));
+            ButtonNext.Effects.Add(Effect.Resolve($"PMN.{nameof(PreventTapJackingEffect)}"));
+            ButtonFinish.Effects.Add(Effect.Resolve($"PMN.{nameof(PreventTapJackingEffect)}"));
 
             SelectionIndicatorSettings selectionIndicator = new SelectionIndicatorSettings
             {

@@ -26,6 +26,10 @@
     <None Remove="Assets\progressdark.svg" />
     <None Remove="Assets\progresslight.svg" />
     <None Remove="Assets\stop.png" />
+    <None Remove="Resources\dinot-bold.otf" />
+    <None Remove="Resources\dinot-medium.otf" />
+    <None Remove="Resources\dinot.otf" />
+    <None Remove="Resources\fontello.ttf" />
     <None Remove="Svg\blank_background.svg" />
     <None Remove="Svg\head_assessment.svg" />
     <None Remove="Svg\head_monitor.svg" />
@@ -35,6 +39,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\play.png" />
+    <EmbeddedResource Include="Resources\dinot-bold.otf" />
+    <EmbeddedResource Include="Resources\dinot-medium.otf" />
+    <EmbeddedResource Include="Resources\dinot.otf" />
+    <EmbeddedResource Include="Resources\fontello.ttf" />
     <EmbeddedResource Include="Svg\progressdark.svg" />
     <EmbeddedResource Include="Svg\progresslight.svg" />
     <EmbeddedResource Include="Assets\stop.png" />
@@ -48,21 +56,22 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
     <PackageReference Include="FluentValidation" Version="9.2.0" />
-    <PackageReference Include="Forms9Patch" Version="2.4.2" />
     <PackageReference Include="fusillade" Version="2.1.9" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.24" />
     <PackageReference Include="MonkeyCache" Version="1.3.0" />
     <PackageReference Include="MonkeyCache.SQLite" Version="1.3.0" />
     <PackageReference Include="Polly" Version="7.2.1" />
     <PackageReference Include="Refit" Version="5.1.67" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.3.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.3.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.3.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.3.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.3.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.3.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="17.3.0.34" />
-    <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="17.3.0.34" />
+    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.2.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.2.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.2.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.2.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.2.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.2.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="18.2.0.57" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="18.2.0.57" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
@@ -75,6 +84,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\UndderControlLib\UndderControlLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Forms9Patch">
+      <HintPath>Libs\Forms9Patch.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

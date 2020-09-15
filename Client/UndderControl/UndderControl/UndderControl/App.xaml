@@ -11,24 +11,9 @@
             <Color x:Key="PageBackgroundColor">#7CCCBD</Color>
             <Color x:Key="TextColor">#009096</Color>
             <Color x:Key="CheckpointColor">#D7EEE9</Color>
-            <OnPlatform x:Key="Fontello" x:TypeArguments="x:String">
-                <On Platform="Android" Value="fontello.ttf#fontello" />
-                <On Platform="iOS" Value="fontello" />
-            </OnPlatform>
-            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
-                <On Platform="Android" Value="dinot-bold.otf#DINOT-BOLD" />
-                <On Platform="iOS" Value="dinot-bold" />
-            </OnPlatform>
-            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
-                <On Platform="Android" Value="dinot.otf#DINOT" />
-                <On Platform="iOS" Value="dinot" />
-            </OnPlatform>
-            <OnPlatform x:TypeArguments="x:String" x:Key="MediumFont">
-                <On Platform="Android" Value="dinot-medium.otf#DINOT-Medium" />
-                <On Platform="iOS" Value="dinot-medium" />
-            </OnPlatform>
+            
             <Style TargetType="Label">
-                <Setter Property="FontFamily" Value="{StaticResource NormalFont}" />
+                <Setter Property="FontFamily" Value="NormalFont" />
             </Style>
             <Style TargetType="Page" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
@@ -42,7 +27,7 @@
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="CornerRadius" Value="{StaticResource MediumCornerRadius}" />
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+                <Setter Property="FontFamily" Value="BoldFont" />
                 <Setter Property="Padding" Value="21,0" />
                 <Setter Property="HeightRequest" Value="70" />
             </Style>
@@ -76,7 +61,7 @@
             </Style>
             <Style x:Key="StatusData" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+                <Setter Property="FontFamily" Value="BoldFont"/>
             </Style>
             <Style TargetType="Label" x:Key="Text">
                 <Setter Property="FontSize" Value="17"/>
@@ -85,22 +70,22 @@
             <Style TargetType="Label" x:Key="TextSubtitle">
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="Margin" Value="0,0,0,5"/>
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+                <Setter Property="FontFamily" Value="BoldFont" />
             </Style>
             <Style TargetType="Label" x:Key="ResultSubtitle">
                 <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+                <Setter Property="FontFamily" Value="BoldFont" />
                 <Setter Property="TextColor" Value="White"/>
             </Style>
             <Style TargetType="Label" x:Key="FarmName">
                 <Setter Property="FontSize" Value="17"/>
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+                <Setter Property="FontFamily" Value="BoldFont" />
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
             <Style TargetType="Label" x:Key="InputTitle">
                 <Setter Property="FontSize" Value="30"/>
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+                <Setter Property="FontFamily" Value="BoldFont" />
                 <Setter Property="TextColor" Value="White"/>
             </Style>
             <Style TargetType="Label" x:Key="InputCaption">
@@ -108,19 +93,19 @@
             </Style>
             <Style x:Key="StatusButton" TargetType="Button">
                 <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}" />
+                <Setter Property="FontFamily" Value="BoldFont" />
                 <Setter Property="HeightRequest" Value="80"/>
             </Style>
             <Style TargetType="Label" x:Key="TableCell">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+                <Setter Property="FontFamily" Value="BoldFont"/>
                 <Setter Property="FontSize" Value="16" />
             </Style>
             <Style TargetType="Label" x:Key="TableCellValue">
                 <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+                <Setter Property="FontFamily" Value="BoldFont"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="FontSize" Value="16" />
             </Style>
@@ -131,7 +116,7 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontFamily" Value="{StaticResource NormalFont}"/>
+                <Setter Property="FontFamily" Value="NormalFont"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Margin">

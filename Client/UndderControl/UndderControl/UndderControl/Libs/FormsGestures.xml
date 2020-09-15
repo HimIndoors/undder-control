@@ -1,0 +1,1597 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FormsGestures</name>
+    </assembly>
+    <members>
+        <member name="T:FormsGestures.Debug">
+            <summary>
+            FormsGestures Debug Helper
+            </summary>
+        </member>
+        <member name="M:FormsGestures.Debug.CurrentMethod(System.String)">
+            <summary>
+            Currents the method.
+            </summary>
+            <returns>The method.</returns>
+            <param name="callerName">Caller name.</param>
+        </member>
+        <member name="T:FormsGestures.Display">
+            <summary>
+            Display metrics.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Display.Scale">
+            <summary>
+            The scale (relative to 160 dpi) of the screen
+            </summary>
+            <value>screen scale (1x=160dpi)</value>
+        </member>
+        <member name="P:FormsGestures.Display.Width">
+            <summary>
+            The width (pixels) of the screen
+            </summary>
+            <value>screen width (pixels)</value>
+        </member>
+        <member name="P:FormsGestures.Display.Height">
+            <summary>
+            The hieght (pixels) of the screen
+            </summary>
+            <value>screen height (pixels)</value>
+        </member>
+        <member name="P:FormsGestures.Display.StatusBarOffset">
+            <summary>
+            Gets the status bar offset  - the offset needed for MainPage to be in the right place at app start.
+            </summary>
+            <value>The status bar offset.</value>
+        </member>
+        <member name="P:FormsGestures.Display.SafeAreaInset">
+            <summary>
+            Gets or sets the safe area inset (I'm looking at you, iPhone X).
+            </summary>
+            <value>The safe area inset.</value>
+        </member>
+        <member name="P:FormsGestures.Display.Orientation">
+            <summary>
+            Gets the orientation.
+            </summary>
+            <value>The orientation.</value>
+        </member>
+        <member name="P:FormsGestures.Display.IsPortrait">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Forms9Patch.Display"/> is portrait.
+            </summary>
+            <value><c>true</c> if is portrait; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:FormsGestures.Display.IsLandscape">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Forms9Patch.Display"/> is landscape.
+            </summary>
+            <value><c>true</c> if is landscape; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:FormsGestures.Direction">
+            <summary>
+            Direction of gesture
+            </summary>
+        </member>
+        <member name="T:FormsGestures.DirectionExtension">
+            <summary>
+            Direction extension.
+            </summary>
+        </member>
+        <member name="M:FormsGestures.DirectionExtension.IsHorizontal(FormsGestures.Direction)">
+            <summary>
+            Is the Direction horizontal?
+            </summary>
+            <param name="dir">Direction instance.</param>
+        </member>
+        <member name="M:FormsGestures.DirectionExtension.IsVertical(FormsGestures.Direction)">
+            <summary>
+            Is the Direction vertical?
+            </summary>
+            <param name="dir">Direction instance.</param>
+        </member>
+        <member name="T:FormsGestures.DisplayOrientation">
+            <summary>
+            Display orientation.
+            </summary>
+        </member>
+        <member name="F:FormsGestures.DisplayOrientation.Portrait">
+            <summary>
+            Right side up portrait orientation.
+            </summary>
+        </member>
+        <member name="F:FormsGestures.DisplayOrientation.PortraitUpsideDown">
+            <summary>
+            Upside down portrait orientation
+            </summary>
+        </member>
+        <member name="F:FormsGestures.DisplayOrientation.LandscapeLeft">
+            <summary>
+            Landscape left orientation
+            </summary>
+        </member>
+        <member name="F:FormsGestures.DisplayOrientation.LandscapeRight">
+            <summary>
+            Landscape right orientation
+            </summary>
+        </member>
+        <member name="T:FormsGestures.Proximity">
+            <summary>
+            Where to place a hover over
+            </summary>
+        </member>
+        <member name="T:FormsGestures.BaseGestureEventArgs">
+            <summary>
+            FormsGestures Base gesture event arguments.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.Event">
+            <summary>
+            Name of event that has been triggered
+            </summary>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.Handled">
+            <summary>
+            gets/sets if the gesture was handled
+            </summary>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.Listener">
+            <summary>
+            gets/sets Listener
+            </summary>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.Cancelled">
+            <summary>
+            has the touch been cancelled (and thus this is the last of the touch sequence)
+            </summary>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.ElementPosition">
+            <summary>
+            current position of VisualElement in Window coordinates
+            </summary>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.ElementTouches">
+            <summary>
+            Set of touch points, in VisualElement coordinates, that make up this event
+            </summary>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.WindowTouches">
+            <summary>
+            Set of touch points, in Window coordinates, that make up this touch event
+            </summary>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.NumberOfTouches">
+            <summary>
+            Number of touches in touch event
+            </summary>
+        </member>
+        <member name="M:FormsGestures.BaseGestureEventArgs.Center(Xamarin.Forms.Point[])">
+            <summary>
+            center of a set of touch points
+            </summary>
+        </member>
+        <member name="M:FormsGestures.BaseGestureEventArgs.#ctor(FormsGestures.BaseGestureEventArgs,FormsGestures.Listener)">
+            <summary>
+            constructor
+            </summary>
+            <param name="source"></param>
+            <param name="newListener"></param>
+        </member>
+        <member name="M:FormsGestures.BaseGestureEventArgs.Equals(System.Object)">
+            <summary>
+            Equal test
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.BaseGestureEventArgs.Equals(FormsGestures.BaseGestureEventArgs)">
+            <summary>
+            Equal test
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.BaseGestureEventArgs.GetHashCode">
+            <summary>
+            HasCode getter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.BaseGestureEventArgs.ValueFrom(FormsGestures.BaseGestureEventArgs)">
+            <summary>
+            Updates properties of this instance with values from an other instance
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:FormsGestures.BaseGestureEventArgs.Contains(Xamarin.Forms.Point)">
+            <summary>
+            Tests if a point, in Window coordinates, is within the bounds of the view
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="P:FormsGestures.BaseGestureEventArgs.IsTouchCenterInView">
+            <summary>
+            Tests if the TouchCenter is within the bounds of the view
+            </summary>
+        </member>
+        <member name="T:FormsGestures.DownUpEventArgs">
+            <summary>
+            FormsGestures Down up event arguments.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.DownUpEventArgs.TriggeringTouches">
+            <summary>
+            enumerates the touches that triggered the gesture
+            </summary>
+        </member>
+        <member name="M:FormsGestures.DownUpEventArgs.#ctor(FormsGestures.DownUpEventArgs,FormsGestures.Listener)">
+            <summary>
+            creates new DownUpEventArgs
+            </summary>
+            <param name="source"></param>
+            <param name="newListener"></param>
+        </member>
+        <member name="M:FormsGestures.DownUpEventArgs.ValueFrom(FormsGestures.DownUpEventArgs)">
+            <summary>
+            Updates properties from the values from another instance
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="T:FormsGestures.LongPressEventArgs">
+            <summary>
+            FormsGestures Long press event arguments.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.LongPressEventArgs.Duration">
+            <summary>
+            Duration of long press
+            </summary>
+        </member>
+        <member name="M:FormsGestures.LongPressEventArgs.#ctor(FormsGestures.LongPressEventArgs,FormsGestures.Listener)">
+            <summary>
+            constructs new LongPressEnventArgs
+            </summary>
+            <param name="source"></param>
+            <param name="newListener"></param>
+        </member>
+        <member name="M:FormsGestures.LongPressEventArgs.ValueFrom(FormsGestures.LongPressEventArgs)">
+            <summary>
+            Updates properties from the values from another instance
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="T:FormsGestures.PanEventArgs">
+            <summary>
+            FormsGestures Pan event arguments.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.PanEventArgs.DeltaDistance">
+            <summary>
+            distance since last sample of pan motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.PanEventArgs.TotalDistance">
+            <summary>
+            total distance of pan motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.PanEventArgs.Velocity">
+            <summary>
+            currently velocity of pan motion
+            </summary>
+        </member>
+        <member name="M:FormsGestures.PanEventArgs.#ctor(FormsGestures.PanEventArgs,FormsGestures.Listener)">
+            <summary>
+            constructs new PanEventArgs
+            </summary>
+            <param name="source"></param>
+            <param name="newListener"></param>
+        </member>
+        <member name="M:FormsGestures.PanEventArgs.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:FormsGestures.PanEventArgs"/>.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents the current <see cref="T:FormsGestures.PanEventArgs"/>.</returns>
+        </member>
+        <member name="M:FormsGestures.PanEventArgs.CalculateDistances(FormsGestures.BaseGestureEventArgs)">
+            <summary>
+            calculates the distance traversed since last sample
+            </summary>
+            <param name="previous"></param>
+        </member>
+        <member name="M:FormsGestures.PanEventArgs.Equals(System.Object)">
+            <summary>
+            Equality test
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.PanEventArgs.Equals(FormsGestures.PanEventArgs)">
+            <summary>
+            Equality test
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.PanEventArgs.GetHashCode">
+            <summary>
+            returns hash code
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.PanEventArgs.ValueFrom(FormsGestures.PanEventArgs)">
+            <summary>
+            Updates properties from the values from another instance
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="T:FormsGestures.PinchEventArgs">
+            <summary>
+            FormsGestures Pinch event arguments.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.PinchEventArgs.Distance">
+            <summary>
+            Distance of most recent sampling of pinch motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.PinchEventArgs.DeltaScale">
+            <summary>
+            Scale of most recent sample of pinch motion (relative to first sample)
+            </summary>
+        </member>
+        <member name="P:FormsGestures.PinchEventArgs.TotalScale">
+            <summary>
+            Total change in scale of pinch motion
+            </summary>
+        </member>
+        <member name="M:FormsGestures.PinchEventArgs.#ctor(FormsGestures.PinchEventArgs,FormsGestures.Listener)">
+            <summary>
+            constructor
+            </summary>
+            <param name="source"></param>
+            <param name="newListener"></param>
+        </member>
+        <member name="M:FormsGestures.PinchEventArgs.CalculateScales(FormsGestures.PinchEventArgs)">
+            <summary>
+            Calculates total and most recent change in scale
+            </summary>
+            <param name="previous"></param>
+        </member>
+        <member name="M:FormsGestures.PinchEventArgs.ValueFrom(FormsGestures.PinchEventArgs)">
+            <summary>
+            Updates properties from the values from another instance
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="T:FormsGestures.RightClickEventArgs">
+            <summary>
+            Arguments for RightClick gesture event
+            </summary>
+        </member>
+        <member name="M:FormsGestures.RightClickEventArgs.#ctor(FormsGestures.RightClickEventArgs,FormsGestures.Listener)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="source"></param>
+            <param name="listener"></param>
+        </member>
+        <member name="T:FormsGestures.RotateEventArgs">
+            <summary>
+            FormsGestures Rotate event arguments.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.RotateEventArgs.Angle">
+            <summary>
+            Current angle of gesture (degrees)
+            </summary>
+        </member>
+        <member name="P:FormsGestures.RotateEventArgs.DeltaAngle">
+            <summary>
+            Change in angle since last gesture event (in degrees)
+            </summary>
+        </member>
+        <member name="P:FormsGestures.RotateEventArgs.TotalAngle">
+            <summary>
+            Total change in angle since start of gesture (in degrees)
+            </summary>
+        </member>
+        <member name="M:FormsGestures.RotateEventArgs.#ctor(FormsGestures.RotateEventArgs,FormsGestures.Listener)">
+            <summary>
+            constructor
+            </summary>
+            <param name="source"></param>
+            <param name="newListener"></param>
+        </member>
+        <member name="M:FormsGestures.RotateEventArgs.CalculateAngles(FormsGestures.RotateEventArgs)">
+            <summary>
+            helper function used to calculate rotation angles
+            </summary>
+            <param name="previous"></param>
+        </member>
+        <member name="M:FormsGestures.RotateEventArgs.ValueFrom(FormsGestures.RotateEventArgs)">
+            <summary>
+            Updates properties from the values from another instance
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="T:FormsGestures.SwipeEventArgs">
+            <summary>
+            FormsGestures Swipe event arguments.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.SwipeEventArgs.Direction">
+            <summary>
+            Direction of swipe
+            </summary>
+        </member>
+        <member name="P:FormsGestures.SwipeEventArgs.VelocityX">
+            <summary>
+            current x velocity
+            </summary>
+        </member>
+        <member name="P:FormsGestures.SwipeEventArgs.VelocityY">
+            <summary>
+            current y velocity
+            </summary>
+        </member>
+        <member name="M:FormsGestures.SwipeEventArgs.#ctor(FormsGestures.SwipeEventArgs,FormsGestures.Listener)">
+            <summary>
+            constructor
+            </summary>
+            <param name="source"></param>
+            <param name="newListener"></param>
+        </member>
+        <member name="M:FormsGestures.SwipeEventArgs.ValueFrom(FormsGestures.SwipeEventArgs)">
+            <summary>
+            Updates properties from the values from another instance
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="M:FormsGestures.SwipeEventArgs.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:FormsGestures.SwipeEventArgs"/>.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents the current <see cref="T:FormsGestures.SwipeEventArgs"/>.</returns>
+        </member>
+        <member name="T:FormsGestures.TapEventArgs">
+            <summary>
+            FormsGestures Tap event arguments.
+            </summary>
+        </member>
+        <member name="P:FormsGestures.TapEventArgs.NumberOfTaps">
+            <summary>
+            number of taps
+            </summary>
+        </member>
+        <member name="M:FormsGestures.TapEventArgs.#ctor(FormsGestures.TapEventArgs,FormsGestures.Listener)">
+            <summary>
+            constructor
+            </summary>
+            <param name="source"></param>
+            <param name="newListener"></param>
+        </member>
+        <member name="M:FormsGestures.TapEventArgs.ValueFrom(FormsGestures.TapEventArgs)">
+            <summary>
+            Updates properties from the values from another instance
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="T:FormsGestures.PointExtensions">
+            <summary>
+            Make your life easier
+            </summary>
+        </member>
+        <member name="M:FormsGestures.PointExtensions.Add(Xamarin.Forms.Point,Xamarin.Forms.Point)">
+            <summary>
+            Add the specified first and second point.
+            </summary>
+            <param name="first">First.</param>
+            <param name="second">Second.</param>
+        </member>
+        <member name="M:FormsGestures.PointExtensions.Subtract(Xamarin.Forms.Point,Xamarin.Forms.Point)">
+            <summary>
+            Subtract the specified first and second point.
+            </summary>
+            <param name="first">First.</param>
+            <param name="second">Second.</param>
+        </member>
+        <member name="M:FormsGestures.PointExtensions.ToString(Xamarin.Forms.Point,System.String)">
+            <summary>
+            Handy dandy formated ToString for Xamarin.Forms.Point
+            </summary>
+            <param name="point"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.PointExtensions.ToString(Xamarin.Forms.Rectangle,System.String)">
+            <summary>
+            Handy dandy formated ToString for Xamarin.Forms.Rectangle
+            </summary>
+            <param name="rectangle"></param>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FormsGestures.VisualElementExtensions">
+            <summary>
+            Xamarin.Forms.VisualElement extension methods
+            </summary>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.IsDescendentOf(Xamarin.Forms.Element,Xamarin.Forms.Element)">
+            <summary>
+            Is this element a descendent of an ancestor element?
+            </summary>
+            <param name="child"></param>
+            <param name="ancestor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.IsAncestorOf(Xamarin.Forms.Element,Xamarin.Forms.Element)">
+            <summary>
+            Is this element an ancestor or a descendent element?
+            </summary>
+            <param name="ancestor"></param>
+            <param name="child"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.BoundsInWindowCoord(Xamarin.Forms.VisualElement)">
+            <summary>
+            Translates the bounds of an element to the coordinates of app's window
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.BoundsInElementCoord(Xamarin.Forms.VisualElement,Xamarin.Forms.VisualElement)">
+            <summary>
+            Translates the bounds of an element to the coordinates of another, reference element
+            </summary>
+            <param name="fromElement"></param>
+            <param name="toElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.LocationInWindowCoord(Xamarin.Forms.VisualElement)">
+            <summary>
+            Translates the location of an element to the app's window's coordinates
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.PointInWindowCoord(Xamarin.Forms.VisualElement,Xamarin.Forms.Point)">
+            <summary>
+            Returns a point (in a view) to the DIP Screen coordinates
+            </summary>
+            <param name="element"></param>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.LocationInElementCoord(Xamarin.Forms.VisualElement,Xamarin.Forms.VisualElement)">
+            <summary>
+            Translates the location of an element to the coordinates of another, reference element
+            </summary>
+            <param name="fromElement"></param>
+            <param name="toElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.PointInElementCoord(Xamarin.Forms.VisualElement,Xamarin.Forms.Point,Xamarin.Forms.VisualElement)">
+            <summary>
+            Translates a point from its local view coordinates to that of another view
+            </summary>
+            <param name="fromElement"></param>
+            <param name="p"></param>
+            <param name="toElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.HitTest(Xamarin.Forms.VisualElement,Xamarin.Forms.Point,Xamarin.Forms.VisualElement)">
+            <summary>
+            determines if point in this element is withing the bounds of another, test element
+            </summary>
+            <param name="hitElement"></param>
+            <param name="hitPoint"></param>
+            <param name="targetElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.CoordTransform(Xamarin.Forms.VisualElement,Xamarin.Forms.Point,Xamarin.Forms.VisualElement)">
+            <summary>
+            translates a point from the coordinates of this element to that of another
+            </summary>
+            <param name="fromElement"></param>
+            <param name="p"></param>
+            <param name="toElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.CoordTransform(Xamarin.Forms.VisualElement,Xamarin.Forms.Rectangle,Xamarin.Forms.VisualElement)">
+            <summary>
+            translates a rectangle from the coordinates of this element to that of another
+            </summary>
+            <param name="fromElement"></param>
+            <param name="r"></param>
+            <param name="toElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.GestureListener(Xamarin.Forms.VisualElement)">
+            <summary>
+            Gets or creates a FormsGestures.Listener for a Xamarin.Forms.VisualElement
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindChildrenWithPropertyAndOfType``1(Xamarin.Forms.VisualElement,System.String,System.Collections.Generic.List{``0})">
+            <summary>
+            Enumerates all of the children of a parent element of a given type T
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parentElement"></param>
+            <param name="propertyName"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindChildrenWithProperty(Xamarin.Forms.VisualElement,System.String)">
+            <summary>
+            Enumarates all the chilren of a VisualElement with a given property name
+            </summary>
+            <param name="parentElement"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindVisualElementsOfType``1(Xamarin.Forms.VisualElement)">
+            <summary>
+            Enumarates all the chilren of a VisualElement
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parentElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindVisualElementsWithPropertyAndOfType``1(System.String)">
+            <summary>
+            Enumarates all VisualElements with a given type (T) and property name
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindVisualElementsWithProperty(System.String)">
+            <summary>
+            Enumarates all VisualElements with a given property name
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindVisualElementsOfType``1">
+            <summary>
+            Enumarates all VisualElements with a given type (T) 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindFocused">
+            <summary>
+            Finds the currently focused VisualElement.
+            </summary>
+            <returns>The focused.</returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindChildWithFocus(Xamarin.Forms.Element)">
+            <summary>
+            Finds the child VisualElement that is currently focused.
+            </summary>
+            <returns>The child with focus.</returns>
+            <param name="element">Element.</param>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.FindAncestorOfType(Xamarin.Forms.Element,System.Type)">
+            <summary>
+            returns first ancestor element of given type
+            </summary>
+            <param name="element"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.VisualElementExtensions.IsInVisibleViewTree(Xamarin.Forms.VisualElement)">
+            <summary>
+            Is the element in the current visible view tree?
+            </summary>
+            <param name="visualElement"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FormsGestures.ICoordTransform">
+            <summary>
+            Interface for coordinate tranform complient
+            </summary>
+        </member>
+        <member name="M:FormsGestures.ICoordTransform.CoordTransform(Xamarin.Forms.VisualElement,Xamarin.Forms.Point,Xamarin.Forms.VisualElement)">
+            <summary>
+            point transform
+            </summary>
+            <param name="fromElement"></param>
+            <param name="p"></param>
+            <param name="toElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.ICoordTransform.CoordTransform(Xamarin.Forms.VisualElement,Xamarin.Forms.Rectangle,Xamarin.Forms.VisualElement)">
+            <summary>
+            rectangle transform
+            </summary>
+            <param name="fromElement"></param>
+            <param name="r"></param>
+            <param name="toElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.ICoordTransform.PointInWindowCoord(Xamarin.Forms.VisualElement,Xamarin.Forms.Point)">
+            <summary>
+            Returns point within view in DIP Screen Coordinates
+            </summary>
+            <param name="element"></param>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.ICoordTransform.BoundsInWindowCoord(Xamarin.Forms.VisualElement)">
+            <summary>
+            Returns bounds of view in DIP Screen Coordinates
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FormsGestures.IGestureService">
+            <summary>
+            Interface for FormsGestures' service.
+            </summary>
+        </member>
+        <member name="T:FormsGestures.Listener">
+            <summary>
+            FormsGestures Listener
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.Element">
+            <summary>
+            VisualElement that is the focus of this Listener
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Down">
+            <summary>
+            Down event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.DownCommandProperty">
+            <summary>
+            backing store for command invoked upon down event
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.DownCommandParameterProperty">
+            <summary>
+            backing store for down command parameter
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.DownCommand">
+            <summary>
+            command invoked upon down event
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.DownCommandParameter">
+            <summary>
+            parameter passed with command invoked upon down event
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.DownCallbackProperty">
+            <summary>
+            backing store for DownCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.DownCallbackParameterProperty">
+            <summary>
+            backing store for DownCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.DownCallback">
+            <summary>
+            Action invoked invoked upon down event
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.DownCallbackParameter">
+            <summary>
+            parameter passed with to Action invoked invoked upon down event
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesDown">
+            <summary>
+            returns if Listener is configured to handle down touch 
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesDownChanged">
+            <summary>
+            Event to notify if the ability to handle down events has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Up">
+            <summary>
+            Up event motion handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.UpCommandProperty">
+            <summary>
+            backing store for UpCommand
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.UpCommandParameterProperty">
+            <summary>
+            backing store for UpCommandParameter
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.UpCommand">
+            <summary>
+            command invoked upon up touch
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.UpCommandParameter">
+            <summary>
+            parameter passed to command invoked upon up touch
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.UpCallbackProperty">
+            <summary>
+            Backing store for UpCallback
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.UpCallbackParameterProperty">
+            <summary>
+            Backing store for UpCallbackParameter
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.UpCallback">
+            <summary>
+            Action invoked upon up touch
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.UpCallbackParameter">
+            <summary>
+            Parameter passed to Action invoked upon up touch
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesUp">
+            <summary>
+            Does this Listener invoke anything upon an up touch?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesUpChanged">
+            <summary>
+            Event triggered when HandlesUp status has changed;
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Tapping">
+            <summary>
+            Tapping event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.TappingCommandProperty">
+            <summary>
+            backing store for the TappingCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.TappingCommandParameterProperty">
+            <summary>
+            backing store for the TappingCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.TappingCommand">
+            <summary>
+            Command invoked during tap event
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.TappingCommandParameter">
+            <summary>
+            Parameter padded to command invoked during tap event
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.TappingCallbackProperty">
+            <summary>
+            backing store for the TappingCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.TappingCallbackParameterProperty">
+            <summary>
+            backing store for the TappingCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.TappingCallback">
+            <summary>
+            Action invoked upon tap event
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.TappingCallbackParameter">
+            <summary>
+            Parameter passed to Action invoked during tap event
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesTapping">
+            <summary>
+            does this Listner invoke anything during a tap motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesTappingChanged">
+            <summary>
+            Event triggered when HandlesTapping state has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Tapped">
+            <summary>
+            Tapped event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.TappedCommandProperty">
+            <summary>
+            backing store for the TappedCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.TappedCommandParameterProperty">
+            <summary>
+            backing store for the TappedCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.TappedCommand">
+            <summary>
+            Command invoked after a tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.TappedCommandParameter">
+            <summary>
+            Parameter passed with Command invoked after a tap motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.TappedCallbackProperty">
+            <summary>
+            backing store for a TappedCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.TappedCallbackParameterProperty">
+            <summary>
+            backing store for a TappedCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.TappedCallback">
+            <summary>
+            Action invoked after a tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.TappedCallbackParameter">
+            <summary>
+            Parameter passed to Action invoked after a tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesTapped">
+            <summary>
+            does this Listener invoke anything after a tap motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesTappedChanged">
+            <summary>
+            Event triggered when HandlesTapped has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.DoubleTapped">
+            <summary>
+            DoubleTapped event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.DoubleTappedCommandProperty">
+            <summary>
+            backing store for the DoubleTappedCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.DoubleTappedCommandParameterProperty">
+            <summary>
+            backing store for the DoubleTappedCommmandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.DoubleTappedCommand">
+            <summary>
+            Command invoked after a double tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.DoubleTappedCommandParameter">
+            <summary>
+            Parameter sent with Command invoked after a double tap motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.DoubleTappedCallbackProperty">
+            <summary>
+            backing store for DoubleTappedCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.DoubleTappedCallbackParameterProperty">
+            <summary>
+            backing store for DoubleTappedCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.DoubleTappedCallback">
+            <summary>
+            Action invoked after a double tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.DoubleTappedCallbackParameter">
+            <summary>
+            Parameter sent to Action invoked after a double tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesDoubleTapped">
+            <summary>
+            does this Listener invoke anything upon double tap motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesDoubleTappedChanged">
+            <summary>
+            Occurs when handles double tapped changed.
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.LongPressing">
+            <summary>
+            LongPressing event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.LongPressingCommandProperty">
+            <summary>
+            backing store for LongPressingCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.LongPressingCommandParameterProperty">
+            <summary>
+            backing store for LongPressingCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.LongPressingCommand">
+            <summary>
+            Command invoked during long pressing motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.LongPressingCommandParameter">
+            <summary>
+            Parameter sent to Command invoked during long pressing motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.LongPressingCallbackProperty">
+            <summary>
+            backing store for LongPressingCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.LongPressingCallbackParameterProperty">
+            <summary>
+            backing store for LongPressingCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.LongPressingCallback">
+            <summary>
+            Action invoked during long pressing motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.LongPressingCallbackParameter">
+            <summary>
+            Parameter sent to Action invoked during long pressing motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesLongPressing">
+            <summary>
+            Does this Listner invoke anything during long press motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesLongPressingChanged">
+            <summary>
+            Event triggered when HandlesLongPressing has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.LongPressed">
+            <summary>
+            LongPressed event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.LongPressedCommandProperty">
+            <summary>
+            backing store for LongPressedCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.LongPressedCommandParameterProperty">
+            <summary>
+            backing store for LongPressedCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.LongPressedCommand">
+            <summary>
+            Command invoked after long press motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.LongPressedCommandParameter">
+            <summary>
+            Parameter sent with Command invoked after long press motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.LongPressedCallbackProperty">
+            <summary>
+            backing store for LongPressedCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.LongPressedCallbackParameterProperty">
+            <summary>
+            backing store for LongPressedCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.LongPressedCallback">
+            <summary>
+            Action invoked after long press motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.LongPressedCallbackParameter">
+            <summary>
+            Parameter sent with Action invoked after long press motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesLongPressed">
+            <summary>
+            Does this Listener invoke anything after a long press
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesLongPressedChanged">
+            <summary>
+            Event triggered when HandlesLongPressed had changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Pinching">
+            <summary>
+            Pinching event listener
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PinchingCommandProperty">
+            <summary>
+            backing store for the PinchingCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PinchingCommandParameterProperty">
+            <summary>
+            backing store for the PinchingCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PinchingCommand">
+            <summary>
+            Command invoked during pinch motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PinchingCommandParameter">
+            <summary>
+            Parameter sent with Command invoked during pinch motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PinchingCallbackProperty">
+            <summary>
+            backing store for the PinchingCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PinchingCallbackParameterProperty">
+            <summary>
+            backing store for the PinchingCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PinchingCallback">
+            <summary>
+            Action invoked during pinch motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PinchingCallbackParameter">
+            <summary>
+            Parameter sent to Action invoked during pinch motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesPinching">
+            <summary>
+            does this Listener invoke anything during pinch motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesPinchingChanged">
+            <summary>
+            Event triggered when HandlesPinching has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Pinched">
+            <summary>
+            Pinched event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PinchedCommandProperty">
+            <summary>
+            backing store for the PinchedCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PinchedCommandParameterProperty">
+            <summary>
+            backing store for the PinchedCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PinchedCommand">
+            <summary>
+            Command invoked after pinch motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PinchedCommandParameter">
+            <summary>
+            Parameter sent with Command invoked after pinch motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PinchedCallbackProperty">
+            <summary>
+            backing store for the PinchedCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PinchedCallbackParameterProperty">
+            <summary>
+            backing store for the PinchedCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PinchedCallback">
+            <summary>
+            Action invoked after pinch motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PinchedCallbackParameter">
+            <summary>
+            Parameter passed to Action invoked after pinch motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesPinched">
+            <summary>
+            Does this Listener invoke anything after pinch motion
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesPinchedChanged">
+            <summary>
+            Event triggered when HandlesPinched has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Panning">
+            <summary>
+            Panning event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PanningCommandProperty">
+            <summary>
+            backing store for the PanningCommand parameter
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PanningCommandParameterProperty">
+            <summary>
+            backing store for the PanningCommandParameter parameter
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PanningCommand">
+            <summary>
+            Command invoked duing pan motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PanningCommandParameter">
+            <summary>
+            Parameter sent with Command invoked duing pan motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PanningCallbackProperty">
+            <summary>
+            backing store for the PanningCallback parameter
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PanningCallbackParameterProperty">
+            <summary>
+            backing store for the PanningCallbackParameter parameter
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PanningCallback">
+            <summary>
+            Action invoked duing pan motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PanningCallbackParameter">
+            <summary>
+            Parameter sent to Action invoked duing pan motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesPanning">
+            <summary>
+            Does Listener invoke anything during pan motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesPanningChanged">
+            <summary>
+            Event triggered when HandlesPanning has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Panned">
+            <summary>
+            Pannded event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PannedCommandProperty">
+            <summary>
+            backing store for the PannedCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PannedCommandParameterProperty">
+            <summary>
+            backing store for the PannedCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PannedCommand">
+            <summary>
+            Command invoked after pan motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PannedCommandParameter">
+            <summary>
+            Parameter sent with Command invoked after pan motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PannedCallbackProperty">
+            <summary>
+            backing store for the PanndedCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.PannedCallbackParameterProperty">
+            <summary>
+            backing store for the PanndedCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PannedCallback">
+            <summary>
+            Action invoked after pan motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.PannedCallbackParameter">
+            <summary>
+            Parameter sent with Action invoked after pan motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesPanned">
+            <summary>
+            Does this Listener invoke anything after pan motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesPannedChanged">
+            <summary>
+            Event triggered when HandlesPanned has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Swiped">
+            <summary>
+            Swiped event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.SwipedCommandProperty">
+            <summary>
+            backing store for the SwipedCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.SwipedCommandParameterProperty">
+            <summary>
+            backing store for the SwipedCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.SwipedCommand">
+            <summary>
+            Command invoked after swipe motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.SwipedCommandParameter">
+            <summary>
+            Parameter sent with Command invoked after swipe motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.SwipedCallbackProperty">
+            <summary>
+            backing store for the SwipedCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.SwipedCallbackParameterProperty">
+            <summary>
+            backing store for the SwipedCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.SwipedCallback">
+            <summary>
+            Action invoked after swipe motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.SwipedCallbackParameter">
+            <summary>
+            Parameter sent with Action invoked after swipe motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesSwiped">
+            <summary>
+            Does this Listener invoke anything after swipe motion
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesSwipedChanged">
+            <summary>
+            Event triggered when HandlesSwiped has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Rotating">
+            <summary>
+            Rotating event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RotatingCommandProperty">
+            <summary>
+            backing store for the RotatingCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RotatingCommandParameterProperty">
+            <summary>
+            backing store for the RotatingCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RotatingCommand">
+            <summary>
+            Command invoked during rotation motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RotatingCommandParameter">
+            <summary>
+            Parameter sent with Command invoked during rotation motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RotatingCallbackProperty">
+            <summary>
+            backing store for the RotatingCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RotatingCallbackParameterProperty">
+            <summary>
+            backing store for the RotatingCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RotatingCallback">
+            <summary>
+            Action invoked during rotation motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RotatingCallbackParameter">
+            <summary>
+            Parameter sent with Action invoked during rotation motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesRotating">
+            <summary>
+            Does Listener invoke anything during rotation motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesRotatingChanged">
+            <summary>
+            Event trigged when HandlesRotating has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Rotated">
+            <summary>
+            Rotated event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RotatedCommandProperty">
+            <summary>
+            backing store for the RotatedCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RotatedCommandParameterProperty">
+            <summary>
+            backing store for the RotatedCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RotatedCommand">
+            <summary>
+            Command invoked after rotation motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RotatedCommandParameter">
+            <summary>
+            Parameter sent with Command invoked after rotation motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RotatedCallbackProperty">
+            <summary>
+            backing store for the RotatedCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RotatedCallbackParameterProperty">
+            <summary>
+            backing store for the RotatedCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RotatedCallback">
+            <summary>
+            Action invoked after rotation motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RotatedCallbackParameter">
+            <summary>
+            Parameter sent with Action invoked after rotation motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesRotated">
+            <summary>
+            Does Listener invoke anything after rotation motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesRotatedChanged">
+            <summary>
+            Event trigged when HandlesRotated has changed
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.RightClicked">
+            <summary>
+            Tapped event handler
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RightClickedCommandProperty">
+            <summary>
+            backing store for the TappedCommand property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RightClickedCommandParameterProperty">
+            <summary>
+            backing store for the TappedCommandParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RightClickedCommand">
+            <summary>
+            Command invoked after a tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RightClickedCommandParameter">
+            <summary>
+            Parameter passed with Command invoked after a tap motion
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RightClickedCallbackProperty">
+            <summary>
+            backing store for a TappedCallback property
+            </summary>
+        </member>
+        <member name="F:FormsGestures.Listener.RightClickedCallbackParameterProperty">
+            <summary>
+            backing store for a TappedCallbackParameter property
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RightClickedCallback">
+            <summary>
+            Action invoked after a tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.RightClickedCallbackParameter">
+            <summary>
+            Parameter passed to Action invoked after a tap motion
+            </summary>
+        </member>
+        <member name="P:FormsGestures.Listener.HandlesRightClicked">
+            <summary>
+            does this Listener invoke anything after a tap motion?
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.HandlesRightClickedChanged">
+            <summary>
+            Event triggered when HandlesRightClicked has changed
+            </summary>
+        </member>
+        <member name="M:FormsGestures.Listener.For(Xamarin.Forms.VisualElement)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FormsGestures.Listener.Dispose">
+            <summary>
+            Disposer
+            </summary>
+        </member>
+        <member name="E:FormsGestures.Listener.Disposing">
+            <summary>
+            Event handler for Disposing event
+            </summary>
+        </member>
+        <member name="M:FormsGestures.Listener.Dispose(System.Boolean)">
+            <summary>
+            Dispoer
+            </summary>
+            <param name="disposing"></param>
+        </member>
+    </members>
+</doc>

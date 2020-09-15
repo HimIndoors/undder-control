@@ -14,13 +14,13 @@
                 TextColor="{StaticResource CheckpointColor}"
                 FontSize="42"
                 Margin="13"
-                FontFamily="{StaticResource BoldFont}"
+                FontFamily="BoldFont"
                 HorizontalTextAlignment="Center" />
             <Label x:Name="ErrorText"
                 FontSize="21"
                 Margin="13"
                 TextColor="White" HorizontalTextAlignment="Center" />
-            <f9p:Button x:Name="RetryButton" Lines="2" WidthRequest="100" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0"
+            <f9p:Button x:Name="RetryButton" Lines="2" WidthRequest="100" HeightRequest="70" FontSize="20" FontFamily="UndderControl.Resources.dinot-bold.otf" TextColor="{StaticResource TextColor}" Padding="21,0"
                 HorizontalOptions="Center"
                 BackgroundColor="White" BorderColor="White" BorderRadius="10"
                 Command="{Binding RetryCommand}" />

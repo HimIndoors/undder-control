@@ -12,7 +12,7 @@
     <ScrollView>
         <StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="31,21,31,18">
-                <Label Text="DATE"  FontSize="18" FontFamily="{StaticResource BoldFont}" Margin="0"/>
+                <Label Text="DATE"  FontSize="18" FontFamily="BoldFont" Margin="0"/>
                 <Frame CornerRadius="5" IsClippedToBounds="true" BackgroundColor="White" Margin="0, 1,0,0" Padding="8,0">
                     <Label Text="{Binding AssessmentDate}" HorizontalTextAlignment="Center"  FontSize="16" FontAttributes="Bold" />
                 </Frame>
@@ -66,10 +66,10 @@
                 <StackLayout.Padding>
                     <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
                 </StackLayout.Padding>
-                <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="{StaticResource BoldFont}" TextColor="White" Margin="0,0,0,18" Lines="2"/>
+                <f9p:Label x:Name="FarmSuitability" HtmlText="{Binding SuitabilityStatement}" FontSize="18" FontFamily="UndderControl.Resources.dinot-bold.otf" TextColor="White" Margin="0,0,0,18" Lines="2"/>
                 <Label x:Name="ImprovementTitle" Style="{StaticResource ResultSubtitle}"/>
                 <StackLayout x:Name="StatementStack" />
-                <f9p:StateButton x:Name="CompareButton" Command="{Binding CompareCommand}" Lines="2" HeightRequest="70" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="{StaticResource TextColor}" Padding="21,0" HorizontalOptions="FillAndExpand" BackgroundColor="White" BorderColor="White" BorderRadius="10">
+                <f9p:StateButton x:Name="CompareButton" Command="{Binding CompareCommand}" Lines="2" HeightRequest="70" FontSize="20" FontFamily="UndderControl.Resources.dinot-bold.otf" TextColor="{StaticResource TextColor}" Padding="21,0" HorizontalOptions="FillAndExpand" BackgroundColor="White" BorderColor="White" BorderRadius="10">
                     <f9p:StateButton.DisabledState>
                         <f9p:ButtonState TextColor="#BDBDBD" BackgroundColor="White" />
                     </f9p:StateButton.DisabledState>

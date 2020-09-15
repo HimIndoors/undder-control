@@ -1,4 +1,5 @@
-﻿using UndderControl.Text;
+﻿using UndderControl.Custom;
+using UndderControl.Text;
 using Xamarin.Forms;
 
 namespace UndderControl.Views
@@ -19,6 +20,10 @@ namespace UndderControl.Views
             QuestionButton.Text = AppTextResource.AssessQuestionButton;
             SummaryButton.Text = AppTextResource.AssessSummaryButton;
             CompareButton.Text = AppTextResource.AssessCompareButton;
+
+            QuestionButton.Effects.Add(Effect.Resolve($"PMN.{nameof(PreventTapJackingEffect)}"));
+            SummaryButton.Effects.Add(Effect.Resolve($"PMN.{nameof(PreventTapJackingEffect)}"));
+            CompareButton.Effects.Add(Effect.Resolve($"PMN.{nameof(PreventTapJackingEffect)}"));
         }
     }
 }

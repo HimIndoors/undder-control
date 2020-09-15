@@ -20,7 +20,7 @@
                     <Label x:Name="Text2" Margin="13" FontSize="21" HorizontalTextAlignment="Center"/>
                 </StackLayout>
                 <StackLayout VerticalOptions="End">
-                    <Button Text="HOME" Command="{Binding OnNavigateCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/RootPage" />
+                    <Button Text="HOME" Command="{Binding OnNavigateCommand}" CommandParameter="/SdctMasterDetailPage/NavigationPage/RootPage" x:Name="FinishButton" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>

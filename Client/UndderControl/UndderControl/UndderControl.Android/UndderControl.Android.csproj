@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs">
-      <Version>7.1.0.446</Version>
+      <Version>7.1.0.463</Version>
     </PackageReference>
     <PackageReference Include="Plugin.CurrentActivity">
       <Version>2.1.0.4</Version>
@@ -140,7 +140,7 @@
       <Version>2.2.0.2</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.Loader">
-      <Version>1.1.0.2</Version>
+      <Version>1.1.0.5</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.MediaRouter">
       <Version>1.1.0.1</Version>
@@ -162,7 +162,8 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0.1" />
-    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0" />
+    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.2" />
+    <PackageReference Include="Xamarin.AndroidX.AppCompat.Resources" Version="1.1.0.1" />
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4" Version="1.0.0-preview02" />
     <PackageReference Include="Xamarin.AndroidX.CardView" Version="1.0.0.2" />
     <PackageReference Include="Xamarin.AndroidX.MediaRouter" Version="1.0.0-preview02" />
@@ -176,10 +177,11 @@
     <PackageReference Include="Xamarin.GooglePlayServices.SafetyNet">
       <Version>71.1600.4</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.6.2" />
+    <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.7.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Custom\AndroidPreventTapJackingEffect.cs" />
+    <Compile Include="Custom\AndroidPreventTapJackingRenderer.cs" />
     <Compile Include="Helpers\AndroidFileHelper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

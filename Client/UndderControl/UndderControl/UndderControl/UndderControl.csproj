@@ -54,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.463" />
     <PackageReference Include="FluentValidation" Version="9.2.0" />
     <PackageReference Include="fusillade" Version="2.1.9" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.24" />

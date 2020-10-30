@@ -223,7 +223,7 @@ namespace UndderControl.ViewModels
         }
         private bool CanCompareNavigate()
         {
-            return App.PreviousSurveyResponse == null ? false : true;
+            return App.PreviousSurveyResponse != null;
         }
     }
 }

@@ -7,7 +7,7 @@ using Android.Widget;
 
 namespace UndderControl.Droid
 {
-    [Activity(Label = "UnDDER CONTROL", Icon = "@mipmap/ic_launcher", Theme = "@style/SplashTheme", MainLauncher = true)]
+    [Activity(Name = "com.pmn.SplashActivity", Label = "UnDDER CONTROL", Icon = "@mipmap/ic_launcher", Theme = "@style/SplashTheme", MainLauncher = true, TaskAffinity = "")]
     public class SplashActivity : Activity
     {
         private static readonly int REQUEST_GOOGLE_PLAY_SERVICES_DOWNLOAD = 1000;

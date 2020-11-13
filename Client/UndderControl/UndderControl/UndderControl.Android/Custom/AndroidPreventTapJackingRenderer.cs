@@ -16,6 +16,7 @@ namespace UndderControl.Droid.Custom
         {
             base.OnElementChanged(e);
             base.RootView.FilterTouchesWhenObscured = true;
+            base.FilterTouchesWhenObscured = true;
         }
     }
 }

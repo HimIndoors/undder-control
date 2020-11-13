@@ -15,6 +15,7 @@
             <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Label x:Name="VersionLabel" FontFamily="MediumFont" AbsoluteLayout.LayoutBounds="0,0,.5,.1" AbsoluteLayout.LayoutFlags="All" FontSize="12" Margin="{x:OnPlatform Android='10, 10, 0, 0', iOS='10, 10, 0, 0'}" />
                 <Image Source="logo" x:Name="MerckLogo" AbsoluteLayout.LayoutBounds="0,1,AutoSize,Autosize" AbsoluteLayout.LayoutFlags="PositionProportional" Margin="0, 0, 0, 0" />
+                <Label x:Name="SmallPrintLabel" FontFamily="NormalFont" AbsoluteLayout.LayoutBounds="0.5,1,.5,.1" AbsoluteLayout.LayoutFlags="All" FontSize="10" Margin="0,0,0,0" HorizontalTextAlignment="Center" TextColor="{StaticResource StandardTextColor}" />
             </AbsoluteLayout>
         </Grid>
     </ContentPage.Content>

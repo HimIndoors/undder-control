@@ -20,12 +20,13 @@ namespace UndderControl.Views
             //SetValue(NavigationPage.HasNavigationBarProperty, false);
             _vm = BindingContext as RootPageViewModel;
 
-            RootAssessment1.Text = AppTextResource.RootAssessment1;
-            RootAssessment2.Text = AppTextResource.RootAssessment2;
-            RootAssessment3.Text = AppTextResource.RootAssessment3;
-            RootMonitor1.Text = AppTextResource.RootMonitor1;
-            RootMonitor2.Text = AppTextResource.RootMonitor2;
-            RootMonitor3.Text = AppTextResource.RootMonitor3;
+            RootAssessment1.HtmlText = AppTextResource.RootAssessment1;
+            RootAssessment2.HtmlText = AppTextResource.RootAssessment2;
+            RootAssessment3.HtmlText = AppTextResource.RootAssessment3;
+            RootMonitor1.HtmlText = AppTextResource.RootMonitor1;
+            RootMonitor2.HtmlText = AppTextResource.RootMonitor2;
+            RootMonitor3.HtmlText = AppTextResource.RootMonitor3;
+            RootMonitor4.HtmlText = AppTextResource.RootMonitor4;
 
             eventAggregator.GetEvent<RootPageRefreshEvent>().Subscribe(UpdateSelectedFarm);
         }

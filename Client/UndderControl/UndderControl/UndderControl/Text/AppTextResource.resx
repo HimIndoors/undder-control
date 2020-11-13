@@ -139,26 +139,25 @@
     <value>SUMMARY OF RESULTS</value>
   </data>
   <data name="AssessText1" xml:space="preserve">
-    <value>SDCT is widely regarded best practice during dry-off and essential in responsible usage of antibiotics in the dairy industry. MSD Animal Health has provided this tool to assist vets and farmers to assess whether the farm is ready to implement SDCT and then monitor success after SDCT has been implemented.</value>
+    <value>Dry cow treatment can be performed both at the farm and at the cow level. When performed at the farm level we call it &lt;b&gt;BLANKET DRY COW TREATMENT&lt;/b&gt;, which means all cows in the farm get the same treatment at dry-off. When performed at cow level, we call it &lt;b&gt;SELECTIVE DRY COW TREATMENT (SDCT)&lt;/b&gt;. Then, only the high SCC (infected) cows at dry-off receive antibiotic treatment. SDCT is part of responsible usage of antibiotics in the dairy industry and widely regarded best practice at dry-off, specifically on farms with low bulk milk SCC (&amp;lt; 250,000 cells/ml).</value>
   </data>
   <data name="AssessText2" xml:space="preserve">
-    <value>Once a farm has been analysed and the process of monitoring has begun, SDCT can help reduce the economic loss from discarded milk, medicine and treatment costs. Farm analysis and monitoring resulting in better management, can reduce the threat of new infection and the associated fatality costs, increased culling costs and reduced yield for the lactation.</value>
+    <value>Whatever the dry cow treatment strategy is, blanket or selective, ultimately, its success is dependent on proper management of the dry period beyond treatment with tubes alone. MSD Animal Health has provided this tool to assist vets and farmers to assess whether the farm is properly managing the dry period.</value>
   </data>
   <data name="AssessText3" xml:space="preserve">
-    <value>SDCT is based on analysing and monitoring the herd by gathering data through regular and repeated cow SCCs and accurate infection records and diagnostics.</value>
+    <value>Antibiotics and teat sealants are more effective if best practice procedures are put into place, and '&lt;b&gt;UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC&lt;/b&gt;' will help to establish proper Dry-off management. Once a farm has been analyzed and the process of monitoring has begun, it should reduce the threat of new infection during the dry period and the associated fatality costs, increased culling costs and reduced yield for the next lactation.</value>
   </data>
   <data name="AssessText4" xml:space="preserve">
-    <value>SDCT can only be used if other best practice procedures are put into place, and this app will help to establish a pathway to using SDCT as common practice.
-All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off and the first SCC after calving) before implementing SDCT, or alternatively you may use another reliable test.</value>
+    <value>Evaluating treatment and management success can be done through monitoring dry period cure and new infection rates. A requisite for such monitoring is regular, preferably monthly cow SCC measurements (last cow SCC before dry-off and the first SCC after calving), or alternatively you may use another reliable test to be able to follow the infection status of cows.</value>
   </data>
   <data name="AssessTitle1" xml:space="preserve">
-    <value>SELECTIVE DRY COW TREATMENT (SDCT) IS...</value>
+    <value>DRY COW TREATMENT</value>
   </data>
   <data name="AssessTitle2" xml:space="preserve">
-    <value>HOW WILL SDCT HELP MY FARM?</value>
+    <value>DRY COW MANAGEMENT</value>
   </data>
   <data name="AssessTitle3" xml:space="preserve">
-    <value>HOW TO IMPLEMENT SDCT ON MY FARM?</value>
+    <value>HOW WILL THIS TOOL HELP MY FARM?</value>
   </data>
   <data name="AssessTitle4" xml:space="preserve">
     <value>AM I ELIGIBLE FOR SDCT?</value>
@@ -212,7 +211,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
     <value>COW STATUS</value>
   </data>
   <data name="CowStatusText1" xml:space="preserve">
-    <value>Once SDCT has been implemented on farm it is important to monitor the herd to catch and fix any issues which may arise.</value>
+    <value>To conduct proper ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ Dry-off management it is important to monitor the herd to catch and fix any issues which may arise.</value>
   </data>
   <data name="CowStatusText2" xml:space="preserve">
     <value>You will need to input the cow’s status at &lt;b&gt;DRY-OFF&lt;/b&gt; and &lt;b&gt;CALVING&lt;/b&gt;.</value>
@@ -269,19 +268,19 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
     <value>SUMMARY OF RESULTS</value>
   </data>
   <data name="MonitorText1" xml:space="preserve">
-    <value>Once SDCT has been implemented, continuous monitoring is required in order to refine practices on farm in order to optimise success levels and ultimately productivity, profitability and animal welfare.</value>
+    <value>Continuous monitoring is required in order to refine practices on farm in order to optimise success levels and ultimately productivity, profitability and animal welfare.</value>
   </data>
   <data name="MonitorText2" xml:space="preserve">
-    <value>This app will help you to analyse the infection rates of the herd at dry-off and calving. By inputing the infection status of each cow in the herd you can monitor the overall results and, together with SDCT assessment tool, analyse which areas are working well and where improvement may be required.</value>
+    <value>This app will help you to analyse the infection rates of the herd at dry-off and calving. By inputing the infection status of each cow in the herd you can monitor the overall results and, together with the ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ assessment tool, analyse which areas are working well and where improvement may be required.</value>
   </data>
   <data name="MonitorText3" xml:space="preserve">
-    <value>Overcoming problems is part of everyday life when managing a dairy herd and SDCT is no different, by fostering good working relationships, MSD Animal Health Representatives, vets and farmers can work together to overcome any challenges which may arise.</value>
+    <value>Overcoming problems is part of everyday life when managing a dairy herd and ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ Dry-off management is no different. By fostering good working relationships, MSD Animal Health Representatives, vets and farmers can work together to overcome any challenges which may arise.</value>
   </data>
   <data name="MonitorText4" xml:space="preserve">
-    <value>SDCT provides both short term and long term benefits; fostering responsible usage of antibiotics in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain SDCT.</value>
+    <value>‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ Dry-off management provides both short term and long term benefits; fostering responsible usage of antibiotics in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ Dry-off management.</value>
   </data>
   <data name="MonitorTitle1" xml:space="preserve">
-    <value>IT IS IMPORTANT TO CONTINUE MONITORING THE FARM ONCE SDCT IS IMPLEMENTED...</value>
+    <value>IT IS IMPORTANT TO START AND CONTINUE MONITORING YOUR FARM CLOSELY FOR A PROPER ‘UnDDER CONTROL&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ DRY-OFF MANAGEMENT....</value>
   </data>
   <data name="MonitorTitle2" xml:space="preserve">
     <value>WHAT YOU NEED TO MONITOR...</value>
@@ -290,7 +289,7 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
     <value>HOW TO DEAL WITH ANY PROBLEMS WHICH MAY ARISE...</value>
   </data>
   <data name="MonitorTitle4" xml:space="preserve">
-    <value>THE BENEFITS OF MAINTAINING SDCT...</value>
+    <value>THE BENEFITS OF MAINTAINING ‘UnDDER CONTROL&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ DRY-OFF MANAGEMENT...</value>
   </data>
   <data name="NoResultsCompareCaption" xml:space="preserve">
     <value>A comparison will be available once you have input more data.</value>
@@ -308,16 +307,25 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
     <value>DRY COW TREATMENT</value>
   </data>
   <data name="RootAssessment3" xml:space="preserve">
-    <value>SELECTIVE</value>
+    <value>‘UnDDER CONTROL&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’</value>
   </data>
   <data name="RootMonitor1" xml:space="preserve">
     <value>MONITOR</value>
   </data>
   <data name="RootMonitor2" xml:space="preserve">
-    <value>SUCCESS OF SELECTIVE</value>
+    <value>SUCCESS OF</value>
   </data>
   <data name="RootMonitor3" xml:space="preserve">
+    <value>‘UnDDER CONTROL&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’</value>
+  </data>
+  <data name="RootMonitor4" xml:space="preserve">
     <value>DRY COW TREATMENT</value>
+  </data>
+  <data name="SmallPrint" xml:space="preserve">
+    <value>UnDDER Control is a registered
+trademark of Intervet
+International B.V., also known
+as MSD Animal Health.</value>
   </data>
   <data name="SummaryResultTitle" xml:space="preserve">
     <value>SUMMARY OF RESULTS</value>
@@ -332,10 +340,10 @@ All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off
     <value>AREAS FOR IMPROVEMENT</value>
   </data>
   <data name="SurveyResultSdctSuitable" xml:space="preserve">
-    <value>SWITCHING TO SDCT &lt;u&gt;IS&lt;/u&gt; SUITABLE ON THIS FARM!</value>
+    <value>SWITCHING TO SDCT WOULD BE SUITABLE ON THIS FARM!</value>
   </data>
   <data name="SurveyResultSdctUnsuitable" xml:space="preserve">
-    <value>SWITCHING TO SDCT MAY POSE A &lt;u&gt;RISK&lt;/u&gt; FOR UDDER HEALTH ON THIS FARM!</value>
+    <value>SWITCHING TO SDCT MAY POSE A RISK FOR UDDER HEALTH ON THIS FARM!</value>
   </data>
   <data name="SurveyResultsPageTitle" xml:space="preserve">
     <value>RESULTS</value>

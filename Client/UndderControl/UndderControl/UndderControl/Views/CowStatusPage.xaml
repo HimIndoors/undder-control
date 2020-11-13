@@ -14,7 +14,7 @@
                 <StackLayout.Padding>
                     <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
                 </StackLayout.Padding>
-                <Label x:Name="Text1" Style="{StaticResource Text}" />
+                <f9p:Label x:Name="Text1" Style="{StaticResource Text}" FontFamily="UndderControl.Resources.dinot.otf" />
                 <f9p:Label x:Name="Text2" Style="{StaticResource Text}" FontFamily="UndderControl.Resources.dinot.otf" Lines="2" />
                 <Label x:Name="Text3" Style="{StaticResource Text}" />
                 <f9p:Label x:Name="Text4" Style="{StaticResource Text}" FontFamily="UndderControl.Resources.dinot.otf" />

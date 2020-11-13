@@ -174,8 +174,6 @@ namespace UndderControl.ViewModels
                 Statements = new ObservableDictionary<string, List<string>>(statements);
                 if (isSuitable)
                     SuitabilityStatement = AppTextResource.SurveyResultSdctSuitable;
-                else
-                    SuitabilityStatement = AppTextResource.SurveyResultSdctUnsuitable;
 
                 RadarColour = ReturnHexValue(lowestScore);
                 AssessmentDate = _response.SubmittedDate.ToShortDateString();

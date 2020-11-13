@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:f9p="clr-namespace:Forms9Patch;assembly=Forms9Patch"
              x:Class="UndderControl.Views.MonitorPage">
     <ContentPage.Content>
         <ScrollView>
@@ -13,14 +14,14 @@
                     <StackLayout.Padding>
                         <OnPlatform x:TypeArguments="Thickness" iOS="31" Android="31" />
                     </StackLayout.Padding>
-                    <Label x:Name="Title1" Style="{StaticResource TextSubtitle}" />
+                    <f9p:Label x:Name="Title1" Style="{StaticResource TextSubtitle}" FontFamily="UndderControl.Resources.dinot-bold.otf" />
                     <Label x:Name="Text1" Style="{StaticResource Text}" />
                     <Label x:Name="Title2" Style="{StaticResource TextSubtitle}" />
-                    <Label x:Name="Text2" Style="{StaticResource Text}"/>
+                    <f9p:Label x:Name="Text2" Style="{StaticResource Text}" FontFamily="UndderControl.Resources.dinot.otf" />
                     <Label x:Name="Title3" Style="{StaticResource TextSubtitle}" />
-                    <Label x:Name="Text3" Style="{StaticResource Text}"/>
-                    <Label x:Name="Title4" Style="{StaticResource TextSubtitle}" />
-                    <Label x:Name="Text4" Style="{StaticResource Text}"/>
+                    <f9p:Label x:Name="Text3" Style="{StaticResource Text}" FontFamily="UndderControl.Resources.dinot.otf" />
+                    <f9p:Label x:Name="Title4" Style="{StaticResource TextSubtitle}" FontFamily="UndderControl.Resources.dinot-bold.otf" />
+                    <f9p:Label x:Name="Text4" Style="{StaticResource Text}" FontFamily="UndderControl.Resources.dinot.otf" />
                     <StackLayout Margin="0,13,0,0">
                         <Button x:Name="StatusButton" Command="{Binding OnStatusCommand}" CommandParameter="CowStatusPage" />
                         <Button x:Name="SummaryButton" Command="{Binding OnSummaryCommand}" CommandParameter="CowStatusResultsPage" Margin="0,10,0,0" />

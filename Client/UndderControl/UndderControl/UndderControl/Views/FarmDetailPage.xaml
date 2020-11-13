@@ -33,11 +33,11 @@
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
                         <Entry x:Name="FarmPhone" Margin="0" Text="{Binding CurrentFarm.PhoneNumber, Mode=TwoWay}" TextColor="Black" FontFamily="NormalFont" ReturnType="Next" TabIndex="3" />
                     </inputLayout:SfTextInputLayout>
-                    <Label Text="Herd Size" Style="{StaticResource FormLabel}" />
+                    <Label Text="Herd Size (approx.)" Style="{StaticResource FormLabel}" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
                         <Entry x:Name="FarmHerd" Margin="0" Text="{Binding CurrentFarm.HerdSize, Mode=TwoWay}" TextColor="Black" FontFamily="NormalFont" TabIndex="4" Keyboard="Numeric" />
                     </inputLayout:SfTextInputLayout>
-                    <Label Text="Type" Style="{StaticResource FormLabel}" />
+                    <Label Text="Farm Type (e.g. Dairy)" Style="{StaticResource FormLabel}" />
                     <inputLayout:SfTextInputLayout ContainerType="Outlined" ContainerBackgroundColor="White" Margin="0,-10,0,0">
                         <combobox:SfComboBox x:Name="comboBox" DataSource="{Binding FarmTypes}" DisplayMemberPath="Name" IsEditableMode="false" MultiSelectMode="None" SelectedItem="{Binding SelectedType}" TabIndex="5" FontFamily="NormalFont" DropDownItemFontFamily="NormalFont" SelectionChanged="ComboBox_SelectionChanged" Margin="0">
                             <combobox:SfComboBox.HeightRequest>

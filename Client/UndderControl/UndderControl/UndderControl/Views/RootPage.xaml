@@ -37,9 +37,9 @@
                             Android="13" />
                     </Frame.Padding>
                     <StackLayout>
-                        <Label x:Name="RootAssessment3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
-                        <Label x:Name="RootAssessment2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
-                        <f9p:Label x:Name="RootAssessment1" Lines="1" FontSize="33" MinFontSize="24" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontFamily="UndderControl.Resources.dinot-bold.otf" Margin="0"/>
+                        <f9p:Label x:Name="RootAssessment3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
+                        <f9p:Label x:Name="RootAssessment2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
+                        <f9p:Label x:Name="RootAssessment1" Lines="1" FontSize="33" MinFontSize="24" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontFamily="UndderControl.Resources.dinot-bold.otf" Margin="0,-10,0,0"/>
                     </StackLayout>
                 </Frame>
                 <Frame x:Name="MonitorFrame" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="{Binding FrameMonitorColour}" BorderColor="#ffffff" IsEnabled="{Binding FrameEnabled}">
@@ -53,8 +53,9 @@
                     </Frame.Padding>
                     <StackLayout>
                         <f9p:Label x:Name="RootMonitor1" FontSize="33" MinFontSize="24" Lines="1" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" FontFamily="UndderControl.Resources.dinot-bold.otf" Margin="0"/>
-                        <Label x:Name="RootMonitor2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0"/>
-                        <Label x:Name="RootMonitor3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
+                        <f9p:Label x:Name="RootMonitor2" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
+                        <f9p:Label x:Name="RootMonitor3" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
+                        <f9p:Label x:Name="RootMonitor4" FontSize="21" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" TextColor="{Binding FrameTextColour}" Margin="0,-10,0,0"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>

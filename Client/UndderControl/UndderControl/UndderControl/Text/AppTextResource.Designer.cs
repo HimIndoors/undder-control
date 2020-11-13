@@ -124,7 +124,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SDCT is widely regarded best practice during dry-off and essential in responsible usage of antibiotics in the dairy industry. MSD Animal Health has provided this tool to assist vets and farmers to assess whether the farm is ready to implement SDCT and then monitor success after SDCT has been implemented..
+        ///   Looks up a localized string similar to Dry cow treatment can be performed both at the farm and at the cow level. When performed at the farm level we call it &lt;b&gt;BLANKET DRY COW TREATMENT&lt;/b&gt;, which means all cows in the farm get the same treatment at dry-off. When performed at cow level, we call it &lt;b&gt;SELECTIVE DRY COW TREATMENT (SDCT)&lt;/b&gt;. Then, only the high SCC (infected) cows at dry-off receive antibiotic treatment. SDCT is part of responsible usage of antibiotics in the dairy industry and widely regarded best practice at dry-off, specificall [rest of string was truncated]&quot;;.
         /// </summary>
         public static string AssessText1 {
             get {
@@ -133,7 +133,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Once a farm has been analysed and the process of monitoring has begun, SDCT can help reduce the economic loss from discarded milk, medicine and treatment costs. Farm analysis and monitoring resulting in better management, can reduce the threat of new infection and the associated fatality costs, increased culling costs and reduced yield for the lactation..
+        ///   Looks up a localized string similar to Whatever the dry cow treatment strategy is, blanket or selective, ultimately, its success is dependent on proper management of the dry period beyond treatment with tubes alone. MSD Animal Health has provided this tool to assist vets and farmers to assess whether the farm is properly managing the dry period..
         /// </summary>
         public static string AssessText2 {
             get {
@@ -142,7 +142,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SDCT is based on analysing and monitoring the herd by gathering data through regular and repeated cow SCCs and accurate infection records and diagnostics..
+        ///   Looks up a localized string similar to Antibiotics and teat sealants are more effective if best practice procedures are put into place, and &apos;&lt;b&gt;UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC&lt;/b&gt;&apos; will help to establish proper Dry-off management. Once a farm has been analyzed and the process of monitoring has begun, it should reduce the threat of new infection during the dry period and the associated fatality costs, increased culling costs and reduced yield for the next lactation..
         /// </summary>
         public static string AssessText3 {
             get {
@@ -151,8 +151,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SDCT can only be used if other best practice procedures are put into place, and this app will help to establish a pathway to using SDCT as common practice.
-        ///All farms must conduct monthly cow SCC measurements (last cow SCC before dry-off and the first SCC after calving) before implementing SDCT, or alternatively you may use another reliable test..
+        ///   Looks up a localized string similar to Evaluating treatment and management success can be done through monitoring dry period cure and new infection rates. A requisite for such monitoring is regular, preferably monthly cow SCC measurements (last cow SCC before dry-off and the first SCC after calving), or alternatively you may use another reliable test to be able to follow the infection status of cows..
         /// </summary>
         public static string AssessText4 {
             get {
@@ -161,7 +160,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECTIVE DRY COW TREATMENT (SDCT) IS....
+        ///   Looks up a localized string similar to DRY COW TREATMENT.
         /// </summary>
         public static string AssessTitle1 {
             get {
@@ -170,7 +169,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HOW WILL SDCT HELP MY FARM?.
+        ///   Looks up a localized string similar to DRY COW MANAGEMENT.
         /// </summary>
         public static string AssessTitle2 {
             get {
@@ -179,7 +178,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HOW TO IMPLEMENT SDCT ON MY FARM?.
+        ///   Looks up a localized string similar to HOW WILL THIS TOOL HELP MY FARM?.
         /// </summary>
         public static string AssessTitle3 {
             get {
@@ -341,7 +340,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Once SDCT has been implemented on farm it is important to monitor the herd to catch and fix any issues which may arise..
+        ///   Looks up a localized string similar to To conduct proper ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ Dry-off management it is important to monitor the herd to catch and fix any issues which may arise..
         /// </summary>
         public static string CowStatusText1 {
             get {
@@ -512,7 +511,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Once SDCT has been implemented, continuous monitoring is required in order to refine practices on farm in order to optimise success levels and ultimately productivity, profitability and animal welfare..
+        ///   Looks up a localized string similar to Continuous monitoring is required in order to refine practices on farm in order to optimise success levels and ultimately productivity, profitability and animal welfare..
         /// </summary>
         public static string MonitorText1 {
             get {
@@ -521,7 +520,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This app will help you to analyse the infection rates of the herd at dry-off and calving. By inputing the infection status of each cow in the herd you can monitor the overall results and, together with SDCT assessment tool, analyse which areas are working well and where improvement may be required..
+        ///   Looks up a localized string similar to This app will help you to analyse the infection rates of the herd at dry-off and calving. By inputing the infection status of each cow in the herd you can monitor the overall results and, together with the ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ assessment tool, analyse which areas are working well and where improvement may be required..
         /// </summary>
         public static string MonitorText2 {
             get {
@@ -530,7 +529,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overcoming problems is part of everyday life when managing a dairy herd and SDCT is no different, by fostering good working relationships, MSD Animal Health Representatives, vets and farmers can work together to overcome any challenges which may arise..
+        ///   Looks up a localized string similar to Overcoming problems is part of everyday life when managing a dairy herd and ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ Dry-off management is no different. By fostering good working relationships, MSD Animal Health Representatives, vets and farmers can work together to overcome any challenges which may arise..
         /// </summary>
         public static string MonitorText3 {
             get {
@@ -539,7 +538,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SDCT provides both short term and long term benefits; fostering responsible usage of antibiotics in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain SDCT..
+        ///   Looks up a localized string similar to ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ Dry-off management provides both short term and long term benefits; fostering responsible usage of antibiotics in the food chain, improving productivity and reducing infection treatment costs are all strong reasons to implement and maintain ‘UnDDER Control&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ Dry-off management..
         /// </summary>
         public static string MonitorText4 {
             get {
@@ -548,7 +547,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IT IS IMPORTANT TO CONTINUE MONITORING THE FARM ONCE SDCT IS IMPLEMENTED....
+        ///   Looks up a localized string similar to IT IS IMPORTANT TO START AND CONTINUE MONITORING YOUR FARM CLOSELY FOR A PROPER ‘UnDDER CONTROL&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ DRY-OFF MANAGEMENT.....
         /// </summary>
         public static string MonitorTitle1 {
             get {
@@ -575,7 +574,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to THE BENEFITS OF MAINTAINING SDCT....
+        ///   Looks up a localized string similar to THE BENEFITS OF MAINTAINING ‘UnDDER CONTROL&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’ DRY-OFF MANAGEMENT....
         /// </summary>
         public static string MonitorTitle4 {
             get {
@@ -629,7 +628,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECTIVE.
+        ///   Looks up a localized string similar to ‘UnDDER CONTROL&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’.
         /// </summary>
         public static string RootAssessment3 {
             get {
@@ -647,7 +646,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SUCCESS OF SELECTIVE.
+        ///   Looks up a localized string similar to SUCCESS OF.
         /// </summary>
         public static string RootMonitor2 {
             get {
@@ -656,11 +655,32 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DRY COW TREATMENT.
+        ///   Looks up a localized string similar to ‘UnDDER CONTROL&lt;sup&gt;&amp;reg;&lt;/sup&gt; DC’.
         /// </summary>
         public static string RootMonitor3 {
             get {
                 return ResourceManager.GetString("RootMonitor3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DRY COW TREATMENT.
+        /// </summary>
+        public static string RootMonitor4 {
+            get {
+                return ResourceManager.GetString("RootMonitor4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UnDDER Control is a registered
+        ///trademark of Intervet
+        ///International B.V., also known
+        ///as MSD Animal Health..
+        /// </summary>
+        public static string SmallPrint {
+            get {
+                return ResourceManager.GetString("SmallPrint", resourceCulture);
             }
         }
         
@@ -701,7 +721,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SWITCHING TO SDCT &lt;u&gt;IS&lt;/u&gt; SUITABLE ON THIS FARM!.
+        ///   Looks up a localized string similar to SWITCHING TO SDCT WOULD BE SUITABLE ON THIS FARM!.
         /// </summary>
         public static string SurveyResultSdctSuitable {
             get {
@@ -710,7 +730,7 @@ namespace UndderControl.Text {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SWITCHING TO SDCT MAY POSE A &lt;u&gt;RISK&lt;/u&gt; FOR UDDER HEALTH ON THIS FARM!.
+        ///   Looks up a localized string similar to SWITCHING TO SDCT MAY POSE A RISK FOR UDDER HEALTH ON THIS FARM!.
         /// </summary>
         public static string SurveyResultSdctUnsuitable {
             get {

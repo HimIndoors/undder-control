@@ -24,7 +24,7 @@
                             <OnPlatform x:TypeArguments="x:Double" Android="-90" iOS="0" />
                         </chart:ChartLegend.OffsetY>
                         <chart:ChartLegend.LabelStyle>
-                            <chart:ChartLegendLabelStyle TextColor="black" />
+                            <chart:ChartLegendLabelStyle TextColor="black" Margin="5,0,5,0" />
                         </chart:ChartLegend.LabelStyle>
                     </chart:ChartLegend>
                 </chart:SfChart.Legend>

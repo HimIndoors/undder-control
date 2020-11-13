@@ -24,7 +24,6 @@
 	<string>UnDDER CONTROL</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.pmn.UndderControl</string>
-	
 	<key>CFBundleName</key>
 	<string>UndderControl</string>
 	<key>XSAppIconAssets</key>
@@ -43,6 +42,6 @@
 	<key>UIMainStoryboardFile</key>
 	<string>MinimalSplash</string>
 	<key>CFBundleVersion</key>
-	<string>13</string>
+	<string>15</string>
 </dict>
 </plist>

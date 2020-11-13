@@ -11,6 +11,7 @@
             <Color x:Key="PageBackgroundColor">#7CCCBD</Color>
             <Color x:Key="TextColor">#009096</Color>
             <Color x:Key="CheckpointColor">#D7EEE9</Color>
+            <Color x:Key="StandardTextColor">#3B464B</Color>
             
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="NormalFont" />
@@ -66,11 +67,13 @@
             <Style TargetType="Label" x:Key="Text">
                 <Setter Property="FontSize" Value="17"/>
                 <Setter Property="Margin" Value="0,0,0,5"/>
+                <Setter Property="TextColor" Value="{StaticResource StandardTextColor}"/>
             </Style>
             <Style TargetType="Label" x:Key="TextSubtitle">
-                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Margin" Value="0,0,0,5"/>
                 <Setter Property="FontFamily" Value="BoldFont" />
+                <Setter Property="TextColor" Value="{StaticResource StandardTextColor}"/>
             </Style>
             <Style TargetType="Label" x:Key="ResultSubtitle">
                 <Setter Property="FontSize" Value="18"/>

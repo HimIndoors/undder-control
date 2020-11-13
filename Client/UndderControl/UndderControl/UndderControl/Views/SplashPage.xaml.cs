@@ -1,4 +1,5 @@
 ﻿using System;
+using UndderControl.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -10,6 +11,7 @@ namespace UndderControl.Views
         {
             InitializeComponent();
             VersionLabel.Text = "Version " + VersionTracking.CurrentVersion;
+            SmallPrintLabel.Text = AppTextResource.SmallPrint;
         }
 
         protected override void OnSizeAllocated(double width, double height)

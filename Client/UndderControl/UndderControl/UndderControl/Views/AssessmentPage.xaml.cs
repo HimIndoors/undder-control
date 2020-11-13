@@ -10,13 +10,12 @@ namespace UndderControl.Views
         {
             InitializeComponent();
             Title1.Text = AppTextResource.AssessTitle1;
-            Text1.Text = AppTextResource.AssessText1;
+            Text1.HtmlText = AppTextResource.AssessText1;
             Title2.Text = AppTextResource.AssessTitle2;
-            Text2.Text = AppTextResource.AssessText2;
+            Text2.HtmlText = AppTextResource.AssessText2;
             Title3.Text = AppTextResource.AssessTitle3;
-            Text3.Text = AppTextResource.AssessText3;
-            Title4.Text = AppTextResource.AssessTitle4;
-            Text4.Text = AppTextResource.AssessText4;
+            Text3.HtmlText = AppTextResource.AssessText3;
+            Text4.HtmlText = AppTextResource.AssessText4;
             QuestionButton.Text = AppTextResource.AssessQuestionButton;
             SummaryButton.Text = AppTextResource.AssessSummaryButton;
             CompareButton.Text = AppTextResource.AssessCompareButton;

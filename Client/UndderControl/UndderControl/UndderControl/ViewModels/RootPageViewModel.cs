@@ -226,7 +226,7 @@ namespace UndderControl.ViewModels
 
         bool CanNavigate(string obj)
         {
-            return App.SelectedFarm == null ? false : true;
+            return App.SelectedFarm != null;
         }
 
         public async override void OnResume()

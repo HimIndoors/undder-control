@@ -66,11 +66,11 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Simon Hewitt (XQ4G3S3W93)</CodesignKey>
+    <CodesignKey>Apple Distribution: Simon Hewitt (XQ4G3S3W93)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <OptimizePNGs>true</OptimizePNGs>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <CodesignProvision>VS com.pmn.unddercontrol</CodesignProvision>
+    <CodesignProvision>PMN Prov Profile</CodesignProvision>
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>false</IpaIncludeArtwork>
     <IpaPackageName>UndderControl</IpaPackageName>

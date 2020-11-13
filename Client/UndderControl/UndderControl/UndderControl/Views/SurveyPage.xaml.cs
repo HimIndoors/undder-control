@@ -81,7 +81,15 @@ namespace UndderControl.Views
             var lightRes = "resource://UndderControl.Svg.progresslight.svg";
             var darkRes = "resource://UndderControl.Svg.progressdark.svg";
 
-            if (totalPos == 2)
+            if (totalPos == 1)
+            {
+                ProgressPip1.IsVisible = false;
+                ProgressPip2.IsVisible = false;
+                ProgressPip3.IsVisible = false;
+                ProgressPip4.IsVisible = false;
+                ProgressPip5.IsVisible = false;
+            }
+            else if (totalPos == 2)
             {
                 ProgressPip1.IsVisible = true;
                 ProgressPip2.IsVisible = true;
